@@ -14,12 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var db: Firestore!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        let db = Firestore.firestore()
+        db = Firestore.firestore()
 
+        doFirstLaunch()
         return true
     }
 
@@ -46,5 +48,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    /// 初回起動時のみに実行される関数
+    private func doFirstLaunch() {
+        // UserDefaults のインスタンス
+        let userDefaults = UserDefaults.standard
+        // デフォルト値
+        userDefaults.register(defaults: ["isFirstLaunch": true])
+        
+        if userDefaults.bool(forKey: "isFirstLaunch") {
+            print("初回起動です。")
+            // ユニークIDを生成して永続化
+            let uuid = UUID().uuidString
+            userDefaults.set(uuid, forKey: "uuid")
+            print("UUIDを生成しました: \(uuid)")
+            // 初回起動フラグをオフにする
+            userDefaults.set(false, forKey: "isFirstLaunch")
+        }
+    }
 }
 

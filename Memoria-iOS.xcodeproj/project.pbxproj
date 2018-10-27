@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		6E8CBC0D324DE6FDCA8B1E9D /* Pods_Memoria_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D879946004ED7C834459C0 /* Pods_Memoria_iOS.framework */; };
 		8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB83E2182002700BFCB79 /* AppDelegate.swift */; };
-		8D0FB8412182002700BFCB79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB8402182002700BFCB79 /* ViewController.swift */; };
 		8D0FB8442182002700BFCB79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB8422182002700BFCB79 /* Main.storyboard */; };
 		8D0FB8462182002800BFCB79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB8452182002800BFCB79 /* Assets.xcassets */; };
 		8D0FB8492182002800BFCB79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */; };
 		8D0FB8512182013E00BFCB79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */; };
+		8D0FB8542182068100BFCB79 /* ContactAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB8532182068100BFCB79 /* ContactAccess.swift */; };
+		8D0FB85621821B3B00BFCB79 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB85521821B3B00BFCB79 /* Database.swift */; };
+		8D1C73C32183ED6C00DA5A14 /* AnniversaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */; };
+		8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,12 +24,15 @@
 		76D879946004ED7C834459C0 /* Pods_Memoria_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memoria_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0FB83B2182002700BFCB79 /* Memoria-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Memoria-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0FB83E2182002700BFCB79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8D0FB8402182002700BFCB79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8D0FB8432182002700BFCB79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D0FB8452182002800BFCB79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D0FB8482182002800BFCB79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D0FB84A2182002800BFCB79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8D0FB8532182068100BFCB79 /* ContactAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAccess.swift; sourceTree = "<group>"; };
+		8D0FB85521821B3B00BFCB79 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnniversaryViewController.swift; path = "Memoria-iOS/Anniversary/AnniversaryViewController.swift"; sourceTree = "<group>"; };
+		8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Anniversary.storyboard; path = "Memoria-iOS/Anniversary/Anniversary.storyboard"; sourceTree = SOURCE_ROOT; };
 		CB9FB5A45A0F138434E9F5F0 /* Pods-Memoria-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memoria-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memoria-iOS/Pods-Memoria-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +70,8 @@
 			isa = PBXGroup;
 			children = (
 				8D0FB83E2182002700BFCB79 /* AppDelegate.swift */,
-				8D0FB8402182002700BFCB79 /* ViewController.swift */,
+				8D1C73C42183ED7B00DA5A14 /* Anniversary */,
+				8D0FB8522182062500BFCB79 /* Util */,
 				8D0FB8422182002700BFCB79 /* Main.storyboard */,
 				8D0FB8452182002800BFCB79 /* Assets.xcassets */,
 				8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */,
@@ -72,6 +79,25 @@
 				8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */,
 			);
 			path = "Memoria-iOS";
+			sourceTree = "<group>";
+		};
+		8D0FB8522182062500BFCB79 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8D0FB8532182068100BFCB79 /* ContactAccess.swift */,
+				8D0FB85521821B3B00BFCB79 /* Database.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		8D1C73C42183ED7B00DA5A14 /* Anniversary */ = {
+			isa = PBXGroup;
+			children = (
+				8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */,
+				8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */,
+			);
+			name = Anniversary;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		BC6767E9807FAE23F80305EF /* Pods */ = {
@@ -153,6 +179,7 @@
 			files = (
 				8D0FB8492182002800BFCB79 /* LaunchScreen.storyboard in Resources */,
 				8D0FB8512182013E00BFCB79 /* GoogleService-Info.plist in Resources */,
+				8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */,
 				8D0FB8462182002800BFCB79 /* Assets.xcassets in Resources */,
 				8D0FB8442182002700BFCB79 /* Main.storyboard in Resources */,
 			);
@@ -230,8 +257,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D0FB8412182002700BFCB79 /* ViewController.swift in Sources */,
+				8D0FB85621821B3B00BFCB79 /* Database.swift in Sources */,
 				8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */,
+				8D0FB8542182068100BFCB79 /* ContactAccess.swift in Sources */,
+				8D1C73C32183ED6C00DA5A14 /* AnniversaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
