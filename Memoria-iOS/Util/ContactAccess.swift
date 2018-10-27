@@ -61,7 +61,7 @@ class ContactAccess {
     }
     
     /// 連絡先にアクセスして、連絡先情報を取得する
-    func accessContact() {
+    func saveContactInfo() {
         
         // 個々の連絡先のデータを格納する配列
         var contacts = [CNContact]()

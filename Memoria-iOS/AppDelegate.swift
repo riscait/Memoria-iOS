@@ -63,6 +63,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("UUIDを生成しました: \(uuid)")
             // 初回起動フラグをオフにする
             userDefaults.set(false, forKey: "isFirstLaunch")
+        } else {
+            print("2回目以降の起動です。\nUUID: \(userDefaults.string(forKey: "uuid")!)")
         }
     }
 }

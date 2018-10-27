@@ -24,25 +24,16 @@ class AnniversaryViewController: UICollectionViewController {
         // 連絡先情報のアクセス権を調べてOKなら連絡先情報を取り込む
         let contactAccess = ContactAccess()
         if contactAccess.checkStatus() {
-            contactAccess.accessContact()
+            contactAccess.saveContactInfo()
         }
         
-        let db = Firestore.firestore()
+        readContactData()
         
-        let userDefaults = UserDefaults.standard
-        guard let uuid = userDefaults.string(forKey: "uuid") else { return }
-        
-        // DBの連絡先誕生日データを読み込む
-        let contactBirthdayRef = db.collection("users").document(uuid).collection("contactBirthday")
-        contactBirthdayRef.getDocuments() { querySnapshot, error in
-            if let error = error {
-                print("ドキュメントの検索に失敗しました: \(error)")
-            } else {
-                print("ドキュメントの検索が成功しました: \(querySnapshot?.count ?? 0)")
-                self.querySnapshot = querySnapshot
-            }
-        }
         // Do any additional setup after loading the view.
+        DispatchQueue.main.async {
+            print("CollectionViewをリロードします")
+            self.collectionView.reloadData()
+        }
     }
     
     /*
@@ -104,10 +95,34 @@ class AnniversaryViewController: UICollectionViewController {
 //        for (index, document) in querySnapshot.documents.enumerated() {
 //            let int = document.data().
 //        }
-//        (cell.viewWithTag(1) as! UILabel).text = (querySnapshot.documents[0].data()["givenName"] as! String)
-        (cell.viewWithTag(1) as! UILabel).text = "ABC"
-        print("リターンセルします！！！")
+        if let text = querySnapshot?.documents[indexPath.row].data()["familyName"] as? String {
+            (cell.viewWithTag(1) as! UILabel).text = text
+        }
+        print("リターンセルします！！！\(indexPath.row)")
         return cell
+    }
+    
+    /// データベースに登録済みの連絡先データを読み込む
+    func readContactData() {
+        let db = Firestore.firestore()
+        
+        let userDefaults = UserDefaults.standard
+        guard let uuid = userDefaults.string(forKey: "uuid") else { return }
+        
+        // DBの連絡先誕生日データを読み込む
+        let contactBirthdayRef = db.collection("users").document(uuid).collection("contactBirthday")
+        contactBirthdayRef.getDocuments() { querySnapshot, error in
+            if let error = error {
+                print("ドキュメントの検索に失敗しました: \(error)")
+            } else {
+                print("ドキュメントの検索が成功しました: \(querySnapshot?.count ?? 0)")
+                self.querySnapshot = querySnapshot
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(10)) {
+            print("遅延リロードを行います")
+            self.collectionView.reloadData()
+        }
     }
 
     // MARK: UICollectionViewDelegate
