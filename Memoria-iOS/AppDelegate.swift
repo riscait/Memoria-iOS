@@ -52,19 +52,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func doFirstLaunch() {
         // UserDefaults のインスタンス
         let userDefaults = UserDefaults.standard
-        // デフォルト値
-        userDefaults.register(defaults: ["isFirstLaunch": true])
+        let launchCount = "launchCount"
         
-        if userDefaults.bool(forKey: "isFirstLaunch") {
+        // デフォルト値を設定
+        userDefaults.register(defaults: [launchCount: 0])
+        
+        if userDefaults.integer(forKey: launchCount) == 0 {
             print("初回起動です。")
             // ユニークIDを生成して永続化
             let uuid = UUID().uuidString
             userDefaults.set(uuid, forKey: "uuid")
             print("UUIDを生成しました: \(uuid)")
             // 初回起動フラグをオフにする
-            userDefaults.set(false, forKey: "isFirstLaunch")
+            userDefaults.set(1, forKey: launchCount)
         } else {
-            print("2回目以降の起動です。\nUUID: \(userDefaults.string(forKey: "uuid")!)")
+            let n = userDefaults.integer(forKey: launchCount) + 1
+            userDefaults.set(n, forKey: launchCount)
+            print("\(n)回目以降の起動です。\nUUID: \(userDefaults.string(forKey: "uuid")!)")
         }
     }
 }

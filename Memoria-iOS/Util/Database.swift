@@ -17,14 +17,30 @@ class Database {
                  document: String,
                  subCollection: String,
                  subDocument: String,
-                 data: [String: Any]) {
+                 data: [String: Any],
+                 callback: () -> ()) {
         db.collection(collection).document(document).collection(subCollection)
-            .document().setData(data) { error in
+            .document(subDocument).setData(data) { error in
                 if let error = error {
                     print("ドキュメント追加時にエラー発生: \(error)")
                 } else {
                     print("ドキュメントの追加に成功しました！")
                 }
         }
+        callback()
+    }
+    
+    func getData() -> Void {
+        db.collection("cities").whereField("capital", isEqualTo: true)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                    }
+                }
+        }
+
     }
 }

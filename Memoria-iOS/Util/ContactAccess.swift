@@ -113,7 +113,10 @@ class ContactAccess {
                              document: uuid,
                              subCollection: "contactBirthday",
                              subDocument: contact.identifier,
-                             data: contactBirthday)
+                             data: contactBirthday) {
+                                // callback
+                               print("コールバックが呼ばれています。")
+            }
         }
     }
 }

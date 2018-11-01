@@ -9,45 +9,52 @@
 import UIKit
 import Firebase
 
-private let reuseIdentifier = "Cell"
-
 class AnniversaryViewController: UICollectionViewController {
-
-    var querySnapshot: QuerySnapshot?
     
+    // MARK: Property
+    var anniversaryData: [[String: Any]]?
+    
+    // 引っ張って更新用
+    var refresher: UIRefreshControl!
+    
+    
+    // MARK: Life-cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        // 引っ張って更新用
+        refresher = UIRefreshControl()
+        collectionView.refreshControl = refresher
+        refresher.addTarget(self, action: #selector(refreshCollectionView), for: .valueChanged)
         
-        // 連絡先情報のアクセス権を調べてOKなら連絡先情報を取り込む
-        let contactAccess = ContactAccess()
-        if contactAccess.checkStatus() {
-            contactAccess.saveContactInfo()
-        }
-        
+        // 記念日データ取得
         readContactData()
         
-        // Do any additional setup after loading the view.
-        DispatchQueue.main.async {
-            print("CollectionViewをリロードします")
-            self.collectionView.reloadData()
-        }
+        // CollectionViewのレイアウト設定
+        setLayout(margin: 6.0)
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    // MARK: IBAction
+    /// 記念日追加ボタン(+)を押した時の動作
+    ///
+    /// - Parameter sender: UIBarButtonItem（NavigationBarの右上に配置）
+    @IBAction func tapAddBtn(_ sender: UIBarButtonItem) {
+        // 連絡先アクセス用のクラスをインスタンス化
+        let contactAccess = ContactAccess()
+        
+        // 連絡先情報の使用が許可されているか調べる
+        guard contactAccess.checkStatus() else {
+            print("連絡先情報が使えないので何もできない")
+            return
+        }
+        
+        let alertVC = AlertController().showActionSheet(title: "タイトルが入ります", message: "メッセージが入ります", defaultAction: contactAccess.saveContactInfo)
+        present(alertVC, animated: true, completion: nil)
+        
+        print("CollectionViewをリロードする")
+        self.collectionView.reloadData()
     }
-    */
-
+    
     // MARK: UICollectionViewDataSource
-
     /// CollectionViewのセクション数を返す
     ///
     /// - Parameter collectionView: AnniversaryViewController
@@ -56,7 +63,7 @@ class AnniversaryViewController: UICollectionViewController {
         // TODO: セクションの数を設定する
         return 1
     }
-
+    
     /// CollectionViewのアイテム数を返す
     ///
     /// - Parameters:
@@ -65,14 +72,15 @@ class AnniversaryViewController: UICollectionViewController {
     /// - Returns: アイテム数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        guard let documentsCount = querySnapshot?.count else {
-            print("ドキュメントは見つかりません。アイテム数は0になります")
+        // 記念日データの存在チェック
+        guard let anniversaryCount = anniversaryData?.count else {
+            print("記念日データがまだありません。アイテム数を1にします")
             return 1
         }
-        
-        return documentsCount
+        print("記念日データ: \(anniversaryCount)件")
+        return anniversaryCount
     }
-
+    
     /// CollectionViewCellを設定する
     ///
     /// - Parameters:
@@ -80,80 +88,131 @@ class AnniversaryViewController: UICollectionViewController {
     ///   - indexPath: セルNo
     /// - Returns: CollectionViewCell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // Storyboardで設定したカスタムセルを指定
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "anniversaryCell", for: indexPath)
         
-//        querySnapshot.documents.flatMap({
-//            $0.data().flatMap({ (data) in
-//                return City(dictionary: data)
-//            })
-//        }) {
-//            print("City: \(city)")
-//            } else {
-//            print("Document does not exist")
-//            })
-        // 存在するドキュメントの数だけ繰り返す
-//        for (index, document) in querySnapshot.documents.enumerated() {
-//            let int = document.data().
-//        }
-        if let text = querySnapshot?.documents[indexPath.row].data()["familyName"] as? String {
-            (cell.viewWithTag(1) as! UILabel).text = text
+        // Storyboardで配置したパーツ
+        let anniversaryNameLabel = cell.viewWithTag(1) as! UILabel
+        let anniversaryDateLabel = cell.viewWithTag(2) as! UILabel
+        let remainingDaysLabel = cell.viewWithTag(3) as! UILabel
+        
+        // 日時フォーマットクラス
+        let dtf = DateTimeFormat()
+        
+        // 記念日データの存在チェック
+        guard let anniversaryData = anniversaryData?[indexPath.row] else {
+            print("記念日データがnilだった")
+            return cell
         }
-        print("リターンセルします！！！\(indexPath.row)")
+        
+        // 記念日の名称
+        // もし誕生日だったら苗字と名前を繋げる
+        anniversaryNameLabel.text = (anniversaryData["familyName"] as! String) + (anniversaryData["givenName"] as! String)
+
+        // 記念日の日程
+        anniversaryDateLabel.text = dtf.getMonthAndDay(date: anniversaryData["birthday"] as! Date)
+        
+        // 記念日までの残り日数
+        let remainingDays = anniversaryData["remainingDays"] as! Int
+        
+        remainingDaysLabel.text = "あと\(remainingDays)日"
+        
+        // 残り日数によってセルの見た目を変化させる
+        switch remainingDays {
+        case 0...100:
+            // 背景色
+            let startColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1).cgColor
+            let endColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
+            let layer = CAGradientLayer()
+            layer.colors = [startColor, endColor]
+            layer.frame = view.bounds
+            layer.startPoint = CGPoint(x: 1, y: 0)
+            layer.endPoint = CGPoint(x: 0, y: 1)
+            
+            cell.layer.insertSublayer(layer, at: 0)
+            
+        default :
+            cell.backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+        }
+        
+        print("セル情報を返す: \(indexPath.row)セル目")
         return cell
     }
     
     /// データベースに登録済みの連絡先データを読み込む
+    ///
+    /// - Returns: 連絡先の辞書データが詰まった配列
     func readContactData() {
+        
         let db = Firestore.firestore()
         
+        // DBからユーザー情報を取得するためにUUIDを取り出しておく
         let userDefaults = UserDefaults.standard
-        guard let uuid = userDefaults.string(forKey: "uuid") else { return }
+        guard let uuid = userDefaults.string(forKey: "uuid") else {
+            print("UUIDがありません")
+            return
+        }
         
-        // DBの連絡先誕生日データを読み込む
+        // DBの連絡先誕生日データを検索して取得する
         let contactBirthdayRef = db.collection("users").document(uuid).collection("contactBirthday")
+        
         contactBirthdayRef.getDocuments() { querySnapshot, error in
+            guard let querySnapshot = querySnapshot else { return }
+            // エラーチェック
             if let error = error {
                 print("ドキュメントの検索に失敗しました: \(error)")
             } else {
-                print("ドキュメントの検索が成功しました: \(querySnapshot?.count ?? 0)")
-                self.querySnapshot = querySnapshot
+                print("ドキュメントの検索が成功しました: \(querySnapshot.count)件：\(querySnapshot)")
+                if querySnapshot.count == 0 { return }
+                // value:連絡先データ　だけを取り出して配列にする
+                var contactDataArray: [[String: Any]] = []
+                for document in querySnapshot.documents {
+                    // key:連絡先ID, value:連絡先データ辞書　として取り出す
+                    contactDataArray.append(document.data())
+                }
+                // 残日数を計算し、追加する
+                for (i, contactDictionary) in contactDataArray.enumerated() {
+                    let dtf = DateTimeFormat()
+                    let remainingDays = dtf.getRemainingDays(date: contactDictionary["birthday"] as! Date)
+                    // 当人のデータに残日数を追加する
+                    contactDataArray[i]["remainingDays"] = remainingDays
+                }
+                print("並び替え前: \(contactDataArray)")
+                // 記念日までの残日数順で並び替えて返却する
+                self.anniversaryData = contactDataArray.sorted(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
+                print("並び替え後: \(self.anniversaryData!)")
             }
         }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(10)) {
-            print("遅延リロードを行います")
+    }
+    
+    /// コレクションビューのレイアウト設定
+    ///
+    /// - Parameter margin: レイアウトの余白数値
+    func setLayout(margin: CGFloat) {
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        
+        flowLayout.itemSize = CGSize(width: view.frame.width / 2 - margin * 3, height: 100.0)
+        // 列間の余白
+        flowLayout.minimumInteritemSpacing = margin
+        // 行間の余白
+        flowLayout.minimumLineSpacing = margin
+        // セクションの外側の余白
+        flowLayout.sectionInset = UIEdgeInsets(top: margin, left: margin * 2, bottom: margin, right: margin * 2)
+        self.collectionView.collectionViewLayout = flowLayout
+    }
+    
+    /// 引っ張って更新用アクション
+    @objc func refreshCollectionView() {
+        print("引っ張って更新が始まります！")
+        
+        // 記念日データを再取得する
+        readContactData()
+        
+        DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
+        self.refresher.endRefreshing()
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }
