@@ -13,3 +13,11 @@ Memoria-iOSの開発の始め方を解説します。
     pod install
     ```
 3.	Xcodeを立ち上げてまずは「ビルド」しましょう！
+
+# 使用ライブラリ
+## CocoaPodsで管理
+1.  Firebase Core
+2.  Firestore（データベース機能）
+
+## Carthageで管理
+まだなし
