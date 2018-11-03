@@ -47,8 +47,8 @@ class AnniversaryViewController: UICollectionViewController {
             return
         }
         
-        let alertVC = AlertController().showActionSheet(title: "タイトルが入ります", message: "メッセージが入ります", defaultAction: contactAccess.saveContactInfo)
-        present(alertVC, animated: true, completion: nil)
+        // ダイアログボックスをポップアップ
+        AlertController.showActionSheet(rootVC: self, title: "タイトルが入ります", message: "メッセージが入ります", defaultAction: contactAccess.saveContactInfo)
         
         print("CollectionViewをリロードする")
         self.collectionView.reloadData()

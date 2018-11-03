@@ -8,9 +8,16 @@
 
 import UIKit
 
-class AlertController {
+class AlertController: UIAlertController {
 
-    func showActionSheet(title: String, message: String, defaultAction: @escaping () -> ()) -> UIAlertController {
+    /// ActionSheetを生成して呼び出し元で表示する
+    ///
+    /// - Parameters:
+    ///   - rootVC: 呼び出し元のViewController
+    ///   - title: ActionSheetのタイトル文字列
+    ///   - message: ActionSheetの
+    ///   - defaultAction: デフォルトActionを選択した時の実行処理
+    class func showActionSheet(rootVC: UIViewController, title: String, message: String, defaultAction: @escaping () -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         let defaultAction = UIAlertAction(title: "連絡先を読み込む", style: .default, handler: { action -> Void in
@@ -21,6 +28,6 @@ class AlertController {
         alert.addAction(defaultAction)
         alert.addAction(cancelAction)
         
-        return alert
+        rootVC.present(alert, animated: true, completion: nil)
     }
 }
