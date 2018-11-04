@@ -17,8 +17,7 @@ class Database {
                  document: String,
                  subCollection: String,
                  subDocument: String,
-                 data: [String: Any],
-                 callback: () -> ()) {
+                 data: [String: Any]) {
         db.collection(collection).document(document).collection(subCollection)
             .document(subDocument).setData(data) { error in
                 if let error = error {
@@ -27,20 +26,5 @@ class Database {
                     print("ドキュメントの追加に成功しました！")
                 }
         }
-        callback()
-    }
-    
-    func getData() -> Void {
-        db.collection("cities").whereField("capital", isEqualTo: true)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
-                    }
-                }
-        }
-
     }
 }

@@ -36,15 +36,15 @@ class ContactAccess {
             print("連絡先へのアクセスは、まだ許可されていないか、機能制限等により利用不可です")
             // 連絡先へのアクセスを許可するかどうかのダイアログボックスを表示する
             store.requestAccess(for: .contacts, completionHandler: {(granted, Error) in
-                // 拒否された場合は処理を終了する
-                guard granted else {
+                if granted {
+                    print("連絡先へのアクセスが許可されました")
+                    return
+                } else {
                     print("連絡先へのアクセスが拒否されました")
                     return
                 }
             })
-            print("連絡先へのアクセスが許可されました")
-            return true
-            
+        // FIXME: どちらにしてもfalseがかえる状態？
         case .restricted:
             print("このアプリケーションは連絡先情報を使用できません")
             // TODO: 連絡先を取得できない旨を表示する
@@ -96,27 +96,24 @@ class ContactAccess {
                                        "givenName": contact.givenName,
                                        "familyName": contact.familyName,
                                        "birthday": birthday,
-                                       "tImage": contact.thumbnailImageData ?? ""
+                                       "tImage": contact.thumbnailImageData ?? "",
+                                       "type": "contactBirthday"
             ]
             
-            // ユーザーのユニークIDを読み出す
+            // ユーザーのユニークIDを読み込む
             let userDefaults = UserDefaults.standard
             guard let uuid = userDefaults.string(forKey: "uuid") else {
                 print("UUIDが見つかりません！")
                 return
-                
             }
-
+            
             // データベースに連絡先の誕生日情報を保存する
             let database = Database()
             database.setData(collection: "users",
                              document: uuid,
-                             subCollection: "contactBirthday",
+                             subCollection: "anniversary",
                              subDocument: contact.identifier,
-                             data: contactBirthday) {
-                                // callback
-                               print("コールバックが呼ばれています。")
-            }
+                             data: contactBirthday)
         }
     }
 }

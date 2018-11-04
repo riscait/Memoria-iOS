@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             let n = userDefaults.integer(forKey: launchCount) + 1
             userDefaults.set(n, forKey: launchCount)
-            print("\(n)回目以降の起動です。\nUUID: \(userDefaults.string(forKey: "uuid")!)")
+            print("\(n)回目の起動です。\nUUID: \(userDefaults.string(forKey: "uuid")!)")
         }
     }
 }
