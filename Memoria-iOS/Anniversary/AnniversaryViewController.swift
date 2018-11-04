@@ -12,6 +12,15 @@ import Firebase
 class AnniversaryViewController: UICollectionViewController {
     
     // MARK: Property
+    
+    let userDefaults = UserDefaults.standard
+    
+    var documentSnapshot = Array<DocumentSnapshot>()
+    var listenerRegistration: ListenerRegistration?
+    
+    var uuid: String?
+    
+    /// データ配列
     var anniversaryData: [[String: Any]]?
     
     // 引っ張って更新用
@@ -27,10 +36,32 @@ class AnniversaryViewController: UICollectionViewController {
         refresher.addTarget(self, action: #selector(refreshCollectionView), for: .valueChanged)
         
         // 記念日データ取得
-        readContactData()
+//        readContactData()
         
         // CollectionViewのレイアウト設定
         setLayout(margin: 6.0)
+        
+        uuid = userDefaults.string(forKey: "uuid")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let uuid = uuid else { return }
+        listenerRegistration = Firestore.firestore().collection("users").document(uuid).collection("contactBirthday").addSnapshotListener { snapshot, error in
+            if let snapshot = snapshot {
+                self.documentSnapshot = snapshot.documents
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let listenerRegistration = listenerRegistration {
+            listenerRegistration.remove()
+        }
     }
     
     // MARK: IBAction
@@ -40,7 +71,6 @@ class AnniversaryViewController: UICollectionViewController {
     @IBAction func tapAddBtn(_ sender: UIBarButtonItem) {
         // 連絡先アクセス用のクラスをインスタンス化
         let contactAccess = ContactAccess()
-        
         // 連絡先情報の使用が許可されているか調べる
         guard contactAccess.checkStatus() else {
             print("連絡先情報が使えないので何もできない")
@@ -50,8 +80,8 @@ class AnniversaryViewController: UICollectionViewController {
         // ダイアログボックスをポップアップ
         AlertController.showActionSheet(rootVC: self, title: "タイトルが入ります", message: "メッセージが入ります", defaultAction: contactAccess.saveContactInfo)
         
-        print("CollectionViewをリロードする")
-        self.collectionView.reloadData()
+//        print("CollectionViewをリロードする")
+//        self.collectionView.reloadData()
     }
     
     // MARK: UICollectionViewDataSource
@@ -73,12 +103,12 @@ class AnniversaryViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         // 記念日データの存在チェック
-        guard let anniversaryCount = anniversaryData?.count else {
-            print("記念日データがまだありません。アイテム数を1にします")
-            return 1
-        }
-        print("記念日データ: \(anniversaryCount)件")
-        return anniversaryCount
+//        guard let anniversaryCount = documentSnapshot else {
+//            print("記念日データがまだありません。アイテム数を1にします")
+//            return 1
+//        }
+        print("記念日データ: \(documentSnapshot.count)件")
+        return documentSnapshot.count
     }
     
     /// CollectionViewCellを設定する
@@ -100,41 +130,46 @@ class AnniversaryViewController: UICollectionViewController {
         // 日時フォーマットクラス
         let dtf = DateTimeFormat()
         
-        // 記念日データの存在チェック
-        guard let anniversaryData = anniversaryData?[indexPath.row] else {
+        guard let data = documentSnapshot[indexPath.row].data() else {
             print("記念日データがnilだった")
             return cell
         }
         
+        // 記念日データの存在チェック
+//        guard let anniversaryData = anniversaryData?[indexPath.row] else {
+//            print("記念日データがnilだった")
+//            return cell
+//        }
+        
         // 記念日の名称
         // もし誕生日だったら苗字と名前を繋げる
-        anniversaryNameLabel.text = (anniversaryData["familyName"] as! String) + (anniversaryData["givenName"] as! String)
+        anniversaryNameLabel.text = (data["familyName"] as! String) + (data["givenName"] as! String)
 
         // 記念日の日程
-        anniversaryDateLabel.text = dtf.getMonthAndDay(date: anniversaryData["birthday"] as! Date)
+        anniversaryDateLabel.text = dtf.getMonthAndDay(date: data["birthday"] as! Date)
         
         // 記念日までの残り日数
-        let remainingDays = anniversaryData["remainingDays"] as! Int
+//        let remainingDays = anniversaryData["remainingDays"] as! Int
         
-        remainingDaysLabel.text = "あと\(remainingDays)日"
+//        remainingDaysLabel.text = "あと\(remainingDays)日"
         
         // 残り日数によってセルの見た目を変化させる
-        switch remainingDays {
-        case 0...100:
-            // 背景色
-            let startColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1).cgColor
-            let endColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
-            let layer = CAGradientLayer()
-            layer.colors = [startColor, endColor]
-            layer.frame = view.bounds
-            layer.startPoint = CGPoint(x: 1, y: 0)
-            layer.endPoint = CGPoint(x: 0, y: 1)
-            
-            cell.layer.insertSublayer(layer, at: 0)
-            
-        default :
-            cell.backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
-        }
+//        switch remainingDays {
+//        case 0...100:
+//            // 背景色
+//            let startColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1).cgColor
+//            let endColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1).cgColor
+//            let layer = CAGradientLayer()
+//            layer.colors = [startColor, endColor]
+//            layer.frame = view.bounds
+//            layer.startPoint = CGPoint(x: 1, y: 0)
+//            layer.endPoint = CGPoint(x: 0, y: 1)
+//
+//            cell.layer.insertSublayer(layer, at: 0)
+//
+//        default :
+//            cell.backgroundColor = #colorLiteral(red: 0.3333333433, green: 0.3333333433, blue: 0.3333333433, alpha: 1)
+//        }
         
         print("セル情報を返す: \(indexPath.row)セル目")
         return cell
@@ -208,7 +243,7 @@ class AnniversaryViewController: UICollectionViewController {
         print("引っ張って更新が始まります！")
         
         // 記念日データを再取得する
-        readContactData()
+//        readContactData()
         
         DispatchQueue.main.async {
             self.collectionView.reloadData()
