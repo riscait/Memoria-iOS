@@ -23,10 +23,10 @@ class DateTimeFormat {
     /// 日付を「XX月XX日」のフォーマットにして文字列で返す
     ///
     /// - Parameter date: 日時データ
-    /// - Returns: 「XX月XX日」フォーマットの文字列
+    /// - Returns: 「M月dd日」フォーマットの文字列
     func getMonthAndDay(date: Date) -> String {
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "MM月dd日"
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMdd", options: 0, locale: Locale.current)
+        print("Locale: \(Locale.current)")
         return dateFormatter.string(from: date)
     }
     

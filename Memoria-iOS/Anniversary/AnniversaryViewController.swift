@@ -54,28 +54,30 @@ class AnniversaryViewController: UICollectionViewController {
         guard let uuid = uuid else { return }
         let usersCollection = Firestore.firestore().collection("users")
         let anniversaryCollection = usersCollection.document(uuid).collection("anniversary")
-        // コレクションにリスナーを登録してDBの変化を取得する
+        // anniversaryコレクションの変更を監視する
         listenerRegistration = anniversaryCollection.addSnapshotListener { snapshot, error in
-            if let snapshot = snapshot {
-                // 記念日データが入ったドキュメントの数だけ繰り返す
-                for doc in snapshot.documents {
-                    // ドキュメントから記念日データを取り出す
-                    var data = doc.data()
-                    // 記念日データから日付を取り出す
-                    let anniversaryDate = data["date"] as! Date
-                    // 日付から次の記念日までの残日数を計算
-                    let remainingDays = self.dtf.getRemainingDays(date: anniversaryDate)
-                    // 記念日データに残日数を追加
-                    data["remainingDays"] = remainingDays
-                    // 残日数も含めた記念日データをローカル配列に記憶
-                    self.anniversaryData.append(data)
-                    print("ローカルに追加したdata: \(data)")
-                }
-                // 記念日までの残日数順で並び替えて返却する
-                self.anniversaryData.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
-
-                self.collectionView.reloadData()
+            guard let snapshot = snapshot else {
+                print("ドキュメント取得エラー: \(error!)")
+                return
             }
+            // 記念日データが入ったドキュメントの数だけ繰り返す
+            for doc in snapshot.documents {
+                // ドキュメントから記念日データを取り出す
+                var data = doc.data()
+                // 記念日データから日付を取り出す
+                let anniversaryDate = data["date"] as! Date
+                // 日付から次の記念日までの残日数を計算
+                let remainingDays = self.dtf.getRemainingDays(date: anniversaryDate)
+                // 記念日データに残日数を追加
+                data["remainingDays"] = remainingDays
+                // 残日数も含めた記念日データをローカル配列に記憶
+                self.anniversaryData.append(data)
+                print("ローカルに追加したdata: \(data)")
+            }
+            // 記念日までの残日数順で並び替えて返却する
+            self.anniversaryData.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
+            
+            self.collectionView.reloadData()
         }
     }
     
@@ -179,12 +181,13 @@ class AnniversaryViewController: UICollectionViewController {
         let anniversaryNameLabel = cell.viewWithTag(1) as! UILabel
         let anniversaryDateLabel = cell.viewWithTag(2) as! UILabel
         let remainingDaysLabel = cell.viewWithTag(3) as! UILabel
-        
+        let iconImageView = cell.viewWithTag(4) as! UIImageView
+
         // 日時フォーマットクラス
         let dtf = DateTimeFormat()
-        
+
+        // 記念日データを順に取り出す
         let anniversaryData = self.anniversaryData[indexPath.row]
-        
         // 記念日の名称。もし誕生日だったら苗字と名前を繋げて表示
         // TODO: 誕生日かそれ以外かの分岐が必要
         anniversaryNameLabel.text = (anniversaryData["familyName"] as! String) + (anniversaryData["givenName"] as! String)
@@ -192,7 +195,18 @@ class AnniversaryViewController: UICollectionViewController {
         anniversaryDateLabel.text = dtf.getMonthAndDay(date: anniversaryData["date"] as! Date)
         // 記念日までの残り日数
         let remainingDays = anniversaryData["remainingDays"] as! Int
-        remainingDaysLabel.text = "あと\(remainingDays)日"
+        remainingDaysLabel.text = String(format: NSLocalizedString("remainingDays", comment: ""), remainingDays.description)
+        // 記念日のアイコン
+        if let iconImage = anniversaryData["iconImage"] as? Data {
+            iconImageView.image = UIImage(data: iconImage)
+            
+        } else {
+            let type = anniversaryData["type"] as! String
+            // デフォルトアイコン
+            iconImageView.image = type == "contactBirthday"
+                ? #imageLiteral(resourceName: "Ribbon") // 誕生日
+                : #imageLiteral(resourceName: "PresentBox") // それ以外
+        }
         
         // 残り日数によってセルの見た目を変化させる
         switch remainingDays {

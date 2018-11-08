@@ -96,7 +96,7 @@ class ContactAccess {
                                        "givenName": contact.givenName,
                                        "familyName": contact.familyName,
                                        "date": birthday,
-                                       "tImage": contact.thumbnailImageData ?? "",
+                                       "iconImage": contact.thumbnailImageData ?? "",
                                        "type": "contactBirthday"
             ]
             
