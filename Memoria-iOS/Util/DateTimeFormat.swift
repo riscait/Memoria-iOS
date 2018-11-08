@@ -20,7 +20,7 @@ class DateTimeFormat {
         return dateFormatter
     }
     
-    /// 日付を「XX月XX日」のフォーマットにして文字列で返す
+    /// 日付を「X月X日」のフォーマットにして文字列で返す
     ///
     /// - Parameter date: 日時データ
     /// - Returns: 「M月dd日」フォーマットの文字列
@@ -34,12 +34,16 @@ class DateTimeFormat {
     /// - Parameter date: 記念日
     /// - Returns: 記念日までの残り日数
     func getRemainingDays(date: Date) -> Int {
-        // 記念日の「月」と「日」を取得
-        let components = calendar.dateComponents([.month, .day], from: date)
+        // 日付の「月」と「日」を取得
+        let monthAndDayDate = calendar.dateComponents([.month, .day], from: date)
+        // 当日なら0を返す
+        if calendar.date(Date(), matchesComponents: monthAndDayDate) {
+            return 0
+        }
         // 今日以降の直近記念日を取得
-        let nextDay = calendar.nextDate(after: Date(), matching: components, matchingPolicy: .nextTime)
+        let nextDay = calendar.nextDate(after: Date(), matching: monthAndDayDate, matchingPolicy: .nextTime)
         // 次回記念日までの日数を取得
         let remainingDays = calendar.dateComponents([.day], from: Date(), to: nextDay!).day!
-        return remainingDays
+        return remainingDays + 1 // 時間を切り上げ
     }
 }

@@ -50,7 +50,6 @@ final class AnniversaryViewController: UICollectionViewController {
     
     /// Viewが表示される直前に呼ばれる（タブ切り替え等も含む）
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         guard let uuid = uuid else { return }
         let usersCollection = Firestore.firestore().collection("users")
@@ -81,6 +80,7 @@ final class AnniversaryViewController: UICollectionViewController {
             
             self.collectionView.reloadData()
         }
+        super.viewWillAppear(animated)
     }
     
     /// Viewが非表示になる直前に呼ばれる
@@ -208,8 +208,7 @@ final class AnniversaryViewController: UICollectionViewController {
         }
         
         // 残り日数によってセルの見た目を変化させる
-        switch remainingDays {
-        case 0...100:
+        if remainingDays <= 30 { // 記念日がもうすぐ！な場合
             // 文字色
             cell.anniversaryNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.anniversaryDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -225,8 +224,15 @@ final class AnniversaryViewController: UICollectionViewController {
             layer.name = "grade"
             cell.layer.insertSublayer(layer, at: 0)
 
-        default :
-            break
+        }
+        switch remainingDays {
+        case 0: // 当日
+            cell.remainingDaysLabel.text = NSLocalizedString("remainingDaysToday", comment: "")
+            
+        case 1: // 明日
+            cell.remainingDaysLabel.text = NSLocalizedString("remainingDaysTomorrow", comment: "")
+            
+        default: break
         }        
         return cell
     }
