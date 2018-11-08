@@ -19,6 +19,7 @@
 		8D11B3B42193EE4F00C60371 /* IconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11B3B32193EE4F00C60371 /* IconImageView.swift */; };
 		8D11B3B721940BD100C60371 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D11B3B921940BD100C60371 /* Localizable.strings */; };
 		8D11B3BC2194431100C60371 /* AnniversaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11B3BB2194431100C60371 /* AnniversaryCell.swift */; };
+		8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D11B3C121947EAF00C60371 /* InfoPlist.strings */; };
 		8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */; };
 		8D1C73C32183ED6C00DA5A14 /* AnniversaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */; };
 		8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */; };
@@ -42,6 +43,7 @@
 		8D11B3B821940BD100C60371 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D11B3BA21940BF600C60371 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D11B3BB2194431100C60371 /* AnniversaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryCell.swift; sourceTree = "<group>"; };
+		8D11B3C021947EAF00C60371 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeFormat.swift; sourceTree = "<group>"; };
 		8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryViewController.swift; sourceTree = "<group>"; };
 		8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Anniversary.storyboard; path = "Memoria-iOS/Anniversary/Anniversary.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -91,6 +93,7 @@
 				8D0FB8452182002800BFCB79 /* Assets.xcassets */,
 				8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */,
 				8D0FB84A2182002800BFCB79 /* Info.plist */,
+				8D11B3C121947EAF00C60371 /* InfoPlist.strings */,
 				8D11B3B921940BD100C60371 /* Localizable.strings */,
 				8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */,
 			);
@@ -209,6 +212,7 @@
 				8D0FB8512182013E00BFCB79 /* GoogleService-Info.plist in Resources */,
 				8D11B3B721940BD100C60371 /* Localizable.strings in Resources */,
 				8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */,
+				8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */,
 				8D0FB8462182002800BFCB79 /* Assets.xcassets in Resources */,
 				8D0FB8442182002700BFCB79 /* Main.storyboard in Resources */,
 			);
@@ -323,6 +327,14 @@
 				8D11B3BA21940BF600C60371 /* ja */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		8D11B3C121947EAF00C60371 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D11B3C021947EAF00C60371 /* ja */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
