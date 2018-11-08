@@ -26,7 +26,6 @@ class DateTimeFormat {
     /// - Returns: 「M月dd日」フォーマットの文字列
     func getMonthAndDay(date: Date) -> String {
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMdd", options: 0, locale: Locale.current)
-        print("Locale: \(Locale.current)")
         return dateFormatter.string(from: date)
     }
     

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 /// 記念日一覧を表示するメイン画面のクラス
-class AnniversaryViewController: UICollectionViewController {
+final class AnniversaryViewController: UICollectionViewController {
     
     // MARK: - プロパティ
     
@@ -72,7 +72,7 @@ class AnniversaryViewController: UICollectionViewController {
                 data["remainingDays"] = remainingDays
                 // 残日数も含めた記念日データをローカル配列に記憶
                 self.anniversaryData.append(data)
-                print("ローカルに追加したdata: \(data)")
+                print("ローカルに追加したdata: \(data["familyName"] ?? "") \(data["givenName"] ?? "")")
             }
             // 記念日までの残日数順で並び替えて返却する
             self.anniversaryData.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
@@ -175,13 +175,7 @@ class AnniversaryViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // Storyboardで設定したカスタムセルIDを指定
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "anniversaryCell", for: indexPath)
-        
-        // Storyboardで配置したパーツ
-        let anniversaryNameLabel = cell.viewWithTag(1) as! UILabel
-        let anniversaryDateLabel = cell.viewWithTag(2) as! UILabel
-        let remainingDaysLabel = cell.viewWithTag(3) as! UILabel
-        let iconImageView = cell.viewWithTag(4) as! UIImageView
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "anniversaryCell", for: indexPath) as! AnniversaryCell
 
         // 日時フォーマットクラス
         let dtf = DateTimeFormat()
@@ -190,20 +184,20 @@ class AnniversaryViewController: UICollectionViewController {
         let anniversaryData = self.anniversaryData[indexPath.row]
         // 記念日の名称。もし誕生日だったら苗字と名前を繋げて表示
         // TODO: 誕生日かそれ以外かの分岐が必要
-        anniversaryNameLabel.text = (anniversaryData["familyName"] as! String) + (anniversaryData["givenName"] as! String)
+        cell.anniversaryNameLabel.text = (anniversaryData["familyName"] as! String) + (anniversaryData["givenName"] as! String)
         // 記念日の日程
-        anniversaryDateLabel.text = dtf.getMonthAndDay(date: anniversaryData["date"] as! Date)
+        cell.anniversaryDateLabel.text = dtf.getMonthAndDay(date: anniversaryData["date"] as! Date)
         // 記念日までの残り日数
         let remainingDays = anniversaryData["remainingDays"] as! Int
-        remainingDaysLabel.text = String(format: NSLocalizedString("remainingDays", comment: ""), remainingDays.description)
+        cell.remainingDaysLabel.text = String(format: NSLocalizedString("remainingDays", comment: ""), remainingDays.description)
         // 記念日のアイコン
         if let iconImage = anniversaryData["iconImage"] as? Data {
-            iconImageView.image = UIImage(data: iconImage)
+            cell.anniversaryIconImage.image = UIImage(data: iconImage)
             
         } else {
             let type = anniversaryData["type"] as! String
             // デフォルトアイコン
-            iconImageView.image = type == "contactBirthday"
+            cell.anniversaryIconImage.image = type == "contactBirthday"
                 ? #imageLiteral(resourceName: "Ribbon") // 誕生日
                 : #imageLiteral(resourceName: "PresentBox") // それ以外
         }
@@ -212,9 +206,9 @@ class AnniversaryViewController: UICollectionViewController {
         switch remainingDays {
         case 0...100:
             // 文字色
-            anniversaryNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            anniversaryDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            remainingDaysLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.anniversaryNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.anniversaryDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.remainingDaysLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             // 背景色
             let startColor = #colorLiteral(red: 0.8235294118, green: 0.0862745098, blue: 0.3921568627, alpha: 1).cgColor
             let endColor = #colorLiteral(red: 0.5529411765, green: 0.2235294118, blue: 1, alpha: 1).cgColor
@@ -223,13 +217,12 @@ class AnniversaryViewController: UICollectionViewController {
             layer.frame = view.bounds
             layer.startPoint = CGPoint(x: 1, y: 0)
             layer.endPoint = CGPoint(x: 0, y: 1)
+            layer.name = "grade"
             cell.layer.insertSublayer(layer, at: 0)
 
         default :
-            cell.backgroundColor = #colorLiteral(red: 0.8249073625, green: 0.8200044036, blue: 0.8286765814, alpha: 1)
-        }
-        
-        print("セル情報を返す: \(indexPath.row)セル目")
+            break
+        }        
         return cell
     }
 }
