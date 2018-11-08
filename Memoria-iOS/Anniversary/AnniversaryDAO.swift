@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 /// データベースへのアクセスを担うクラス
-class Database {
+class AnniversaryDAO {
     var db = Firestore.firestore()
 
     func setData(collection: String,

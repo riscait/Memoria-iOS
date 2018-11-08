@@ -95,7 +95,7 @@ class ContactAccess {
             let contactBirthday: [String: Any] = ["id": contact.identifier,
                                        "givenName": contact.givenName,
                                        "familyName": contact.familyName,
-                                       "birthday": birthday,
+                                       "date": birthday,
                                        "tImage": contact.thumbnailImageData ?? "",
                                        "type": "contactBirthday"
             ]
@@ -108,7 +108,7 @@ class ContactAccess {
             }
             
             // データベースに連絡先の誕生日情報を保存する
-            let database = Database()
+            let database = AnniversaryDAO()
             database.setData(collection: "users",
                              document: uuid,
                              subCollection: "anniversary",

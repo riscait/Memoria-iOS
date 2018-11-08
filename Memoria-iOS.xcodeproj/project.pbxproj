@@ -14,11 +14,11 @@
 		8D0FB8492182002800BFCB79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */; };
 		8D0FB8512182013E00BFCB79 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */; };
 		8D0FB8542182068100BFCB79 /* ContactAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB8532182068100BFCB79 /* ContactAccess.swift */; };
-		8D0FB85621821B3B00BFCB79 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB85521821B3B00BFCB79 /* Database.swift */; };
+		8D0FB85621821B3B00BFCB79 /* AnniversaryDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */; };
 		8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */; };
 		8D1C73C32183ED6C00DA5A14 /* AnniversaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */; };
 		8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */; };
-		8DA7BF4D2184D747004DF508 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA7BF4C2184D747004DF508 /* AlertController.swift */; };
+		8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA7BF4C2184D747004DF508 /* DialogBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,11 +32,11 @@
 		8D0FB84A2182002800BFCB79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8D0FB8532182068100BFCB79 /* ContactAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAccess.swift; sourceTree = "<group>"; };
-		8D0FB85521821B3B00BFCB79 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryDAO.swift; sourceTree = "<group>"; };
 		8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeFormat.swift; sourceTree = "<group>"; };
 		8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryViewController.swift; sourceTree = "<group>"; };
 		8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Anniversary.storyboard; path = "Memoria-iOS/Anniversary/Anniversary.storyboard"; sourceTree = SOURCE_ROOT; };
-		8DA7BF4C2184D747004DF508 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
+		8DA7BF4C2184D747004DF508 /* DialogBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBox.swift; sourceTree = "<group>"; };
 		CB9FB5A45A0F138434E9F5F0 /* Pods-Memoria-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memoria-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memoria-iOS/Pods-Memoria-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,8 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				8D0FB8532182068100BFCB79 /* ContactAccess.swift */,
-				8D0FB85521821B3B00BFCB79 /* Database.swift */,
-				8DA7BF4C2184D747004DF508 /* AlertController.swift */,
+				8DA7BF4C2184D747004DF508 /* DialogBox.swift */,
 				8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */,
 			);
 			path = Util;
@@ -101,6 +100,7 @@
 			children = (
 				8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */,
 				8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */,
+				8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */,
 			);
 			path = Anniversary;
 			sourceTree = "<group>";
@@ -262,11 +262,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D0FB85621821B3B00BFCB79 /* Database.swift in Sources */,
+				8D0FB85621821B3B00BFCB79 /* AnniversaryDAO.swift in Sources */,
 				8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */,
 				8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */,
 				8D0FB8542182068100BFCB79 /* ContactAccess.swift in Sources */,
-				8DA7BF4D2184D747004DF508 /* AlertController.swift in Sources */,
+				8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */,
 				8D1C73C32183ED6C00DA5A14 /* AnniversaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

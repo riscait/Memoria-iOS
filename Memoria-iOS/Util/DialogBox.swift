@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlertController: UIAlertController {
+class DialogBox: UIAlertController {
 
     /// ActionSheetを生成して呼び出し元で表示する
     ///
@@ -17,10 +17,10 @@ class AlertController: UIAlertController {
     ///   - title: ActionSheetのタイトル文字列
     ///   - message: ActionSheetの
     ///   - defaultAction: デフォルトActionを選択した時の実行処理
-    class func showActionSheet(rootVC: UIViewController, title: String, message: String, defaultAction: @escaping () -> ()) {
+    class func showActionSheet(rootVC: UIViewController, title: String, message: String, defaultTitle: String, defaultAction: @escaping () -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
-        let defaultAction = UIAlertAction(title: "連絡先を読み込む", style: .default, handler: { action -> Void in
+        let defaultAction = UIAlertAction(title: defaultTitle, style: .default, handler: { action -> Void in
             defaultAction()
         })
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)

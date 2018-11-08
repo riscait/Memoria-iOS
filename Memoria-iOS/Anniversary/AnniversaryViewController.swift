@@ -16,14 +16,16 @@ class AnniversaryViewController: UICollectionViewController {
     
     /// データ永続化（端末保存）のためのUserDefaults
     let userDefaults = UserDefaults.standard
+    /// 日付フォーマットクラス
+    let dtf = DateTimeFormat()
     /// Firestoreのドキュメントスナップショット
-    var documentSnapshot = Array<DocumentSnapshot>()
+//    var documentSnapshot = Array<DocumentSnapshot>()
     /// 正直まだよく理解していないリスナー登録？
     var listenerRegistration: ListenerRegistration?
     /// ユーザー一意のID
     var uuid: String?
     /// データ配列
-    var anniversaryData: [[String: Any]]?
+    var anniversaryData: [[String: Any]] = []
     
     // 引っ張って更新用のRefreshControl
     var refresher = UIRefreshControl()
@@ -51,11 +53,27 @@ class AnniversaryViewController: UICollectionViewController {
         
         guard let uuid = uuid else { return }
         let usersCollection = Firestore.firestore().collection("users")
-        let anniversaryCollection = usersCollection.document(uuid).collection("contactBirthday")
+        let anniversaryCollection = usersCollection.document(uuid).collection("anniversary")
         // コレクションにリスナーを登録してDBの変化を取得する
         listenerRegistration = anniversaryCollection.addSnapshotListener { snapshot, error in
             if let snapshot = snapshot {
-                self.documentSnapshot = snapshot.documents
+                // 記念日データが入ったドキュメントの数だけ繰り返す
+                for doc in snapshot.documents {
+                    // ドキュメントから記念日データを取り出す
+                    var data = doc.data()
+                    // 記念日データから日付を取り出す
+                    let anniversaryDate = data["date"] as! Date
+                    // 日付から次の記念日までの残日数を計算
+                    let remainingDays = self.dtf.getRemainingDays(date: anniversaryDate)
+                    // 記念日データに残日数を追加
+                    data["remainingDays"] = remainingDays
+                    // 残日数も含めた記念日データをローカル配列に記憶
+                    self.anniversaryData.append(data)
+                    print("ローカルに追加したdata: \(data)")
+                }
+                // 記念日までの残日数順で並び替えて返却する
+                self.anniversaryData.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
+
                 self.collectionView.reloadData()
             }
         }
@@ -86,7 +104,11 @@ class AnniversaryViewController: UICollectionViewController {
             return
         }
         // アクションシートをポップアップ（デフォルトアクション選択時の動作を引数で渡している）
-        AlertController.showActionSheet(rootVC: self, title: "タイトルが入ります", message: "メッセージが入ります", defaultAction: contactAccess.saveContactInfo)
+        DialogBox.showActionSheet(rootVC: self,
+                                  title: "タイトルが入ります",
+                                  message: "メッセージが入ります",
+                                  defaultTitle: "連絡先を読み込む",
+                                  defaultAction: contactAccess.saveContactInfo)
     }
     
     // MARK: - 汎用メソッド
@@ -111,9 +133,6 @@ class AnniversaryViewController: UICollectionViewController {
     /// 引っ張って更新用アクション
     @objc func refreshCollectionView() {
         print("引っ張って更新が始まります！")
-        
-        // 記念日データを再取得する
-        //        readContactData()
         
         DispatchQueue.main.async {
             self.collectionView.reloadData()
@@ -141,8 +160,8 @@ class AnniversaryViewController: UICollectionViewController {
     /// - Returns: アイテム数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        print("\(documentSnapshot.count)件の記念日データがあります")
-        return documentSnapshot.count
+        print("記念日データ件数: \(anniversaryData.count)件")
+        return anniversaryData.count
     }
     
     /// CollectionViewCellの表示設定
@@ -164,20 +183,16 @@ class AnniversaryViewController: UICollectionViewController {
         // 日時フォーマットクラス
         let dtf = DateTimeFormat()
         
-        guard let anniversaryData = documentSnapshot[indexPath.row].data() else {
-            print("記念日データがnilです")
-            return cell
-        }
+        let anniversaryData = self.anniversaryData[indexPath.row]
+        
         // 記念日の名称。もし誕生日だったら苗字と名前を繋げて表示
         // TODO: 誕生日かそれ以外かの分岐が必要
         anniversaryNameLabel.text = (anniversaryData["familyName"] as! String) + (anniversaryData["givenName"] as! String)
         // 記念日の日程
-        anniversaryDateLabel.text = dtf.getMonthAndDay(date: anniversaryData["birthday"] as! Date)
-        // 記念日までの残り日数を計算し、追加する
-        let remainingDays = dtf.getRemainingDays(date: anniversaryData["birthday"] as! Date)
+        anniversaryDateLabel.text = dtf.getMonthAndDay(date: anniversaryData["date"] as! Date)
+        // 記念日までの残り日数
+        let remainingDays = anniversaryData["remainingDays"] as! Int
         remainingDaysLabel.text = "あと\(remainingDays)日"
-        // 当人のデータに残日数を追加する
-//        contactDataArray[i]["remainingDays"] = remainingDays
         
         // 残り日数によってセルの見た目を変化させる
         switch remainingDays {
@@ -203,50 +218,4 @@ class AnniversaryViewController: UICollectionViewController {
         print("セル情報を返す: \(indexPath.row)セル目")
         return cell
     }
-    
-    /// データベースに登録済みの連絡先データを読み込む
-    ///
-    /// - Returns: 連絡先の辞書データが詰まった配列
-//    func readContactData() {
-//
-//        let db = Firestore.firestore()
-//
-//        // DBからユーザー情報を取得するためにUUIDを取り出しておく
-//        let userDefaults = UserDefaults.standard
-//        guard let uuid = userDefaults.string(forKey: "uuid") else {
-//            print("UUIDがありません")
-//            return
-//        }
-//
-//        // DBの連絡先誕生日データを検索して取得する
-//        let contactBirthdayRef = db.collection("users").document(uuid).collection("contactBirthday")
-//
-//        contactBirthdayRef.getDocuments() { querySnapshot, error in
-//            guard let querySnapshot = querySnapshot else { return }
-//            // エラーチェック
-//            if let error = error {
-//                print("ドキュメントの検索に失敗しました: \(error)")
-//            } else {
-//                print("ドキュメントの検索が成功しました: \(querySnapshot.count)件：\(querySnapshot)")
-//                if querySnapshot.count == 0 { return }
-//                // value:連絡先データ　だけを取り出して配列にする
-//                var contactDataArray: [[String: Any]] = []
-//                for document in querySnapshot.documents {
-//                    // key:連絡先ID, value:連絡先データ辞書　として取り出す
-//                    contactDataArray.append(document.data())
-//                }
-//                // 残日数を計算し、追加する
-//                for (i, contactDictionary) in contactDataArray.enumerated() {
-//                    let dtf = DateTimeFormat()
-//                    let remainingDays = dtf.getRemainingDays(date: contactDictionary["birthday"] as! Date)
-//                    // 当人のデータに残日数を追加する
-//                    contactDataArray[i]["remainingDays"] = remainingDays
-//                }
-//                print("並び替え前: \(contactDataArray)")
-//                // 記念日までの残日数順で並び替えて返却する
-//                self.anniversaryData = contactDataArray.sorted(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
-//                print("並び替え後: \(self.anniversaryData!)")
-//            }
-//        }
-//    }
 }
