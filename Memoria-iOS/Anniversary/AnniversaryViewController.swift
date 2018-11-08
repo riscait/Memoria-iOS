@@ -12,6 +12,7 @@ import Firebase
 /// 記念日一覧を表示するメイン画面のクラス
 final class AnniversaryViewController: UICollectionViewController {
     
+    @IBOutlet weak var emptySetView: UIView!
     // MARK: - プロパティ
     
     /// データ永続化（端末保存）のためのUserDefaults
@@ -60,6 +61,7 @@ final class AnniversaryViewController: UICollectionViewController {
                 print("ドキュメント取得エラー: \(error!)")
                 return
             }
+            self.anniversaryData = []
             // 記念日データが入ったドキュメントの数だけ繰り返す
             for doc in snapshot.documents {
                 // ドキュメントから記念日データを取り出す
@@ -163,6 +165,9 @@ final class AnniversaryViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         print("記念日データ件数: \(anniversaryData.count)件")
+        if anniversaryData.count != 0 {
+            emptySetView.isHidden = true
+        }
         return anniversaryData.count
     }
     
