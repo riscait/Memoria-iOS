@@ -37,6 +37,13 @@ final class AnniversaryViewController: UICollectionViewController {
     /// Viewの読込完了後に一度だけ呼ばれる
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 検索バーを追加
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        // 検索バーを常に表示する場合は記述。消すと引っ張って出現してスクロールで隠れるようになる
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
         // コレクションビューにRefreshControlを設定
         collectionView.refreshControl = refresher
         // リフレッシュ実行時に呼び出すメソッドを指定
@@ -93,7 +100,24 @@ final class AnniversaryViewController: UICollectionViewController {
         }
     }
     
-    
+    /// セグエで他の画面へ遷移するときに呼ばれる
+    ///
+    /// - Parameters:
+    ///   - segue: <#segue description#>
+    ///   - sender: <#sender description#>
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = segue.identifier else { return }
+        
+        if id == "toDetailSegue" {
+            let nextVc = segue.destination as! AnniversaryDetailVC
+            let indexPath = collectionView.indexPathsForSelectedItems?.first
+            let cell = collectionView.cellForItem(at: indexPath!) as! AnniversaryCell
+            nextVc.anniversaryName = cell.anniversaryNameLabel.text
+            nextVc.anniversaryDate = cell.anniversaryDateLabel.text
+            nextVc.remainingDays = cell.remainingDaysLabel.text
+            nextVc.iconImage = cell.anniversaryIconImage.image
+        }
+    }
     // MARK: - IBAction（InterfaceBuiderとつないだActionメソッド）
     
     /// 記念日追加ボタン(+)を押した時の振る舞い
@@ -163,11 +187,11 @@ final class AnniversaryViewController: UICollectionViewController {
     ///   - section: セクション番号
     /// - Returns: アイテム数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         print("記念日データ件数: \(anniversaryData.count)件")
-        if anniversaryData.count != 0 {
-            emptySetView.isHidden = true
-        }
+        // 記念日が一つもないときはガイド用Viewを表示
+        emptySetView.isHidden = anniversaryData.count == 0
+            ? false : true
+
         return anniversaryData.count
     }
     
@@ -187,11 +211,17 @@ final class AnniversaryViewController: UICollectionViewController {
 
         // 記念日データを順に取り出す
         let anniversaryData = self.anniversaryData[indexPath.row]
+        // 記念日の分類
+        let type = anniversaryData["type"] as! String
+
         // 記念日の名称。もし誕生日だったら苗字と名前を繋げて表示
-        // TODO: 誕生日かそれ以外かの分岐が必要
-        cell.anniversaryNameLabel.text = (anniversaryData["familyName"] as! String) + (anniversaryData["givenName"] as! String)
+        if type == "contactBirthday" {
+            cell.anniversaryNameLabel.text = "\(anniversaryData["familyName"] as! String) \(anniversaryData["givenName"] as! String)\nBirthday"
+        }
         // 記念日の日程
-        cell.anniversaryDateLabel.text = dtf.getMonthAndDay(date: anniversaryData["date"] as! Date)
+        cell.anniversaryDateLabel.text = type == "contactBirthday"
+            ? dtf.getYMD(date: anniversaryData["date"] as! Date) + "生"
+            : dtf.getYMD(date: anniversaryData["date"] as! Date)
         // 記念日までの残り日数
         let remainingDays = anniversaryData["remainingDays"] as! Int
         cell.remainingDaysLabel.text = String(format: NSLocalizedString("remainingDays", comment: ""), remainingDays.description)
@@ -200,7 +230,6 @@ final class AnniversaryViewController: UICollectionViewController {
             cell.anniversaryIconImage.image = UIImage(data: iconImage)
             
         } else {
-            let type = anniversaryData["type"] as! String
             // デフォルトアイコン
             cell.anniversaryIconImage.image = type == "contactBirthday"
                 ? #imageLiteral(resourceName: "Ribbon") // 誕生日
@@ -236,4 +265,5 @@ final class AnniversaryViewController: UICollectionViewController {
         }        
         return cell
     }
+    
 }

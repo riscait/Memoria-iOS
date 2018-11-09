@@ -20,6 +20,8 @@
 		8D11B3B721940BD100C60371 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D11B3B921940BD100C60371 /* Localizable.strings */; };
 		8D11B3BC2194431100C60371 /* AnniversaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11B3BB2194431100C60371 /* AnniversaryCell.swift */; };
 		8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D11B3C121947EAF00C60371 /* InfoPlist.strings */; };
+		8D11B3C32195C5CD00C60371 /* AnniversaryDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D11B3C22195C5CC00C60371 /* AnniversaryDetail.storyboard */; };
+		8D11B3C52195CBF300C60371 /* AnniversaryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */; };
 		8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */; };
 		8D1C73C32183ED6C00DA5A14 /* AnniversaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */; };
 		8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */; };
@@ -44,6 +46,8 @@
 		8D11B3BA21940BF600C60371 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D11B3BB2194431100C60371 /* AnniversaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryCell.swift; sourceTree = "<group>"; };
 		8D11B3C021947EAF00C60371 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8D11B3C22195C5CC00C60371 /* AnniversaryDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnniversaryDetail.storyboard; sourceTree = "<group>"; };
+		8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryDetailVC.swift; sourceTree = "<group>"; };
 		8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeFormat.swift; sourceTree = "<group>"; };
 		8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryViewController.swift; sourceTree = "<group>"; };
 		8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Anniversary.storyboard; path = "Memoria-iOS/Anniversary/Anniversary.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -123,6 +127,8 @@
 			children = (
 				8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */,
 				8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */,
+				8D11B3C22195C5CC00C60371 /* AnniversaryDetail.storyboard */,
+				8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */,
 				8D11B3BB2194431100C60371 /* AnniversaryCell.swift */,
 				8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */,
 			);
@@ -213,6 +219,7 @@
 				8D11B3B721940BD100C60371 /* Localizable.strings in Resources */,
 				8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */,
 				8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */,
+				8D11B3C32195C5CD00C60371 /* AnniversaryDetail.storyboard in Resources */,
 				8D0FB8462182002800BFCB79 /* Assets.xcassets in Resources */,
 				8D0FB8442182002700BFCB79 /* Main.storyboard in Resources */,
 			);
@@ -291,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D0FB85621821B3B00BFCB79 /* AnniversaryDAO.swift in Sources */,
+				8D11B3C52195CBF300C60371 /* AnniversaryDetailVC.swift in Sources */,
 				8D11B3B42193EE4F00C60371 /* IconImageView.swift in Sources */,
 				8D11B3BC2194431100C60371 /* AnniversaryCell.swift in Sources */,
 				8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */,

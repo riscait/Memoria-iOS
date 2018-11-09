@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lYt-3l-Q4d">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Anniversary DetailVC-->
+        <scene sceneID="KsI-AI-oqW">
+            <objects>
+                <viewController id="lYt-3l-Q4d" customClass="AnniversaryDetailVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lL8-lY-4WJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x64-zo-csL">
+                                <rect key="frame" x="0.0" y="233" width="375" height="434"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hyl-2f-ovo">
+                                <rect key="frame" x="0.0" y="20" width="375" height="213"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fAH-1i-Jpr">
+                                        <rect key="frame" x="16" y="8" width="343" height="189"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eU6-Qy-tXj" customClass="IconImageView" customModule="Memoria_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="121.5" y="0.0" width="100" height="100"/>
+                                                <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="8Tz-qA-ttR"/>
+                                                    <constraint firstAttribute="width" constant="100" id="xwn-lh-C4r"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="50"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="AnniversaryName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVJ-nq-UAO">
+                                                <rect key="frame" x="54.5" y="100" width="234" height="62.5"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AnniversaryDate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fo-AQ-Z0E">
+                                                <rect key="frame" x="93" y="162.5" width="157.5" height="26.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.73690825700759888" blue="0.013948868960142136" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fAH-1i-Jpr" secondAttribute="bottom" constant="16" id="4in-yY-pap"/>
+                                    <constraint firstAttribute="width" secondItem="Hyl-2f-ovo" secondAttribute="height" multiplier="125:71" id="CEZ-tJ-oGd"/>
+                                    <constraint firstAttribute="trailing" secondItem="fAH-1i-Jpr" secondAttribute="trailing" constant="16" id="JZE-Lx-Kom"/>
+                                    <constraint firstItem="fAH-1i-Jpr" firstAttribute="top" secondItem="Hyl-2f-ovo" secondAttribute="top" constant="8" id="W3s-hg-33x"/>
+                                    <constraint firstItem="fAH-1i-Jpr" firstAttribute="leading" secondItem="Hyl-2f-ovo" secondAttribute="leading" constant="16" id="j1j-jT-gPh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="x64-zo-csL" firstAttribute="top" secondItem="Hyl-2f-ovo" secondAttribute="bottom" id="4Nu-fh-4IB"/>
+                            <constraint firstItem="x64-zo-csL" firstAttribute="leading" secondItem="nkZ-Sg-SxQ" secondAttribute="leading" id="5vK-PI-5PW"/>
+                            <constraint firstItem="nkZ-Sg-SxQ" firstAttribute="bottom" secondItem="x64-zo-csL" secondAttribute="bottom" id="9DZ-02-t3d"/>
+                            <constraint firstItem="nkZ-Sg-SxQ" firstAttribute="trailing" secondItem="x64-zo-csL" secondAttribute="trailing" id="Awv-xb-fh2"/>
+                            <constraint firstItem="Hyl-2f-ovo" firstAttribute="leading" secondItem="nkZ-Sg-SxQ" secondAttribute="leading" id="MV7-Pe-Rft"/>
+                            <constraint firstItem="Hyl-2f-ovo" firstAttribute="top" secondItem="nkZ-Sg-SxQ" secondAttribute="top" id="Sxu-8l-tSp"/>
+                            <constraint firstItem="Hyl-2f-ovo" firstAttribute="trailing" secondItem="nkZ-Sg-SxQ" secondAttribute="trailing" id="ozK-2U-E5K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nkZ-Sg-SxQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="anniversaryDateLabel" destination="2Fo-AQ-Z0E" id="rfJ-oU-UpW"/>
+                        <outlet property="anniversaryNameLabel" destination="dVJ-nq-UAO" id="dsR-gc-IXC"/>
+                        <outlet property="iconImageView" destination="eU6-Qy-tXj" id="aZc-ZN-GCn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mkc-Fj-mSO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-149.59999999999999" y="82.3088455772114"/>
+        </scene>
+    </scenes>
+</document>

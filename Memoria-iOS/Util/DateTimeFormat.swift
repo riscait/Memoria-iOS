@@ -24,8 +24,14 @@ class DateTimeFormat {
     ///
     /// - Parameter date: 日時データ
     /// - Returns: 「M月dd日」フォーマットの文字列
-    func getMonthAndDay(date: Date) -> String {
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMdd", options: 0, locale: Locale.current)
+    func getYMD(date: Date) -> String {
+        // 「年」情報を持っているか否か
+        let hasYear = calendar.dateComponents([.year], from: date).year! == 1
+            ? false : true
+        // 「年」情報がなければ月と日だけのフォーマットにする
+        dateFormatter.dateFormat = hasYear
+            ? DateFormatter.dateFormat(fromTemplate: "yyyyMMMd", options: 0, locale: Locale.current)
+            : DateFormatter.dateFormat(fromTemplate: "MMMd", options: 0, locale: Locale.current)
         return dateFormatter.string(from: date)
     }
     
