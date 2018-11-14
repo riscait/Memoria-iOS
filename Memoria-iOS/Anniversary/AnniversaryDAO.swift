@@ -11,8 +11,26 @@ import Firebase
 
 /// データベースへのアクセスを担うクラス
 class AnniversaryDAO {
+    
     var db = Firestore.firestore()
 
+    let uuid = UserDefaults.standard.string(forKey: "uuid")!
+
+    /// 記念日データを取得する
+    ///
+    /// - Parameter:
+    ///   - id: 記念日ID
+    ///   - callback: ドキュメントのデータを受け取る
+    func getAnniversary(on id: String, callback: @escaping ([String: Any]) -> Void) {
+        db.collection("users").document(uuid).collection("anniversary").document(id).getDocument { (document, error) in
+            // ドキュメントのアンラップと存在チェック
+            if let document = document, document.exists {
+                callback(document.data()!)
+            }
+        }
+    }
+    
+    // 未使用
     func setData(collection: String,
                  document: String,
                  subCollection: String,
