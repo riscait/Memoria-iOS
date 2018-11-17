@@ -8,8 +8,8 @@
 
 import UIKit
 
-@IBDesignable
-class IconImageView: UIImageView {
+/// アイコンの画像用カスタムUIImageView
+@IBDesignable class IconImageView: UIImageView {
 
     // 角丸にするための数値
     @IBInspectable var cornerRadius: CGFloat = 15 {

@@ -12,27 +12,28 @@ import Firebase
 /// 記念日一覧を表示するメイン画面のクラス
 final class AnniversaryViewController: UICollectionViewController {
     
-    @IBOutlet weak var emptySetView: UIView!
+    // MARK: - IBOutletプロパティ
+
+    @IBOutlet private weak var emptySetView: UIView!
+
     // MARK: - プロパティ
     
     /// データ永続化（端末保存）のためのUserDefaults
     let userDefaults = UserDefaults.standard
     /// 日付フォーマットクラス
     let dtf = DateTimeFormat()
-    /// Firestoreのドキュメントスナップショット
-//    var documentSnapshot = Array<DocumentSnapshot>()
     /// 正直まだよく理解していないリスナー登録？
     var listenerRegistration: ListenerRegistration?
     /// ユーザー一意のID
     var uuid: String?
     /// データ配列
-    var anniversaryData: [[String: Any]] = []
+    var anniversarys: [[String: Any]] = []
     
     // 引っ張って更新用のRefreshControl
     var refresher = UIRefreshControl()
     
     
-    // MARK: - ライフサイクルメソッド
+    // MARK: - ライフサイクル
     
     /// Viewの読込完了後に一度だけ呼ばれる
     override func viewDidLoad() {
@@ -67,7 +68,7 @@ final class AnniversaryViewController: UICollectionViewController {
                 print("ドキュメント取得エラー: \(error!)")
                 return
             }
-            self.anniversaryData = []
+            self.anniversarys = []
             // 記念日データが入ったドキュメントの数だけ繰り返す
             for doc in snapshot.documents {
                 // ドキュメントから記念日データを取り出す
@@ -79,11 +80,11 @@ final class AnniversaryViewController: UICollectionViewController {
                 // 記念日データに残日数を追加
                 data["remainingDays"] = remainingDays
                 // 残日数も含めた記念日データをローカル配列に記憶
-                self.anniversaryData.append(data)
+                self.anniversarys.append(data)
                 print("ローカルに追加したdata: \(data["familyName"] ?? "") \(data["givenName"] ?? "")")
             }
             // 記念日までの残日数順で並び替えて返却する
-            self.anniversaryData.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
+            self.anniversarys.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
             
             self.collectionView.reloadData()
         }
@@ -112,6 +113,7 @@ final class AnniversaryViewController: UICollectionViewController {
             let nextVc = segue.destination as! AnniversaryDetailVC
             let indexPath = collectionView.indexPathsForSelectedItems?.first
             let cell = collectionView.cellForItem(at: indexPath!) as! AnniversaryCell
+            nextVc.anniversaryId = cell.anniversaryId.text
             nextVc.anniversaryName = cell.anniversaryNameLabel.text
             nextVc.anniversaryDate = cell.anniversaryDateLabel.text
             nextVc.remainingDays = cell.remainingDaysLabel.text
@@ -135,9 +137,10 @@ final class AnniversaryViewController: UICollectionViewController {
         DialogBox.showActionSheet(rootVC: self,
                                   title: "タイトルが入ります",
                                   message: "メッセージが入ります",
-                                  defaultTitle: "連絡先を読み込む",
-                                  defaultAction: contactAccess.saveContactInfo)
+                                  defaultActionSet: ["連絡先を読み込む": contactAccess.saveContactInfo,
+                                                     "記念日を登録する": contactAccess.saveContactInfo]) // FIXME: ダミーvalue
     }
+    
     
     // MARK: - 汎用メソッド
     
@@ -148,13 +151,13 @@ final class AnniversaryViewController: UICollectionViewController {
         
         let flowLayout = UICollectionViewFlowLayout()
         
-        flowLayout.itemSize = CGSize(width: view.frame.width / 2 - margin * 3, height: 100.0)
+        flowLayout.itemSize = CGSize(width: view.frame.width / 2 - margin * 3, height: 90.0)
         // 列間の余白
-        flowLayout.minimumInteritemSpacing = margin
+        flowLayout.minimumInteritemSpacing = margin * 2
         // 行間の余白
-        flowLayout.minimumLineSpacing = margin
+        flowLayout.minimumLineSpacing = margin * 2
         // セクションの外側の余白
-        flowLayout.sectionInset = UIEdgeInsets(top: margin, left: margin * 2, bottom: margin, right: margin * 2)
+        flowLayout.sectionInset = UIEdgeInsets(top: margin * 2, left: margin * 2, bottom: margin * 2, right: margin * 2)
         self.collectionView.collectionViewLayout = flowLayout
     }
     
@@ -187,12 +190,12 @@ final class AnniversaryViewController: UICollectionViewController {
     ///   - section: セクション番号
     /// - Returns: アイテム数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("記念日データ件数: \(anniversaryData.count)件")
+        print("記念日データ件数: \(anniversarys.count)件")
         // 記念日が一つもないときはガイド用Viewを表示
-        emptySetView.isHidden = anniversaryData.count == 0
+        emptySetView.isHidden = anniversarys.count == 0
             ? false : true
 
-        return anniversaryData.count
+        return anniversarys.count
     }
     
     /// CollectionViewCellの表示設定
@@ -210,23 +213,22 @@ final class AnniversaryViewController: UICollectionViewController {
         let dtf = DateTimeFormat()
 
         // 記念日データを順に取り出す
-        let anniversaryData = self.anniversaryData[indexPath.row]
+        let anniversary = self.anniversarys[indexPath.row]
         // 記念日の分類
-        let type = anniversaryData["type"] as! String
-
+        let type = anniversary["type"] as! String
+        // 記念日のID（隠し項目）
+        cell.anniversaryId.text = anniversary["id"] as? String
         // 記念日の名称。もし誕生日だったら苗字と名前を繋げて表示
         if type == "contactBirthday" {
-            cell.anniversaryNameLabel.text = "\(anniversaryData["familyName"] as! String) \(anniversaryData["givenName"] as! String)\nBirthday"
+            cell.anniversaryNameLabel.text = "\(anniversary["familyName"] as! String) \(anniversary["givenName"] as! String)さん\n誕生日"
         }
         // 記念日の日程
-        cell.anniversaryDateLabel.text = type == "contactBirthday"
-            ? dtf.getYMD(date: anniversaryData["date"] as! Date) + "生"
-            : dtf.getYMD(date: anniversaryData["date"] as! Date)
+        cell.anniversaryDateLabel.text = dtf.getMonthDayString(date: anniversary["date"] as! Date)
         // 記念日までの残り日数
-        let remainingDays = anniversaryData["remainingDays"] as! Int
+        let remainingDays = anniversary["remainingDays"] as! Int
         cell.remainingDaysLabel.text = String(format: NSLocalizedString("remainingDays", comment: ""), remainingDays.description)
         // 記念日のアイコン
-        if let iconImage = anniversaryData["iconImage"] as? Data {
+        if let iconImage = anniversary["iconImage"] as? Data {
             cell.anniversaryIconImage.image = UIImage(data: iconImage)
             
         } else {
@@ -238,11 +240,11 @@ final class AnniversaryViewController: UICollectionViewController {
         
         // 残り日数によってセルの見た目を変化させる
         if remainingDays <= 30 { // 記念日がもうすぐ！な場合
-            // 文字色
+            // 文字
             cell.anniversaryNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.anniversaryDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.remainingDaysLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            // 背景色
+            // 背景
             let startColor = #colorLiteral(red: 0.8235294118, green: 0.0862745098, blue: 0.3921568627, alpha: 1).cgColor
             let endColor = #colorLiteral(red: 0.5529411765, green: 0.2235294118, blue: 1, alpha: 1).cgColor
             let layer = CAGradientLayer()
@@ -254,15 +256,16 @@ final class AnniversaryViewController: UICollectionViewController {
             cell.layer.insertSublayer(layer, at: 0)
 
         }
+        // 残り日数によって分岐
         switch remainingDays {
-        case 0: // 当日
+        case 0: // 当日のとき
             cell.remainingDaysLabel.text = NSLocalizedString("remainingDaysToday", comment: "")
             
-        case 1: // 明日
+        case 1: // 明日のとき
             cell.remainingDaysLabel.text = NSLocalizedString("remainingDaysTomorrow", comment: "")
             
         default: break
-        }        
+        }
         return cell
     }
     

@@ -18,14 +18,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x64-zo-csL">
-                                <rect key="frame" x="0.0" y="233" width="375" height="434"/>
+                                <rect key="frame" x="0.0" y="260" width="375" height="407"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="anniversaryDetailCell" textLabel="0RB-SV-8Ep" detailTextLabel="nm9-8L-gQ9" style="IBUITableViewCellStyleValue1" id="CvQ-rC-reh">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CvQ-rC-reh" id="xYM-qi-Tww">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0RB-SV-8Ep">
+                                                    <rect key="frame" x="15" y="12" width="4.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nm9-8L-gQ9">
+                                                    <rect key="frame" x="355.5" y="12" width="4.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lYt-3l-Q4d" id="gD0-4D-uoS"/>
+                                    <outlet property="delegate" destination="lYt-3l-Q4d" id="j5z-za-uZZ"/>
+                                </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hyl-2f-ovo">
-                                <rect key="frame" x="0.0" y="20" width="375" height="213"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="240"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fAH-1i-Jpr">
-                                        <rect key="frame" x="16" y="8" width="343" height="189"/>
+                                        <rect key="frame" x="16" y="8" width="343" height="216"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eU6-Qy-tXj" customClass="IconImageView" customModule="Memoria_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="121.5" y="0.0" width="100" height="100"/>
@@ -41,13 +71,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="AnniversaryName" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVJ-nq-UAO">
-                                                <rect key="frame" x="54.5" y="100" width="234" height="62.5"/>
+                                                <rect key="frame" x="54.5" y="100" width="234" height="89.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AnniversaryDate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Fo-AQ-Z0E">
-                                                <rect key="frame" x="93" y="162.5" width="157.5" height="26.5"/>
+                                                <rect key="frame" x="93" y="189.5" width="157.5" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -58,7 +88,7 @@
                                 <color key="backgroundColor" red="1" green="0.73690825700759888" blue="0.013948868960142136" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="fAH-1i-Jpr" secondAttribute="bottom" constant="16" id="4in-yY-pap"/>
-                                    <constraint firstAttribute="width" secondItem="Hyl-2f-ovo" secondAttribute="height" multiplier="125:71" id="CEZ-tJ-oGd"/>
+                                    <constraint firstAttribute="width" secondItem="Hyl-2f-ovo" secondAttribute="height" multiplier="125:80" id="CEZ-tJ-oGd"/>
                                     <constraint firstAttribute="trailing" secondItem="fAH-1i-Jpr" secondAttribute="trailing" constant="16" id="JZE-Lx-Kom"/>
                                     <constraint firstItem="fAH-1i-Jpr" firstAttribute="top" secondItem="Hyl-2f-ovo" secondAttribute="top" constant="8" id="W3s-hg-33x"/>
                                     <constraint firstItem="fAH-1i-Jpr" firstAttribute="leading" secondItem="Hyl-2f-ovo" secondAttribute="leading" constant="16" id="j1j-jT-gPh"/>
@@ -81,6 +111,7 @@
                         <outlet property="anniversaryDateLabel" destination="2Fo-AQ-Z0E" id="rfJ-oU-UpW"/>
                         <outlet property="anniversaryNameLabel" destination="dVJ-nq-UAO" id="dsR-gc-IXC"/>
                         <outlet property="iconImageView" destination="eU6-Qy-tXj" id="aZc-ZN-GCn"/>
+                        <outlet property="tableView" destination="x64-zo-csL" id="1Yn-2Y-MhW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkc-Fj-mSO" userLabel="First Responder" sceneMemberID="firstResponder"/>

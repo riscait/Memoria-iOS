@@ -8,14 +8,27 @@
 
 import UIKit
 
-class TagLabel: UILabel {
+/// タグのような見た目のカスタムUILabel
+@IBDesignable class TagLabel: UILabel {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    // 角丸にするための数値
+    @IBInspectable var cornerRadius: CGFloat = 15 {
+        didSet {
+            self.layer.cornerRadius = cornerRadius
+            clipsToBounds = cornerRadius > 0 ? true : false
+        }
     }
-    */
 
+    /// 余白設定
+    @IBInspectable var padding = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 6)
+
+    override var intrinsicContentSize: CGSize {
+        var contentSize = super.intrinsicContentSize
+        contentSize.height += padding.top + padding.bottom
+        contentSize.width += padding.left + padding.right
+        return contentSize
+    }
+
+//    override func draw(_ rect: CGRect) {
+//    }
 }

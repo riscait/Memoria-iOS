@@ -20,11 +20,19 @@ class DateTimeFormat {
         return dateFormatter
     }
     
-    /// 日付を「X月X日」のフォーマットにして文字列で返す
+    /// 日付を月日のフォーマットにして文字列で返す
     ///
     /// - Parameter date: 日時データ
-    /// - Returns: 「M月dd日」フォーマットの文字列
-    func getYMD(date: Date) -> String {
+    /// - Returns: 「M月d日」フォーマットの文字列
+    func getMonthDayString(date: Date) -> String {
+        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMd", options: 0, locale: Locale.current)
+        return dateFormatter.string(from: date)
+    }
+    /// 日付を年月日のフォーマットにして文字列で返す
+    ///
+    /// - Parameter date: 日時データ
+    /// - Returns: 「yyyy年M月d日」フォーマットの文字列
+    func getYMDString(date: Date) -> String {
         // 「年」情報を持っているか否か
         let hasYear = calendar.dateComponents([.year], from: date).year! == 1
             ? false : true
@@ -34,7 +42,7 @@ class DateTimeFormat {
             : DateFormatter.dateFormat(fromTemplate: "MMMd", options: 0, locale: Locale.current)
         return dateFormatter.string(from: date)
     }
-    
+
     /// 次回の記念日までの残り日数を計算して返す
     ///
     /// - Parameter date: 記念日
