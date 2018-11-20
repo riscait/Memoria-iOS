@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kFp-hb-g2G">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Anniversary Date RecordVC-->
+        <scene sceneID="Zng-p5-Zv0">
+            <objects>
+                <viewController id="kFp-hb-g2G" customClass="AnniversaryDateRecordVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kvl-fv-SXV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="jrE-p6-cpJ">
+                                <rect key="frame" x="27.5" y="111.5" width="320" height="444.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="記念日の日付を入力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KA-jc-zm5">
+                                        <rect key="frame" x="82" y="0.0" width="156" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="hMF-11-V9i">
+                                        <rect key="frame" x="0.0" y="109.5" width="320" height="216"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="564150219.19174695">
+                                            <!--2018-11-17 12:23:39 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="110" translatesAutoresizingMaskIntoConstraints="NO" id="YHI-gq-hm3">
+                                        <rect key="frame" x="39.5" y="414.5" width="241" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJh-gz-tcb" customClass="NegativeButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
+                                                <state key="normal" title="戻る"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYc-ah-mb0" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="141" y="0.0" width="100" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Jho-nY-sZn"/>
+                                                </constraints>
+                                                <state key="normal" title="次へ"/>
+                                                <connections>
+                                                    <segue destination="n2e-2F-UrG" kind="show" identifier="recordDateSegue" id="2V1-i3-PC0"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jrE-p6-cpJ" firstAttribute="centerY" secondItem="Kvl-fv-SXV" secondAttribute="centerY" id="M6y-4U-wft"/>
+                            <constraint firstItem="jrE-p6-cpJ" firstAttribute="centerX" secondItem="Kvl-fv-SXV" secondAttribute="centerX" id="q4g-Ro-H8s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="02M-yh-3yY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ps-jK-dt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53.600000000000001" y="362.96851574212894"/>
+        </scene>
+        <!--AnniversaryRecordConfirmation-->
+        <scene sceneID="3sn-1x-Ykr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AnniversaryRecordConfirmation" id="n2e-2F-UrG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rxj-NU-Rr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="681" y="363"/>
+        </scene>
+    </scenes>
+</document>

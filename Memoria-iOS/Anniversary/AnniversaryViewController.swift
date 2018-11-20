@@ -101,6 +101,9 @@ final class AnniversaryViewController: UICollectionViewController {
         }
     }
     
+
+    // MARK: - Navigation
+
     /// セグエで他の画面へ遷移するときに呼ばれる
     ///
     /// - Parameters:
@@ -128,21 +131,26 @@ final class AnniversaryViewController: UICollectionViewController {
     @IBAction func tapAddBtn(_ sender: UIBarButtonItem) {
         // 連絡先アクセス用のクラスをインスタンス化
         let contactAccess = ContactAccess()
-        // 連絡先情報の使用が許可されているか調べる
-        guard contactAccess.checkStatus() else {
-            print("連絡先情報が使えません")
-            return
-        }
-        // アクションシートをポップアップ（デフォルトアクション選択時の動作を引数で渡している）
-        DialogBox.showActionSheet(rootVC: self,
-                                  title: "タイトルが入ります",
-                                  message: "メッセージが入ります",
-                                  defaultActionSet: ["連絡先を読み込む": contactAccess.saveContactInfo,
-                                                     "記念日を登録する": contactAccess.saveContactInfo]) // FIXME: ダミーvalue
+        // 連絡先情報の使用が許可されているか調べてから誕生日をとりこむ
+        contactAccess.checkStatus(rootVC: self, deniedHandler: showAlert)
+    }
+    /// 設定アプリへの遷移を促すダイアログをポップアップ
+    private func showAlert() {
+        DialogBox.showAlert(rootVC: self, title: "設定で許可してください", message: "誕生日をとりこむためには連絡先への許可が必要です。", defaultAction: openSettingApp, hasCancel: true)
     }
     
+    /// 設定アプリのプライバシーを開く
+    private func openSettingApp() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+
     
     // MARK: - 汎用メソッド
+    
+    func modalRecordVC() {
+        self.performSegue(withIdentifier: "toRecodSegue", sender: nil)
+    }
     
     /// コレクションビューのレイアウト設定
     ///

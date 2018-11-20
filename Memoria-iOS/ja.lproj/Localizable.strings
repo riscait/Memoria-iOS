@@ -1,6 +1,13 @@
 "unknown" = "不明";
 "ok" = "OK";
 "cancel" = "キャンセル";
+"toNextPage" = "次へ";
+
+"welcomeTitle" = "もう記念日は忘れません";
+"welcomeDetail" = "「メモリア」で友人や家族の誕生日、結婚記念日やサラダ記念日など様々な記念日をまとめて管理しましょう！";
+"welcomeContactTitle" = "誕生日を追加しましょう";
+"welcomeContactDetail" = "端末の「連絡先」に登録してある誕生日を取り込むことができます。";
+"welcomeContactImport" = "誕生日を読み込む";
 
 "remainingDays" = "あと%@日";
 "remainingDaysToday" = "今日です！";

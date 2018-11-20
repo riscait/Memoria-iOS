@@ -23,12 +23,15 @@ final class DialogBox: UIAlertController {
                          title: String,
                          message: String,
                          defaultTitle: String = NSLocalizedString("ok", comment: ""),
-                         defaultAction: @escaping (() -> ()),
+                         defaultAction: (() -> ())?,
                          hasCancel: Bool) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: defaultTitle, style: .default, handler: { action -> Void in
-            defaultAction()
+            // デフォルトアクションがあれば実行
+            if let defaultAction = defaultAction {
+                defaultAction()
+            }
         })
         alert.addAction(defaultAction)
 

@@ -8,8 +8,6 @@
 
 import UIKit
 import Contacts
-import MessageUI
-import StoreKit
 import Firebase
 
 class ContactAccess {
@@ -27,57 +25,63 @@ class ContactAccess {
     /// 端末の連絡先アクセス許可状態をチェックする
     ///
     /// - Returns: アクセス可能状態ならTrue、それ以外はfalse
-    func checkStatus() -> Bool {
-        // 連絡帳へのアクセス許可状態
+    func checkStatus(rootVC: UIViewController, deniedHandler: @escaping () -> ()) {
+        // 連絡帳へのアクセス許可状態を取得する
         let accessStatus = CNContactStore.authorizationStatus(for: .contacts)
         
         switch accessStatus {
-        case .notDetermined:
+        case .notDetermined:  // まだ許可されていないか、機能制限等により利用不可
             print("連絡先へのアクセスは、まだ許可されていないか、機能制限等により利用不可です")
-            // 連絡先へのアクセスを許可するかどうかのダイアログボックスを表示する
+            // 連絡先へのアクセスを許可するかどうかのダイアログボックスを表示
             store.requestAccess(for: .contacts, completionHandler: {(granted, Error) in
                 if granted {
                     print("連絡先へのアクセスが許可されました")
-                    return
+                    self.importContact {
+                        print("連絡先アクセスのコールバック開始")
+                        DialogBox.showAlert(rootVC: rootVC, title: "\($0)件の誕生日を取得しました", message: "記念日一覧画面で確認できます", defaultAction: nil, hasCancel: false)
+                    }
                 } else {
                     print("連絡先へのアクセスが拒否されました")
-                    return
+                    deniedHandler()
                 }
             })
-        // FIXME: どちらにしてもfalseがかえる状態？
-        case .restricted:
+        case .restricted:  // 連絡先情報を使用できません
             print("このアプリケーションは連絡先情報を使用できません")
             // TODO: 連絡先を取得できない旨を表示する
             
-        case .denied:
+        case .denied:  // 連絡先へのアクセスが拒否されている
             print("連絡先へのアクセスが拒否されている")
             // TODO: 設定で連絡先へのアクセスを許可してもらう必要がある
+            deniedHandler()
             
-        case .authorized:
+        case .authorized:  // 連絡先へのアクセス可能
             print("連絡先へのアクセス可能")
-            return true
+            self.importContact {
+                print("連絡先アクセスのコールバック開始")
+                DialogBox.showAlert(rootVC: rootVC, title: "\($0)件の誕生日を取得しました", message: "記念日一覧画面で確認できます", defaultAction: nil, hasCancel: false)
+            }
         }
-        return false
     }
     
     /// 連絡先にアクセスして、連絡先情報を取得する
-    func saveContactInfo() {
+    func importContact(callback: ((Int) -> ())? = nil) {
         
         // 個々の連絡先のデータを格納する配列
         var contacts = [CNContact]()
         
         do {
             // 誕生日情報を持つ連絡先から「名・姓・誕生日・サムネイル画像」を取得する
-            try store.enumerateContacts(with: CNContactFetchRequest(keysToFetch: [CNContactIdentifierKey as CNKeyDescriptor,
-                                                                                  CNContactGivenNameKey as CNKeyDescriptor,
-                                                                                  CNContactFamilyNameKey as CNKeyDescriptor,
-                                                                                  CNContactBirthdayKey as CNKeyDescriptor,
-                                                                                  CNContactThumbnailImageDataKey as CNKeyDescriptor])) {
-                                                                                    contact, cursor -> Void in
-                                                                                    // 誕生日が入力されている連絡先だったら追加
-                                                                                    if contact.birthday?.date != nil {
-                                                                                        contacts.append(contact)
-                                                                                    }
+            try store.enumerateContacts(with: CNContactFetchRequest(
+                keysToFetch: [CNContactIdentifierKey as CNKeyDescriptor,
+                              CNContactGivenNameKey as CNKeyDescriptor,
+                              CNContactFamilyNameKey as CNKeyDescriptor,
+                              CNContactBirthdayKey as CNKeyDescriptor,
+                              CNContactThumbnailImageDataKey as CNKeyDescriptor])) {
+                                contact, cursor -> Void in
+                                // 誕生日が入力されている連絡先だったら追加
+                                if contact.birthday?.date != nil {
+                                    contacts.append(contact)
+                                }
             }
         } catch {
             print("連絡先データの取得に失敗！")
@@ -114,6 +118,10 @@ class ContactAccess {
                              subCollection: "anniversary",
                              subDocument: contact.identifier,
                              data: contactBirthday)
+        }
+        
+        if let callback = callback {
+            callback(contacts.count)
         }
     }
 }

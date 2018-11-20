@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Xp-3s-VC1">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="U30-4N-div">
+            <objects>
+                <navigationController id="8Xp-3s-VC1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="12o-uj-AIn">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hPu-5a-cKZ" kind="relationship" relationship="rootViewController" id="Rqr-8i-T7a"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ehe-Qr-di6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-350" y="229"/>
+        </scene>
+        <!--Welcom to Memoria-->
+        <scene sceneID="S2F-CD-qwy">
+            <objects>
+                <viewController id="hPu-5a-cKZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YB2-3c-T73">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Welcome" translatesAutoresizingMaskIntoConstraints="NO" id="KYo-Fo-VLg">
+                                <rect key="frame" x="0.0" y="88" width="375" height="232"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KYo-Fo-VLg" secondAttribute="height" multiplier="375:232" id="pye-rJ-eYN"/>
+                                </constraints>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCC-Ff-qbL">
+                                <rect key="frame" x="16" y="336" width="343" height="363"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="welcomeTitle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyX-te-lrd" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="8.0000000000000018" width="343" height="28.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="welcomeTitle"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="welcomeDetail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLg-tn-fIG" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="52.666666666666686" width="343" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="welcomeDetail"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="tLg-tn-fIG" firstAttribute="top" secondItem="lyX-te-lrd" secondAttribute="bottom" constant="16" id="6Ye-dj-vvM"/>
+                                    <constraint firstItem="tLg-tn-fIG" firstAttribute="leading" secondItem="tCC-Ff-qbL" secondAttribute="leading" id="QMn-eh-wfg"/>
+                                    <constraint firstAttribute="trailing" secondItem="tLg-tn-fIG" secondAttribute="trailing" id="TLq-iZ-NVh"/>
+                                    <constraint firstItem="lyX-te-lrd" firstAttribute="leading" secondItem="tCC-Ff-qbL" secondAttribute="leading" id="W11-MW-BoY"/>
+                                    <constraint firstItem="lyX-te-lrd" firstAttribute="width" secondItem="tCC-Ff-qbL" secondAttribute="width" id="oXg-W6-V8l"/>
+                                    <constraint firstAttribute="bottom" secondItem="tLg-tn-fIG" secondAttribute="bottom" id="oc1-4a-NaB"/>
+                                    <constraint firstItem="lyX-te-lrd" firstAttribute="top" secondItem="tCC-Ff-qbL" secondAttribute="top" constant="8" id="omY-4c-gVD"/>
+                                    <constraint firstItem="tLg-tn-fIG" firstAttribute="width" secondItem="tCC-Ff-qbL" secondAttribute="width" id="pCX-QF-PRj"/>
+                                    <constraint firstAttribute="trailing" secondItem="lyX-te-lrd" secondAttribute="trailing" id="vhn-n9-U2d"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fC-3X-iNb" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                <rect key="frame" x="88.666666666666686" y="719" width="198" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="ZVy-fK-mXV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="toNextPage"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="toNextPage"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="OFS-lP-RHk" kind="show" id="IzT-hh-U3v"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KYo-Fo-VLg" firstAttribute="leading" secondItem="35W-UW-RNC" secondAttribute="leading" id="8fK-6W-oHt"/>
+                            <constraint firstItem="4fC-3X-iNb" firstAttribute="centerX" secondItem="YB2-3c-T73" secondAttribute="centerX" id="Jw7-TG-dDd"/>
+                            <constraint firstItem="tCC-Ff-qbL" firstAttribute="leading" secondItem="35W-UW-RNC" secondAttribute="leading" constant="16" id="OVD-77-ifx"/>
+                            <constraint firstItem="35W-UW-RNC" firstAttribute="trailing" secondItem="tCC-Ff-qbL" secondAttribute="trailing" constant="16" id="enW-Vj-BaF"/>
+                            <constraint firstItem="4fC-3X-iNb" firstAttribute="top" secondItem="tCC-Ff-qbL" secondAttribute="bottom" constant="20" id="jrB-D2-nu6"/>
+                            <constraint firstItem="KYo-Fo-VLg" firstAttribute="trailing" secondItem="35W-UW-RNC" secondAttribute="trailing" id="mUR-BS-zq1"/>
+                            <constraint firstItem="tCC-Ff-qbL" firstAttribute="top" secondItem="KYo-Fo-VLg" secondAttribute="bottom" constant="16" id="pQJ-ba-gAM"/>
+                            <constraint firstItem="KYo-Fo-VLg" firstAttribute="top" secondItem="35W-UW-RNC" secondAttribute="top" id="qaG-wY-A2a"/>
+                            <constraint firstItem="35W-UW-RNC" firstAttribute="bottom" secondItem="4fC-3X-iNb" secondAttribute="bottom" constant="20" id="y7x-du-fVM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="35W-UW-RNC"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Welcom to Memoria" id="Pw8-Rl-Ktn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PFk-ds-PQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="416.80000000000001" y="228.32512315270938"/>
+        </scene>
+        <!--WelcomeContact-->
+        <scene sceneID="bwf-jG-iVW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="WelcomeContact" id="OFS-lP-RHk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xWj-F1-kOJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="983" y="228"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Welcome" width="1040" height="534"/>
+    </resources>
+</document>

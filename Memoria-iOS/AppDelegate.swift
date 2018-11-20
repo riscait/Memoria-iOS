@@ -14,6 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    // 永続化用 UserDefaults
+    let userDefaults = UserDefaults.standard
+
     override init() {
         super.init()
         FirebaseApp.configure()
@@ -22,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        doFirstLaunch()
+        createUUIDandLaunchCount()
+        tutorial()
         return true
     }
 
@@ -48,11 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
     /// 初回起動時のみに実行される関数
-    private func doFirstLaunch() {
-        // UserDefaults のインスタンス
-        let userDefaults = UserDefaults.standard
+    private func createUUIDandLaunchCount() {
+        
         let launchCount = "launchCount"
         
         // デフォルト値を設定
@@ -70,6 +72,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let n = userDefaults.integer(forKey: launchCount) + 1
             userDefaults.set(n, forKey: launchCount)
             print("\(n)回目の起動です。\nUUID: \(userDefaults.string(forKey: "uuid")!)")
+        }
+    }
+    
+    private func tutorial() {
+        // デフォルト値を設定
+        userDefaults.register(defaults: ["isFinishedTutorial": false])
+        
+        if !userDefaults.bool(forKey: "isFinishedTutorial") {
+            print("初回起動フラグが立っているのでWelcomeへ")
+            // Welcome画面のstoryboardと初期VC
+            let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
+            let initialVC = storyboard.instantiateInitialViewController()!
+            self.window?.rootViewController = initialVC
+//            self.window?.makeKeyAndVisible()
         }
     }
 }
