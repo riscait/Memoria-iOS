@@ -38,7 +38,7 @@ class ContactAccess {
                     print("連絡先へのアクセスが許可されました")
                     self.importContact {
                         print("連絡先アクセスのコールバック開始")
-                        DialogBox.showAlert(rootVC: rootVC, title: "\($0)件の誕生日を取得しました", message: "記念日一覧画面で確認できます", defaultAction: nil, hasCancel: false)
+                        DialogBox.showAlert(on: rootVC, title: "\($0)件の誕生日を取得しました", message: "記念日一覧画面で確認できます", defaultAction: nil, hasCancel: false)
                     }
                 } else {
                     print("連絡先へのアクセスが拒否されました")
@@ -58,7 +58,7 @@ class ContactAccess {
             print("連絡先へのアクセス可能")
             self.importContact {
                 print("連絡先アクセスのコールバック開始")
-                DialogBox.showAlert(rootVC: rootVC, title: "\($0)件の誕生日を取得しました", message: "記念日一覧画面で確認できます", defaultAction: nil, hasCancel: false)
+                DialogBox.showAlert(on: rootVC, title: "\($0)件の誕生日を取得しました", message: "記念日一覧画面で確認できます", defaultAction: nil, hasCancel: false)
             }
         }
     }
@@ -119,7 +119,7 @@ class ContactAccess {
                              subDocument: contact.identifier,
                              data: contactBirthday)
         }
-        
+        // 取得した連絡先情報の件数をコールバックで返す
         if let callback = callback {
             callback(contacts.count)
         }

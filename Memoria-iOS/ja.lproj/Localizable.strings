@@ -2,6 +2,10 @@
 "ok" = "OK";
 "cancel" = "キャンセル";
 "toNextPage" = "次へ";
+"recordAnniversary" = "記念日を登録する";
+"recordBirthday" = "誕生日を登録する";
+"confirmAndRecord" = "登録する";
+"" = "";
 
 "welcomeTitle" = "もう記念日は忘れません";
 "welcomeDetail" = "「メモリア」で友人や家族の誕生日、結婚記念日やサラダ記念日など様々な記念日をまとめて管理しましょう！";
@@ -12,6 +16,19 @@
 "remainingDays" = "あと%@日";
 "remainingDaysToday" = "今日です！";
 "remainingDaysTomorrow" = "明日です！";
+
+"january" = "1月";
+"february" = "2月";
+"march" = "3月";
+"april" = "4月";
+"may" = "5月";
+"june" = "6月";
+"july" = "7月";
+"august" = "8月";
+"september" = "9月";
+"october" = "10月";
+"november" = "11月";
+"decenber" = "12月";
 
 "aries" = "おひつじ座";
 "taurus" = "おうし座";

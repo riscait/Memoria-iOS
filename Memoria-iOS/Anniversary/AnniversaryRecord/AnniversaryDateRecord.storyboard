@@ -9,58 +9,59 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Anniversary Date RecordVC-->
+        <!--記念日の日付-->
         <scene sceneID="Zng-p5-Zv0">
             <objects>
-                <viewController id="kFp-hb-g2G" customClass="AnniversaryDateRecordVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="記念日の日付" id="kFp-hb-g2G" customClass="AnniversaryDateRecordVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kvl-fv-SXV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="jrE-p6-cpJ">
-                                <rect key="frame" x="27.5" y="111.5" width="320" height="444.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="記念日の日付を入力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KA-jc-zm5">
-                                        <rect key="frame" x="82" y="0.0" width="156" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="hMF-11-V9i">
-                                        <rect key="frame" x="0.0" y="109.5" width="320" height="216"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="564150219.19174695">
-                                            <!--2018-11-17 12:23:39 +0000-->
-                                        </date>
-                                    </datePicker>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="110" translatesAutoresizingMaskIntoConstraints="NO" id="YHI-gq-hm3">
-                                        <rect key="frame" x="39.5" y="414.5" width="241" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJh-gz-tcb" customClass="NegativeButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="31" height="30"/>
-                                                <state key="normal" title="戻る"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYc-ah-mb0" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="141" y="0.0" width="100" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Jho-nY-sZn"/>
-                                                </constraints>
-                                                <state key="normal" title="次へ"/>
-                                                <connections>
-                                                    <segue destination="n2e-2F-UrG" kind="show" identifier="recordDateSegue" id="2V1-i3-PC0"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYc-ah-mb0" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                <rect key="frame" x="88.5" y="617" width="198" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="Jho-nY-sZn"/>
+                                </constraints>
+                                <state key="normal" title="toNextPage"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="toNextPage"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="n2e-2F-UrG" kind="show" identifier="recordDateSegue" id="2V1-i3-PC0"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFe-5W-KGH">
+                                <rect key="frame" x="0.0" y="218" width="375" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="kFp-hb-g2G" id="i84-71-fdI"/>
+                                    <outlet property="delegate" destination="kFp-hb-g2G" id="dSw-dF-pXS"/>
+                                </connections>
+                            </pickerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EgP-Gv-Npn">
+                                <rect key="frame" x="127" y="124" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="年あり"/>
+                                    <segment title="年なし"/>
+                                </segments>
+                                <connections>
+                                    <action selector="didChangeDateFormat:" destination="kFp-hb-g2G" eventType="valueChanged" id="IRP-af-lIV"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jrE-p6-cpJ" firstAttribute="centerY" secondItem="Kvl-fv-SXV" secondAttribute="centerY" id="M6y-4U-wft"/>
-                            <constraint firstItem="jrE-p6-cpJ" firstAttribute="centerX" secondItem="Kvl-fv-SXV" secondAttribute="centerX" id="q4g-Ro-H8s"/>
+                            <constraint firstItem="EYc-ah-mb0" firstAttribute="centerX" secondItem="Kvl-fv-SXV" secondAttribute="centerX" id="bgy-1R-QX4"/>
+                            <constraint firstItem="02M-yh-3yY" firstAttribute="bottom" secondItem="EYc-ah-mb0" secondAttribute="bottom" constant="20" id="f3h-4B-ZCm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="02M-yh-3yY"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="dateFormatControl" destination="EgP-Gv-Npn" id="Yt0-Rk-7va"/>
+                        <outlet property="pickerView" destination="cFe-5W-KGH" id="2qV-TV-auS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ps-jK-dt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

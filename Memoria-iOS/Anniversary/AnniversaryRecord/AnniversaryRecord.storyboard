@@ -17,76 +17,151 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="誕生日の場合は名前を入力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IH-CS-PPm">
-                                <rect key="frame" x="92" y="94" width="208" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6t-cM-2BA" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="122" y="251" width="123" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="誕生日を登録する"/>
-                                <connections>
-                                    <segue destination="qXa-0P-NHm" kind="show" identifier="recordBirthdaySegue" id="Rbe-mf-O2z"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="例）結婚記念日" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ra-07-Kdm">
-                                <rect key="frame" x="84" y="402" width="199" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="記念日の場合は記念日の名前を入力" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrh-cI-gtx">
-                                <rect key="frame" x="48" y="350" width="278" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="藤原" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hxi-wa-WEC">
-                                <rect key="frame" x="16" y="177" width="172" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="太郎" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gou-7h-68e">
-                                <rect key="frame" x="201" y="177" width="158" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="姓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXB-ba-m3n">
-                                <rect key="frame" x="92" y="148" width="18" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYX-fS-zcW">
-                                <rect key="frame" x="271" y="148" width="18" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wK-wB-iUx" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="126" y="478" width="123" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="記念日を登録する"/>
-                                <connections>
-                                    <segue destination="qXa-0P-NHm" kind="show" identifier="recordAnyAnniversarySegue" id="glk-IF-ouN"/>
-                                </connections>
-                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CN3-Iu-deC">
+                                <rect key="frame" x="16" y="80" width="343" height="571"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJ3-di-T7K">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="571"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="誕生日の場合は名前を入力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IH-CS-PPm">
+                                                <rect key="frame" x="0.0" y="16" width="343" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2xN-fC-LMC" userLabel="誕生日の名前">
+                                                <rect key="frame" x="0.0" y="52.5" width="343" height="58.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fvB-wp-nwM" userLabel="姓">
+                                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="58.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXB-ba-m3n">
+                                                                <rect key="frame" x="73" y="0.0" width="17.5" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="藤原" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hxi-wa-WEC">
+                                                                <rect key="frame" x="0.0" y="28.5" width="163.5" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Hxi-wa-WEC" firstAttribute="leading" secondItem="fvB-wp-nwM" secondAttribute="leading" id="ptA-IE-DgV"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Hxi-wa-WEC" secondAttribute="trailing" id="xMb-mb-ag1"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uh3-Yi-0Fv" userLabel="名">
+                                                        <rect key="frame" x="179.5" y="0.0" width="163.5" height="58.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYX-fS-zcW">
+                                                                <rect key="frame" x="73" y="0.0" width="17.5" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="太郎" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gou-7h-68e">
+                                                                <rect key="frame" x="0.0" y="28.5" width="163.5" height="30"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="gou-7h-68e" firstAttribute="leading" secondItem="uh3-Yi-0Fv" secondAttribute="leading" id="HzT-XL-woH"/>
+                                                            <constraint firstAttribute="trailing" secondItem="gou-7h-68e" secondAttribute="trailing" id="x1u-F4-rsf"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6t-cM-2BA" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="72.5" y="127" width="198" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="2rl-an-LLT"/>
+                                                </constraints>
+                                                <state key="normal" title="誕生日を登録する"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="recordBirthday"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="qXa-0P-NHm" kind="show" identifier="toRecordBirthday" id="Rbe-mf-O2z"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="記念日の場合は記念日の名前を入力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrh-cI-gtx">
+                                                <rect key="frame" x="0.0" y="193" width="343" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="例）結婚記念日" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ra-07-Kdm">
+                                                <rect key="frame" x="0.0" y="229.5" width="343" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wK-wB-iUx" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="72.5" y="275.5" width="198" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="ggm-Ae-iZx"/>
+                                                </constraints>
+                                                <state key="normal" title="記念日を登録する"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="recordAnniversary"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <segue destination="qXa-0P-NHm" kind="show" identifier="toRecordAnniversary" id="glk-IF-ouN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="2xN-fC-LMC" secondAttribute="trailing" id="0y3-rR-cOL"/>
+                                            <constraint firstItem="9Ra-07-Kdm" firstAttribute="top" secondItem="Lrh-cI-gtx" secondAttribute="bottom" constant="16" id="23h-qn-urz"/>
+                                            <constraint firstItem="P6t-cM-2BA" firstAttribute="top" secondItem="2xN-fC-LMC" secondAttribute="bottom" constant="16" id="4KJ-V1-FCN"/>
+                                            <constraint firstItem="2xN-fC-LMC" firstAttribute="leading" secondItem="hJ3-di-T7K" secondAttribute="leading" id="9vh-lc-EE4"/>
+                                            <constraint firstAttribute="trailing" secondItem="9Ra-07-Kdm" secondAttribute="trailing" id="UKY-Nf-u4g"/>
+                                            <constraint firstItem="3wK-wB-iUx" firstAttribute="centerX" secondItem="hJ3-di-T7K" secondAttribute="centerX" id="cEf-JL-Gha"/>
+                                            <constraint firstItem="5IH-CS-PPm" firstAttribute="leading" secondItem="hJ3-di-T7K" secondAttribute="leading" id="dkP-qv-SEL"/>
+                                            <constraint firstItem="9Ra-07-Kdm" firstAttribute="leading" secondItem="hJ3-di-T7K" secondAttribute="leading" id="dyp-uj-dad"/>
+                                            <constraint firstItem="P6t-cM-2BA" firstAttribute="centerX" secondItem="hJ3-di-T7K" secondAttribute="centerX" id="eyr-6N-Zpw"/>
+                                            <constraint firstItem="Lrh-cI-gtx" firstAttribute="top" secondItem="P6t-cM-2BA" secondAttribute="bottom" constant="36" id="hgz-UR-Fu1"/>
+                                            <constraint firstItem="3wK-wB-iUx" firstAttribute="top" secondItem="9Ra-07-Kdm" secondAttribute="bottom" constant="16" id="htD-Zs-GgK"/>
+                                            <constraint firstAttribute="trailing" secondItem="5IH-CS-PPm" secondAttribute="trailing" id="jWZ-6o-Oj6"/>
+                                            <constraint firstItem="5IH-CS-PPm" firstAttribute="top" secondItem="hJ3-di-T7K" secondAttribute="top" constant="16" id="oqh-VP-vEv"/>
+                                            <constraint firstItem="Lrh-cI-gtx" firstAttribute="leading" secondItem="hJ3-di-T7K" secondAttribute="leading" id="t10-YQ-Cjd"/>
+                                            <constraint firstAttribute="trailing" secondItem="Lrh-cI-gtx" secondAttribute="trailing" id="utT-Aq-hXG"/>
+                                            <constraint firstItem="2xN-fC-LMC" firstAttribute="top" secondItem="5IH-CS-PPm" secondAttribute="bottom" constant="16" id="y5X-kB-xxb"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="hJ3-di-T7K" firstAttribute="leading" secondItem="CN3-Iu-deC" secondAttribute="leading" id="ETj-Di-Y3k"/>
+                                    <constraint firstAttribute="bottom" secondItem="hJ3-di-T7K" secondAttribute="bottom" id="JDf-mc-UNu"/>
+                                    <constraint firstItem="hJ3-di-T7K" firstAttribute="centerX" secondItem="CN3-Iu-deC" secondAttribute="centerX" id="Sws-7t-KFc"/>
+                                    <constraint firstItem="hJ3-di-T7K" firstAttribute="top" secondItem="CN3-Iu-deC" secondAttribute="top" id="gmg-bO-h8l"/>
+                                    <constraint firstAttribute="trailing" secondItem="hJ3-di-T7K" secondAttribute="trailing" id="kfl-a5-vnE"/>
+                                    <constraint firstItem="hJ3-di-T7K" firstAttribute="centerY" secondItem="CN3-Iu-deC" secondAttribute="centerY" id="xyX-Uu-PG9"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oNu-S5-QYS" firstAttribute="trailing" secondItem="CN3-Iu-deC" secondAttribute="trailing" constant="16" id="8wC-FP-8Hv"/>
+                            <constraint firstItem="oNu-S5-QYS" firstAttribute="bottom" secondItem="CN3-Iu-deC" secondAttribute="bottom" constant="16" id="ORY-Z9-7R9"/>
+                            <constraint firstItem="CN3-Iu-deC" firstAttribute="top" secondItem="oNu-S5-QYS" secondAttribute="top" constant="16" id="Spf-8j-th6"/>
+                            <constraint firstItem="CN3-Iu-deC" firstAttribute="leading" secondItem="oNu-S5-QYS" secondAttribute="leading" constant="16" id="oSh-0K-oWA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oNu-S5-QYS"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6Hn-Yv-ovd"/>
+                    <navigationItem key="navigationItem" id="6Hn-Yv-ovd">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="llU-x0-RQX">
+                            <connections>
+                                <segue destination="I95-b4-Fj2" kind="unwind" unwindAction="returnToAnniversaryVCWithSegue:" id="VWg-sW-OHG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="anniversaryTitle" destination="9Ra-07-Kdm" id="nMe-Pb-55r"/>
                         <outlet property="familyName" destination="Hxi-wa-WEC" id="v9S-3g-Pkt"/>
@@ -94,6 +169,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pw2-LL-9qg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="I95-b4-Fj2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1340" y="78.710644677661179"/>
         </scene>
@@ -125,6 +201,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="glk-IF-ouN"/>
+        <segue reference="Rbe-mf-O2z"/>
     </inferredMetricsTieBreakers>
 </document>

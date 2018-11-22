@@ -28,7 +28,7 @@ class WelcomContactVC: UIViewController {
     
     /// 設定アプリへの遷移を促すダイアログをポップアップ
     private func showAlert() {
-        DialogBox.showAlert(rootVC: self, title: "設定で許可してください", message: "誕生日をとりこむためには連絡先への許可が必要です。", defaultAction: openSettingApp, hasCancel: true)
+        DialogBox.showAlert(on: self, title: "設定で許可してください", message: "誕生日をとりこむためには連絡先への許可が必要です。", defaultAction: openSettingApp, hasCancel: true)
     }
     
     /// 設定アプリのプライバシーを開く

@@ -125,32 +125,14 @@ final class AnniversaryViewController: UICollectionViewController {
     }
     // MARK: - IBAction（InterfaceBuiderとつないだActionメソッド）
     
-    /// 記念日追加ボタン(+)を押した時の振る舞い
+    /// 他の画面からこの画面へ戻ってくる
     ///
-    /// - Parameter sender: UIBarButtonItem（NavigationBarの右上に配置）
-    @IBAction func tapAddBtn(_ sender: UIBarButtonItem) {
-        // 連絡先アクセス用のクラスをインスタンス化
-        let contactAccess = ContactAccess()
-        // 連絡先情報の使用が許可されているか調べてから誕生日をとりこむ
-        contactAccess.checkStatus(rootVC: self, deniedHandler: showAlert)
+    /// - Parameter segue: Segue
+    @IBAction func returnToAnniversaryVC(segue: UIStoryboardSegue) {
+        
     }
-    /// 設定アプリへの遷移を促すダイアログをポップアップ
-    private func showAlert() {
-        DialogBox.showAlert(rootVC: self, title: "設定で許可してください", message: "誕生日をとりこむためには連絡先への許可が必要です。", defaultAction: openSettingApp, hasCancel: true)
-    }
-    
-    /// 設定アプリのプライバシーを開く
-    private func openSettingApp() {
-        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
-
     
     // MARK: - 汎用メソッド
-    
-    func modalRecordVC() {
-        self.performSegue(withIdentifier: "toRecodSegue", sender: nil)
-    }
     
     /// コレクションビューのレイアウト設定
     ///

@@ -19,7 +19,7 @@ final class DialogBox: UIAlertController {
     ///   - defaultTitle: デフォルトアクションの文字列（省略で"OK"）
     ///   - defaultAction: デフォルトアクション選択時の処理
     ///   - hasCancel: キャンセルボタンをつけるかどうか
-    class func showAlert(rootVC: UIViewController,
+    class func showAlert(on rootVC: UIViewController,
                          title: String,
                          message: String,
                          defaultTitle: String = NSLocalizedString("ok", comment: ""),
@@ -28,7 +28,6 @@ final class DialogBox: UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: defaultTitle, style: .default, handler: { action -> Void in
-            // デフォルトアクションがあれば実行
             if let defaultAction = defaultAction {
                 defaultAction()
             }

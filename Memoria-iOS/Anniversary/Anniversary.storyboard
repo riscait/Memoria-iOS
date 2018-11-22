@@ -136,13 +136,12 @@
                     <navigationItem key="navigationItem" title="Anniversary" id="aOx-o2-vk7">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cJx-LK-0d5">
                             <connections>
-                                <action selector="tapAddBtn:" destination="sES-Td-IIs" id="7TD-0B-vRo"/>
+                                <segue destination="2NZ-qm-UAF" kind="show" id="nWy-uT-pJT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="emptySetView" destination="uN7-kx-Uqn" id="7Yv-1E-BZX"/>
-                        <segue destination="2NZ-qm-UAF" kind="presentation" identifier="toRecodSegue" id="fkc-Vd-g9w"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DhV-Hg-7BA" userLabel="First Responder" sceneMemberID="firstResponder"/>

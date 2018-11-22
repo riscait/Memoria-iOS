@@ -14,38 +14,41 @@ class AnniversaryRecordVC: UIViewController {
     @IBOutlet weak var givenName: UITextField!
     @IBOutlet weak var anniversaryTitle: UITextField!
     
-    enum Segue: String {
-        case birthday = "recordBirthdaySegue"
-        case others = "recordAnyAnniversarySegue"
+    enum SegueId {
+        case birthday
+        case anniversary
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /// 画面遷移直前に呼ばれる
+    ///
+    /// - Parameters:
+    ///   - segue: Segue
+    ///   - sender: sender
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         guard let id = segue.identifier else { return }
         
+        let segueId = id == "toRecordBirthday" ? SegueId.birthday : SegueId.anniversary
+        /// 登録用Anniversaryモデル
         let anniversary: AnniversaryRecord
         
-        switch id {
-        case Segue.birthday.rawValue:
-            anniversary = AnniversaryRecord(givenName: givenName.text ?? "", familyName: familyName.text ?? "")
+        switch segueId {
+        case .birthday:
+            anniversary = AnniversaryRecord(givenName: givenName.text, familyName: familyName.text)
 
-        case Segue.others.rawValue:
-            anniversary = AnniversaryRecord(title: anniversaryTitle.text ?? "")
-
-        default: break
+        case .anniversary:
+            anniversary = AnniversaryRecord(title: anniversaryTitle.text!)
         }
-
+        // 次のVCに記念日情報を渡す
         let nextVC = segue.destination as! AnniversaryDateRecordVC
-//        nextVC.anniversary = anniversary
+        nextVC.anniversary = anniversary
     }
 }
