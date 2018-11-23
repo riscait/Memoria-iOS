@@ -1,5 +1,5 @@
 //
-//  AnniversaryRecord.swift
+//  AnniversaryRecordModel.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/11/19.
@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct AnniversaryRecord {
+struct AnniversaryRecordModel {
     
     /// 記念日の種類
     ///
     /// - manualBirthday: 手動登録の誕生日
     /// - anniversary: 誕生日以外の記念日
-    enum type: String {
+    enum Category: String {
         case manualBirthday
         case anniversary
     }
     
-    let type: type
+    let category: Category
     var title: String?
     var givenName: String?
     var familyName: String?
@@ -27,13 +27,13 @@ struct AnniversaryRecord {
     var icon: Data?
 
     init(givenName: String?, familyName: String?) {
-        self.type = .manualBirthday
+        self.category = .manualBirthday
         self.givenName = givenName
         self.familyName = familyName
     }
     
     init(title: String) {
-        self.type = .anniversary
+        self.category = .anniversary
         self.title = title
     }
 }

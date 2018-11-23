@@ -74,7 +74,7 @@ final class AnniversaryViewController: UICollectionViewController {
                 // ドキュメントから記念日データを取り出す
                 var data = doc.data()
                 // 記念日データから日付を取り出す
-                let anniversaryDate = data["date"] as! Date
+                guard let anniversaryDate = (data["date"] as? Timestamp)?.dateValue() else { return }
                 // 日付から次の記念日までの残日数を計算
                 let remainingDays = self.dtf.getRemainingDays(date: anniversaryDate)
                 // 記念日データに残日数を追加
@@ -205,15 +205,18 @@ final class AnniversaryViewController: UICollectionViewController {
         // 記念日データを順に取り出す
         let anniversary = self.anniversarys[indexPath.row]
         // 記念日の分類
-        let type = anniversary["type"] as! String
+        let category = anniversary["category"] as? String
         // 記念日のID（隠し項目）
         cell.anniversaryId.text = anniversary["id"] as? String
-        // 記念日の名称。もし誕生日だったら苗字と名前を繋げて表示
-        if type == "contactBirthday" {
+        // 記念日の名称。誕生日だったら苗字と名前を繋げて表示
+        if category == "contactBirthday" {
             cell.anniversaryNameLabel.text = "\(anniversary["familyName"] as! String) \(anniversary["givenName"] as! String)さん\n誕生日"
+        } else {
+            cell.anniversaryNameLabel.text = anniversary["title"] as? String
         }
         // 記念日の日程
-        cell.anniversaryDateLabel.text = dtf.getMonthDayString(date: anniversary["date"] as! Date)
+        guard let anniversaryDate = (anniversary["date"] as? Timestamp)?.dateValue() else { return cell }
+        cell.anniversaryDateLabel.text = dtf.getMonthDayString(date: anniversaryDate)
         // 記念日までの残り日数
         let remainingDays = anniversary["remainingDays"] as! Int
         cell.remainingDaysLabel.text = String(format: NSLocalizedString("remainingDays", comment: ""), remainingDays.description)
@@ -223,7 +226,7 @@ final class AnniversaryViewController: UICollectionViewController {
             
         } else {
             // デフォルトアイコン
-            cell.anniversaryIconImage.image = type == "contactBirthday"
+            cell.anniversaryIconImage.image = category == "contactBirthday"
                 ? #imageLiteral(resourceName: "Ribbon") // 誕生日
                 : #imageLiteral(resourceName: "PresentBox") // それ以外
         }

@@ -101,7 +101,7 @@ class ContactAccess {
                                        "familyName": contact.familyName,
                                        "date": birthday,
                                        "iconImage": contact.thumbnailImageData ?? "",
-                                       "type": "contactBirthday"
+                                       "category": "contactBirthday"
             ]
             
             // ユーザーのユニークIDを読み込む

@@ -38,7 +38,7 @@
 		8DAE856721A2FD520049063D /* WelcomContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE856621A2FD520049063D /* WelcomContactVC.swift */; };
 		8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */; };
 		8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */; };
-		8DF28E8321A1DDE600B62EBA /* AnniversaryRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8221A1DDE600B62EBA /* AnniversaryRecord.swift */; };
+		8DF28E8321A1DDE600B62EBA /* AnniversaryRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8221A1DDE600B62EBA /* AnniversaryRecordModel.swift */; };
 		8DF28E8521A1E11400B62EBA /* AnniversaryDateRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8421A1E11400B62EBA /* AnniversaryDateRecordVC.swift */; };
 		8DF28E8721A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8621A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift */; };
 /* End PBXBuildFile section */
@@ -79,7 +79,7 @@
 		8DAE856621A2FD520049063D /* WelcomContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomContactVC.swift; sourceTree = "<group>"; };
 		8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeButton.swift; sourceTree = "<group>"; };
 		8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordVC.swift; sourceTree = "<group>"; };
-		8DF28E8221A1DDE600B62EBA /* AnniversaryRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecord.swift; sourceTree = "<group>"; };
+		8DF28E8221A1DDE600B62EBA /* AnniversaryRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordModel.swift; sourceTree = "<group>"; };
 		8DF28E8421A1E11400B62EBA /* AnniversaryDateRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryDateRecordVC.swift; sourceTree = "<group>"; };
 		8DF28E8621A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordConfirmationVC.swift; sourceTree = "<group>"; };
 		CB9FB5A45A0F138434E9F5F0 /* Pods-Memoria-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memoria-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memoria-iOS/Pods-Memoria-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		8D0BE31D21A0404900FE9B40 /* AnniversaryRecord */ = {
 			isa = PBXGroup;
 			children = (
-				8DF28E8221A1DDE600B62EBA /* AnniversaryRecord.swift */,
+				8DF28E8221A1DDE600B62EBA /* AnniversaryRecordModel.swift */,
 				8D0BE319219FDFA800FE9B40 /* AnniversaryRecord.storyboard */,
 				8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */,
 				8D0BE31B21A03F8200FE9B40 /* AnniversaryDateRecord.storyboard */,
@@ -367,7 +367,7 @@
 				8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */,
 				8D11B3C52195CBF300C60371 /* AnniversaryDetailVC.swift in Sources */,
 				8DF28E8721A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift in Sources */,
-				8DF28E8321A1DDE600B62EBA /* AnniversaryRecord.swift in Sources */,
+				8DF28E8321A1DDE600B62EBA /* AnniversaryRecordModel.swift in Sources */,
 				8D11B3B42193EE4F00C60371 /* IconImageView.swift in Sources */,
 				8D11B3BC2194431100C60371 /* AnniversaryCell.swift in Sources */,
 				8D2507B621A44E860015A206 /* AccentButton.swift in Sources */,

@@ -19,7 +19,7 @@ class AnniversaryDateRecordVC: UIViewController {
     // MARK: - プロパティ
 
     let dateTimeFormat = DateTimeFormat()
-    var anniversary: AnniversaryRecord!
+    var anniversary: AnniversaryRecordModel!
     
     private var years: [Int]!
     private var months: [String]!

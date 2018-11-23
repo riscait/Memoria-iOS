@@ -38,14 +38,14 @@ class AnniversaryRecordVC: UIViewController {
         
         let segueId = id == "toRecordBirthday" ? SegueId.birthday : SegueId.anniversary
         /// 登録用Anniversaryモデル
-        let anniversary: AnniversaryRecord
+        let anniversary: AnniversaryRecordModel
         
         switch segueId {
         case .birthday:
-            anniversary = AnniversaryRecord(givenName: givenName.text, familyName: familyName.text)
+            anniversary = AnniversaryRecordModel(givenName: givenName.text, familyName: familyName.text)
 
         case .anniversary:
-            anniversary = AnniversaryRecord(title: anniversaryTitle.text!)
+            anniversary = AnniversaryRecordModel(title: anniversaryTitle.text!)
         }
         // 次のVCに記念日情報を渡す
         let nextVC = segue.destination as! AnniversaryDateRecordVC

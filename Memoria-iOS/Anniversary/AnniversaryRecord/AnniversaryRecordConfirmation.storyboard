@@ -61,6 +61,9 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="confirmAndRecord"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapRecordButton:" destination="yvL-WJ-May" eventType="touchUpInside" id="q4i-Eb-zHr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

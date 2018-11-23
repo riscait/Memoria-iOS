@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 final class AnniversaryDetailVC: UIViewController {
 
@@ -67,7 +68,7 @@ final class AnniversaryDetailVC: UIViewController {
     var remainingDays: String?
     var iconImage: UIImage?
     
-    var type: String?
+    var category: String?
     
     var starSign: String?
     var chineseZodiacSign: String?
@@ -84,10 +85,10 @@ final class AnniversaryDetailVC: UIViewController {
         guard let id = anniversaryId else { return }
         // IDをもとにDBから記念日データを取得する(非同期処理のコールバックで取得)
         // 非同期なので、クロージャ外の処理よりも後に反映されることになる
-        AnniversaryDAO().getAnniversary(on: id) {
-            guard let date = $0["date"] as? Date,
-                let type = $0["type"] as? String else { return }
-            self.type = type
+        AnniversaryDAO().getAnniversary(on: id) { anniversary in
+            guard let date = (anniversary["date"] as? Timestamp)?.dateValue(),
+                let category = anniversary["category"] as? String else { return }
+            self.category = category
             self.starSign = self.getStarSign(date: date)
             self.chineseZodiacSign = self.getChineseZodiacSign(date: date)
             
@@ -217,7 +218,7 @@ extension AnniversaryDetailVC: UITableViewDataSource {
         // セルの中身
         let cell = tableView.dequeueReusableCell(withIdentifier: "anniversaryDetailCell", for: indexPath)
 
-        switch (type, indexPath.row) {
+        switch (category, indexPath.row) {
         case ("contactBirthday", 0):
             cell.textLabel?.text = "星座"
             cell.detailTextLabel?.text = starSign

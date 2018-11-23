@@ -24,12 +24,12 @@ import UIKit
         // 背景色
         self.layer.backgroundColor = #colorLiteral(red: 1, green: 0.6762310863, blue: 0, alpha: 1).cgColor
         // 角丸
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = 3
         // 文字色
         self.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         // 内側の余白
-        let padding: CGFloat = 8.0
-        self.contentEdgeInsets = UIEdgeInsets(top: padding, left: padding * 2, bottom: padding, right: padding * 2)
+        let padding: CGFloat = 10.0
+        self.contentEdgeInsets = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         super.draw(rect)
     }    
 }
