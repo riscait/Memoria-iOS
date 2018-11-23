@@ -5,6 +5,7 @@
 "recordAnniversary" = "記念日を登録する";
 "recordBirthday" = "誕生日を登録する";
 "confirmAndRecord" = "登録する";
+"hideAnniversary" = "非表示にする";
 "" = "";
 
 "welcomeTitle" = "もう記念日は忘れません";

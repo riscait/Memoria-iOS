@@ -41,18 +41,18 @@ class AnniversaryRecordConfirmationVC: UIViewController {
         case .anniversary:  // 記念日の場合
             additionalAnniversary["title"] = anniversary.title
         }
-
         // ユーザーのユニークIDを読み込む
         let userDefaults = UserDefaults.standard
         guard let userId = userDefaults.string(forKey: "uuid") else { return }
-
-        // データベースに連絡先の誕生日情報を保存する
+        // データベースに記念日を保存する
         let database = AnniversaryDAO()
         database.setData(collection: "users",
                          document: userId,
                          subCollection: "anniversary",
                          subDocument: anniversaryId,
-                         data: additionalAnniversary)
+                         data: additionalAnniversary
+        )
+        print("登録しました: \(additionalAnniversary)")
         dismiss(animated: true, completion: nil)
     }
 }

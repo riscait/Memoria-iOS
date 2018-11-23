@@ -62,7 +62,7 @@ final class AnniversaryDetailVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     /// AnniversaryVCから受け取るデータ
-    var anniversaryId: String?
+    var anniversaryId: String!
     var anniversaryName: String?
     var anniversaryDate: String?
     var remainingDays: String?
@@ -82,10 +82,9 @@ final class AnniversaryDetailVC: UIViewController {
         // 大きいタイトルの表示設定
         navigationItem.largeTitleDisplayMode = .automatic
         
-        guard let id = anniversaryId else { return }
         // IDをもとにDBから記念日データを取得する(非同期処理のコールバックで取得)
         // 非同期なので、クロージャ外の処理よりも後に反映されることになる
-        AnniversaryDAO().getAnniversary(on: id) { anniversary in
+        AnniversaryDAO().getAnniversary(on: anniversaryId) { anniversary in
             guard let date = (anniversary["date"] as? Timestamp)?.dateValue(),
                 let category = anniversary["category"] as? String else { return }
             self.category = category
@@ -104,13 +103,34 @@ final class AnniversaryDetailVC: UIViewController {
         anniversaryNameLabel.text = anniversaryName
         anniversaryDateLabel.text = anniversaryDate
         
-        let right = UIBarButtonItem(title: "非表示にする", style: .plain, target: self, action: #selector(toggleHidden))
+        let right = UIBarButtonItem(title: NSLocalizedString("hideAnniversary", comment: ""), style: .plain, target: self, action: #selector(toggleHidden))
         
         navigationItem.rightBarButtonItem = right
     }
     
+    /// 非表示にするボタン
     @objc private func toggleHidden() {
-        print("非表示処理")
+        print("非表示にします")
+        DialogBox.showAlert(on: self, title: "この記念日を非表示にします", message: "非表示にした記念日は「設定タブ」にて再表示することができます。", defaultAction: hideThisAnniversary, hasCancel: true)
+    }
+    
+    /// 非表示にするボタンを承諾した時の処理
+    func hideThisAnniversary() {
+        // ユーザーのユニークIDを読み込む
+        guard let userId = UserDefaults.standard.string(forKey: "uuid") else {
+            print("UUIDが見つかりません！")
+            return
+        }
+        // データベースに連絡先の誕生日情報を保存する
+        let database = AnniversaryDAO()
+        database.setData(collection: "users",
+                         document: userId,
+                         subCollection: "anniversary",
+                         subDocument: anniversaryId,
+                         data: ["isHidden": true]
+        )
+        // 一覧画面に戻る
+        navigationController?.popViewController(animated: true)
     }
     
     

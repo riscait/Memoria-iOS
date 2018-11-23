@@ -62,8 +62,11 @@ final class AnniversaryViewController: UICollectionViewController {
         guard let uuid = uuid else { return }
         let usersCollection = Firestore.firestore().collection("users")
         let anniversaryCollection = usersCollection.document(uuid).collection("anniversary")
+        let filteredCollection = anniversaryCollection.whereField("isHidden", isEqualTo: false)
+        
+//            .whereField("isHidden", isEqualTo: false)
         // anniversaryコレクションの変更を監視する
-        listenerRegistration = anniversaryCollection.addSnapshotListener { snapshot, error in
+        listenerRegistration = filteredCollection.addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else {
                 print("ドキュメント取得エラー: \(error!)")
                 return
@@ -209,7 +212,8 @@ final class AnniversaryViewController: UICollectionViewController {
         // 記念日のID（隠し項目）
         cell.anniversaryId.text = anniversary["id"] as? String
         // 記念日の名称。誕生日だったら苗字と名前を繋げて表示
-        if category == "contactBirthday" {
+        if category == "contactBirthday" ||
+            category == "manualBirthday" {
             cell.anniversaryNameLabel.text = "\(anniversary["familyName"] as! String) \(anniversary["givenName"] as! String)さん\n誕生日"
         } else {
             cell.anniversaryNameLabel.text = anniversary["title"] as? String

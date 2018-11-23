@@ -101,12 +101,13 @@ class ContactAccess {
                                        "familyName": contact.familyName,
                                        "date": birthday,
                                        "iconImage": contact.thumbnailImageData ?? "",
-                                       "category": "contactBirthday"
+                                       "category": "contactBirthday",
+                                       "isHidden": false,
             ]
             
             // ユーザーのユニークIDを読み込む
             let userDefaults = UserDefaults.standard
-            guard let uuid = userDefaults.string(forKey: "uuid") else {
+            guard let userId = userDefaults.string(forKey: "uuid") else {
                 print("UUIDが見つかりません！")
                 return
             }
@@ -114,10 +115,11 @@ class ContactAccess {
             // データベースに連絡先の誕生日情報を保存する
             let database = AnniversaryDAO()
             database.setData(collection: "users",
-                             document: uuid,
+                             document: userId,
                              subCollection: "anniversary",
                              subDocument: contact.identifier,
-                             data: contactBirthday)
+                             data: contactBirthday
+                             )
         }
         // 取得した連絡先情報の件数をコールバックで返す
         if let callback = callback {
