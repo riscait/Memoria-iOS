@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zyj-IR-bQv">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hdu-X2-U3e">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uZO-wg-lBX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="zyj-IR-bQv" customClass="TabBarController" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qPm-p3-la0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Y4H-rY-N8m" kind="relationship" relationship="viewControllers" id="6lI-45-7km"/>
+                        <segue destination="aPY-AD-uuN" kind="relationship" relationship="viewControllers" id="4ZG-Au-VBZ"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="-430" y="81"/>
+        </scene>
+        <!--Anniversary-->
+        <scene sceneID="QI6-zi-hba">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Anniversary" id="Y4H-rY-N8m" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Anniversary" image="AnniversaryTabBarIcon" badgeValue="1" selectedImage="AnniversaryTabBarIcon" id="rsL-Rn-4u9"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mcx-oS-h6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="170" y="-37"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="huW-un-6h1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setting" id="aPY-AD-uuN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Setting" image="SettingTabBarIcon" badgeValue="2" id="OcV-x4-r7o"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CWg-kA-sDr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="198" y="143"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AnniversaryTabBarIcon" width="36" height="36"/>
+        <image name="SettingTabBarIcon" width="36" height="36"/>
+    </resources>
+</document>

@@ -118,7 +118,8 @@ class ContactAccess {
                              document: userId,
                              subCollection: "anniversary",
                              subDocument: contact.identifier,
-                             data: contactBirthday
+                             data: contactBirthday,
+                             merge: true
                              )
         }
         // 取得した連絡先情報の件数をコールバックで返す

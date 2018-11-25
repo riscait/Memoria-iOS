@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YFV-6G-fkx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hidden ListVC-->
+        <scene sceneID="enG-03-Pvf">
+            <objects>
+                <tableViewController id="YFV-6G-fkx" customClass="HiddenListVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="tXo-8Z-b49">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="hiddenAnniversaryCell" id="5VF-Q1-vgC">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5VF-Q1-vgC" id="0v2-7Q-Loz">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITu-DW-XNo">
+                                            <rect key="frame" x="72" y="11.5" width="212" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPc-ck-aiq" customClass="InspectableButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                            <rect key="frame" x="300" y="7" width="59" height="30"/>
+                                            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <inset key="contentEdgeInsets" minX="16" minY="7" maxX="16" maxY="7"/>
+                                            <state key="normal" title="編集">
+                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="3"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="edit"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="didTapEditButton:" destination="YFV-6G-fkx" eventType="touchUpInside" id="84y-Yy-dPI"/>
+                                            </connections>
+                                        </button>
+                                        <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qJF-LZ-fGt" customClass="IconImageView" customModule="Memoria_iOS" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="2" width="40" height="40"/>
+                                            <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="1iB-28-YZA"/>
+                                                <constraint firstAttribute="width" constant="40" id="kef-mG-9u5"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ITu-DW-XNo" firstAttribute="leading" secondItem="qJF-LZ-fGt" secondAttribute="trailing" constant="16" id="1Jh-iA-bfh"/>
+                                        <constraint firstItem="jPc-ck-aiq" firstAttribute="trailing" secondItem="0v2-7Q-Loz" secondAttribute="trailingMargin" id="5RO-qg-c0h"/>
+                                        <constraint firstItem="jPc-ck-aiq" firstAttribute="leading" secondItem="ITu-DW-XNo" secondAttribute="trailing" constant="16" id="6V8-zo-Pd0"/>
+                                        <constraint firstItem="ITu-DW-XNo" firstAttribute="centerY" secondItem="0v2-7Q-Loz" secondAttribute="centerY" id="BTL-FJ-DIl"/>
+                                        <constraint firstItem="jPc-ck-aiq" firstAttribute="centerY" secondItem="0v2-7Q-Loz" secondAttribute="centerY" id="aPv-01-n7G"/>
+                                        <constraint firstItem="qJF-LZ-fGt" firstAttribute="leading" secondItem="0v2-7Q-Loz" secondAttribute="leading" constant="16" id="kVk-UT-On8"/>
+                                        <constraint firstItem="qJF-LZ-fGt" firstAttribute="centerY" secondItem="0v2-7Q-Loz" secondAttribute="centerY" id="zeh-dp-UQI"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YFV-6G-fkx" id="Ucg-my-QnD"/>
+                            <outlet property="delegate" destination="YFV-6G-fkx" id="Cew-bl-epa"/>
+                        </connections>
+                    </tableView>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="hiddenTableView" destination="tXo-8Z-b49" id="P5X-sd-GC4"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bIm-4E-sd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="71.514242878560722"/>
+        </scene>
+    </scenes>
+</document>

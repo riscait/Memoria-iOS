@@ -2,11 +2,20 @@
 "ok" = "OK";
 "cancel" = "キャンセル";
 "toNextPage" = "次へ";
+"edit" = "編集";
+
 "recordAnniversary" = "記念日を登録する";
 "recordBirthday" = "誕生日を登録する";
 "confirmAndRecord" = "登録する";
 "hideAnniversary" = "非表示にする";
-"" = "";
+"deleteContactBirthdayTitle" = "誕生日の消去";
+"deleteContactBirthdayMessage" = "連絡先から取り込んだ誕生日を消去します";
+"doDelete" = "消去する";
+
+"Anniversary" = "Anniversary";
+"Settings" = "設定";
+"hiddenList" = "非表示リスト";
+"titleForHeaderInSection" = "再表示するか、完全に削除することができます。";
 
 "welcomeTitle" = "もう記念日は忘れません";
 "welcomeDetail" = "「メモリア」で友人や家族の誕生日、結婚記念日やサラダ記念日など様々な記念日をまとめて管理しましょう！";

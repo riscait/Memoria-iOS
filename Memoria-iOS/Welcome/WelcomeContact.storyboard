@@ -34,7 +34,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="toNextPage"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="oOK-ql-Wls" kind="show" identifier="toAnniversary" id="wwy-c6-dSK"/>
+                                    <segue destination="BqF-ae-FP9" kind="unwind" unwindAction="returnToAnniversaryVCWithSegue:" id="neG-Mk-z2j"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLD-Q9-4SU">
@@ -106,18 +106,9 @@
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v1Z-Uy-DKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="BqF-ae-FP9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-23.199999999999999" y="99.753694581280797"/>
-        </scene>
-        <!--Anniversary-->
-        <scene sceneID="qQ7-hf-d7k">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Anniversary" id="oOK-ql-Wls" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="h13-F1-wZo"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pmZ-o8-pUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="556" y="72"/>
         </scene>
     </scenes>
     <resources>

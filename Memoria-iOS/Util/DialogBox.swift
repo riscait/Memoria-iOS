@@ -10,7 +10,7 @@ import UIKit
 
 final class DialogBox: UIAlertController {
 
-    /// アラートダイアログボックスをポップアップ
+    /// デフォルトアクション一つのアラートダイアログボックスをポップアップ
     ///
     /// - Parameters:
     ///   - rootVC: 呼び出し元のViewController
@@ -43,6 +43,32 @@ final class DialogBox: UIAlertController {
         rootVC.present(alert, animated: true, completion: nil)
     }
     
+    /// 破壊的アクションのアラートダイアログボックスをポップアップ
+    ///
+    /// - Parameters:
+    ///   - rootVC: 呼び出し元のViewController
+    ///   - title: Alertのタイトル文字列
+    ///   - message: Alertのメッセージ文字列
+    ///   - destructiveTitle: アクションの文字列（省略で"OK"）
+    ///   - destructiveAction: アクション選択時の処理
+    class func showDestructiveAlert(on rootVC: UIViewController,
+                         title: String,
+                         message: String,
+                         destructiveTitle: String,
+                         destructiveAction: @escaping (() -> ())) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: destructiveTitle, style: .destructive, handler: { action -> Void in
+            destructiveAction()
+        })
+        alert.addAction(action)
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        // アラートをポップアップ表示
+        rootVC.present(alert, animated: true, completion: nil)
+    }
+
     /// ActionSheetを生成して呼び出し元で表示する
     ///
     /// - Parameters:
@@ -51,20 +77,40 @@ final class DialogBox: UIAlertController {
     ///   - message: ActionSheetのメッセージ文字列
     ///   - defaultActionSet: デフォルトアクション選択時の実行処理（可変長）
     class func showActionSheet(rootVC: UIViewController,
-                               title: String, message: String,
-                               defaultActionSet: [String: () -> ()]) {
+                               title: String?,
+                               message: String?,
+                               defaultActionSet: [String: () -> ()],
+                               destructiveActionSet: [String: () -> ()]) {
         // アラートの生成
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-        // 可変長引数の中身の数だけデフォルトアクションを追加
+        // デフォルトアクションを追加
         for (key, value) in defaultActionSet {
             alert.addAction(UIAlertAction(title: key, style: .default, handler: { action -> Void in
                 value()
             }))
         }
-        // キャンセルボアクションの追加
+        // 破壊的アクションを追加
+        for (key, value) in destructiveActionSet {
+            alert.addAction(UIAlertAction(title: key, style: .destructive, handler: { action -> Void in
+                value()
+            }))
+        }
+        // キャンセルアクションの追加
         let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         // アラートをポップアップ表示
+        rootVC.present(alert, animated: true, completion: nil)
+    }
+    
+    class func showAlertWithIndicator(on rootVC: UIViewController,
+                                      message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        let indicator = UIActivityIndicatorView(style: .gray)
+        indicator.center = CGPoint(x: 25, y: 25)
+        alert.view.addSubview(indicator)
+        
+        indicator.startAnimating()
         rootVC.present(alert, animated: true, completion: nil)
     }
 }

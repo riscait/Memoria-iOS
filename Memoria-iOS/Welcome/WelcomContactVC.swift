@@ -28,21 +28,13 @@ class WelcomContactVC: UIViewController {
     
     /// 設定アプリへの遷移を促すダイアログをポップアップ
     private func showAlert() {
-        DialogBox.showAlert(on: self, title: "設定で許可してください", message: "誕生日をとりこむためには連絡先への許可が必要です。", defaultAction: openSettingApp, hasCancel: true)
+        DialogBox.showAlert(on: self, title: "設定で許可してください", message: "誕生日をとりこむためには連絡先への許可が必要です。", defaultAction: OpenOtherApp().openSettingsApp, hasCancel: true)
     }
     
-    /// 設定アプリのプライバシーを開く
-    private func openSettingApp() {
-        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
-
     /// Segueが実行されるときの処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAnniversary" {
             // チュートリアル終了フラグを立てる
-           print("Anniversary画面へ")
-            UserDefaults().set(true, forKey: "isFinishedTutorial")
-        }
+            print("Anniversary画面へ")
+            UserDefaults.standard.set(true, forKey: "isFinishedTutorial")
     }
 }

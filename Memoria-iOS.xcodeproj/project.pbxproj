@@ -31,11 +31,19 @@
 		8D1C73C32183ED6C00DA5A14 /* AnniversaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */; };
 		8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */; };
 		8D2507B621A44E860015A206 /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2507B521A44E850015A206 /* AccentButton.swift */; };
+		8D56B2A221A7DAE300B90BED /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A121A7DAE300B90BED /* SettingVC.swift */; };
+		8D56B2A421A85A7900B90BED /* OpenOtherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */; };
+		8DA747E621A7C1F6007E7F5B /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA747E521A7C1F6007E7F5B /* TabBar.storyboard */; };
+		8DA747E921A7C26A007E7F5B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA747E821A7C26A007E7F5B /* Setting.storyboard */; };
+		8DA747EB21A7C728007E7F5B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA747EA21A7C728007E7F5B /* TabBarController.swift */; };
 		8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA7BF4C2184D747004DF508 /* DialogBox.swift */; };
 		8DAE856121A2EC6D0049063D /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAE856021A2EC6C0049063D /* Welcome.storyboard */; };
 		8DAE856321A2F1B90049063D /* InspectableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE856221A2F1B90049063D /* InspectableLabel.swift */; };
 		8DAE856521A2F6260049063D /* WelcomeContact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DAE856421A2F6260049063D /* WelcomeContact.storyboard */; };
 		8DAE856721A2FD520049063D /* WelcomContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DAE856621A2FD520049063D /* WelcomContactVC.swift */; };
+		8DB8105121A915850007BBC5 /* HiddenList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DB8105021A915850007BBC5 /* HiddenList.storyboard */; };
+		8DB8105321A915B20007BBC5 /* HiddenListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8105221A915B20007BBC5 /* HiddenListVC.swift */; };
+		8DB8105521A942E90007BBC5 /* InspectableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8105421A942E90007BBC5 /* InspectableButton.swift */; };
 		8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */; };
 		8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */; };
 		8DF28E8321A1DDE600B62EBA /* AnniversaryRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8221A1DDE600B62EBA /* AnniversaryRecordModel.swift */; };
@@ -72,11 +80,19 @@
 		8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryViewController.swift; sourceTree = "<group>"; };
 		8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Anniversary.storyboard; path = "Memoria-iOS/Anniversary/Anniversary.storyboard"; sourceTree = SOURCE_ROOT; };
 		8D2507B521A44E850015A206 /* AccentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButton.swift; sourceTree = "<group>"; };
+		8D56B2A121A7DAE300B90BED /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOtherApp.swift; sourceTree = "<group>"; };
+		8DA747E521A7C1F6007E7F5B /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		8DA747E821A7C26A007E7F5B /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		8DA747EA21A7C728007E7F5B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		8DA7BF4C2184D747004DF508 /* DialogBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogBox.swift; sourceTree = "<group>"; };
 		8DAE856021A2EC6C0049063D /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		8DAE856221A2F1B90049063D /* InspectableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableLabel.swift; sourceTree = "<group>"; };
 		8DAE856421A2F6260049063D /* WelcomeContact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomeContact.storyboard; sourceTree = "<group>"; };
 		8DAE856621A2FD520049063D /* WelcomContactVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomContactVC.swift; sourceTree = "<group>"; };
+		8DB8105021A915850007BBC5 /* HiddenList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HiddenList.storyboard; sourceTree = "<group>"; };
+		8DB8105221A915B20007BBC5 /* HiddenListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenListVC.swift; sourceTree = "<group>"; };
+		8DB8105421A942E90007BBC5 /* InspectableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableButton.swift; sourceTree = "<group>"; };
 		8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeButton.swift; sourceTree = "<group>"; };
 		8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordVC.swift; sourceTree = "<group>"; };
 		8DF28E8221A1DDE600B62EBA /* AnniversaryRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordModel.swift; sourceTree = "<group>"; };
@@ -135,7 +151,9 @@
 			children = (
 				8D0FB83E2182002700BFCB79 /* AppDelegate.swift */,
 				8DAE855F21A2EC510049063D /* Welcome */,
+				8DA747E421A7C1C1007E7F5B /* TabBarController */,
 				8D1C73C42183ED7B00DA5A14 /* Anniversary */,
+				8DA747E721A7C244007E7F5B /* Setting */,
 				8D0FB8522182062500BFCB79 /* Util */,
 				8D11B3B22193E67F00C60371 /* CustomUI */,
 				8D0FB8422182002700BFCB79 /* Main.storyboard */,
@@ -155,6 +173,7 @@
 				8D0FB8532182068100BFCB79 /* ContactAccess.swift */,
 				8DA7BF4C2184D747004DF508 /* DialogBox.swift */,
 				8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */,
+				8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -163,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8DAE856221A2F1B90049063D /* InspectableLabel.swift */,
+				8DB8105421A942E90007BBC5 /* InspectableButton.swift */,
 				8D11B3C6219719B800C60371 /* TagLabel.swift */,
 				8D0BE32021A047CB00FE9B40 /* PositiveButton.swift */,
 				8D2507B521A44E850015A206 /* AccentButton.swift */,
@@ -184,6 +204,26 @@
 				8D0BE31D21A0404900FE9B40 /* AnniversaryRecord */,
 			);
 			path = Anniversary;
+			sourceTree = "<group>";
+		};
+		8DA747E421A7C1C1007E7F5B /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				8DA747E521A7C1F6007E7F5B /* TabBar.storyboard */,
+				8DA747EA21A7C728007E7F5B /* TabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		8DA747E721A7C244007E7F5B /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				8DA747E821A7C26A007E7F5B /* Setting.storyboard */,
+				8D56B2A121A7DAE300B90BED /* SettingVC.swift */,
+				8DB8105021A915850007BBC5 /* HiddenList.storyboard */,
+				8DB8105221A915B20007BBC5 /* HiddenListVC.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		8DAE855F21A2EC510049063D /* Welcome */ = {
@@ -281,9 +321,12 @@
 				8D0FB8512182013E00BFCB79 /* GoogleService-Info.plist in Resources */,
 				8D11B3B721940BD100C60371 /* Localizable.strings in Resources */,
 				8DAE856121A2EC6D0049063D /* Welcome.storyboard in Resources */,
+				8DA747E921A7C26A007E7F5B /* Setting.storyboard in Resources */,
 				8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */,
 				8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */,
 				8D11B3C32195C5CD00C60371 /* AnniversaryDetail.storyboard in Resources */,
+				8DA747E621A7C1F6007E7F5B /* TabBar.storyboard in Resources */,
+				8DB8105121A915850007BBC5 /* HiddenList.storyboard in Resources */,
 				8D0BE31C21A03F8300FE9B40 /* AnniversaryDateRecord.storyboard in Resources */,
 				8D0FB8462182002800BFCB79 /* Assets.xcassets in Resources */,
 				8D0BE31A219FDFA800FE9B40 /* AnniversaryRecord.storyboard in Resources */,
@@ -363,7 +406,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DB8105521A942E90007BBC5 /* InspectableButton.swift in Sources */,
 				8D0FB85621821B3B00BFCB79 /* AnniversaryDAO.swift in Sources */,
+				8D56B2A221A7DAE300B90BED /* SettingVC.swift in Sources */,
+				8D56B2A421A85A7900B90BED /* OpenOtherApp.swift in Sources */,
 				8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */,
 				8D11B3C52195CBF300C60371 /* AnniversaryDetailVC.swift in Sources */,
 				8DF28E8721A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift in Sources */,
@@ -371,11 +417,13 @@
 				8D11B3B42193EE4F00C60371 /* IconImageView.swift in Sources */,
 				8D11B3BC2194431100C60371 /* AnniversaryCell.swift in Sources */,
 				8D2507B621A44E860015A206 /* AccentButton.swift in Sources */,
+				8DB8105321A915B20007BBC5 /* HiddenListVC.swift in Sources */,
 				8DAE856321A2F1B90049063D /* InspectableLabel.swift in Sources */,
 				8DAE856721A2FD520049063D /* WelcomContactVC.swift in Sources */,
 				8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */,
 				8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */,
 				8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */,
+				8DA747EB21A7C728007E7F5B /* TabBarController.swift in Sources */,
 				8DF28E8521A1E11400B62EBA /* AnniversaryDateRecordVC.swift in Sources */,
 				8D0FB8542182068100BFCB79 /* ContactAccess.swift in Sources */,
 				8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */,

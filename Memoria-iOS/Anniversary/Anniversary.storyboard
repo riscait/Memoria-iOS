@@ -66,7 +66,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="RemainingDays" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="60m-3V-zWw" customClass="TagLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                                            <rect key="frame" x="37.5" y="13.5" width="111.5" height="19.5"/>
+                                                            <rect key="frame" x="34.5" y="13.5" width="114.5" height="19.5"/>
                                                             <color key="backgroundColor" red="0.91928410530090332" green="0.58592182397842407" blue="0.26450419425964355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,6 +133,7 @@
                             <outlet property="delegate" destination="sES-Td-IIs" id="efI-e4-Czn"/>
                         </connections>
                     </collectionView>
+                    <tabBarItem key="tabBarItem" title="Anniversary" image="AnniversaryTabBarIcon" id="sh4-JH-aiJ"/>
                     <navigationItem key="navigationItem" title="Anniversary" id="aOx-o2-vk7">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cJx-LK-0d5">
                             <connections>
@@ -153,11 +154,15 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CXd-PT-IHg" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="rmg-Gz-AJE">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="idv-ot-urL">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="sES-Td-IIs" kind="relationship" relationship="rootViewController" id="hGg-KO-tDH"/>
                     </connections>
@@ -183,4 +188,7 @@
             <point key="canvasLocation" x="1523" y="4"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AnniversaryTabBarIcon" width="48" height="48"/>
+    </resources>
 </document>

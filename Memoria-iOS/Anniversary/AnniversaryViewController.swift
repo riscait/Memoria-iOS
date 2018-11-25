@@ -39,11 +39,14 @@ final class AnniversaryViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 検索バーを追加
+        self.title = NSLocalizedString("Anniversary", comment: "")
+        
+        /* ---------- 検索バーは未実装 ----------
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
-        // 検索バーを常に表示する場合は記述。消すと引っ張って出現してスクロールで隠れるようになる
+        // 検索バーを常に表示する場合はfalse。消すと引っ張って出現してスクロールで隠れるようになる
         navigationItem.hidesSearchBarWhenScrolling = false
+         */
         
         // コレクションビューにRefreshControlを設定
         collectionView.refreshControl = refresher
@@ -63,8 +66,6 @@ final class AnniversaryViewController: UICollectionViewController {
         let usersCollection = Firestore.firestore().collection("users")
         let anniversaryCollection = usersCollection.document(uuid).collection("anniversary")
         let filteredCollection = anniversaryCollection.whereField("isHidden", isEqualTo: false)
-        
-//            .whereField("isHidden", isEqualTo: false)
         // anniversaryコレクションの変更を監視する
         listenerRegistration = filteredCollection.addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else {

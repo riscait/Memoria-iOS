@@ -84,7 +84,7 @@ final class AnniversaryDetailVC: UIViewController {
         
         // IDをもとにDBから記念日データを取得する(非同期処理のコールバックで取得)
         // 非同期なので、クロージャ外の処理よりも後に反映されることになる
-        AnniversaryDAO().getAnniversary(on: anniversaryId) { anniversary in
+        AnniversaryDAO().getAnniversaryData(on: anniversaryId) { anniversary in
             guard let date = (anniversary["date"] as? Timestamp)?.dateValue(),
                 let category = anniversary["category"] as? String else { return }
             self.category = category
@@ -127,7 +127,8 @@ final class AnniversaryDetailVC: UIViewController {
                          document: userId,
                          subCollection: "anniversary",
                          subDocument: anniversaryId,
-                         data: ["isHidden": true]
+                         data: ["isHidden": true],
+                         merge: true
         )
         // 一覧画面に戻る
         navigationController?.popViewController(animated: true)

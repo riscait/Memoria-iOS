@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         createUUIDandLaunchCount()
-        tutorial()
         return true
     }
 
@@ -62,7 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let launchCount = "launchCount"
         
         // デフォルト値を設定
-        userDefaults.register(defaults: [launchCount: 0])
+        userDefaults.register(defaults: [launchCount: 0,
+                                         "isFinishedTutorial": false
+            ])
         
         if userDefaults.integer(forKey: launchCount) == 0 {
             print("初回起動です。")
@@ -76,20 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let n = userDefaults.integer(forKey: launchCount) + 1
             userDefaults.set(n, forKey: launchCount)
             print("\(n)回目の起動です。\nUUID: \(userDefaults.string(forKey: "uuid")!)")
-        }
-    }
-    
-    private func tutorial() {
-        // デフォルト値を設定
-        userDefaults.register(defaults: ["isFinishedTutorial": false])
-        
-        if !userDefaults.bool(forKey: "isFinishedTutorial") {
-            print("初回起動フラグが立っているのでWelcomeへ")
-            // Welcome画面のstoryboardと初期VC
-            let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
-            let initialVC = storyboard.instantiateInitialViewController()!
-            self.window?.rootViewController = initialVC
-//            self.window?.makeKeyAndVisible()
         }
     }
 }
