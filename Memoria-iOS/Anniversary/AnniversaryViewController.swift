@@ -215,7 +215,8 @@ final class AnniversaryViewController: UICollectionViewController {
         // 記念日の名称。誕生日だったら苗字と名前を繋げて表示
         if category == "contactBirthday" ||
             category == "manualBirthday" {
-            cell.anniversaryNameLabel.text = "\(anniversary["familyName"] as! String) \(anniversary["givenName"] as! String)さん\n誕生日"
+            cell.anniversaryNameLabel.text = String(format: NSLocalizedString("whoseBirthday", comment: ""),
+                                                    arguments: [anniversary["familyName"] as! String, anniversary["givenName"] as! String])
         } else {
             cell.anniversaryNameLabel.text = anniversary["title"] as? String
         }

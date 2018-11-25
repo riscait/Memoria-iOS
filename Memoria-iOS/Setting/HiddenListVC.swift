@@ -119,7 +119,8 @@ class HiddenListVC: UITableViewController {
         if anniversary["category"] as! String == "contactBirthday" ||
            anniversary["category"] as! String == "manualBirthday" {
             // 誕生日の場合
-            titleLabel.text = "\(anniversary["familyName"] as! String) \(anniversary["givenName"] as! String)さんの誕生日"
+            titleLabel.text = String(format: NSLocalizedString("whoseBirthday", comment: ""),
+                                     arguments: [anniversary["familyName"] as! String, anniversary["givenName"] as! String])
 
         } else {
             // 記念日の場合

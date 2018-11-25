@@ -31,5 +31,7 @@ import UIKit
         let padding: CGFloat = 10.0
         self.contentEdgeInsets = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         super.draw(rect)
+        // 太字にする
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
     }    
 }

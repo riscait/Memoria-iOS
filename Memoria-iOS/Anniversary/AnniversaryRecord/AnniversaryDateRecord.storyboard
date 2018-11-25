@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--記念日の日付-->
+        <!--Anniversary Date RecordVC-->
         <scene sceneID="Zng-p5-Zv0">
             <objects>
-                <viewController title="記念日の日付" id="kFp-hb-g2G" customClass="AnniversaryDateRecordVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kFp-hb-g2G" customClass="AnniversaryDateRecordVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kvl-fv-SXV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,30 +30,40 @@
                                     <segue destination="n2e-2F-UrG" kind="show" identifier="recordDateSegue" id="2V1-i3-PC0"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFe-5W-KGH">
-                                <rect key="frame" x="0.0" y="218" width="375" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="kFp-hb-g2G" id="i84-71-fdI"/>
-                                    <outlet property="delegate" destination="kFp-hb-g2G" id="dSw-dF-pXS"/>
-                                </connections>
-                            </pickerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EgP-Gv-Npn">
-                                <rect key="frame" x="127" y="124" width="121" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="年あり"/>
-                                    <segment title="年なし"/>
-                                </segments>
-                                <connections>
-                                    <action selector="didChangeDateFormat:" destination="kFp-hb-g2G" eventType="valueChanged" id="IRP-af-lIV"/>
-                                </connections>
-                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="66" translatesAutoresizingMaskIntoConstraints="NO" id="1jX-xl-hgx">
+                                <rect key="frame" x="0.0" y="178.5" width="375" height="310"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EgP-Gv-Npn" customClass="InspectableSegmentedControl" customModule="Memoria_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="104" y="0.0" width="167" height="29"/>
+                                        <segments>
+                                            <segment title="enableYear"/>
+                                            <segment title="disableYear"/>
+                                        </segments>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey1" value="enableYear"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey2" value="disableYear"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didChangeDateFormat:" destination="kFp-hb-g2G" eventType="valueChanged" id="IRP-af-lIV"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFe-5W-KGH">
+                                        <rect key="frame" x="27.5" y="94" width="320" height="216"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="kFp-hb-g2G" id="i84-71-fdI"/>
+                                            <outlet property="delegate" destination="kFp-hb-g2G" id="dSw-dF-pXS"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="02M-yh-3yY" firstAttribute="trailing" secondItem="1jX-xl-hgx" secondAttribute="trailing" id="762-8u-FO7"/>
+                            <constraint firstItem="1jX-xl-hgx" firstAttribute="leading" secondItem="02M-yh-3yY" secondAttribute="leading" id="VYG-6K-y4l"/>
                             <constraint firstItem="EYc-ah-mb0" firstAttribute="centerX" secondItem="Kvl-fv-SXV" secondAttribute="centerX" id="bgy-1R-QX4"/>
                             <constraint firstItem="02M-yh-3yY" firstAttribute="bottom" secondItem="EYc-ah-mb0" secondAttribute="bottom" constant="20" id="f3h-4B-ZCm"/>
+                            <constraint firstItem="1jX-xl-hgx" firstAttribute="centerY" secondItem="Kvl-fv-SXV" secondAttribute="centerY" id="qFt-nj-3HV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="02M-yh-3yY"/>
                     </view>

@@ -10,6 +10,12 @@ import UIKit
 
 class AnniversaryDateRecordVC: UIViewController {
 
+    // セグメントコントロールの選択肢
+    enum SelectedSegment: Int {
+        case enabledYear
+        case disabledYear
+    }
+    
     // MARK: - IBOutlet
     
     @IBOutlet private weak var dateFormatControl: UISegmentedControl!
@@ -18,27 +24,49 @@ class AnniversaryDateRecordVC: UIViewController {
     
     // MARK: - プロパティ
 
-    let dateTimeFormat = DateTimeFormat()
+    private let dateTimeFormat = DateTimeFormat()
+    // 前画面から受け取ったAnniversaryデータ
     var anniversary: AnniversaryRecordModel!
+    // 端末の言語
+    private var language: DeviceLanguage?
+    private var dateOrder: DeviceLanguage.DateOrder?
     
     private var years: [Int]!
     private var months: [String]!
     private var days: [Int]!
     
-    
+    private let enableYear = 0
+    private let disableYear = 1
+    private let first = 0
+    private let second = 1
+    private let third = 2
+
+    var selectedSegment: SelectedSegment!
+
     // MARK: - ライフサイクル
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        selectedSegment = SelectedSegment.init(rawValue: dateFormatControl.selectedSegmentIndex)!
+        
+        language = DeviceLanguage.getLanguage()
+        dateOrder = language?.getDateOrder()
         setPickerDefault()
     }
     
+    
+    // MARK: - IBAction
+    
     /// 日付の年ありか年なしが変更された
     @IBAction private func didChangeDateFormat(_ sender: UISegmentedControl) {
+        selectedSegment = SelectedSegment.init(rawValue: dateFormatControl.selectedSegmentIndex)!
         // ピッカーを更新してデフォルト設定を再度行う
         pickerView.reloadAllComponents()
         setPickerDefault()
     }
+    
+    // MARK: - function
     
     /// ピッカーのデフォルト設定を行う
     private func setPickerDefault() {
@@ -47,59 +75,102 @@ class AnniversaryDateRecordVC: UIViewController {
         let nowMonth = dateTimeFormat.getNowDateNumber(component: .month)
         let nowDay = dateTimeFormat.getNowDateNumber(component: .day)
         
+        guard let selectedSegment = selectedSegment,
+            let dateOrder = dateOrder else { return }
+        
         // ピッカーで選択できる範囲を設定
         years = [Int](2...nowYear+10)
-        months = [NSLocalizedString("january", comment: ""),
-                  NSLocalizedString("february", comment: ""),
-                  NSLocalizedString("march", comment: ""),
-                  NSLocalizedString("april", comment: ""),
-                  NSLocalizedString("may", comment: ""),
-                  NSLocalizedString("june", comment: ""),
-                  NSLocalizedString("july", comment: ""),
-                  NSLocalizedString("august", comment: ""),
-                  NSLocalizedString("september", comment: ""),
-                  NSLocalizedString("october", comment: ""),
-                  NSLocalizedString("november", comment: ""),
-                  NSLocalizedString("decenber", comment: "")]
+        months = selectedSegment == .enabledYear
+            ? [NSLocalizedString("januaryShort", comment: ""),
+               NSLocalizedString("februaryShort", comment: ""),
+               NSLocalizedString("marchShort", comment: ""),
+               NSLocalizedString("aprilShort", comment: ""),
+               NSLocalizedString("mayShort", comment: ""),
+               NSLocalizedString("juneShort", comment: ""),
+               NSLocalizedString("julyShort", comment: ""),
+               NSLocalizedString("augustShort", comment: ""),
+               NSLocalizedString("septemberShort", comment: ""),
+               NSLocalizedString("octoberShort", comment: ""),
+               NSLocalizedString("novemberShort", comment: ""),
+               NSLocalizedString("decenberShort", comment: "")]
+            : [NSLocalizedString("january", comment: ""),
+               NSLocalizedString("february", comment: ""),
+               NSLocalizedString("march", comment: ""),
+               NSLocalizedString("april", comment: ""),
+               NSLocalizedString("may", comment: ""),
+               NSLocalizedString("june", comment: ""),
+               NSLocalizedString("july", comment: ""),
+               NSLocalizedString("august", comment: ""),
+               NSLocalizedString("september", comment: ""),
+               NSLocalizedString("october", comment: ""),
+               NSLocalizedString("november", comment: ""),
+               NSLocalizedString("decenber", comment: "")]
+        
         days = [Int](1...31)
         
         // デフォルト選択値の設定
-        if dateFormatControl.selectedSegmentIndex == 0 {
-            // 年有り（年は2始まりなので1多く引いている）
-            pickerView.selectRow(nowYear - 1 - 1, inComponent: 0, animated: true)
-            pickerView.selectRow(nowMonth - 1, inComponent: 1, animated: true)
-            pickerView.selectRow(nowDay - 1, inComponent: 2, animated: true)
-        } else {
-            // 年なし
-            pickerView.selectRow(nowMonth - 1, inComponent: 0, animated: true)
-            pickerView.selectRow(nowYear - 1, inComponent: 1, animated: true)
+        // 年有りの場合（年は2始まりなので1多く引いている）
+        switch (dateOrder, selectedSegment) {
+        case (.ymd, .enabledYear):
+            pickerView.selectRow(nowYear - 1 - 1, inComponent: first, animated: true)
+            pickerView.selectRow(nowMonth - 1, inComponent: second, animated: true)
+            pickerView.selectRow(nowDay - 1, inComponent: third, animated: true)
+
+        case (.ymd, .disabledYear):
+            pickerView.selectRow(nowMonth - 1, inComponent: first, animated: true)
+            pickerView.selectRow(nowDay - 1, inComponent: second, animated: true)
+            
+        case (.mdy, .enabledYear):
+            pickerView.selectRow(nowYear - 1 - 1, inComponent: third, animated: true)
+            pickerView.selectRow(nowMonth - 1, inComponent: first, animated: true)
+            pickerView.selectRow(nowDay - 1, inComponent: second, animated: true)
+
+        case (.mdy, .disabledYear):
+            pickerView.selectRow(nowMonth - 1, inComponent: first, animated: true)
+            pickerView.selectRow(nowDay - 1, inComponent: second, animated: true)
         }
     }
     
 
     // MARK: - Navigation
 
+    /// Segueでの遷移直前処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        guard var anniversary = anniversary else { return }
-        
-        /// 登録用Anniversaryモデルに日付を登録
+        guard var anniversary = anniversary,
+            let selectedSegment = selectedSegment,
+            let dateOrder = dateOrder else { return }
+
+        // 登録用Anniversaryモデルに日付を登録する
         // 選択されている行を取得（インデックスとのズレを加味）
-        if dateFormatControl.selectedSegmentIndex == 0 {
-            // 年有り
-            let year = pickerView.selectedRow(inComponent: 0) + 2
-            let month = pickerView.selectedRow(inComponent: 1) + 1
-            let day = pickerView.selectedRow(inComponent: 2) + 1
+        switch (dateOrder, selectedSegment) {
+        case (.ymd, .enabledYear):
+            let year = pickerView.selectedRow(inComponent: first) + 2
+            let month = pickerView.selectedRow(inComponent: second) + 1
+            let day = pickerView.selectedRow(inComponent: third) + 1
             // 選択されている年月日をDate型に変換し記念日情報に追加
             anniversary.date = dateTimeFormat.toDateFormat(fromYear: year, month: month, day: day)
 
-        } else {
-            // 年なし
-            let month = pickerView.selectedRow(inComponent: 0) + 1
-            let day = pickerView.selectedRow(inComponent: 1) + 1
+        case (.ymd, .disabledYear):
+            let month = pickerView.selectedRow(inComponent: first) + 1
+            let day = pickerView.selectedRow(inComponent: second) + 1
+            // 選択されている年月日をDate型に変換し記念日情報に追加
+            anniversary.date = dateTimeFormat.toDateFormat(fromYear: nil, month: month, day: day)
+
+        case (.mdy, .enabledYear):
+            let year = pickerView.selectedRow(inComponent: third) + 2
+            let month = pickerView.selectedRow(inComponent: first) + 1
+            let day = pickerView.selectedRow(inComponent: second) + 1
+            // 選択されている年月日をDate型に変換し記念日情報に追加
+            anniversary.date = dateTimeFormat.toDateFormat(fromYear: year, month: month, day: day)
+
+        case (.mdy, .disabledYear):
+            let month = pickerView.selectedRow(inComponent: first) + 1
+            let day = pickerView.selectedRow(inComponent: second) + 1
             // 選択されている年月日をDate型に変換し記念日情報に追加
             anniversary.date = dateTimeFormat.toDateFormat(fromYear: nil, month: month, day: day)
         }
+
         // 次のVCに記念日情報を渡す
         let nextVC = segue.destination as! AnniversaryRecordConfirmationVC
         nextVC.anniversary = anniversary
@@ -107,51 +178,71 @@ class AnniversaryDateRecordVC: UIViewController {
 }
 
 
-// MARK: - UIPickerViewDataSource
+// MARK: - UIPickerViewDataSource & UIPickerViewDelegate
 
-extension AnniversaryDateRecordVC: UIPickerViewDataSource {
+extension AnniversaryDateRecordVC: UIPickerViewDataSource, UIPickerViewDelegate {
     
-    /// 列の数
+    /// ピッカー列の数
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        if dateFormatControl.selectedSegmentIndex == 0 {
+        if selectedSegment == .enabledYear {
             // 年有り
+            print(selectedSegment)
             return 3
         } else {
             // 年なし
-            return 2
+            print(selectedSegment)
+           return 2
         }
     }
     
-    /// 行の数
+    /// ピッカー行の数
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+
+        guard let dateOrder = dateOrder,
+            let selectedSegment = selectedSegment else { return 0 }
+
         // 年ありか無しか・列のインデックス
-        switch (dateFormatControl.selectedSegmentIndex, component) {
-        // TODO: ローカライズ：英語圏だと月日年の順番
-        case (0, 0): return years.count
-        case (0, 1), (1, 0): return months.count
-        case (0, 2), (1, 1): return days.count
+        switch (dateOrder, selectedSegment, component) {
+        // 日付の順番, 年の有無, 左中右
+        case (.ymd, .enabledYear, first),
+             (.mdy, .enabledYear, third): return years.count
+            
+        case (.ymd, .enabledYear, second),
+             (.ymd, .disabledYear, first),
+             (.mdy, .enabledYear, first),
+             (.mdy, .disabledYear, first): return months.count
+            
+        case (.ymd, .enabledYear, third),
+             (.ymd, .disabledYear, second),
+             (.mdy, .enabledYear, second),
+             (.mdy, .disabledYear, second): return days.count
+            
         default: return 0
         }
     }
     
-    /// 表示する内容
+    /// ピッカーに表示する内容
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch component {
-        // TODO: ローカライズ：英語圏だと月日年の順番
-        // TODO: ローカライズ：日本語環境のみ"年", "日"を足す…
-        case 0: return dateFormatControl.selectedSegmentIndex == 0
-            ? years[row].description + "年" : months[row].description
-        case 1: return dateFormatControl.selectedSegmentIndex == 0
-            ? months[row].description : days[row].description + "日"
-        case 2: return days[row].description + "日"
+        print("表示内容を詰める")
+        guard let dateOrder = dateOrder,
+            let selectedSegment = selectedSegment else { return "" }
+
+        switch (dateOrder, selectedSegment, component) {
+        // 日付の順番, 年の有無, 左中右
+        case (.ymd, .enabledYear, first),
+             (.mdy, .enabledYear, third): print(years[row].description);return years[row].description + NSLocalizedString("japaneseOnlyYear", comment: "")
+            
+        case (.ymd, .enabledYear, second),
+             (.ymd, .disabledYear, first),
+             (.mdy, .enabledYear, first),
+             (.mdy, .disabledYear, first): print(months[row].description);return months[row].description
+            
+        case (.ymd, .enabledYear, third),
+             (.ymd, .disabledYear, second),
+             (.mdy, .enabledYear, second),
+             (.mdy, .disabledYear, second): print(days[row].description);return days[row].description + NSLocalizedString("japaneseOnlyDay", comment: "")
+
         default: return ""
         }
     }
-}
-
-
-// MARK: - UIPickerViewDelegate
-
-extension AnniversaryDateRecordVC: UIPickerViewDelegate {
-    
 }

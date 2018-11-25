@@ -1,11 +1,25 @@
+// 一般
 "unknown" = "不明";
 "ok" = "OK";
 "cancel" = "キャンセル";
 "toNextPage" = "次へ";
 "edit" = "編集";
 
+// 記念日登録画面
+"askForNameInput" = "誕生日の場合は名前を入力";
+"givenName" = "名";
+"familyName" = "姓";
+"givenNamePlaceholder" = "名";
+"familyNamePlaceholder" = "姓";
+"———————  or  ———————" = "———————  または  ———————";
+"askForAnniversaryNameInput" = "記念日の場合は記念日の名前を入力";
+"anniversaryPlaceholder" = "記念日の名前";
 "recordAnniversary" = "記念日を登録する";
 "recordBirthday" = "誕生日を登録する";
+"enableYear" = "年あり";
+"disableYear" = "年なし";
+"japaneseOnlyYear" = "年";
+"japaneseOnlyDay" = "日";
 "confirmAndRecord" = "登録する";
 "hideAnniversary" = "非表示にする";
 "deleteContactBirthdayTitle" = "誕生日の消去";
@@ -23,10 +37,23 @@
 "welcomeContactDetail" = "端末の「連絡先」に登録してある誕生日を取り込むことができます。";
 "welcomeContactImport" = "誕生日を読み込む";
 
+// Anniversary画面
+"letsAddAnniversary" = "右上の＋ボタンから\n記念日を追加しましょう";
+"whoseBirthday" = "%@ %@さん\n誕生日";
 "remainingDays" = "あと%@日";
 "remainingDaysToday" = "今日です！";
 "remainingDaysTomorrow" = "明日です！";
 
+// 設定画面
+"importBirthday" = "誕生日を連絡先アプリからインポート";
+"deleteBirthday" = "誕生日を削除する";
+"reviewThisApp" = "メモリアを評価する";
+"appStore" = "App Store";
+"developerTwitter" = "開発者のTwitter";
+"sendRequest" = "お問い合わせ";
+"bugReportOrRequest" = "不具合・要望など";
+
+// 月
 "january" = "1月";
 "february" = "2月";
 "march" = "3月";
@@ -39,6 +66,18 @@
 "october" = "10月";
 "november" = "11月";
 "decenber" = "12月";
+"januaryShort" = "1月";
+"februaryShort" = "2月";
+"marchShort" = "3月";
+"aprilShort" = "4月";
+"mayShort" = "5月";
+"juneShort" = "6月";
+"julyShort" = "7月";
+"augustShort" = "8月";
+"septemberShort" = "9月";
+"octoberShort" = "10月";
+"novemberShort" = "11月";
+"decenberShort" = "12月";
 
 "aries" = "おひつじ座";
 "taurus" = "おうし座";

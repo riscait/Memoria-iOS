@@ -1,2 +1,106 @@
-// TODO: 未翻訳
-"remainingDays" = "[TBD]After %@ days";
+// Common
+"unknown" = "Unknown";
+"ok" = "OK";
+"cancel" = "Cancel";
+"toNextPage" = "Next";
+"edit" = "Edit";
+
+// Record anniversary view
+"askForNameInput" = "Enter the name in the case of birthday";
+"givenName" = "Given name";
+"familyName" = "Family name";
+"givenNamePlaceholder" = "Given name";
+"familyNamePlaceholder" = "Family name";
+"———————  or  ———————" = "———————  or  ———————";
+"askForAnniversaryNameInput" = "Enter the name of the anniversary in the case of anniversary";
+"anniversaryPlaceholder" = "Anniversary name";
+"recordAnniversary" = "Record Anniversary";
+"recordBirthday" = "Record Birthday";
+"enableYear" = "Enable year";
+"disableYear" = "Disable year";
+"japaneseOnlyYear" = "";
+"japaneseOnlyDay" = "";
+"confirmAndRecord" = "Record";
+"hideAnniversary" = "Hide";
+"deleteContactBirthdayTitle" = "Delete Birthday";
+"deleteContactBirthdayMessage" = "Delete birthdays captured from contacts";
+"doDelete" = "To delete";
+
+"Anniversary" = "Anniversary";
+"Settings" = "Settings";
+"hiddenList" = "Hidden list";
+"titleForHeaderInSection" = "You can redisplay it or delete it completely.";
+
+"welcomeTitle" = "I will not forget the anniversary anymore";
+"welcomeDetail" = "Let's manage various memorial days collectively, such as friends and family's birthday, wedding anniversary and salad anniversary in \"Memoria\"!";
+"welcomeContactTitle" = "Let's add a birthday";
+"welcomeContactDetail" = "You can capture the birth date registered in \"Contact\" of the terminal.";
+"welcomeContactImport" = "Import birthday";
+
+// Anniversary view
+"letsAddAnniversary" = "Let's add an ANNIVERSARY from the \"+ button\" on the upper right";
+"whoseBirthday" = "%2$@ %1$@'s Birthday"; // given name + family name
+"remainingDays" = "%@ days";
+"remainingDaysToday" = "Today!";
+"remainingDaysTomorrow" = "Tomorrow!";
+
+// Settings view
+"importBirthday" = "Import birthday from \"Contact App\"";
+"deleteBirthday" = "Delete birthday";
+"reviewThisApp" = "Review this App";
+"appStore" = "App Store";
+"developerTwitter" = "Dev's Twitter";
+"sendRequest" = "Send reports";
+"bugReportOrRequest" = "Bug or Request";
+
+// Month
+"january" = "January";
+"february" = "February";
+"march" = "March";
+"april" = "April";
+"may" = "May";
+"june" = "June";
+"july" = "July";
+"august" = "August";
+"september" = "September";
+"october" = "October";
+"november" = "November";
+"decenber" = "Decenber";
+"januaryShort" = "Jan.";
+"februaryShort" = "Feb.";
+"marchShort" = "Mar.";
+"aprilShort" = "Apr.";
+"mayShort" = "May";
+"juneShort" = "Jun.";
+"julyShort" = "Jul.";
+"augustShort" = "Aug.";
+"septemberShort" = "Sep.";
+"octoberShort" = "Oct.";
+"novemberShort" = "Nov.";
+"decenberShort" = "Dec.";
+
+"aries" = "Aries";
+"taurus" = "Taurus";
+"gemini" = "Gemini";
+"cancer" = "Cancer";
+"leo" = "Leo";
+"virgo" = "Virgo";
+"libra" = "Libra";
+"scorpio" = "Scorpio";
+"sagittarius" = "Sagittarius";
+"capricorn" = "Capricorn";
+"aquarius" = "Aquarius";
+"pisces" = "Pisces";
+
+"chineseZodiacSignRat" = " Rat";
+"chineseZodiacSignOx" = "Ox";
+"chineseZodiacSignTiger" = "Tiger";
+"chineseZodiacSignRabbit" = "Rabbit";
+"chineseZodiacSignDragon" = "Dragon";
+"chineseZodiacSignSnake" = "Snake";
+"chineseZodiacSignHorse" = "Horse";
+"chineseZodiacSignSheep" = "Sheep";
+"chineseZodiacSignMonkey" = "Monkey";
+"chineseZodiacSignRooster" = "Rooster";
+"chineseZodiacSignDog" = "Dog";
+"chineseZodiacSignPig" = "Pig";

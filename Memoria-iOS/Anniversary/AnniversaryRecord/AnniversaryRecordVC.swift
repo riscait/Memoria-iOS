@@ -14,6 +14,8 @@ class AnniversaryRecordVC: UIViewController {
     @IBOutlet weak var givenName: UITextField!
     @IBOutlet weak var anniversaryTitle: UITextField!
     
+    var activeTextField: UITextField?
+    
     enum SegueId {
         case birthday
         case anniversary
@@ -87,10 +89,19 @@ class AnniversaryRecordVC: UIViewController {
     /// キーボードが表示時に画面をずらす。
     @objc func keyboardWillShow(_ notification: Notification?) {
         guard let rect = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
-            let duration = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
-        UIView.animate(withDuration: duration) {
-            let transform = CGAffineTransform(translationX: 0, y: -(rect.size.height))
-            self.view.transform = transform
+            let duration = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+            let textFieldOrignY = activeTextField?.frame.origin.y,
+            let textFieldHeight = activeTextField?.frame.height else { return }
+        
+        let boundSize = UIScreen.main.bounds.size
+        let keyboardTop = boundSize.height - rect.size.height
+        let textFieldBottom = textFieldOrignY + textFieldHeight + 8
+
+        if textFieldBottom >= keyboardTop {
+            UIView.animate(withDuration: duration) {
+                let transform = CGAffineTransform(translationX: 0, y: -(rect.size.height))
+                self.view.transform = transform
+            }
         }
         print("keyboardWillShowを実行")
     }
@@ -102,5 +113,17 @@ class AnniversaryRecordVC: UIViewController {
             self.view.transform = CGAffineTransform.identity
         }
         print("keyboardWillHideを実行")
+    }
+}
+
+extension AnniversaryRecordVC: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        activeTextField = textField
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
     }
 }

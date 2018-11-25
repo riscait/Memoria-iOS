@@ -15,7 +15,7 @@ class SettingVC: UITableViewController {
     enum SettingCell: Int {
         case importBirthday = 12
         case deleteBirthday
-        case reviewApp = 21
+        case reviewThisApp = 21
         case developer
         case supoort
     }
@@ -65,7 +65,7 @@ class SettingVC: UITableViewController {
                                            destructiveTitle: NSLocalizedString("doDelete", comment: ""),
                                            destructiveAction: deleteContactBirthday)
             
-        case .reviewApp:
+        case .reviewThisApp:
             if let url = URL(string: "https://itunes.apple.com/app/id1444443848?action=write-review") {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
