@@ -27,6 +27,7 @@ class AnniversaryRecordVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = NSLocalizedString("anniversaryRecord", comment: "")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -48,6 +48,8 @@ class AnniversaryDateRecordVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = NSLocalizedString("date", comment: "")
+
         selectedSegment = SelectedSegment.init(rawValue: dateFormatControl.selectedSegmentIndex)!
         
         language = DeviceLanguage.getLanguage()

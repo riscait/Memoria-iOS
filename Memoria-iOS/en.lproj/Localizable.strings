@@ -4,8 +4,12 @@
 "cancel" = "Cancel";
 "toNextPage" = "Next";
 "edit" = "Edit";
+"delete" = "Delete";
+"confirm" = "Confirm";
+"date" = "Date";
 
 // Record anniversary view
+"anniversaryRecord" = "Record Anniversary";
 "askForNameInput" = "Enter the name in the case of birthday";
 "givenName" = "Given name";
 "familyName" = "Family name";
@@ -24,26 +28,26 @@
 "hideAnniversary" = "Hide";
 "deleteContactBirthdayTitle" = "Delete Birthday";
 "deleteContactBirthdayMessage" = "Delete birthdays captured from contacts";
-"doDelete" = "To delete";
+"birthdayNameLabel" = "Name";
+"anniversaryNameLabel" = "Anniversary name";
+"anniversarydateLabel" = "Date";
 
 "Anniversary" = "Anniversary";
 "Settings" = "Settings";
 "hiddenList" = "Hidden list";
 "titleForHeaderInSection" = "You can redisplay it or delete it completely.";
-
+// Welcome view
 "welcomeTitle" = "I will not forget the anniversary anymore";
 "welcomeDetail" = "Let's manage various memorial days collectively, such as friends and family's birthday, wedding anniversary and salad anniversary in \"Memoria\"!";
 "welcomeContactTitle" = "Let's add a birthday";
 "welcomeContactDetail" = "You can capture the birth date registered in \"Contact\" of the terminal.";
 "welcomeContactImport" = "Import birthday";
-
 // Anniversary view
 "letsAddAnniversary" = "Let's add an ANNIVERSARY from the \"+ button\" on the upper right";
 "whoseBirthday" = "%2$@ %1$@'s Birthday"; // given name + family name
 "remainingDays" = "%@ days";
 "remainingDaysToday" = "Today!";
 "remainingDaysTomorrow" = "Tomorrow!";
-
 // Settings view
 "importBirthday" = "Import birthday from \"Contact App\"";
 "deleteBirthday" = "Delete birthday";
@@ -52,7 +56,11 @@
 "developerTwitter" = "Dev's Twitter";
 "sendRequest" = "Send reports";
 "bugReportOrRequest" = "Bug or Request";
-
+// Alert
+"pleasePermitToContactTitle" = "Please permit on the \"Settings App\"";
+"pleasePermitToContactMessage" = "In order to incorporate the BIRTHDAY is a must have permission to \"Contact App\"";
+"importedBirthdayTitle" = "Imported %@ reviews birthday";
+"importedBirthdayMessage" = "You can check it on the Anniversary list";
 // Month
 "january" = "January";
 "february" = "February";
@@ -78,7 +86,8 @@
 "octoberShort" = "Oct.";
 "novemberShort" = "Nov.";
 "decenberShort" = "Dec.";
-
+// Zodiac star sign
+"zodiacStarSign" = "Zodiac star sign";
 "aries" = "Aries";
 "taurus" = "Taurus";
 "gemini" = "Gemini";
@@ -91,7 +100,8 @@
 "capricorn" = "Capricorn";
 "aquarius" = "Aquarius";
 "pisces" = "Pisces";
-
+// Chinese zodiac sign
+"chineseZodiacSign" = "Chinese zodiac sign";
 "chineseZodiacSignRat" = " Rat";
 "chineseZodiacSignOx" = "Ox";
 "chineseZodiacSignTiger" = "Tiger";

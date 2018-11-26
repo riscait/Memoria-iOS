@@ -22,6 +22,8 @@ class AnniversaryRecordConfirmationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = NSLocalizedString("confirm", comment: "")
     }
     
     /// 登録ボタン
@@ -73,11 +75,13 @@ extension AnniversaryRecordConfirmationVC: UITableViewDataSource {
         switch (indexPath.row, anniversary.category) {
         // 誕生日の名前
         case (CellContent.name.rawValue, .manualBirthday):
-            cell.textLabel?.text = "名前"
+            cell.textLabel?.text = NSLocalizedString("birthdayNameLabel", comment: "")
 
             if let familyName = anniversary.familyName {
                 if let givenName = anniversary.givenName {
-                    cell.detailTextLabel?.text = familyName + " " + givenName
+                    cell.detailTextLabel?.text = DeviceLanguage.getLanguage() == .ja
+                        ? familyName + " " + givenName  // 日本語なら姓名の順
+                        : givenName + " " + familyName  // 日本語以外の場合
                 } else {
                     cell.detailTextLabel?.text = familyName
                 }
@@ -87,12 +91,12 @@ extension AnniversaryRecordConfirmationVC: UITableViewDataSource {
 
         // 記念日の名前
         case (CellContent.name.rawValue, .anniversary):
-            cell.textLabel?.text = "記念日の名前"
+            cell.textLabel?.text = NSLocalizedString("anniversaryNameLabel", comment: "")
             cell.detailTextLabel?.text = anniversary.title!
 
         // 日付
         case (CellContent.date.rawValue, _):
-            cell.textLabel?.text = "日付"
+            cell.textLabel?.text = NSLocalizedString("anniversarydateLabel", comment: "")
             cell.detailTextLabel?.text = DateTimeFormat().getYMDString(date: anniversary.date!)
             
         default: break

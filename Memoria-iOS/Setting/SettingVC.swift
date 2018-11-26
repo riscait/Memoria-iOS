@@ -37,11 +37,6 @@ class SettingVC: UITableViewController {
         AnniversaryDAO().deleteQueryAnniversary(whereField: "category", equalTo: "contactBirthday")
     }
     
-    /// 設定アプリへの遷移を促すダイアログをポップアップ
-    private func showAlert() {
-        DialogBox.showAlert(on: self, title: "設定で許可してください", message: "誕生日をとりこむためには連絡先への許可が必要です。", defaultAction: OpenOtherApp().openSettingsApp, hasCancel: true)
-    }
-
     
     // MARK: - Table view data source
 
@@ -56,13 +51,13 @@ class SettingVC: UITableViewController {
         // セルによって処理を振り分け
         switch selectedCell {
         case .importBirthday:
-            ContactAccess().checkStatus(rootVC: self, deniedHandler: showAlert)
+            ContactAccess().checkStatus(rootVC: self)
             
         case .deleteBirthday:
             DialogBox.showDestructiveAlert(on: self,
                                            title: NSLocalizedString("deleteContactBirthdayTitle", comment: ""),
                                            message: NSLocalizedString("deleteContactBirthdayMessage", comment: ""),
-                                           destructiveTitle: NSLocalizedString("doDelete", comment: ""),
+                                           destructiveTitle: NSLocalizedString("delete", comment: ""),
                                            destructiveAction: deleteContactBirthday)
             
         case .reviewThisApp:

@@ -4,8 +4,12 @@
 "cancel" = "キャンセル";
 "toNextPage" = "次へ";
 "edit" = "編集";
+"delete" = "消去する";
+"confirm" = "確認する";
+"date" = "日付";
 
 // 記念日登録画面
+"anniversaryRecord" = "記念日の登録";
 "askForNameInput" = "誕生日の場合は名前を入力";
 "givenName" = "名";
 "familyName" = "姓";
@@ -24,26 +28,26 @@
 "hideAnniversary" = "非表示にする";
 "deleteContactBirthdayTitle" = "誕生日の消去";
 "deleteContactBirthdayMessage" = "連絡先から取り込んだ誕生日を消去します";
-"doDelete" = "消去する";
+"birthdayNameLabel" = "名前";
+"anniversaryNameLabel" = "記念日の名前";
+"anniversarydateLabel" = "日付";
 
 "Anniversary" = "Anniversary";
 "Settings" = "設定";
 "hiddenList" = "非表示リスト";
 "titleForHeaderInSection" = "再表示するか、完全に削除することができます。";
-
+// Welcome画面
 "welcomeTitle" = "もう記念日は忘れません";
 "welcomeDetail" = "「メモリア」で友人や家族の誕生日、結婚記念日やサラダ記念日など様々な記念日をまとめて管理しましょう！";
 "welcomeContactTitle" = "誕生日を追加しましょう";
 "welcomeContactDetail" = "端末の「連絡先」に登録してある誕生日を取り込むことができます。";
 "welcomeContactImport" = "誕生日を読み込む";
-
 // Anniversary画面
 "letsAddAnniversary" = "右上の＋ボタンから\n記念日を追加しましょう";
 "whoseBirthday" = "%@ %@さん\n誕生日";
 "remainingDays" = "あと%@日";
 "remainingDaysToday" = "今日です！";
 "remainingDaysTomorrow" = "明日です！";
-
 // 設定画面
 "importBirthday" = "誕生日を連絡先アプリからインポート";
 "deleteBirthday" = "誕生日を削除する";
@@ -52,7 +56,11 @@
 "developerTwitter" = "開発者のTwitter";
 "sendRequest" = "お問い合わせ";
 "bugReportOrRequest" = "不具合・要望など";
-
+// アラート
+"pleasePermitToContactTitle" = "設定で許可してください";
+"pleasePermitToContactMessage" = "誕生日をとりこむためには連絡先への許可が必要です。";
+"importedBirthdayTitle" = "%@件の誕生日を取得しました";
+"importedBirthdayMessage" = "記念日一覧画面で確認できます";
 // 月
 "january" = "1月";
 "february" = "2月";
@@ -78,7 +86,8 @@
 "octoberShort" = "10月";
 "novemberShort" = "11月";
 "decenberShort" = "12月";
-
+// 星座
+"zodiacStarSign" = "星座";
 "aries" = "おひつじ座";
 "taurus" = "おうし座";
 "gemini" = "ふたご座";
@@ -91,7 +100,8 @@
 "capricorn" = "やぎ座";
 "aquarius" = "みずがめ座";
 "pisces" = "うお座";
-
+// 十二支
+"chineseZodiacSign" = "干支";
 "chineseZodiacSignRat" = "子年";
 "chineseZodiacSignOx" = "丑年";
 "chineseZodiacSignTiger" = "寅年";

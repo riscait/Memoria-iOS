@@ -26,8 +26,8 @@
                             <rect key="frame" x="0.0" y="-116" width="375" height="667"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="letsAddAnniversary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="C8a-MG-7oN" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                    <rect key="frame" x="8" y="293" width="347" height="81"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="letsAddAnniversary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="C8a-MG-7oN" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
+                                    <rect key="frame" x="36" y="293" width="319" height="81"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -38,6 +38,8 @@
                             </subviews>
                             <color key="backgroundColor" red="1" green="0.75845048429999995" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
+                                <constraint firstItem="C8a-MG-7oN" firstAttribute="leading" secondItem="uN7-kx-Uqn" secondAttribute="leading" constant="20" id="1Go-eA-FXO"/>
+                                <constraint firstAttribute="trailing" secondItem="C8a-MG-7oN" secondAttribute="trailing" constant="20" id="GAQ-fq-OjQ"/>
                                 <constraint firstItem="C8a-MG-7oN" firstAttribute="centerX" secondItem="uN7-kx-Uqn" secondAttribute="centerX" id="IaY-DD-5DN"/>
                                 <constraint firstItem="C8a-MG-7oN" firstAttribute="centerY" secondItem="uN7-kx-Uqn" secondAttribute="centerY" id="ddK-Hc-kJX"/>
                             </constraints>

@@ -19,16 +19,7 @@ class WelcomContactVC: UIViewController {
         // 連絡先アクセス用のクラスをインスタンス化
         let contactAccess = ContactAccess()
         // 連絡先情報の使用が許可されているか調べてから誕生日をとりこむ
-        contactAccess.checkStatus(rootVC: self, deniedHandler: showAlert)
-//        contactAccess.importContact() {
-//            print("連絡先アクセスのコールバック開始")
-//            print("\($0)件データを取得")
-//        }
-    }
-    
-    /// 設定アプリへの遷移を促すダイアログをポップアップ
-    private func showAlert() {
-        DialogBox.showAlert(on: self, title: "設定で許可してください", message: "誕生日をとりこむためには連絡先への許可が必要です。", defaultAction: OpenOtherApp().openSettingsApp, hasCancel: true)
+        contactAccess.checkStatus(rootVC: self)
     }
     
     /// Segueが実行されるときの処理

@@ -11,51 +11,6 @@ import Firebase
 
 final class AnniversaryDetailVC: UIViewController {
 
-    /// 星座を列挙
-    enum StarSign: String {
-        case aries
-        case taurus
-        case gemini
-        case cancer
-        case leo
-        case virgo
-        case libra
-        case scorpio
-        case sagittarius
-        case capricorn
-        case aquarius
-        case pisces
-        
-        // 値をローカライズして返す
-        func localizedString() -> String {
-            return NSLocalizedString(self.rawValue, comment: "")
-        }
-    }
-    /// 十二支を列挙
-    enum ChineseZodiacSign: String {
-        case rat
-        case ox
-        case tiger
-        case rabbit
-        case dragon
-        case snake
-        case horse
-        case sheep
-        case monkey
-        case rooster
-        case dog
-        case pig
-        
-        // 値をローカライズして返す
-        func localizedString() -> String {
-            let headChar = self.rawValue.prefix(1).uppercased()
-            let others = self.rawValue.suffix(self.rawValue.count - 1)
-            let signString = "chineseZodiacSign\(headChar)\(others)"
-            print(signString)
-            return NSLocalizedString(signString, comment: "")
-        }
-    }
-
     @IBOutlet weak var iconImageView: IconImageView!
     @IBOutlet weak var anniversaryNameLabel: UILabel!
     @IBOutlet weak var anniversaryDateLabel: UILabel!
@@ -88,8 +43,8 @@ final class AnniversaryDetailVC: UIViewController {
             guard let date = (anniversary["date"] as? Timestamp)?.dateValue(),
                 let category = anniversary["category"] as? String else { return }
             self.category = category
-            self.starSign = self.getStarSign(date: date)
-            self.chineseZodiacSign = self.getChineseZodiacSign(date: date)
+            self.starSign = ZodiacSign.ZodiacStarSign.getStarSign(date: date)
+            self.chineseZodiacSign = ZodiacSign.ChineseZodiacSign.getChineseZodiacSign(date: date)
             
             DispatchQueue.main.async {
                 self.anniversaryDateLabel.text = DateTimeFormat().getYMDString(date: date)
@@ -133,103 +88,12 @@ final class AnniversaryDetailVC: UIViewController {
         // 一覧画面に戻る
         navigationController?.popViewController(animated: true)
     }
-    
-    
-    // MARK: - 汎用関数
-    
-    /// 星座を調べる
-    ///
-    /// - Parameter date: 星座を調べたい日付
-    /// - Returns: 星座名
-    private func getStarSign(date: Date) -> String {
-        let sign: String
-        
-        let calendar = Calendar.current
-
-        // 日付の「月」と「日」を取得
-        let monthAndDayDate = calendar.dateComponents([.month, .day], from: date)
-
-        switch (monthAndDayDate.month!, monthAndDayDate.day!) {
-        case (3, 21...31), (4, 1...19):
-            sign = StarSign.aries.localizedString()
-        case (4, 20...31), (5, 1...20):
-            sign = StarSign.taurus.localizedString()
-        case (5, 21...31), (6, 1...21):
-            sign = StarSign.gemini.localizedString()
-        case (6, 22...31), (7, 1...22):
-            sign = StarSign.cancer.localizedString()
-        case (7, 23...31), (8, 1...22):
-            sign = StarSign.leo.localizedString()
-        case (8, 23...31), (9, 1...22):
-            sign = StarSign.virgo.localizedString()
-        case (9, 23...31), (10, 1...23):
-            sign = StarSign.libra.localizedString()
-        case (10, 24...31), (11, 1...22):
-            sign = StarSign.scorpio.localizedString()
-        case (11, 23...31), (12, 1...21):
-            sign = StarSign.sagittarius.localizedString()
-        case (12, 22...31), (1, 1...19):
-            sign = StarSign.capricorn.localizedString()
-        case (1, 20...31), (2, 1...18):
-            sign = StarSign.aquarius.localizedString()
-        case (2, 19...31), (3, 1...20):
-            sign = StarSign.pisces.localizedString()
-        default:
-            sign = NSLocalizedString("unknown", comment: "")
-        }
-        return sign
-    }
-    
-    /// 干支を調べる
-    ///
-    /// - Parameter date: 干支を調べたい日付
-    /// - Returns: 十二支名
-    private func getChineseZodiacSign(date: Date) -> String {
-        let sign: String
-        
-        let calendar = Calendar.current
-        
-        // 日付の「年」を取得。1年なら「不明」
-        guard let year = calendar.dateComponents([.year], from: date).year, year != 1 else {
-            return NSLocalizedString("unknown", comment: "")
-        }
-        
-        switch year % 12 {
-        case 4:
-            sign = ChineseZodiacSign.rat.localizedString()
-        case 5:
-            sign = ChineseZodiacSign.ox.localizedString()
-        case 6:
-            sign = ChineseZodiacSign.tiger.localizedString()
-        case 7:
-            sign = ChineseZodiacSign.rabbit.localizedString()
-        case 8:
-            sign = ChineseZodiacSign.dragon.localizedString()
-        case 9:
-            sign = ChineseZodiacSign.snake.localizedString()
-        case 10:
-            sign = ChineseZodiacSign.horse.localizedString()
-        case 11:
-            sign = ChineseZodiacSign.sheep.localizedString()
-        case 0:
-            sign = ChineseZodiacSign.monkey.localizedString()
-        case 1:
-            sign = ChineseZodiacSign.rooster.localizedString()
-        case 2:
-            sign = ChineseZodiacSign.dog.localizedString()
-        case 3:
-            sign = ChineseZodiacSign.pig.localizedString()
-        default:
-            sign = NSLocalizedString("unknown", comment: "")
-        }
-        return sign
-    }
-
 }
 
 
 // MARK: - UITableViewDataSource
-extension AnniversaryDetailVC: UITableViewDataSource {
+
+extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // セルの数
         return 2
@@ -241,22 +105,15 @@ extension AnniversaryDetailVC: UITableViewDataSource {
 
         switch (category, indexPath.row) {
         case ("contactBirthday", 0):
-            cell.textLabel?.text = "星座"
+            cell.textLabel?.text = NSLocalizedString("zodiacStarSign", comment: "")
             cell.detailTextLabel?.text = starSign
 
         case ("contactBirthday", 1):
-            cell.textLabel?.text = "干支"
+            cell.textLabel?.text = NSLocalizedString("chineseZodiacSign", comment: "")
             cell.detailTextLabel?.text = chineseZodiacSign
             
         default: break
         }
         return cell
     }
-}
-
-
-// MARK: - UITableViewDelegate
-
-extension AnniversaryDetailVC: UITableViewDelegate {
-    
 }

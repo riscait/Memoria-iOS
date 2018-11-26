@@ -25,7 +25,8 @@ class ContactAccess {
     /// 端末の連絡先アクセス許可状態をチェックする
     ///
     /// - Returns: アクセス可能状態ならTrue、それ以外はfalse
-    func checkStatus(rootVC: UIViewController, deniedHandler: @escaping () -> ()) {
+    func checkStatus(rootVC: UIViewController) {
+        
         // 連絡帳へのアクセス許可状態を取得する
         let accessStatus = CNContactStore.authorizationStatus(for: .contacts)
         
@@ -38,27 +39,39 @@ class ContactAccess {
                     print("連絡先へのアクセスが許可されました")
                     self.importContact {
                         print("連絡先アクセスのコールバック開始")
-                        DialogBox.showAlert(on: rootVC, title: "\($0)件の誕生日を取得しました", message: "記念日一覧画面で確認できます", defaultAction: nil, hasCancel: false)
+                        DialogBox.showAlert(on: rootVC,
+                                            title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), $0),
+                                            message: NSLocalizedString("importedBirthdayMessage", comment: ""),
+                                            defaultAction: nil, hasCancel: false)
                     }
                 } else {
                     print("連絡先へのアクセスが拒否されました")
-                    deniedHandler()
+                    /// 設定アプリへの遷移を促すダイアログをポップアップ
+                    DialogBox.showAlert(on: rootVC,
+                                        title: NSLocalizedString("pleasePermitToContactTitle", comment: ""),
+                                        message: NSLocalizedString("pleasePermitToContactMessage", comment: ""),
+                                        defaultAction: OpenOtherApp().openSettingsApp, hasCancel: true)
                 }
             })
         case .restricted:  // 連絡先情報を使用できません
-            print("このアプリケーションは連絡先情報を使用できません")
+            print("このアプリケーションは 連絡先情報を使用できません")
             // TODO: 連絡先を取得できない旨を表示する
             
         case .denied:  // 連絡先へのアクセスが拒否されている
             print("連絡先へのアクセスが拒否されている")
-            // TODO: 設定で連絡先へのアクセスを許可してもらう必要がある
-            deniedHandler()
+            DialogBox.showAlert(on: rootVC,
+                                title: NSLocalizedString("pleasePermitToContactTitle", comment: ""),
+                                message: NSLocalizedString("pleasePermitToContactMessage", comment: ""),
+                                defaultAction: OpenOtherApp().openSettingsApp, hasCancel: true)
             
         case .authorized:  // 連絡先へのアクセス可能
             print("連絡先へのアクセス可能")
             self.importContact {
                 print("連絡先アクセスのコールバック開始")
-                DialogBox.showAlert(on: rootVC, title: "\($0)件の誕生日を取得しました", message: "記念日一覧画面で確認できます", defaultAction: nil, hasCancel: false)
+                DialogBox.showAlert(on: rootVC,
+                                    title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), $0.description),
+                                    message: NSLocalizedString("importedBirthdayMessage", comment: ""),
+                                    defaultAction: nil, hasCancel: false)
             }
         }
     }
