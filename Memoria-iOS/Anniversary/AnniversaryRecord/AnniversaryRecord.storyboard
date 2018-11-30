@@ -79,7 +79,7 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6t-cM-2BA" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6t-cM-2BA" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="72.5" y="98.5" width="198" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="2rl-an-LLT"/>
@@ -113,7 +113,7 @@
                                                     <outlet property="delegate" destination="Ylf-3X-1uV" id="GhB-sA-zVZ"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wK-wB-iUx" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wK-wB-iUx" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="72.5" y="311.5" width="198" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="ggm-Ae-iZx"/>
@@ -190,6 +190,8 @@
                         <outlet property="anniversaryTitle" destination="9Ra-07-Kdm" id="nMe-Pb-55r"/>
                         <outlet property="familyName" destination="Hxi-wa-WEC" id="v9S-3g-Pkt"/>
                         <outlet property="givenName" destination="gou-7h-68e" id="H8O-Ty-YhT"/>
+                        <outlet property="recordAnniversaryButton" destination="3wK-wB-iUx" id="bvT-qy-zTw"/>
+                        <outlet property="recordBirthdayButton" destination="P6t-cM-2BA" id="Stj-Mc-eFm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pw2-LL-9qg" userLabel="First Responder" sceneMemberID="firstResponder"/>

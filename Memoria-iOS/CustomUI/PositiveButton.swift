@@ -22,14 +22,18 @@ import UIKit
     
     override func draw(_ rect: CGRect) {
         // 背景色
-        self.layer.backgroundColor = #colorLiteral(red: 1, green: 0.6762310863, blue: 0, alpha: 1).cgColor
+        layer.backgroundColor = #colorLiteral(red: 1, green: 0.6762310863, blue: 0, alpha: 1).cgColor
         // 角丸
-        self.layer.cornerRadius = 3
+        layer.cornerRadius = 3
         // 文字色
-        self.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        
+        if state == .disabled {
+            layer.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
+        }
         // 内側の余白
         let padding: CGFloat = 10.0
-        self.contentEdgeInsets = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+        contentEdgeInsets = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
         // 太字にする
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
 

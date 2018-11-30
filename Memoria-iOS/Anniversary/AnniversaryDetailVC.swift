@@ -66,7 +66,7 @@ final class AnniversaryDetailVC: UIViewController {
     /// 非表示にするボタン
     @objc private func toggleHidden() {
         print("非表示にします")
-        DialogBox.showAlert(on: self, title: "この記念日を非表示にします", message: "非表示にした記念日は「設定タブ」にて再表示することができます。", defaultAction: hideThisAnniversary, hasCancel: true)
+        DialogBox.showAlert(on: self, title: NSLocalizedString("hideThisAnniversaryTitle", comment: ""), message: NSLocalizedString("hideThisAnniversaryMessage", comment: ""), defaultAction: hideThisAnniversary, hasCancel: true)
     }
     
     /// 非表示にするボタンを承諾した時の処理
@@ -104,11 +104,13 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "anniversaryDetailCell", for: indexPath)
 
         switch (category, indexPath.row) {
-        case ("contactBirthday", 0):
+        case ("contactBirthday", 0),
+             ("manualBirthday", 0):
             cell.textLabel?.text = NSLocalizedString("zodiacStarSign", comment: "")
             cell.detailTextLabel?.text = starSign
 
-        case ("contactBirthday", 1):
+        case ("contactBirthday", 1),
+             ("manualBirthday", 1):
             cell.textLabel?.text = NSLocalizedString("chineseZodiacSign", comment: "")
             cell.detailTextLabel?.text = chineseZodiacSign
             

@@ -82,20 +82,7 @@ class AnniversaryDateRecordVC: UIViewController {
         
         // ピッカーで選択できる範囲を設定
         years = [Int](2...nowYear+10)
-        months = selectedSegment == .enabledYear
-            ? [NSLocalizedString("januaryShort", comment: ""),
-               NSLocalizedString("februaryShort", comment: ""),
-               NSLocalizedString("marchShort", comment: ""),
-               NSLocalizedString("aprilShort", comment: ""),
-               NSLocalizedString("mayShort", comment: ""),
-               NSLocalizedString("juneShort", comment: ""),
-               NSLocalizedString("julyShort", comment: ""),
-               NSLocalizedString("augustShort", comment: ""),
-               NSLocalizedString("septemberShort", comment: ""),
-               NSLocalizedString("octoberShort", comment: ""),
-               NSLocalizedString("novemberShort", comment: ""),
-               NSLocalizedString("decenberShort", comment: "")]
-            : [NSLocalizedString("january", comment: ""),
+        months = [NSLocalizedString("january", comment: ""),
                NSLocalizedString("february", comment: ""),
                NSLocalizedString("march", comment: ""),
                NSLocalizedString("april", comment: ""),
@@ -114,7 +101,7 @@ class AnniversaryDateRecordVC: UIViewController {
         // 年有りの場合（年は2始まりなので1多く引いている）
         switch (dateOrder, selectedSegment) {
         case (.ymd, .enabledYear):
-            pickerView.selectRow(nowYear - 1 - 1, inComponent: first, animated: true)
+            pickerView.selectRow(nowYear - 2, inComponent: first, animated: true)
             pickerView.selectRow(nowMonth - 1, inComponent: second, animated: true)
             pickerView.selectRow(nowDay - 1, inComponent: third, animated: true)
 
@@ -123,7 +110,7 @@ class AnniversaryDateRecordVC: UIViewController {
             pickerView.selectRow(nowDay - 1, inComponent: second, animated: true)
             
         case (.mdy, .enabledYear):
-            pickerView.selectRow(nowYear - 1 - 1, inComponent: third, animated: true)
+            pickerView.selectRow(nowYear - 2, inComponent: third, animated: true)
             pickerView.selectRow(nowMonth - 1, inComponent: first, animated: true)
             pickerView.selectRow(nowDay - 1, inComponent: second, animated: true)
 

@@ -4,7 +4,8 @@
 "cancel" = "キャンセル";
 "toNextPage" = "次へ";
 "edit" = "編集";
-"delete" = "消去する";
+"delete" = "削除する";
+"redisplay" = "再表示";
 "confirm" = "確認する";
 "date" = "日付";
 
@@ -32,8 +33,8 @@
 "anniversaryNameLabel" = "記念日の名前";
 "anniversarydateLabel" = "日付";
 
-"Anniversary" = "Anniversary";
-"Settings" = "設定";
+"anniversary" = "Anniversary";
+"settings" = "設定";
 "hiddenList" = "非表示リスト";
 "titleForHeaderInSection" = "再表示するか、完全に削除することができます。";
 // Welcome画面
@@ -48,7 +49,13 @@
 "remainingDays" = "あと%@日";
 "remainingDaysToday" = "今日です！";
 "remainingDaysTomorrow" = "明日です！";
+// Anniversary詳細画面
+"hideThisAnniversaryTitle" = "この記念日を非表示にします";
+"hideThisAnniversaryMessage" = "非表示にした記念日は「設定タブ」にて再表示することができます";
 // 設定画面
+"aboutAnniversary" = "記念日の設定";
+"aboutMemoria" = "メモリアについて";
+"copyright" = "©︎ 2018 nerco studio";
 "importBirthday" = "誕生日を連絡先アプリからインポート";
 "deleteBirthday" = "誕生日を削除する";
 "reviewThisApp" = "メモリアを評価する";

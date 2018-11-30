@@ -39,7 +39,7 @@ final class AnniversaryViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = NSLocalizedString("Anniversary", comment: "")
+        self.title = NSLocalizedString("anniversary", comment: "")
         
         /* ---------- 検索バーは未実装 ----------
         let searchController = UISearchController(searchResultsController: nil)

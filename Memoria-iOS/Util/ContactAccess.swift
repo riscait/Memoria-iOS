@@ -40,7 +40,7 @@ class ContactAccess {
                     self.importContact {
                         print("連絡先アクセスのコールバック開始")
                         DialogBox.showAlert(on: rootVC,
-                                            title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), $0),
+                                            title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), $0.description),
                                             message: NSLocalizedString("importedBirthdayMessage", comment: ""),
                                             defaultAction: nil, hasCancel: false)
                     }

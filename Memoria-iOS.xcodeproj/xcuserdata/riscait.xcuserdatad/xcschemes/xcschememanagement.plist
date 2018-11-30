@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Memoria-iOS (ja).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 		<key>Memoria-iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,14 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>14</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>8D0FB83A2182002700BFCB79</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

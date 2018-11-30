@@ -13,6 +13,8 @@ class AnniversaryRecordVC: UIViewController {
     @IBOutlet weak var familyName: UITextField!
     @IBOutlet weak var givenName: UITextField!
     @IBOutlet weak var anniversaryTitle: UITextField!
+    @IBOutlet weak var recordBirthdayButton: PositiveButton!
+    @IBOutlet weak var recordAnniversaryButton: PositiveButton!
     
     var activeTextField: UITextField?
     
@@ -34,13 +36,12 @@ class AnniversaryRecordVC: UIViewController {
         super.viewWillAppear(animated)
         configureObserver()  //Notification発行
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        removeObserver()  //Notification破棄
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touchesBeganが呼ばれた1")
+        view.endEditing(true)
     }
-    
-    
+
     // MARK: - Navigation
 
     /// 画面遷移直前に呼ばれる
@@ -78,13 +79,8 @@ class AnniversaryRecordVC: UIViewController {
                                  name: UIResponder.keyboardWillShowNotification, object: nil)
         notification.addObserver(self, selector: #selector(keyboardWillHide(_:)),
                                  name: UIResponder.keyboardWillHideNotification, object: nil)
+        notification.addObserver(self, selector: #selector(textFieldEditingChanged(_:)), name: UITextField.textDidChangeNotification, object: nil)
         print("Notificationを発行")
-    }
-    
-    /// Notification破棄
-    func removeObserver() {
-        NotificationCenter.default.removeObserver(self)
-        print("Notificationを破棄")
     }
     
     /// キーボードが表示時に画面をずらす。
@@ -115,16 +111,45 @@ class AnniversaryRecordVC: UIViewController {
         }
         print("keyboardWillHideを実行")
     }
+    
+    /// TextFieldが編集された時に呼び出される
+    @objc func textFieldEditingChanged(_ sender: Notification) {
+        // 誕生日の名前が入力されているか
+        if familyName.text?.count ?? 0 > 0 ||
+            givenName.text?.count ?? 0 > 0 {
+            recordBirthdayButton.isEnabled = true
+        } else {
+            recordBirthdayButton.isEnabled = false
+        }
+        // 記念日の名前が入力されているか
+        if anniversaryTitle.text?.count ?? 0 > 0 {
+            recordAnniversaryButton.isEnabled = true
+        } else {
+            recordAnniversaryButton.isEnabled = false
+        }
+        print("textFieldEditingChangedを実行")
+    }
 }
 
+
+// MARK: - UITextFieldDelegate
+
 extension AnniversaryRecordVC: UITextFieldDelegate {
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         activeTextField = textField
         return true
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return true
+    }
+}
+
+extension UIScrollView {
+    // これがないとスクロールビューがタッチを検出しないため記述
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        superview?.touchesBegan(touches, with: event)
     }
 }

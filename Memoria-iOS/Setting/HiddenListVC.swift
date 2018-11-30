@@ -75,8 +75,8 @@ class HiddenListVC: UITableViewController {
         guard let indexPath = hiddenTableView.indexPath(for: sender.superview!.superview as! UITableViewCell) else { return }
         print("\(indexPath)の編集ボタンが押されました")
         
-        let defaultActionSet = ["再表示": redisplayThisAnniversary]
-        let destructiveActionSet = ["削除する": deleteThisAnniversary]
+        let defaultActionSet = [NSLocalizedString("redisplay", comment: ""): redisplayThisAnniversary]
+        let destructiveActionSet = [NSLocalizedString("delete", comment: ""): deleteThisAnniversary]
         // 選択されたセルの行番号
         selectedRow = indexPath.row
         // ActionSheetを表示

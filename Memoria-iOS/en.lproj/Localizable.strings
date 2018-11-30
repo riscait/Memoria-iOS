@@ -5,6 +5,7 @@
 "toNextPage" = "Next";
 "edit" = "Edit";
 "delete" = "Delete";
+"redisplay" = "Redisplay";
 "confirm" = "Confirm";
 "date" = "Date";
 
@@ -15,7 +16,7 @@
 "familyName" = "Family name";
 "givenNamePlaceholder" = "Given name";
 "familyNamePlaceholder" = "Family name";
-"———————  or  ———————" = "———————  or  ———————";
+"———————  or  ———————" = "———————  OR  ———————";
 "askForAnniversaryNameInput" = "Enter the name of the anniversary in the case of anniversary";
 "anniversaryPlaceholder" = "Anniversary name";
 "recordAnniversary" = "Record Anniversary";
@@ -32,8 +33,8 @@
 "anniversaryNameLabel" = "Anniversary name";
 "anniversarydateLabel" = "Date";
 
-"Anniversary" = "Anniversary";
-"Settings" = "Settings";
+"anniversary" = "Anniversary";
+"settings" = "Settings";
 "hiddenList" = "Hidden list";
 "titleForHeaderInSection" = "You can redisplay it or delete it completely.";
 // Welcome view
@@ -48,12 +49,18 @@
 "remainingDays" = "%@ days";
 "remainingDaysToday" = "Today!";
 "remainingDaysTomorrow" = "Tomorrow!";
+// AnniversaryDetail view
+"hideThisAnniversaryTitle" = "Hide this anniversary";
+"hideThisAnniversaryMessage" = "You can redisplay anniversaries that were hidden in the \"Settings tab\"";
 // Settings view
+"aboutAnniversary" = "Anniversary";
+"aboutMemoria" = "Memoria";
+"copyright" = "©︎ 2018 nerco studio";
 "importBirthday" = "Import birthday from \"Contact App\"";
 "deleteBirthday" = "Delete birthday";
 "reviewThisApp" = "Review this App";
 "appStore" = "App Store";
-"developerTwitter" = "Dev's Twitter";
+"developerTwitter" = "Developer Twitter";
 "sendRequest" = "Send reports";
 "bugReportOrRequest" = "Bug or Request";
 // Alert

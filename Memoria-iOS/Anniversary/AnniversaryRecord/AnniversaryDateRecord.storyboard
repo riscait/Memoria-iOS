@@ -48,13 +48,16 @@
                                         </connections>
                                     </segmentedControl>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFe-5W-KGH">
-                                        <rect key="frame" x="27.5" y="94" width="320" height="216"/>
+                                        <rect key="frame" x="0.0" y="94" width="375" height="216"/>
                                         <connections>
                                             <outlet property="dataSource" destination="kFp-hb-g2G" id="i84-71-fdI"/>
                                             <outlet property="delegate" destination="kFp-hb-g2G" id="dSw-dF-pXS"/>
                                         </connections>
                                     </pickerView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="cFe-5W-KGH" firstAttribute="width" secondItem="1jX-xl-hgx" secondAttribute="width" id="qRQ-yn-puF"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
