@@ -7,8 +7,8 @@ target 'Memoria-iOS' do
 
   # Pods for Memoria-iOS
 
-  pod 'FirebaseUI'
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
 
 end

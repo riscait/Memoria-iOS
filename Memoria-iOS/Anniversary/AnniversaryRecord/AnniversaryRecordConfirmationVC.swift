@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Firebase
+
 class AnniversaryRecordConfirmationVC: UIViewController {
 
     enum CellContent: Int, CaseIterable {
@@ -44,12 +46,11 @@ class AnniversaryRecordConfirmationVC: UIViewController {
             additionalAnniversary["title"] = anniversary.title
         }
         // ユーザーのユニークIDを読み込む
-        let userDefaults = UserDefaults.standard
-        guard let userId = userDefaults.string(forKey: "uuid") else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         // データベースに記念日を保存する
         let database = AnniversaryDAO()
         database.setData(collection: "users",
-                         document: userId,
+                         document: uid,
                          subCollection: "anniversary",
                          subDocument: anniversaryId,
                          data: additionalAnniversary,

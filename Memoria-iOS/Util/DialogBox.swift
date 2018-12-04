@@ -20,11 +20,11 @@ final class DialogBox: UIAlertController {
     ///   - defaultAction: デフォルトアクション選択時の処理
     ///   - hasCancel: キャンセルボタンをつけるかどうか
     class func showAlert(on rootVC: UIViewController,
-                         title: String,
-                         message: String,
+                         title: String?,
+                         message: String?,
                          defaultTitle: String = NSLocalizedString("ok", comment: ""),
-                         defaultAction: (() -> ())?,
-                         hasCancel: Bool) {
+                         defaultAction: (() -> ())? = nil,
+                         hasCancel: Bool = false) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let defaultAction = UIAlertAction(title: defaultTitle, style: .default, handler: { action -> Void in
@@ -43,6 +43,13 @@ final class DialogBox: UIAlertController {
         rootVC.present(alert, animated: true, completion: nil)
     }
     
+    /// メッセージとOKボタンだけのシンプルなアラート
+    class func showAlert(on rootVC: UIViewController,
+                         message: String) {
+        showAlert(on: rootVC, title: nil, message: message, defaultAction: nil, hasCancel: false)
+    }
+
+    
     /// 破壊的アクションのアラートダイアログボックスをポップアップ
     ///
     /// - Parameters:
@@ -52,8 +59,8 @@ final class DialogBox: UIAlertController {
     ///   - destructiveTitle: アクションの文字列（省略で"OK"）
     ///   - destructiveAction: アクション選択時の処理
     class func showDestructiveAlert(on rootVC: UIViewController,
-                         title: String,
-                         message: String,
+                         title: String?,
+                         message: String?,
                          destructiveTitle: String,
                          destructiveAction: @escaping (() -> ())) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -103,14 +110,22 @@ final class DialogBox: UIAlertController {
     }
     
     class func showAlertWithIndicator(on rootVC: UIViewController,
-                                      message: String) {
+                                      message: String?,
+                                      completion: @escaping () -> ()) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         
         let indicator = UIActivityIndicatorView(style: .gray)
-        indicator.center = CGPoint(x: 25, y: 25)
+        indicator.center = CGPoint(x: 25, y: 30)
         alert.view.addSubview(indicator)
         
         indicator.startAnimating()
-        rootVC.present(alert, animated: true, completion: nil)
+        rootVC.present(alert, animated: true, completion: completion)
+    }
+    
+    class func dismissAlertWithIndicator(on rootVC: UIViewController,
+                                         completion: @escaping () -> ()) {
+
+        guard let alert = (rootVC.presentedViewController as? UIAlertController) else { return }
+        alert.dismiss(animated: true, completion: completion)
     }
 }

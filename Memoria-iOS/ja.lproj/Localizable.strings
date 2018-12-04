@@ -8,6 +8,34 @@
 "redisplay" = "再表示";
 "confirm" = "確認する";
 "date" = "日付";
+"signIn" = "ログイン";
+"signOut" = "ログアウト";
+"close" = "とじる";
+// アカウント登録画面
+"forgotPassword" = "パワスードを忘れた場合はこちら";
+"pleaseEnterEmail" = "メールアドレスを入力してください";
+"pleaseEnterPassword" = "パスワードを入力してください";
+"pleaseEnterPasswordConfirmation" = "確認パスワードを入力してください";
+"placeholderEmail" = "メールアドレス";
+"placeholderPassword" = "パスワード";
+"placeholderPasswordConfirmation" = "パスワード（確認）";
+"mismatchPasswordConfirmation" = "確認用パスワードが一致していません";
+"signUpButton" = "アカウント発行";
+"signInButton" = "ログイン";
+"passwordConditions" = "8文字以上の英数字を入力してください";
+"urgeSignUpLabel" = "アカウントを持っていませんか？";
+"urgeSignUpButton" = "アカウントを登録する";
+"underSignIn" = "ログイン中";
+"underSendEmail" = "メールアドレス検証中";
+"sendSignInLinkAfterMessage" = "メール文中のリンクを確認してください";
+"passwordResetMailSentTitle" = "メールを送信しました";
+"passwordResetMailSentMessage" = "リンクからパスワードをリセットしてください";
+// Firebase Errorメッセージ
+"The email address is badly formatted." = "正しいメールアドレスを入力してください";
+"An email address must be provided." = "メールアドレスを入力する必要があります";
+"The email address is already in use by another account." = "入力されたメールアドレスはすでに別のアカウントで使用されています。";
+"There is no user record corresponding to this identifier. The user may have been deleted." = "このメールアドレスに対応するユーザー情報はありません。\nユーザーが削除された可能性があります";
+"The password is invalid or the user does not have a password." = "パスワードが間違っているか、ユーザーにパスワードが設定されていません。";
 
 // 記念日登録画面
 "anniversaryRecord" = "記念日の登録";
@@ -53,6 +81,11 @@
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
 "hideThisAnniversaryMessage" = "非表示にした記念日は「設定タブ」にて再表示することができます";
 // 設定画面
+"aboutAccount" = "アカウント";
+"accountSetting" = "アカウント情報"; //FIXME: アカウント設定
+"signOutTitle" = "本当にログアウトしますか？";
+"signOutMessage" = "ログイン画面に遷移します";
+"signOutButton" = "ログアウトする";
 "aboutAnniversary" = "記念日の設定";
 "aboutMemoria" = "メモリアについて";
 "copyright" = "©︎ 2018 nerco studio";

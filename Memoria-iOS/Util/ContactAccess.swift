@@ -119,16 +119,12 @@ class ContactAccess {
             ]
             
             // ユーザーのユニークIDを読み込む
-            let userDefaults = UserDefaults.standard
-            guard let userId = userDefaults.string(forKey: "uuid") else {
-                print("UUIDが見つかりません！")
-                return
-            }
-            
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+
             // データベースに連絡先の誕生日情報を保存する
             let database = AnniversaryDAO()
             database.setData(collection: "users",
-                             document: userId,
+                             document: uid,
                              subCollection: "anniversary",
                              subDocument: contact.identifier,
                              data: contactBirthday,

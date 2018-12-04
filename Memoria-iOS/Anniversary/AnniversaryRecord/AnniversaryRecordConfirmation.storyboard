@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bcK-Gm-ZHh">
-                                <rect key="frame" x="0.0" y="104" width="375" height="459"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="445"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="confirmationCell" textLabel="Hqd-4H-YQK" detailTextLabel="ScU-AD-eUz" style="IBUITableViewCellStyleValue1" id="c7X-Vr-UIf">
@@ -53,9 +53,10 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSt-G9-u8x" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="88.5" y="617" width="198" height="30"/>
+                                <rect key="frame" x="88.5" y="603" width="198" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="mf7-2S-hRp"/>
+                                    <constraint firstAttribute="height" constant="44" id="t3a-4g-VZw"/>
                                 </constraints>
                                 <state key="normal" title="anniversaryRecord"/>
                                 <userDefinedRuntimeAttributes>

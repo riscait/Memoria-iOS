@@ -40,7 +40,7 @@
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCC-Ff-qbL">
-                                <rect key="frame" x="16" y="336" width="343" height="363"/>
+                                <rect key="frame" x="16" y="336" width="343" height="358"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="welcomeTitle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyX-te-lrd" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="8.0000000000000018" width="343" height="28.666666666666671"/>
@@ -74,9 +74,10 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fC-3X-iNb" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="88.666666666666686" y="719" width="198" height="39"/>
+                                <rect key="frame" x="88.666666666666686" y="714" width="198" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="ZVy-fK-mXV"/>
+                                    <constraint firstAttribute="height" constant="44" id="k6t-sd-ZWy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="toNextPage"/>

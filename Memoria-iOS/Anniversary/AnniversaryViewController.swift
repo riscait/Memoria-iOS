@@ -24,8 +24,10 @@ final class AnniversaryViewController: UICollectionViewController {
     let dtf = DateTimeFormat()
     /// 正直まだよく理解していないリスナー登録？
     var listenerRegistration: ListenerRegistration?
+    var authStateListenerHandler: AuthStateDidChangeListenerHandle?
+    
     /// ユーザー一意のID
-    var uuid: String?
+    var uid: String?
     /// データ配列
     var anniversarys: [[String: Any]] = []
     
@@ -39,8 +41,9 @@ final class AnniversaryViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = NSLocalizedString("anniversary", comment: "")
+        title = NSLocalizedString("anniversary", comment: "")
         
+        uid = Auth.auth().currentUser?.uid
         /* ---------- 検索バーは未実装 ----------
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
@@ -55,16 +58,19 @@ final class AnniversaryViewController: UICollectionViewController {
         
         // CollectionViewのレイアウト設定
         setLayout(margin: 6.0)
-        // ユーザーデフォルトからUUIDを読み込む
-        uuid = userDefaults.string(forKey: "uuid")
     }
     
     /// Viewが表示される直前に呼ばれる（タブ切り替え等も含む）
     override func viewWillAppear(_ animated: Bool) {
         
-        guard let uuid = uuid else { return }
+        // リスナーをアタッチ
+//        authStateListenerHandler = Auth.auth().addStateDidChangeListener { (auth, user) in
+//            <#code#>
+//        }
+        
+        guard let uid = uid else { return }
         let usersCollection = Firestore.firestore().collection("users")
-        let anniversaryCollection = usersCollection.document(uuid).collection("anniversary")
+        let anniversaryCollection = usersCollection.document(uid).collection("anniversary")
         let filteredCollection = anniversaryCollection.whereField("isHidden", isEqualTo: false)
         // anniversaryコレクションの変更を監視する
         listenerRegistration = filteredCollection.addSnapshotListener { snapshot, error in
@@ -98,7 +104,8 @@ final class AnniversaryViewController: UICollectionViewController {
     /// Viewが非表示になる直前に呼ばれる
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+//        // リスナーデタッチ
+//        Auth.auth().removeStateDidChangeListener(authStateListenerHandler!)
         // リスナー登録を破棄する
         if let listenerRegistration = listenerRegistration {
             listenerRegistration.remove()

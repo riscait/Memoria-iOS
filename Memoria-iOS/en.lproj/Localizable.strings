@@ -8,6 +8,34 @@
 "redisplay" = "Redisplay";
 "confirm" = "Confirm";
 "date" = "Date";
+"signIn" = "Sign in";
+"signOut" = "Sign out";
+"close" = "Close";
+// アカウント登録画面
+"forgotPassword" = "Forgot Password";
+"pleaseEnterEmail" = "please enter your email";
+"pleaseEnterPassword" = "please enter your password";
+"pleaseEnterPasswordConfirmation" = "please enter your password confirmation";
+"placeholderEmail" = "Email";
+"placeholderPassword" = "Password";
+"placeholderPasswordConfirmation" = "Password (Confirmation)";
+"mismatchPasswordConfirmation" = "The two passwords do not match.";
+"signUpButton" = "Sign up";
+"signInButton" = "Sing in";
+"passwordConditions" = "Please enter at least 8 alphanumeric characters";
+"urgeSignUpLabel" = "Don't have an account?";
+"urgeSignUpButton" = "Sign up!";
+"underSignIn" = "Sign in...";
+"underSendEmail" = "Verifying email address";
+"sendSignInLinkAfterMessage" = "Check your email for link.";
+"passwordResetMailSentTitle" = "Email sent";
+"passwordResetMailSentMessage" = "Please reset the password from the Email link.";
+// Firebase Error Message (English does not require translation)
+//"The email address is badly formatted." = "";
+//"An email address must be provided." = "";
+//"The email address is already in use by another account." = "";
+//"There is no user record corresponding to this identifier. The user may have been deleted." = "";
+//"The password is invalid or the user does not have a password." = "";
 
 // Record anniversary view
 "anniversaryRecord" = "Record Anniversary";
@@ -53,6 +81,11 @@
 "hideThisAnniversaryTitle" = "Hide this anniversary";
 "hideThisAnniversaryMessage" = "You can redisplay anniversaries that were hidden in the \"Settings tab\"";
 // Settings view
+"aboutAccount" = "User Account";
+"accountSetting" = "Account info"; //FIXME: Account Setting
+"signOutTitle" = "Sign out?";
+"signOutMessage" = "Transit to the Sign in screen.";
+"signOutButton" = "Sign out";
 "aboutAnniversary" = "Anniversary";
 "aboutMemoria" = "Memoria";
 "copyright" = "©︎ 2018 nerco studio";

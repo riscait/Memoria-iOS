@@ -24,9 +24,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k3d-kD-PJf" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="88.666666666666686" y="719" width="198" height="39"/>
+                                <rect key="frame" x="88.666666666666686" y="714" width="198" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="Sdl-l4-Yzu"/>
+                                    <constraint firstAttribute="height" constant="44" id="Tzj-z7-VKv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="toNextPage"/>
@@ -38,7 +39,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLD-Q9-4SU">
-                                <rect key="frame" x="16" y="352" width="343" height="347"/>
+                                <rect key="frame" x="16" y="352" width="343" height="342"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="welcomeContactTitle" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkY-OJ-WWT" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="8.0000000000000018" width="343" height="28.666666666666671"/>
@@ -59,9 +60,10 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVE-3T-Jsz" customClass="AccentButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="59.666666666666686" y="92.333333333333314" width="224" height="39"/>
+                                        <rect key="frame" x="59.666666666666686" y="92.333333333333314" width="224" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="IbI-L6-g3u"/>
+                                            <constraint firstAttribute="height" constant="44" id="cSy-EW-qXe"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="welcomeContactImport"/>

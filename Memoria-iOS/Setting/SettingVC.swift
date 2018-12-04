@@ -9,10 +9,13 @@
 import UIKit
 import SafariServices
 
+import Firebase
+
 class SettingVC: UITableViewController {
 
     /// TableViewのセル。rowValueはtag番号を示す
     enum SettingCell: Int {
+        case signOut = 9
         case importBirthday = 12
         case deleteBirthday
         case reviewThisApp = 21
@@ -20,19 +23,24 @@ class SettingVC: UITableViewController {
         case supoort
     }
     
+    @IBOutlet weak var accountStateLabel: UILabel!
     
     // MARK: - ライフサイクル
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("settings", comment: "")
-        self.clearsSelectionOnViewWillAppear = false
+        title = NSLocalizedString("settings", comment: "")
+        clearsSelectionOnViewWillAppear = false
+        
+        guard let user = Auth.auth().currentUser else { return }
+        
+        accountStateLabel.text = user.email
     }
 
     
     // MARK: - 関数
-
+    /// 連絡先から取得した誕生日を削除する
     private func deleteContactBirthday() {
         AnniversaryDAO().deleteQueryAnniversary(whereField: "category", equalTo: "contactBirthday")
     }
@@ -50,6 +58,22 @@ class SettingVC: UITableViewController {
             let selectedCell = SettingCell.init(rawValue: cell.tag) else { return }
         // セルによって処理を振り分け
         switch selectedCell {
+        case .signOut:
+            DialogBox.showDestructiveAlert(on: self,
+                                           title: NSLocalizedString("signOutTitle", comment: ""),
+                                           message: NSLocalizedString("signOutMessage", comment: ""),
+                                           destructiveTitle: NSLocalizedString("signOutButton", comment: "")) {
+                // [START signout]
+                let firebaseAuth = Auth.auth()
+                do {
+                    try firebaseAuth.signOut()
+                    print("Sign outに成功")
+                } catch let signOutError as NSError {
+                    print ("Error signing out: %@", signOutError)
+                }
+                // [END signout]
+            }
+
         case .importBirthday:
             ContactAccess().checkStatus(rootVC: self)
             
@@ -75,21 +99,23 @@ class SettingVC: UITableViewController {
             let webView = SFSafariViewController(url: URL(string: "https://goo.gl/forms/gs08T184CC3TT5lz1")!)
             self.present(webView, animated: true, completion: nil)
         }
-
     }
     
+    /// セクションのヘッダータイトル
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0: return NSLocalizedString("aboutAnniversary", comment: "")
-        case 1: return NSLocalizedString("aboutMemoria", comment: "")
+        case 0: return NSLocalizedString("aboutAccount", comment: "")
+        case 1: return NSLocalizedString("aboutAnniversary", comment: "")
+        case 2: return NSLocalizedString("aboutMemoria", comment: "")
         default: return nil
         }
     }
     
+    /// セクションのフッタータイトル
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
-        case 0: return nil
-        case 1: return NSLocalizedString("copyright", comment: "")
+        case 0, 1: return nil
+        case 2: return NSLocalizedString("copyright", comment: "")
         default: return nil
         }
 

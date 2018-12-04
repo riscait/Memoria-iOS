@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override init() {
         super.init()
+        // FirebaseApp オブジェクトを初期化
         FirebaseApp.configure()
         let db = Firestore.firestore()
         let settings = db.settings

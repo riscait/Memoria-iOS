@@ -36,7 +36,7 @@ class HiddenListVC: UITableViewController {
         
         // anniversaryコレクションの変更を監視する
         listenerRegistration = AnniversaryDAO()
-            .getAnniversaryQuery(whereField: "isHidden", equalTo: true)
+            .getAnniversaryQuery(whereField: "isHidden", equalTo: true)?
             .addSnapshotListener { documentSnapshot, error in
                 
                 guard let documentSnapshot = documentSnapshot else {

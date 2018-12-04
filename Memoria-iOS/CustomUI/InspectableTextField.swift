@@ -10,18 +10,47 @@ import UIKit
 
 @IBDesignable class InspectableTextField: UITextField {
 
+    // プレースホルダーのローカライズ文字列
     @IBInspectable var placeholderLocalizedStringKey: String = "" {
         didSet {
             guard !placeholderLocalizedStringKey.isEmpty else { return }
             placeholder = NSLocalizedString(placeholderLocalizedStringKey, comment: "")
         }
     }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    // 左の画像
+    @IBInspectable var leftImage: UIImage? {
+        didSet {
+            updateView()
+        }
     }
-    */
+    // 左の画像の色
+    @IBInspectable var leftImageColor: UIColor = UIColor.lightGray {
+        didSet {
+            updateView()
+        }
+    }
+    // 左の余白
+    @IBInspectable var leftPadding: CGFloat = 10
+    
+    // 左画像のための余白
+    override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        var textRect = super.leftViewRect(forBounds: bounds)
+        textRect.origin.x += leftPadding
+        return textRect
+    }
+    // 左の画像を更新する
+    func updateView() {
+        if let image = leftImage {
+            leftViewMode = .always
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = image
+            // 注意：画像に濃淡を使用するには、Assets.xcassetsで画像を選択し、[Render As]プロパティを[Template Image]に変更する必要があります。
+            imageView.tintColor = leftImageColor
+            leftView = imageView
+        } else {
+            leftViewMode = .never
+            leftView = nil
+        }
+    }
 }

@@ -21,7 +21,7 @@
                                 <rect key="frame" x="16" y="80" width="343" height="571"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJ3-di-T7K">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="357.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="385.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="askForNameInput" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IH-CS-PPm" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="16" width="343" height="20.5"/>
@@ -80,11 +80,12 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6t-cM-2BA" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="72.5" y="98.5" width="198" height="30"/>
+                                                <rect key="frame" x="72.5" y="98.5" width="198" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="2rl-an-LLT"/>
+                                                    <constraint firstAttribute="height" constant="44" id="Qo7-kS-GPm"/>
                                                 </constraints>
-                                                <state key="normal" title="誕生日を登録する"/>
+                                                <state key="normal" title="recordBirthday"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="recordBirthday"/>
                                                 </userDefinedRuntimeAttributes>
@@ -93,7 +94,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="askForAnniversaryNameInput" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrh-cI-gtx" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="229" width="343" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="243" width="343" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -102,7 +103,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="anniversaryPlaceholder" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ra-07-Kdm" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="265.5" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="279.5" width="343" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -114,9 +115,10 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wK-wB-iUx" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="72.5" y="311.5" width="198" height="30"/>
+                                                <rect key="frame" x="72.5" y="325.5" width="198" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="ggm-Ae-iZx"/>
+                                                    <constraint firstAttribute="height" constant="44" id="nse-QP-yKY"/>
                                                 </constraints>
                                                 <state key="normal" title="記念日を登録する"/>
                                                 <userDefinedRuntimeAttributes>
@@ -127,7 +129,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="———————  or  ———————" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lWb-42-OeH" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="38.5" y="168.5" width="266" height="20.5"/>
+                                                <rect key="frame" x="38.5" y="182.5" width="266" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>

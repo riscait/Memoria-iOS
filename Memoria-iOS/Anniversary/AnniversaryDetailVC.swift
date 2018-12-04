@@ -66,20 +66,24 @@ final class AnniversaryDetailVC: UIViewController {
     /// 非表示にするボタン
     @objc private func toggleHidden() {
         print("非表示にします")
-        DialogBox.showAlert(on: self, title: NSLocalizedString("hideThisAnniversaryTitle", comment: ""), message: NSLocalizedString("hideThisAnniversaryMessage", comment: ""), defaultAction: hideThisAnniversary, hasCancel: true)
+        DialogBox.showAlert(on: self,
+                            title: NSLocalizedString("hideThisAnniversaryTitle", comment: ""),
+                            message: NSLocalizedString("hideThisAnniversaryMessage", comment: ""),
+                            defaultAction: hideThisAnniversary,
+                            hasCancel: true)
     }
     
     /// 非表示にするボタンを承諾した時の処理
     func hideThisAnniversary() {
         // ユーザーのユニークIDを読み込む
-        guard let userId = UserDefaults.standard.string(forKey: "uuid") else {
-            print("UUIDが見つかりません！")
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("UIDが見つかりません！")
             return
         }
         // データベースに連絡先の誕生日情報を保存する
         let database = AnniversaryDAO()
         database.setData(collection: "users",
-                         document: userId,
+                         document: uid,
                          subCollection: "anniversary",
                          subDocument: anniversaryId,
                          data: ["isHidden": true],

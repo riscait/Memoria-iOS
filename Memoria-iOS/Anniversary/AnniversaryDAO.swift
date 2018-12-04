@@ -18,8 +18,7 @@ class AnniversaryDAO {
     /// 正直まだよく理解していないリスナー登録？
     var listenerRegistration: ListenerRegistration?
 
-    let uuid = UserDefaults.standard.string(forKey: "uuid")!
-
+    let uid = Auth.auth().currentUser?.uid
     
     // MARK: - データ取得
     
@@ -30,7 +29,8 @@ class AnniversaryDAO {
     ///   - callback: ドキュメントのデータを受け取る
     func getAnniversaryData(on id: String,
                             callback: @escaping ([String: Any]) -> Void) {
-        db.collection("users").document(uuid).collection("anniversary").document(id).getDocument { (document, error) in
+        guard let uid = uid else { return }
+        db.collection("users").document(uid).collection("anniversary").document(id).getDocument { (document, error) in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -50,8 +50,9 @@ class AnniversaryDAO {
     ///   - equalTo: 検索条件
     /// - Returns: 検索結果
     func getAnniversaryQuery(whereField: String,
-                             equalTo: Any) -> Query {
-        return db.collection("users").document(uuid).collection("anniversary").whereField(whereField, isEqualTo: equalTo)
+                             equalTo: Any) -> Query? {
+        guard let uid = uid else { return nil }
+        return db.collection("users").document(uid).collection("anniversary").whereField(whereField, isEqualTo: equalTo)
     }
     
     /// getAnniversaryQuery()の検索結果ドキュメントを取得する
@@ -63,7 +64,7 @@ class AnniversaryDAO {
     func getFilteredAnniversaryDocuments(whereField: String,
                              equalTo: Any,
                              callback: @escaping ([QueryDocumentSnapshot]) -> Void) {
-        getAnniversaryQuery(whereField: whereField, equalTo: equalTo).getDocuments { (querySnapshot, error) in
+        getAnniversaryQuery(whereField: whereField, equalTo: equalTo)?.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -133,7 +134,8 @@ class AnniversaryDAO {
     // MARK: - データ更新
 
     func updateAnniversary(documentPath: String, field: String, content: Any) {
-        db.collection("users").document(uuid).collection("anniversary").document(documentPath).updateData([field: content]) { error in
+        guard let uid = uid else { return }
+        db.collection("users").document(uid).collection("anniversary").document(documentPath).updateData([field: content]) { error in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -150,7 +152,8 @@ class AnniversaryDAO {
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
     func deleteAnniversary(documentPath: String) {
-        db.collection("users").document(uuid).collection("anniversary").document(documentPath).delete() { error in
+        guard let uid = uid else { return }
+        db.collection("users").document(uid).collection("anniversary").document(documentPath).delete() { error in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -166,7 +169,8 @@ class AnniversaryDAO {
     ///   - equalTo: 検索条件
     func deleteQueryAnniversary(whereField: String,
                                 equalTo: Any) {
-        db.collection("users").document(uuid).collection("anniversary").whereField(whereField, isEqualTo: equalTo).getDocuments { (querySnapshot, error) in
+        guard let uid = uid else { return }
+        db.collection("users").document(uid).collection("anniversary").whereField(whereField, isEqualTo: equalTo).getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {

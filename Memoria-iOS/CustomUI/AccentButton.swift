@@ -9,16 +9,7 @@
 import UIKit
 
 /// ここぞという時のボタン
-@IBDesignable final class AccentButton: UIButton {
-    
-    /// ローカライズ文字列
-    @IBInspectable var localizedStringKey: String = "" {
-        didSet {
-            // ローカライズして文字列を表示する
-            guard !localizedStringKey.isEmpty else { return }
-            setTitle(NSLocalizedString(localizedStringKey, comment: ""), for: .normal)
-        }
-    }
+@IBDesignable final class AccentButton: InspectableButton {
     
     override func draw(_ rect: CGRect) {
         // 背景色
@@ -27,11 +18,6 @@ import UIKit
         self.layer.cornerRadius = 3
         // 文字色
         self.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
-        // 内側の余白
-        let padding: CGFloat = 10.0
-        self.contentEdgeInsets = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-        // 太字にする
-        titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         
         super.draw(rect)
     }
