@@ -11,7 +11,11 @@
 "signIn" = "ログイン";
 "signOut" = "ログアウト";
 "close" = "とじる";
+"done" = "完了";
+"update" = "更新する";
+"change" = "変更する";
 // アカウント登録画面
+"underSignUp" = "アカウント発行中…";
 "forgotPassword" = "パワスードを忘れた場合はこちら";
 "pleaseEnterEmail" = "メールアドレスを入力してください";
 "pleaseEnterPassword" = "パスワードを入力してください";
@@ -36,7 +40,7 @@
 "The email address is already in use by another account." = "入力されたメールアドレスはすでに別のアカウントで使用されています。";
 "There is no user record corresponding to this identifier. The user may have been deleted." = "このメールアドレスに対応するユーザー情報はありません。\nユーザーが削除された可能性があります";
 "The password is invalid or the user does not have a password." = "パスワードが間違っているか、ユーザーにパスワードが設定されていません。";
-
+"This operation is sensitive and requires recent authentication. Log in again before retrying this request." = "この操作は機密であり、最新の認証が必要です。\nこの要求を再試行する前に、再度ログインしてください。";
 // 記念日登録画面
 "anniversaryRecord" = "記念日の登録";
 "askForNameInput" = "誕生日の場合は名前を入力";
@@ -72,8 +76,8 @@
 "welcomeContactDetail" = "端末の「連絡先」に登録してある誕生日を取り込むことができます。";
 "welcomeContactImport" = "誕生日を読み込む";
 // Anniversary画面
-"letsAddAnniversary" = "右上の＋ボタンから\n記念日を追加しましょう";
-"whoseBirthday" = "%@ %@さん\n誕生日";
+"letsAddAnniversary" = "右上の＋ボタンから\n記念日を追加しましょう！\n\nまたは「設定」タブから連絡先の誕生日を取り込みましょう！";
+"whoseBirthday" = "%@ %@さん\n誕生日";  // 姓 + 名さん
 "remainingDays" = "あと%@日";
 "remainingDaysToday" = "今日です！";
 "remainingDaysTomorrow" = "明日です！";
@@ -81,16 +85,28 @@
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
 "hideThisAnniversaryMessage" = "非表示にした記念日は「設定タブ」にて再表示することができます";
 // 設定画面
+// アカウント設定
 "aboutAccount" = "アカウント";
 "accountSetting" = "アカウント情報"; //FIXME: アカウント設定
+"userAccountSettings" = "アカウント設定";
+"currentEmail" = "現在のメールアドレス";
+"pleasePassword" = "パスワードが必要です";
+"pleaseInputNewEmail" = "新しいメールアドレスを入力";
+"emailChangeConfirmationMessage" = "メールアドレスを再設定しますか？";
+"passwordChangeConfirmationMessage" = "メールアドレスを再設定しますか？";
+"updatedEmailMessage" = "メールアドレスを変更しました。";
+"sentPasswordReset" = "パスワード再設定用のメールを送信しました。\nメール本文のリンクをクリックしてください。";
+"changeEmail" = "メールアドレスの変更";
 "signOutTitle" = "本当にログアウトしますか？";
 "signOutMessage" = "ログイン画面に遷移します";
 "signOutButton" = "ログアウトする";
+// 記念日の設定
 "aboutAnniversary" = "記念日の設定";
 "aboutMemoria" = "メモリアについて";
 "copyright" = "©︎ 2018 nerco studio";
 "importBirthday" = "誕生日を連絡先アプリからインポート";
 "deleteBirthday" = "誕生日を削除する";
+// メモリアについて
 "reviewThisApp" = "メモリアを評価する";
 "appStore" = "App Store";
 "developerTwitter" = "開発者のTwitter";

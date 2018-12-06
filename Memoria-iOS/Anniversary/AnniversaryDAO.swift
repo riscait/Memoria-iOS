@@ -34,7 +34,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#file)の\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功しました！")
             }
             // ドキュメントのアンラップと存在チェック
             if let document = document, document.exists {
@@ -68,7 +68,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#file)の\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功しました！")
             }
             // ドキュメントのアンラップと存在チェック
             if let documents = querySnapshot?.documents {
@@ -100,7 +100,7 @@ class AnniversaryDAO {
                     if let error = error {
                         print("エラー発生: \(error)")
                     } else {
-                        print("\(#file)の\(#function)の実行に成功しました！")
+                        print("\(#function)の実行に成功しました！")
                     }
             }
     }
@@ -125,7 +125,7 @@ class AnniversaryDAO {
                     if let error = error {
                         print("エラー発生: \(error)")
                     } else {
-                        print("\(#file)の\(#function)の実行に成功しました！")
+                        print("\(#function)の実行に成功しました！")
                     }
         }
     }
@@ -139,7 +139,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#file)の\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功しました！")
             }
         }
     }
@@ -157,7 +157,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#file)の\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功しました！")
             }
         }
     }
@@ -174,7 +174,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#file)の\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功しました！")
             }
             if let documents = querySnapshot?.documents {
                 documents.forEach { $0.reference.delete() }

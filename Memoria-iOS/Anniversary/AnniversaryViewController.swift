@@ -43,7 +43,6 @@ final class AnniversaryViewController: UICollectionViewController {
         
         title = NSLocalizedString("anniversary", comment: "")
         
-        uid = Auth.auth().currentUser?.uid
         /* ---------- 検索バーは未実装 ----------
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
@@ -62,22 +61,28 @@ final class AnniversaryViewController: UICollectionViewController {
     
     /// Viewが表示される直前に呼ばれる（タブ切り替え等も含む）
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
+        print("AnniversaryVCの\(#function)")
+        uid = Auth.auth().currentUser?.uid
         // リスナーをアタッチ
 //        authStateListenerHandler = Auth.auth().addStateDidChangeListener { (auth, user) in
 //            <#code#>
 //        }
         
-        guard let uid = uid else { return }
+        guard let uid = uid else {
+            print("uidがnil")
+            return
+        }
         let usersCollection = Firestore.firestore().collection("users")
         let anniversaryCollection = usersCollection.document(uid).collection("anniversary")
         let filteredCollection = anniversaryCollection.whereField("isHidden", isEqualTo: false)
-        // anniversaryコレクションの変更を監視する
+        // anniversaryコレクションの変更を監視するリスナー登録
         listenerRegistration = filteredCollection.addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else {
                 print("ドキュメント取得エラー: \(error!)")
                 return
             }
+            print("anniversaryコレクション変更リスナー登録！")
             self.anniversarys = []
             // 記念日データが入ったドキュメントの数だけ繰り返す
             for doc in snapshot.documents {
@@ -91,24 +96,25 @@ final class AnniversaryViewController: UICollectionViewController {
                 data["remainingDays"] = remainingDays
                 // 残日数も含めた記念日データをローカル配列に記憶
                 self.anniversarys.append(data)
-                print("ローカルに追加したdata: \(data["familyName"] ?? "") \(data["givenName"] ?? "")")
+                print("ローカルに追加したdata件数: \(data.count)")
             }
             // 記念日までの残日数順で並び替えて返却する
             self.anniversarys.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
             
             self.collectionView.reloadData()
         }
-        super.viewWillAppear(animated)
     }
     
     /// Viewが非表示になる直前に呼ばれる
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        print("AnniversaryVCの\(#function)")
 //        // リスナーデタッチ
 //        Auth.auth().removeStateDidChangeListener(authStateListenerHandler!)
         // リスナー登録を破棄する
         if let listenerRegistration = listenerRegistration {
             listenerRegistration.remove()
+            print("anniversaryコレクション変更リスナー破棄！")
         }
     }
     

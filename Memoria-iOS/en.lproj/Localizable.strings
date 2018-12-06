@@ -11,7 +11,11 @@
 "signIn" = "Sign in";
 "signOut" = "Sign out";
 "close" = "Close";
-// アカウント登録画面
+"done" = "Done";
+"update" = "Update";
+"change" = "Change";
+// Sign up view
+"underSignUp" = "Sign up...";
 "forgotPassword" = "Forgot Password";
 "pleaseEnterEmail" = "please enter your email";
 "pleaseEnterPassword" = "please enter your password";
@@ -36,7 +40,7 @@
 //"The email address is already in use by another account." = "";
 //"There is no user record corresponding to this identifier. The user may have been deleted." = "";
 //"The password is invalid or the user does not have a password." = "";
-
+//"This operation is sensitive and requires recent authentication. Log in again before retrying this request." = "";
 // Record anniversary view
 "anniversaryRecord" = "Record Anniversary";
 "askForNameInput" = "Enter the name in the case of birthday";
@@ -51,8 +55,8 @@
 "recordBirthday" = "Record Birthday";
 "enableYear" = "Enable year";
 "disableYear" = "Disable year";
-"japaneseOnlyYear" = "";
-"japaneseOnlyDay" = "";
+"japaneseOnlyYear" = "";  // Japanese only
+"japaneseOnlyDay" = "";  // Japanese only
 "confirmAndRecord" = "Record";
 "hideAnniversary" = "Hide";
 "deleteContactBirthdayTitle" = "Delete Birthday";
@@ -72,7 +76,7 @@
 "welcomeContactDetail" = "You can capture the birth date registered in \"Contact\" of the terminal.";
 "welcomeContactImport" = "Import birthday";
 // Anniversary view
-"letsAddAnniversary" = "Let's add an ANNIVERSARY from the \"+ button\" on the upper right";
+"letsAddAnniversary" = "Let's add an ANNIVERSARY from the \"+ button\" on the upper right!\n\nOr let's capture the contact 's birthday from the' Settings' tab!";
 "whoseBirthday" = "%2$@ %1$@'s Birthday"; // given name + family name
 "remainingDays" = "%@ days";
 "remainingDaysToday" = "Today!";
@@ -81,16 +85,28 @@
 "hideThisAnniversaryTitle" = "Hide this anniversary";
 "hideThisAnniversaryMessage" = "You can redisplay anniversaries that were hidden in the \"Settings tab\"";
 // Settings view
+// Account settings
 "aboutAccount" = "User Account";
 "accountSetting" = "Account info"; //FIXME: Account Setting
+"userAccountSettings" = "User Account";
+"currentEmail" = "Current Email";
+"pleasePassword" = "Password is required.";
+"pleaseInputNewEmail" = "Enter new email address.";
+"emailChangeConfirmationMessage" = "Would you like to reset your email address?";
+"passwordChangeConfirmationMessage" = "Would you like to reset your email address?";
+"updatedEmailMessage" = "Changed e-mail address.";
+"sentPasswordReset" = "I sent a password reset password. \ nClick the link of the mail body.";
+"changeEmail" = "E-mail address change";
 "signOutTitle" = "Sign out?";
 "signOutMessage" = "Transit to the Sign in screen.";
 "signOutButton" = "Sign out";
+// Anniversary settings
 "aboutAnniversary" = "Anniversary";
 "aboutMemoria" = "Memoria";
 "copyright" = "©︎ 2018 nerco studio";
 "importBirthday" = "Import birthday from \"Contact App\"";
 "deleteBirthday" = "Delete birthday";
+// About Memoria
 "reviewThisApp" = "Review this App";
 "appStore" = "App Store";
 "developerTwitter" = "Developer Twitter";

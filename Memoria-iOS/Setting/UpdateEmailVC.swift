@@ -1,8 +1,8 @@
 //
-//  SignInVC.swift
+//  UpdateEmailVC.swift
 //  Memoria-iOS
 //
-//  Created by 村松龍之介 on 2018/12/01.
+//  Created by 村松龍之介 on 2018/12/06.
 //  Copyright © 2018 nerco studio. All rights reserved.
 //
 
@@ -10,82 +10,42 @@ import UIKit
 
 import Firebase
 
-class SignInVC: UIViewController {
+class UpdateEmailVC: UIViewController {
+
+    @IBOutlet weak var currentEmail: UILabel!
+    @IBOutlet weak var newEmailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var changeButton: UIButton!
     
-    @IBOutlet weak var emailField: InspectableTextField!
-    @IBOutlet weak var passwordField: InspectableTextField!
-    @IBOutlet weak var signInButton: UIButton!
-    
-    private var activeTextField: UITextField?
-    
-    private let warningColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
-    
-    // MARK: - ライフサイクル
+    var activeTextField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        currentEmail.text = Auth.auth().currentUser?.email
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         configureObserver()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+        view.endEditing(true)  // キーボードを下げる
     }
     
-    func setPlaceholder(localizedStringKey: String, color: UIColor) -> NSAttributedString {
-        return NSAttributedString(string: NSLocalizedString(localizedStringKey, comment: ""),
-                                  attributes: [NSAttributedString.Key.foregroundColor: color])
-    }
-    
-    
-    // MARK: - IBAction
-    
-    @IBAction func didTapSignIn(_ sender: UIButton) {
-        guard let email = emailField.text else {
-            emailField.attributedPlaceholder = setPlaceholder(localizedStringKey: "pleaseEnterEmail", color: warningColor)
-            return
-        }
-        guard let password = passwordField.text else {
-            passwordField.attributedPlaceholder = setPlaceholder(localizedStringKey: "pleaseEnterPassword", color: warningColor)
-            return
-        }
-        DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("underSignIn", comment: "")) {
-            // START: メールアドレスログイン処理
-            Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
-                DialogBox.dismissAlertWithIndicator(on: self) {
-                    print("ログイン結果: \(String(describing: authResult))")
-                    if let error = error {
-                        print(error)
-                        DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
-                    } else {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                }
+    @IBAction func didTapChangeButton(_ sender: UIButton) {
+        let message = NSLocalizedString("updatedEmailMessage", comment: "")
+        
+        Auth.auth().currentUser?.updateEmail(to: newEmailField.text!) { (error) in
+            if let error = error {
+                DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
+                print("エラー: \(error)")
+                return
             }
-        }
-    }
-    
-    @IBAction func didTapForgotPasswordButton(_ sender: UIButton) {
-        guard let email = emailField.text else { return }
-        if email.isEmpty {
-            DialogBox.showAlert(on: self, message: NSLocalizedString("pleaseEnterEmail", comment: ""))
-            return
-        }
-        DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("underSendEmail", comment: "")) {
-            
-            Auth.auth().sendPasswordReset(withEmail: email) { (error) in
-                DialogBox.dismissAlertWithIndicator(on: self) {
-                    if let error = error {
-                        print(error)
-                        DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
-                        return
-                    }
-                    DialogBox.showAlert(on: self, title: NSLocalizedString("passwordResetMailSentTitle", comment: ""),
-                                        message: NSLocalizedString("passwordResetMailSentMessage", comment: ""))
-                }
+            DialogBox.showAlertWithIndicator(on: self, message: message) {
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -102,7 +62,7 @@ class SignInVC: UIViewController {
         notification.addObserver(self, selector: #selector(textFieldEditingChanged(_:)), name: UITextField.textDidChangeNotification, object: nil)
     }
     
-    /// キーボード表示時に、TextFieldとキーボードが重なるのであれば画面をずらす。
+    /// キーボード表示時に画面をずらす。
     @objc func keyboardWillShow(_ notification: Notification?) {
         guard let keyboardHeight = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height,
             let duration = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
@@ -130,7 +90,7 @@ class SignInVC: UIViewController {
             TextFieldとキーボードの距離: \(distance)
             """)
     }
-
+    
     /// キーボードが降りたら画面を戻す
     @objc func keyboardWillHide(_ notification: Notification?) {
         guard let duration = notification?.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? TimeInterval else { return }
@@ -141,19 +101,16 @@ class SignInVC: UIViewController {
     
     /// TextFieldが編集された時に呼び出される
     @objc func textFieldEditingChanged(_ sender: Notification) {
-        // メールアドレスとパスワードが8文字以上入力されているか
-        if emailField.text?.count ?? 0 > 7,
-            passwordField.text?.count ?? 0 > 7 {
-            signInButton.isEnabled = true
-        } else {
-            signInButton.isEnabled = false
-        }
+        // メールアドレスが8文字以上入力されているか
+        changeButton.isEnabled = newEmailField.text?.count ?? 0 > 7 && activeTextField?.text?.count ?? 0 > 7
+            ? true : false
+        print(#function)
     }
 }
 
 // MARK: - UITextFieldDelegate
 
-extension SignInVC: UITextFieldDelegate {
+extension UpdateEmailVC: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         activeTextField = textField
@@ -161,6 +118,7 @@ extension SignInVC: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // キーボードのReturnボタンタップでキーボードを閉じる
         view.endEditing(true)
         return true
     }

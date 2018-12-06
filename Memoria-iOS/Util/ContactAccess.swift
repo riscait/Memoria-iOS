@@ -40,17 +40,19 @@ class ContactAccess {
                     self.importContact {
                         print("連絡先アクセスのコールバック開始")
                         DialogBox.showAlert(on: rootVC,
+                                            hasCancel: false,
                                             title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), $0.description),
                                             message: NSLocalizedString("importedBirthdayMessage", comment: ""),
-                                            defaultAction: nil, hasCancel: false)
+                                            defaultAction: nil)
                     }
                 } else {
                     print("連絡先へのアクセスが拒否されました")
                     /// 設定アプリへの遷移を促すダイアログをポップアップ
                     DialogBox.showAlert(on: rootVC,
+                                        hasCancel: true,
                                         title: NSLocalizedString("pleasePermitToContactTitle", comment: ""),
                                         message: NSLocalizedString("pleasePermitToContactMessage", comment: ""),
-                                        defaultAction: OpenOtherApp().openSettingsApp, hasCancel: true)
+                                        defaultAction: OpenOtherApp().openSettingsApp)
                 }
             })
         case .restricted:  // 連絡先情報を使用できません
@@ -60,18 +62,20 @@ class ContactAccess {
         case .denied:  // 連絡先へのアクセスが拒否されている
             print("連絡先へのアクセスが拒否されている")
             DialogBox.showAlert(on: rootVC,
+                                hasCancel: true,
                                 title: NSLocalizedString("pleasePermitToContactTitle", comment: ""),
                                 message: NSLocalizedString("pleasePermitToContactMessage", comment: ""),
-                                defaultAction: OpenOtherApp().openSettingsApp, hasCancel: true)
+                                defaultAction: OpenOtherApp().openSettingsApp)
             
         case .authorized:  // 連絡先へのアクセス可能
             print("連絡先へのアクセス可能")
             self.importContact {
                 print("連絡先アクセスのコールバック開始")
                 DialogBox.showAlert(on: rootVC,
+                                    hasCancel: false,
                                     title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), $0.description),
                                     message: NSLocalizedString("importedBirthdayMessage", comment: ""),
-                                    defaultAction: nil, hasCancel: false)
+                                    defaultAction: nil)
             }
         }
     }

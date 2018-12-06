@@ -17,4 +17,10 @@ import UIKit
             text = NSLocalizedString(localizedStringKey, comment: "")
         }
     }
+    
+    override func draw(_ rect: CGRect) {
+        
+        text = NSLocalizedString(localizedStringKey, comment: "")
+        super.draw(rect)
+    }
 }

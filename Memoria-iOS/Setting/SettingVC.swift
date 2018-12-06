@@ -33,11 +33,13 @@ class SettingVC: UITableViewController {
         title = NSLocalizedString("settings", comment: "")
         clearsSelectionOnViewWillAppear = false
         
-        guard let user = Auth.auth().currentUser else { return }
-        
-        accountStateLabel.text = user.email
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let user = Auth.auth().currentUser else { return }
+        accountStateLabel.text = user.email
+    }
     
     // MARK: - 関数
     /// 連絡先から取得した誕生日を削除する
@@ -71,7 +73,6 @@ class SettingVC: UITableViewController {
                 } catch let signOutError as NSError {
                     print ("Error signing out: %@", signOutError)
                 }
-                // [END signout]
             }
 
         case .importBirthday:

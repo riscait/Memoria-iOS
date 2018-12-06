@@ -16,18 +16,18 @@ final class DialogBox: UIAlertController {
     ///   - rootVC: 呼び出し元のViewController
     ///   - title: Alertのタイトル文字列
     ///   - message: Alertのメッセージ文字列
-    ///   - defaultTitle: デフォルトアクションの文字列（省略で"OK"）
+    ///   - defaultActionTitle: デフォルトアクションの文字列（省略で"OK"）
     ///   - defaultAction: デフォルトアクション選択時の処理
     ///   - hasCancel: キャンセルボタンをつけるかどうか
     class func showAlert(on rootVC: UIViewController,
+                         hasCancel: Bool = false,
                          title: String?,
                          message: String?,
-                         defaultTitle: String = NSLocalizedString("ok", comment: ""),
-                         defaultAction: (() -> ())? = nil,
-                         hasCancel: Bool = false) {
+                         defaultActionTitle: String = NSLocalizedString("ok", comment: ""),
+                         defaultAction: (() -> ())? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let defaultAction = UIAlertAction(title: defaultTitle, style: .default, handler: { action -> Void in
+        let defaultAction = UIAlertAction(title: defaultActionTitle, style: .default, handler: { action -> Void in
             if let defaultAction = defaultAction {
                 defaultAction()
             }
@@ -46,7 +46,7 @@ final class DialogBox: UIAlertController {
     /// メッセージとOKボタンだけのシンプルなアラート
     class func showAlert(on rootVC: UIViewController,
                          message: String) {
-        showAlert(on: rootVC, title: nil, message: message, defaultAction: nil, hasCancel: false)
+        showAlert(on: rootVC, hasCancel: false, title: nil, message: message, defaultAction: nil)
     }
 
     
