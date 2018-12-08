@@ -74,28 +74,35 @@ class UpdatePasswordVC: UIViewController {
         // 再認証に使うため、Email&パスワードログインの認証情報を取得
         let credential = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
         // 取得した認証情報で再認証
-        user.reauthenticateAndRetrieveData(with: credential) { (authResult, error) in
-            if let error = error {
-                print("エラー: \(error)")
-                // 失敗した場合はエラーダイアログを表示して処理終了
-                DialogBox.showAlert(on: self,
-                                    message: NSLocalizedString(error.localizedDescription, comment: ""))
-                self.currentPasswordField.text = nil
-                return
-            }
-            print("再認証成功")
-            // パスワード変更処理
-            user.updatePassword(to: newPassword) { error in
+        DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("reauthInProgress", comment: "")) {
+            user.reauthenticateAndRetrieveData(with: credential) { (authResult, error) in
                 if let error = error {
                     print("エラー: \(error)")
-                    // エラーダイアログ表示して処理終了
-                    DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
+                    // 失敗した場合はエラーダイアログを表示して処理終了
+                    DialogBox.showAlert(on: self,
+                                        message: NSLocalizedString(error.localizedDescription, comment: ""))
+                    self.currentPasswordField.text = nil
+                    DialogBox.dismissAlertWithIndicator(on: self, completion: nil)
                     return
                 }
-                print("パスワードの変更に成功")
-                DialogBox.showAlert(on: self, message: NSLocalizedString("successfullyUpdatePassword", comment: "")) {
-                    self.dismiss(animated: true, completion: nil)
-                }
+                print("再認証成功")
+                // パスワード変更処理
+                DialogBox.updateAlertWithIndicatorMessage(on: self, message: NSLocalizedString("updatePasswordInProgress", comment: ""))
+                    user.updatePassword(to: newPassword) { error in
+                        DialogBox.dismissAlertWithIndicator(on: self) {
+                            
+                            if let error = error {
+                                print("エラー: \(error)")
+                                // エラーダイアログ表示して処理終了
+                                DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
+                                return
+                            }
+                            print("パスワードの変更に成功")
+                            DialogBox.showAlert(on: self, message: NSLocalizedString("successfullyUpdatePassword", comment: "")) {
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                        }
+                    }
             }
         }
     }

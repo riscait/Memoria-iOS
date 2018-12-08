@@ -86,6 +86,10 @@
 "hideThisAnniversaryTitle" = "Hide this anniversary";
 "hideThisAnniversaryMessage" = "You can redisplay anniversaries that were hidden in the \"Settings tab\"";
 // Settings view
+"updateInProgress" = "Update in progress...";
+"reauthInProgress" = "Re-auth in progress...";
+"updateEmailInProgress" = "Update mail address in progress....";
+"updatePasswordInProgress" = "Update password in progress...";
 //// Account settings
 "aboutAccount" = "User Account";
 "accountSetting" = "Account info"; //FIXME: Account Setting

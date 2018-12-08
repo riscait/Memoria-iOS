@@ -44,9 +44,10 @@ class UpdateEmailVC: UIViewController {
         
         guard let newEmail = newEmailField.text,
             let user = Auth.auth().currentUser else { return }
-        
         // メールアドレス変更を試みる
+        DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("updateEmailInProgress", comment: ""), completion: nil)
         user.updateEmail(to: newEmail) { error in
+            DialogBox.dismissAlertWithIndicator(on: self, completion: nil)
             guard let error = error else {
                 // メールアドレス変更に成功、処理終了
                 DialogBox.showAlert(on: self,
@@ -73,7 +74,9 @@ class UpdateEmailVC: UIViewController {
                                                 // 再認証に使うため、Email&パスワードログインの認証情報を取得
                                                 let credential = EmailAuthProvider.credential(withEmail: user.email!, password: password)
                                                 // 取得した認証情報で再認証
+                                                DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("reauthInProgress", comment: ""), completion: nil)
                                                 user.reauthenticateAndRetrieveData(with: credential) { (authResult, error) in
+                                                    DialogBox.dismissAlertWithIndicator(on: self, completion: nil)
                                                     if let error = error {
                                                         print("エラー: \(error)")
                                                         // 失敗した場合はエラーダイアログを表示して処理終了
@@ -83,8 +86,10 @@ class UpdateEmailVC: UIViewController {
                                                     }
                                                     print("再認証成功, 再度メールアドレス変更を試みる")
                                                     // もう一度メールアドレス変更を試みる
+                                                    DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("updateEmailInProgress", comment: ""), completion: nil)
                                                     user.updateEmail(to: self.newEmailField.text!) { (error) in
                                                         // エラー発生したらダイアログ表示して処理終了
+                                                        DialogBox.dismissAlertWithIndicator(on: self, completion: nil)
                                                         if let error = error {
                                                             print("2度目でエラー: \(error)")
                                                             DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))

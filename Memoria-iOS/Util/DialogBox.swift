@@ -109,9 +109,15 @@ final class DialogBox: UIAlertController {
         rootVC.present(alert, animated: true, completion: nil)
     }
     
+    /// くるくる回るインジケーター付きアラート
+    ///
+    /// - Parameters:
+    ///   - rootVC: 呼び出し元のViewController
+    ///   - message: Alertのメッセージ文字列
+    ///   - completion: 表示完了後の動作
     class func showAlertWithIndicator(on rootVC: UIViewController,
                                       message: String?,
-                                      completion: @escaping () -> ()) {
+                                      completion: (() -> ())?) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         
         let indicator = UIActivityIndicatorView(style: .gray)
@@ -122,8 +128,23 @@ final class DialogBox: UIAlertController {
         rootVC.present(alert, animated: true, completion: completion)
     }
     
+    /// 表示中のインジケーター付きアラートのメッセージを更新する
+    ///
+    /// - Parameters:
+    ///   - rootVC: 呼び出し元のViewController
+    ///   - message: Alertのメッセージ文字列
+    class func updateAlertWithIndicatorMessage(on rootVC: UIViewController, message: String) {
+        guard let alert = (rootVC.presentedViewController as? UIAlertController) else { return }
+        alert.message = message
+    }
+    
+    /// 表示されているインジケーター付きアラートを消す
+    ///
+    /// - Parameters:
+    ///   - rootVC: <#rootVC description#>
+    ///   - completion: <#completion description#>
     class func dismissAlertWithIndicator(on rootVC: UIViewController,
-                                         completion: @escaping () -> ()) {
+                                         completion: (() -> ())?) {
 
         guard let alert = (rootVC.presentedViewController as? UIAlertController) else { return }
         alert.dismiss(animated: true, completion: completion)

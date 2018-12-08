@@ -87,6 +87,10 @@
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
 "hideThisAnniversaryMessage" = "非表示にした記念日は「設定タブ」にて再表示することができます";
 // 設定画面
+"updateInProgress" = "更新中...";
+"reauthInProgress" = "再認証中...";
+"updateEmailInProgress" = "メールアドレス更新中...";
+"updatePasswordInProgress" = "パスワード更新中...";
 //// アカウント設定
 "aboutAccount" = "アカウント";
 "accountSetting" = "アカウント情報"; //FIXME: アカウント設定
