@@ -14,8 +14,7 @@ import Firebase
 class SettingVC: UITableViewController {
 
     /// TableViewのセル。rowValueはtag番号を示す
-    enum SettingCell: Int {
-        case signOut = 9
+    enum SelectableCell: Int {
         case importBirthday = 12
         case deleteBirthday
         case reviewThisApp = 21
@@ -24,6 +23,7 @@ class SettingVC: UITableViewController {
     }
     
     @IBOutlet weak var accountStateLabel: UILabel!
+    @IBOutlet weak var versionAndBuildLabel: UILabel!
     
     // MARK: - ライフサイクル
     
@@ -32,13 +32,13 @@ class SettingVC: UITableViewController {
 
         title = NSLocalizedString("settings", comment: "")
         clearsSelectionOnViewWillAppear = false
-        
+        versionAndBuildLabel.text = "\(AppInfo.getVersion() ?? "")(\(AppInfo.getBuild() ?? ""))"
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let user = Auth.auth().currentUser else { return }
-        accountStateLabel.text = user.email
+        accountStateLabel.text = user.displayName  // ユーザー名を表示
     }
     
     // MARK: - 関数
@@ -57,24 +57,9 @@ class SettingVC: UITableViewController {
         
         //選択されたセルのtagからセルのケースを当てはめる
         guard let cell = tableView.cellForRow(at: indexPath),
-            let selectedCell = SettingCell.init(rawValue: cell.tag) else { return }
+            let selectedCell = SelectableCell.init(rawValue: cell.tag) else { return }
         // セルによって処理を振り分け
         switch selectedCell {
-        case .signOut:
-            DialogBox.showDestructiveAlert(on: self,
-                                           title: NSLocalizedString("signOutTitle", comment: ""),
-                                           message: NSLocalizedString("signOutMessage", comment: ""),
-                                           destructiveTitle: NSLocalizedString("signOutButton", comment: "")) {
-                // [START signout]
-                let firebaseAuth = Auth.auth()
-                do {
-                    try firebaseAuth.signOut()
-                    print("Sign outに成功")
-                } catch let signOutError as NSError {
-                    print ("Error signing out: %@", signOutError)
-                }
-            }
-
         case .importBirthday:
             ContactAccess().checkStatus(rootVC: self)
             

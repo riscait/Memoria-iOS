@@ -14,6 +14,7 @@
 "done" = "完了";
 "update" = "更新する";
 "change" = "変更する";
+"version" = "Version";
 // アカウント登録画面
 "underSignUp" = "アカウント発行中…";
 "forgotPassword" = "パワスードを忘れた場合はこちら";
@@ -23,7 +24,7 @@
 "placeholderEmail" = "メールアドレス";
 "placeholderPassword" = "パスワード";
 "placeholderPasswordConfirmation" = "パスワード（確認）";
-"mismatchPasswordConfirmation" = "確認用パスワードが一致していません";
+"mismatchPasswordConfirmation" = "新しいパスワードと新しいパスワード（確認）が一致していません";
 "signUpButton" = "アカウント発行";
 "signInButton" = "ログイン";
 "passwordConditions" = "8文字以上の英数字を入力してください";
@@ -41,6 +42,7 @@
 "There is no user record corresponding to this identifier. The user may have been deleted." = "このメールアドレスに対応するユーザー情報はありません。\nユーザーが削除された可能性があります";
 "The password is invalid or the user does not have a password." = "パスワードが間違っているか、ユーザーにパスワードが設定されていません。";
 "This operation is sensitive and requires recent authentication. Log in again before retrying this request." = "この操作は機密であり、最新の認証が必要です。\nこの要求を再試行する前に、再度ログインしてください。";
+"The user's credential is no longer valid. The user must sign in again." = "ユーザーの資格情報はもはや有効ではありません。\n再度ログインする必要があります。";
 // 記念日登録画面
 "anniversaryRecord" = "記念日の登録";
 "askForNameInput" = "誕生日の場合は名前を入力";
@@ -85,21 +87,34 @@
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
 "hideThisAnniversaryMessage" = "非表示にした記念日は「設定タブ」にて再表示することができます";
 // 設定画面
-// アカウント設定
+//// アカウント設定
 "aboutAccount" = "アカウント";
 "accountSetting" = "アカウント情報"; //FIXME: アカウント設定
 "userAccountSettings" = "アカウント設定";
+"updateUserAccount" = "ユーザーアカウントの更新";
 "currentEmail" = "現在のメールアドレス";
 "pleasePassword" = "パスワードが必要です";
+"reAuthRequired" = "再認証が必要です";
 "pleaseInputNewEmail" = "新しいメールアドレスを入力";
 "emailChangeConfirmationMessage" = "メールアドレスを再設定しますか？";
 "passwordChangeConfirmationMessage" = "メールアドレスを再設定しますか？";
 "updatedEmailMessage" = "メールアドレスを変更しました。";
 "sentPasswordReset" = "パスワード再設定用のメールを送信しました。\nメール本文のリンクをクリックしてください。";
-"changeEmail" = "メールアドレスの変更";
+"updateEmail" = "メールアドレスの変更";
 "signOutTitle" = "本当にログアウトしますか？";
 "signOutMessage" = "ログイン画面に遷移します";
 "signOutButton" = "ログアウトする";
+"successfullyChangedEmailTitle" = "メールアドレスを変更しました。";
+"successfullyChangedEmailMessage" = "変更前のメールアドレスに確認のメールを送信しました。";
+////// パスワード変更
+"updatePassword" = "パスワードを変更";
+"pleaseInputCurrentPassword" = "現在のパスワード";
+"pleaseInputNewPassword" = "新しいパスワード";
+"pleaseInputNewPasswordConfirmation" = "新しいパスワード（確認）";
+"currentAndNewPasswordAreSame" = "現在のパスワードと新しいパスワードが一緒です。";
+"successfullyUpdatePassword" = "パスワードを変更しました。";
+////// 表示名変更
+"updateDisplayName" = "表示名を設定";
 // 記念日の設定
 "aboutAnniversary" = "記念日の設定";
 "aboutMemoria" = "メモリアについて";

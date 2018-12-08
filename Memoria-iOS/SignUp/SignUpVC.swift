@@ -129,9 +129,9 @@ class SignUpVC: UIViewController {
             }
         }
         print("""
-            スクリーンの高さ: \(screenHeight) --- キーボードの高さ: \(keyboardHeight)\n
-            TextFieldの上辺位置: \(textFieldOrignY) --- TextFieldの高さ: \(textFieldHeight)\n
-            TextFieldの下辺位置: \(textFieldBottom) --- キーボードの上辺位置: \(keyboardY)\n
+            スクリーンの高さ: \(screenHeight) --- キーボードの高さ: \(keyboardHeight)
+            TextFieldの上辺位置: \(textFieldOrignY) --- TextFieldの高さ: \(textFieldHeight)
+            TextFieldの下辺位置: \(textFieldBottom) --- キーボードの上辺位置: \(keyboardY)
             TextFieldとキーボードの距離: \(distance)
             """)
     }
