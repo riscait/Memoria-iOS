@@ -7,7 +7,12 @@
 		<key>Memoria-iOS (ja).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>14</integer>
+		</dict>
+		<key>Memoria-iOS(en).xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
 		</dict>
 		<key>Memoria-iOS.xcscheme</key>
 		<dict>
@@ -17,7 +22,7 @@
 		<key>Memoria-iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>13</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

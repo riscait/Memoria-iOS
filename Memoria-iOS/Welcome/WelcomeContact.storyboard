@@ -30,9 +30,9 @@
                                     <constraint firstAttribute="height" constant="44" id="Tzj-z7-VKv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="toNextPage"/>
+                                <state key="normal" title="later"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="toNextPage"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="later"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="BqF-ae-FP9" kind="unwind" unwindAction="returnToAnniversaryVCWithSegue:" id="neG-Mk-z2j"/>

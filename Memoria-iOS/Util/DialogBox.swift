@@ -16,18 +16,18 @@ final class DialogBox: UIAlertController {
     ///   - rootVC: 呼び出し元のViewController
     ///   - title: Alertのタイトル文字列
     ///   - message: Alertのメッセージ文字列
-    ///   - defaultTitle: デフォルトアクションの文字列（省略で"OK"）
+    ///   - defaultActionTitle: デフォルトアクションの文字列（省略で"OK"）
     ///   - defaultAction: デフォルトアクション選択時の処理
     ///   - hasCancel: キャンセルボタンをつけるかどうか
     class func showAlert(on rootVC: UIViewController,
+                         hasCancel: Bool = false,
                          title: String?,
                          message: String?,
-                         defaultTitle: String = NSLocalizedString("ok", comment: ""),
-                         defaultAction: (() -> ())? = nil,
-                         hasCancel: Bool = false) {
+                         defaultActionTitle: String = NSLocalizedString("ok", comment: ""),
+                         defaultAction: (() -> ())? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let defaultAction = UIAlertAction(title: defaultTitle, style: .default, handler: { action -> Void in
+        let defaultAction = UIAlertAction(title: defaultActionTitle, style: .default, handler: { action -> Void in
             if let defaultAction = defaultAction {
                 defaultAction()
             }
@@ -45,10 +45,10 @@ final class DialogBox: UIAlertController {
     
     /// メッセージとOKボタンだけのシンプルなアラート
     class func showAlert(on rootVC: UIViewController,
-                         message: String) {
-        showAlert(on: rootVC, title: nil, message: message, defaultAction: nil, hasCancel: false)
+                         message: String,
+                         defaultAction: (() -> ())? = nil) {
+        showAlert(on: rootVC, title: nil, message: message, defaultAction: defaultAction)
     }
-
     
     /// 破壊的アクションのアラートダイアログボックスをポップアップ
     ///
@@ -109,9 +109,15 @@ final class DialogBox: UIAlertController {
         rootVC.present(alert, animated: true, completion: nil)
     }
     
+    /// くるくる回るインジケーター付きアラート
+    ///
+    /// - Parameters:
+    ///   - rootVC: 呼び出し元のViewController
+    ///   - message: Alertのメッセージ文字列
+    ///   - completion: 表示完了後の動作
     class func showAlertWithIndicator(on rootVC: UIViewController,
                                       message: String?,
-                                      completion: @escaping () -> ()) {
+                                      completion: (() -> ())?) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         
         let indicator = UIActivityIndicatorView(style: .gray)
@@ -122,10 +128,65 @@ final class DialogBox: UIAlertController {
         rootVC.present(alert, animated: true, completion: completion)
     }
     
+    /// 表示中のインジケーター付きアラートのメッセージを更新する
+    ///
+    /// - Parameters:
+    ///   - rootVC: 呼び出し元のViewController
+    ///   - message: Alertのメッセージ文字列
+    class func updateAlert(with message: String, on rootVC: UIViewController) {
+        guard let alert = (rootVC.presentedViewController as? UIAlertController) else { return }
+        alert.message = message
+    }
+    
+    /// 表示されているインジケーター付きアラートを消す
+    ///
+    /// - Parameters:
+    ///   - rootVC: <#rootVC description#>
+    ///   - completion: <#completion description#>
     class func dismissAlertWithIndicator(on rootVC: UIViewController,
-                                         completion: @escaping () -> ()) {
+                                         completion: (() -> ())?) {
 
         guard let alert = (rootVC.presentedViewController as? UIAlertController) else { return }
         alert.dismiss(animated: true, completion: completion)
+    }
+    
+    /// パスワード入力フィールド付きのアラートを表示する
+    ///
+    /// - Parameters:
+    ///   - rootVC: 呼び出し元のViewController
+    ///   - title: Alertのタイトル文字列
+    ///   - message: Alertのメッセージ文字列
+    ///   - placeholder: プレースホルダーの文字列
+    ///   - defaultTitle: デフォルトアクションの文字列
+    ///   - defaultAction: デフォルトアクション選択時の動作
+    class func showPasswordInputAlert(on rootVC: UIViewController,
+                                  title: String?,
+                                  message: String?,
+                                  placeholder: String?,
+                                  defaultTitle: String = NSLocalizedString("ok", comment: ""),
+                                  defaultAction: @escaping (String) -> ()) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        // TextFieldを追加
+        alert.addTextField { textField in
+            textField.clearButtonMode = .whileEditing
+            textField.returnKeyType = .done
+            textField.placeholder = placeholder
+            textField.isSecureTextEntry = true
+            textField.textContentType = .password
+        }
+        
+        let defaultAction = UIAlertAction(title: defaultTitle, style: .default) { action in
+            if let textField = alert.textFields?[0] {
+                defaultAction(textField.text ?? "")
+            }
+        }
+        alert.addAction(defaultAction)
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel)
+        alert.addAction(cancelAction)
+        // アラートをポップアップ表示
+        rootVC.present(alert, animated: true, completion: nil)
     }
 }

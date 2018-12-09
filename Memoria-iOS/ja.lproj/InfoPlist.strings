@@ -1,2 +1,2 @@
 CFBundleDisplayName = "メモリア";
-//NSContactsUsageDescription = "メモリアは連絡先の誕生日を取り込むために、連絡先へアクセスする必要があります。";
+NSContactsUsageDescription = "メモリアは連絡先の誕生日を取り込むために、連絡先へアクセスする必要があります。";

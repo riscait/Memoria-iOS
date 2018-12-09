@@ -67,10 +67,10 @@ final class AnniversaryDetailVC: UIViewController {
     @objc private func toggleHidden() {
         print("非表示にします")
         DialogBox.showAlert(on: self,
+                            hasCancel: true,
                             title: NSLocalizedString("hideThisAnniversaryTitle", comment: ""),
                             message: NSLocalizedString("hideThisAnniversaryMessage", comment: ""),
-                            defaultAction: hideThisAnniversary,
-                            hasCancel: true)
+                            defaultAction: hideThisAnniversary)
     }
     
     /// 非表示にするボタンを承諾した時の処理

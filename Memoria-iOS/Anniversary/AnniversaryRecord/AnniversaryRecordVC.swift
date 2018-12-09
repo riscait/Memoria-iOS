@@ -84,32 +84,41 @@ class AnniversaryRecordVC: UIViewController {
     }
     
     /// キーボードが表示時に画面をずらす。
+    /// キーボード表示時に、TextFieldとキーボードが重なるのであれば画面をずらす。
     @objc func keyboardWillShow(_ notification: Notification?) {
-        guard let rect = (notification?.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+        guard let keyboardHeight = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height,
             let duration = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
-            let textFieldOrignY = activeTextField?.frame.origin.y,
-            let textFieldHeight = activeTextField?.frame.height else { return }
+            let activeField = activeTextField else { return }
+        // 親Viewからの相対位位置ではなく、最上階層のviewからの位置を求めるためにはコンバートが必要
+        let convertedFrame = activeField.convert(activeField.bounds, to: self.view)
+        let textFieldOrignY = convertedFrame.minY
+        let textFieldHeight = convertedFrame.height
         
-        let boundSize = UIScreen.main.bounds.size
-        let keyboardTop = boundSize.height - rect.size.height
-        let textFieldBottom = textFieldOrignY + textFieldHeight + 8
-
-        if textFieldBottom >= keyboardTop {
+        let screenHeight = UIScreen.main.bounds.size.height
+        let keyboardY = screenHeight - keyboardHeight
+        let textFieldBottom = textFieldOrignY + textFieldHeight
+        let distance = keyboardY - textFieldBottom
+        // TextFieldとキーボードの距離が0未満なら（重なっていたら）画面をずらす
+        if distance < 0 {
             UIView.animate(withDuration: duration) {
-                let transform = CGAffineTransform(translationX: 0, y: -(rect.size.height))
+                let transform = CGAffineTransform(translationX: 0, y: distance)
                 self.view.transform = transform
             }
         }
-        print("keyboardWillShowを実行")
+        print("""
+            スクリーンの高さ: \(screenHeight) --- キーボードの高さ: \(keyboardHeight)
+            TextFieldの上辺位置: \(textFieldOrignY) --- TextFieldの高さ: \(textFieldHeight)
+            TextFieldの下辺位置: \(textFieldBottom) --- キーボードの上辺位置: \(keyboardY)
+            TextFieldとキーボードの距離: \(distance)
+            """)
     }
-    
+
     /// キーボードが降りたら画面を戻す
     @objc func keyboardWillHide(_ notification: Notification?) {
         guard let duration = notification?.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? TimeInterval else { return }
         UIView.animate(withDuration: duration) {
             self.view.transform = CGAffineTransform.identity
         }
-        print("keyboardWillHideを実行")
     }
     
     /// TextFieldが編集された時に呼び出される

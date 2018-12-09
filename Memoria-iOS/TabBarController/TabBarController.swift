@@ -26,6 +26,7 @@ class TabBarController: UITabBarController {
         // START: Firebase認証リスナー
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
+                print("Firebase認証リスナー登録！")
                 print("ユーザーID: " + user.uid)
                 print("メールアドレス: \(String(describing: user.email))")
                 print("画像URL: \(String(describing: user.photoURL))")
@@ -49,6 +50,7 @@ class TabBarController: UITabBarController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Firebase認証リスナーを破棄
+        print("Firebase認証リスナー破棄！")
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
