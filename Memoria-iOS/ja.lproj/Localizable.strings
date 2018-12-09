@@ -14,6 +14,7 @@
 "done" = "完了";
 "update" = "更新する";
 "change" = "変更する";
+"later" = "あとで";
 "version" = "Version";
 // アカウント登録画面
 "underSignUp" = "アカウント発行中…";
@@ -77,6 +78,7 @@
 "welcomeContactTitle" = "誕生日を追加しましょう";
 "welcomeContactDetail" = "端末の「連絡先」に登録してある誕生日を取り込むことができます。";
 "welcomeContactImport" = "誕生日を読み込む";
+"startWithoutImport" = "あとで";
 // Anniversary画面
 "letsAddAnniversary" = "右上の＋ボタンから\n記念日を追加しましょう！\n\nまたは「設定」タブから連絡先の誕生日を取り込みましょう！";
 "whoseBirthday" = "%@ %@さん\n誕生日";  // 姓 + 名さん
@@ -104,14 +106,14 @@
 "passwordChangeConfirmationMessage" = "メールアドレスを再設定しますか？";
 "updatedEmailMessage" = "メールアドレスを変更しました。";
 "sentPasswordReset" = "パスワード再設定用のメールを送信しました。\nメール本文のリンクをクリックしてください。";
-"updateEmail" = "メールアドレスの変更";
+"updateEmail" = "メールアドレス変更";
 "signOutTitle" = "本当にログアウトしますか？";
 "signOutMessage" = "ログイン画面に遷移します";
 "signOutButton" = "ログアウトする";
 "successfullyChangedEmailTitle" = "メールアドレスを変更しました。";
 "successfullyChangedEmailMessage" = "変更前のメールアドレスに確認のメールを送信しました。";
 ////// パスワード変更
-"updatePassword" = "パスワードを変更";
+"updatePassword" = "パスワード変更";
 "pleaseInputCurrentPassword" = "現在のパスワード";
 "pleaseInputNewPassword" = "新しいパスワード";
 "pleaseInputNewPasswordConfirmation" = "新しいパスワード（確認）";
@@ -124,7 +126,7 @@
 "aboutMemoria" = "メモリアについて";
 "copyright" = "©︎ 2018 nerco studio";
 "importBirthday" = "誕生日を連絡先アプリからインポート";
-"deleteBirthday" = "誕生日を削除する";
+"deleteImportedBirthday" = "連絡先からインポートした誕生日を削除";
 // メモリアについて
 "reviewThisApp" = "メモリアを評価する";
 "appStore" = "App Store";

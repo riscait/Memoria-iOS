@@ -64,10 +64,6 @@ final class AnniversaryViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         print("AnniversaryVCの\(#function)")
         uid = Auth.auth().currentUser?.uid
-        // リスナーをアタッチ
-//        authStateListenerHandler = Auth.auth().addStateDidChangeListener { (auth, user) in
-//            <#code#>
-//        }
         
         guard let uid = uid else {
             print("uidがnil")
@@ -109,8 +105,6 @@ final class AnniversaryViewController: UICollectionViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("AnniversaryVCの\(#function)")
-//        // リスナーデタッチ
-//        Auth.auth().removeStateDidChangeListener(authStateListenerHandler!)
         // リスナー登録を破棄する
         if let listenerRegistration = listenerRegistration {
             listenerRegistration.remove()
@@ -124,8 +118,8 @@ final class AnniversaryViewController: UICollectionViewController {
     /// セグエで他の画面へ遷移するときに呼ばれる
     ///
     /// - Parameters:
-    ///   - segue: <#segue description#>
-    ///   - sender: <#sender description#>
+    ///   - segue: Segue
+    ///   - sender: Any?
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let id = segue.identifier else { return }
         

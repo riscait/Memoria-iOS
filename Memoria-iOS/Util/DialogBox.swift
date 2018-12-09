@@ -133,7 +133,7 @@ final class DialogBox: UIAlertController {
     /// - Parameters:
     ///   - rootVC: 呼び出し元のViewController
     ///   - message: Alertのメッセージ文字列
-    class func updateAlertWithIndicatorMessage(on rootVC: UIViewController, message: String) {
+    class func updateAlert(with message: String, on rootVC: UIViewController) {
         guard let alert = (rootVC.presentedViewController as? UIAlertController) else { return }
         alert.message = message
     }

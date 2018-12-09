@@ -41,21 +41,24 @@ class UpdateEmailVC: UIViewController {
     }
     
     @IBAction func didTapChangeButton(_ sender: UIButton) {
+        // 2度押し防止のため、まずボタンを無効にする
+        changeButton.isEnabled = false
         
         guard let newEmail = newEmailField.text,
-            let user = Auth.auth().currentUser else { return }
+            let user = Auth.auth().currentUser,
+            let email = user.email else { return }
         // メールアドレス変更を試みる
         DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("updateEmailInProgress", comment: ""), completion: nil)
         user.updateEmail(to: newEmail) { error in
             DialogBox.dismissAlertWithIndicator(on: self, completion: nil)
             guard let error = error else {
                 // メールアドレス変更に成功、処理終了
+                print("メールアドレスの変更に成功")
                 DialogBox.showAlert(on: self,
                                     title: NSLocalizedString("successfullyChangedEmailTitle", comment: ""),
-                                    message: NSLocalizedString("successfullyChangedEmailMessage", comment: ""))
-                print("メールアドレスの変更に成功")
-                self.currentEmail.text = newEmail
-                self.newEmailField.text = nil
+                                    message: NSLocalizedString("successfullyChangedEmailMessage", comment: "")) {
+                                        self.dismiss(animated: true, completion: nil)
+                }
                 return
             }
             print("エラー: \(error)")
@@ -72,7 +75,7 @@ class UpdateEmailVC: UIViewController {
                                              placeholder: NSLocalizedString("placeholderPassword", comment: "")) { password in
                                                 print("入力されたパスワード:\(password)")
                                                 // 再認証に使うため、Email&パスワードログインの認証情報を取得
-                                                let credential = EmailAuthProvider.credential(withEmail: user.email!, password: password)
+                                                let credential = EmailAuthProvider.credential(withEmail: email, password: password)
                                                 // 取得した認証情報で再認証
                                                 DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("reauthInProgress", comment: ""), completion: nil)
                                                 user.reauthenticateAndRetrieveData(with: credential) { (authResult, error) in
@@ -87,7 +90,7 @@ class UpdateEmailVC: UIViewController {
                                                     print("再認証成功, 再度メールアドレス変更を試みる")
                                                     // もう一度メールアドレス変更を試みる
                                                     DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("updateEmailInProgress", comment: ""), completion: nil)
-                                                    user.updateEmail(to: self.newEmailField.text!) { (error) in
+                                                    user.updateEmail(to: newEmail) { (error) in
                                                         // エラー発生したらダイアログ表示して処理終了
                                                         DialogBox.dismissAlertWithIndicator(on: self, completion: nil)
                                                         if let error = error {
@@ -96,12 +99,12 @@ class UpdateEmailVC: UIViewController {
                                                             return
                                                         }
                                                         // メールアドレス変更に成功、処理終了
+                                                        print("メールアドレスの変更に成功")
                                                         DialogBox.showAlert(on: self,
                                                                             title: NSLocalizedString("successfullyChangedEmailTitle", comment: ""),
-                                                                            message: NSLocalizedString("successfullyChangedEmailMessage", comment: ""))
-                                                        print("メールアドレスの変更に成功")
-                                                        self.currentEmail.text = newEmail
-                                                        self.newEmailField.text = nil
+                                                                            message: NSLocalizedString("successfullyChangedEmailMessage", comment: "")) {
+                                                                                self.dismiss(animated: true, completion: nil)
+                                                        }
                                                     }
                                                 }
             }

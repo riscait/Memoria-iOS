@@ -41,7 +41,9 @@ class UpdatePasswordVC: UIViewController {
     }
 
     @IBAction func didTapUpdateButton(_ sender: UIButton) {
-        
+        // 2度押し防止のため、まずボタンを無効にする
+        updateButton.isEnabled = false
+
         guard let user = Auth.auth().currentUser,
             let email = user.email,
             let currentPassword = currentPasswordField.text,
@@ -60,7 +62,6 @@ class UpdatePasswordVC: UIViewController {
             DialogBox.showAlert(on: self, message: NSLocalizedString("currentAndNewPasswordAreSame", comment: ""))
             newPasswordField.text = nil
             newPasswordConfirmationField.text = nil
-            updateButton.isEnabled = false
             return
         }
         guard newPassword == newPasswordConfirmation else {
@@ -68,7 +69,6 @@ class UpdatePasswordVC: UIViewController {
             print("確認パスワードが一致しません")
             DialogBox.showAlert(on: self, message: NSLocalizedString("mismatchPasswordConfirmation", comment: ""))
             newPasswordConfirmationField.text = nil
-            updateButton.isEnabled = false
             return
         }
         // 再認証に使うため、Email&パスワードログインの認証情報を取得
@@ -87,22 +87,22 @@ class UpdatePasswordVC: UIViewController {
                 }
                 print("再認証成功")
                 // パスワード変更処理
-                DialogBox.updateAlertWithIndicatorMessage(on: self, message: NSLocalizedString("updatePasswordInProgress", comment: ""))
-                    user.updatePassword(to: newPassword) { error in
-                        DialogBox.dismissAlertWithIndicator(on: self) {
-                            
-                            if let error = error {
-                                print("エラー: \(error)")
-                                // エラーダイアログ表示して処理終了
-                                DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
-                                return
-                            }
-                            print("パスワードの変更に成功")
-                            DialogBox.showAlert(on: self, message: NSLocalizedString("successfullyUpdatePassword", comment: "")) {
-                                self.dismiss(animated: true, completion: nil)
-                            }
+                DialogBox.updateAlert(with: NSLocalizedString("updatePasswordInProgress", comment: ""), on: self)
+                user.updatePassword(to: newPassword) { error in
+                    DialogBox.dismissAlertWithIndicator(on: self) {
+                        
+                        if let error = error {
+                            print("エラー: \(error)")
+                            // エラーダイアログ表示して処理終了
+                            DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
+                            return
+                        }
+                        print("パスワードの変更に成功")
+                        DialogBox.showAlert(on: self, message: NSLocalizedString("successfullyUpdatePassword", comment: "")) {
+                            self.dismiss(animated: true, completion: nil)
                         }
                     }
+                }
             }
         }
     }
