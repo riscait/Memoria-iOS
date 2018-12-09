@@ -25,7 +25,7 @@ class ContactAccess {
     /// 端末の連絡先アクセス許可状態をチェックする
     ///
     /// - Returns: アクセス可能状態ならTrue、それ以外はfalse
-    func checkStatus(rootVC: UIViewController) {
+    func checkStatusAndImport(rootVC: UIViewController) {
         
         // 連絡帳へのアクセス許可状態を取得する
         let accessStatus = CNContactStore.authorizationStatus(for: .contacts)
@@ -37,13 +37,17 @@ class ContactAccess {
             store.requestAccess(for: .contacts, completionHandler: {(granted, Error) in
                 if granted {
                     print("連絡先へのアクセスが許可されました")
-                    self.importContact {
-                        print("連絡先アクセスのコールバック開始")
-                        DialogBox.showAlert(on: rootVC,
-                                            hasCancel: false,
-                                            title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), $0.description),
-                                            message: NSLocalizedString("importedBirthdayMessage", comment: ""),
-                                            defaultAction: nil)
+                    DialogBox.showAlertWithIndicator(on: rootVC, message: NSLocalizedString("importingContact", comment: "")) {
+                        self.importContact { count in
+                            DialogBox.dismissAlertWithIndicator(on: rootVC) {
+                                print("連絡先アクセスのコールバック開始")
+                                DialogBox.showAlert(on: rootVC,
+                                                    hasCancel: false,
+                                                    title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), count.description),
+                                                    message: NSLocalizedString("importedBirthdayMessage", comment: ""),
+                                                    defaultAction: nil)
+                            }
+                        }
                     }
                 } else {
                     print("連絡先へのアクセスが拒否されました")
@@ -69,13 +73,17 @@ class ContactAccess {
             
         case .authorized:  // 連絡先へのアクセス可能
             print("連絡先へのアクセス可能")
-            self.importContact {
-                print("連絡先アクセスのコールバック開始")
-                DialogBox.showAlert(on: rootVC,
-                                    hasCancel: false,
-                                    title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), $0.description),
-                                    message: NSLocalizedString("importedBirthdayMessage", comment: ""),
-                                    defaultAction: nil)
+            DialogBox.showAlertWithIndicator(on: rootVC, message: NSLocalizedString("importingContact", comment: "")) {
+                self.importContact { count in
+                    DialogBox.dismissAlertWithIndicator(on: rootVC) {
+                        print("連絡先アクセスのコールバック開始")
+                        DialogBox.showAlert(on: rootVC,
+                                            hasCancel: false,
+                                            title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), count.description),
+                                            message: NSLocalizedString("importedBirthdayMessage", comment: ""),
+                                            defaultAction: nil)
+                    }
+                }
             }
         }
     }

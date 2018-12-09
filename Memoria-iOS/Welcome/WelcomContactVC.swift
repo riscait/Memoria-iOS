@@ -19,7 +19,7 @@ class WelcomContactVC: UIViewController {
         // 連絡先アクセス用のクラスをインスタンス化
         let contactAccess = ContactAccess()
         // 連絡先情報の使用が許可されているか調べてから誕生日をとりこむ
-        contactAccess.checkStatus(rootVC: self)
+        contactAccess.checkStatusAndImport(rootVC: self)
     }
     
     /// Segueが実行されるときの処理

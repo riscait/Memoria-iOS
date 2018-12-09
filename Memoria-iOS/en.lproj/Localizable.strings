@@ -16,6 +16,7 @@
 "change" = "Change";
 "later" = "Later";
 "version" = "Version";
+"copyright" = "©︎ 2018 nerco studio";
 // Sign up view
 "underSignUp" = "Sign up...";
 "forgotPassword" = "Forgot Password";
@@ -123,11 +124,13 @@
 "updateDisplayName" = "Display name";
 // Anniversary settings
 "aboutAnniversary" = "Anniversary";
-"aboutMemoria" = "Memoria";
-"copyright" = "©︎ 2018 nerco studio";
 "importBirthday" = "Import birthday from \"Contact App\"";
-"deleteImportedBirthday" = "Delete impoted birthday";
+"importBirthdayTitle" = "Load the latest contact data";
+"importBirthdayMessage" = "It is updated with the information on the contact side, and the birthday of the contact that was hidden / deleted also revives.";
+"importingContact" = "Importing...";
+"deleteImportedBirthday" = "Delete imported birthday";
 // About Memoria
+"aboutMemoria" = "Memoria";
 "reviewThisApp" = "Review this App";
 "appStore" = "App Store";
 "developerTwitter" = "Developer Twitter";

@@ -61,7 +61,9 @@ class SettingVC: UITableViewController {
         // セルによって処理を振り分け
         switch selectedCell {
         case .importBirthday:
-            ContactAccess().checkStatus(rootVC: self)
+            DialogBox.showAlert(on: self, hasCancel: true, title: NSLocalizedString("importBirthdayTitle", comment: ""), message: NSLocalizedString("importBirthdayMessage", comment: "")) {
+                ContactAccess().checkStatusAndImport(rootVC: self)
+            }
             
         case .deleteBirthday:
             DialogBox.showDestructiveAlert(on: self,
