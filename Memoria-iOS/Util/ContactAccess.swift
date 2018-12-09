@@ -25,7 +25,7 @@ class ContactAccess {
     /// 端末の連絡先アクセス許可状態をチェックする
     ///
     /// - Returns: アクセス可能状態ならTrue、それ以外はfalse
-    func checkStatusAndImport(rootVC: UIViewController) {
+    func checkStatusAndImport(rootVC: UIViewController, compltion: (() -> ())? = nil) {
         
         // 連絡帳へのアクセス許可状態を取得する
         let accessStatus = CNContactStore.authorizationStatus(for: .contacts)
@@ -45,7 +45,7 @@ class ContactAccess {
                                                     hasCancel: false,
                                                     title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), count.description),
                                                     message: NSLocalizedString("importedBirthdayMessage", comment: ""),
-                                                    defaultAction: nil)
+                                                    defaultAction: compltion)
                             }
                         }
                     }
@@ -81,7 +81,7 @@ class ContactAccess {
                                             hasCancel: false,
                                             title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), count.description),
                                             message: NSLocalizedString("importedBirthdayMessage", comment: ""),
-                                            defaultAction: nil)
+                                            defaultAction: compltion)
                     }
                 }
             }

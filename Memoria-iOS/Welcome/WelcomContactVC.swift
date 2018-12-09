@@ -12,20 +12,24 @@ class WelcomContactVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     @IBAction func didTapImportButton(_ sender: Any) {
         // 連絡先アクセス用のクラスをインスタンス化
         let contactAccess = ContactAccess()
         // 連絡先情報の使用が許可されているか調べてから誕生日をとりこむ
-        contactAccess.checkStatusAndImport(rootVC: self)
+        contactAccess.checkStatusAndImport(rootVC: self) {
+            // チュートリアル終了フラグを立てる
+            UserDefaults.standard.set(true, forKey: "isFinishedTutorial")
+            self.dismiss(animated: true, completion: nil)
+            print("Anniversary画面へ")
+        }
     }
     
     /// Segueが実行されるときの処理
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            // チュートリアル終了フラグを立てる
-            print("Anniversary画面へ")
-            UserDefaults.standard.set(true, forKey: "isFinishedTutorial")
+        // チュートリアル終了フラグを立てる
+        UserDefaults.standard.set(true, forKey: "isFinishedTutorial")
+        print("Anniversary画面へ")
     }
 }
