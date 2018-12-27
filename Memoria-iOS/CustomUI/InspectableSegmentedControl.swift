@@ -22,6 +22,12 @@ import UIKit
             setTitle(NSLocalizedString(localizedStringKey2, comment: ""), forSegmentAt: 1)
         }
     }
+    @IBInspectable var localizedStringKey3: String = "" {
+        didSet {
+            guard !localizedStringKey3.isEmpty else { return }
+            setTitle(NSLocalizedString(localizedStringKey3, comment: ""), forSegmentAt: 2)
+        }
+    }
 
     /*
     // Only override draw() if you perform custom drawing.

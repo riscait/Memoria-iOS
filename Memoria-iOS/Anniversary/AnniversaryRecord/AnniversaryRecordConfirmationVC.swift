@@ -98,7 +98,7 @@ extension AnniversaryRecordConfirmationVC: UITableViewDataSource {
         // 日付
         case (CellContent.date.rawValue, _):
             cell.textLabel?.text = NSLocalizedString("anniversarydateLabel", comment: "")
-            cell.detailTextLabel?.text = DateTimeFormat().getYMDString(date: anniversary.date!)
+            cell.detailTextLabel?.text = DateTimeFormat.getYMDString(date: anniversary.date!)
             
         default: break
         }

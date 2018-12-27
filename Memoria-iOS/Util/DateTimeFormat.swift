@@ -8,12 +8,12 @@
 
 import UIKit
 
-class DateTimeFormat {
+struct DateTimeFormat {
 
     // MARK: - プロパティ
     
-    let dateFormatter = DateFormatter()
-    let calendar = Calendar.current
+    static let dateFormatter = DateFormatter()
+    static let calendar = Calendar.current
 
     
     // MARK: - 関数
@@ -24,7 +24,7 @@ class DateTimeFormat {
     ///   - component: 部位の指定（年や月や日などなど）
     ///   - date: 日付（デフォルト値は現在）
     /// - Returns: 指定日付の指定部位を数字で返す
-    func getNowDateNumber(component: Calendar.Component, date: Date = Date()) -> Int {
+    static func getDateComponent(_ component: Calendar.Component, date: Date = Date()) -> Int {
         return calendar.component(component, from: date)
     }
     
@@ -32,16 +32,16 @@ class DateTimeFormat {
     ///
     /// - Parameter date: 日時データ
     /// - Returns: 「M月d日」フォーマットの文字列
-    func getMonthDayString(date: Date) -> String {
+    static func getMonthDayString(date: Date) -> String {
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMd", options: 0, locale: Locale.current)
         return dateFormatter.string(from: date)
     }
     
-    /// 日付を年月日のフォーマットにして文字列で返す。年がない場合は月日を返す
+    /// 日付を各国の年月日のフォーマットにして文字列で返す。年がない場合は月日を返す
     ///
     /// - Parameter date: 日時データ
-    /// - Returns: 「yyyy年M月d日」フォーマットの文字列
-    func getYMDString(date: Date) -> String {
+    /// - Returns: 年月日の順番は国によって違う
+    static func getYMDString(date: Date = Date()) -> String {
         // 「年」情報を持っているか否か（1年は年情報がない、ということになる）
         let hasYear = calendar.dateComponents([.year], from: date).year! != 1 ? true : false
         if hasYear {
@@ -54,7 +54,7 @@ class DateTimeFormat {
     }
 
     /// (年)月日それぞれを数字で受け取り、日付に変換する
-    func toDateFormat(fromYear year: Int?, month: Int, day: Int) -> Date {
+    static func toDateFormat(fromYear year: Int?, month: Int, day: Int) -> Date {
         return calendar.date(from: DateComponents(year: year, month: month, day: day))!
     }
     
@@ -62,7 +62,7 @@ class DateTimeFormat {
     ///
     /// - Parameter date: 記念日
     /// - Returns: 記念日までの残り日数
-    func getRemainingDays(date: Date) -> Int {
+    static func getRemainingDays(date: Date) -> Int {
         // 日付の「月」と「日」を取得
         let monthAndDayDate = calendar.dateComponents([.month, .day], from: date)
         // 当日なら0を返す

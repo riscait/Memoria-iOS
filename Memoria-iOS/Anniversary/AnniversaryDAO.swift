@@ -7,18 +7,20 @@
 //
 
 import UIKit
+
 import Firebase
 
 /// データベースへのアクセスを担うクラス
 class AnniversaryDAO {
-    
     // MARK: - プロパティ
     
+    /// FirestoreDB
     var db = Firestore.firestore()
     /// 正直まだよく理解していないリスナー登録？
     var listenerRegistration: ListenerRegistration?
-
+    /// Firebase Auth - User ID
     let uid = Auth.auth().currentUser?.uid
+    
     
     // MARK: - データ取得
     
@@ -167,8 +169,7 @@ class AnniversaryDAO {
     /// - Parameters:
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
-    func deleteQueryAnniversary(whereField: String,
-                                equalTo: Any) {
+    func deleteQueryAnniversary(whereField: String, equalTo: Any) {
         guard let uid = uid else { return }
         db.collection("users").document(uid).collection("anniversary").whereField(whereField, isEqualTo: equalTo).getDocuments { (querySnapshot, error) in
             if let error = error {

@@ -80,9 +80,8 @@
                                     <constraint firstAttribute="height" constant="44" id="k6t-sd-ZWy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="toNextPage"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="toNextPage"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="next"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="OFS-lP-RHk" kind="show" id="IzT-hh-U3v"/>

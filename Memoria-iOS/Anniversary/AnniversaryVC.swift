@@ -1,5 +1,5 @@
 //
-//  AnniversaryViewController.swift
+//  AnniversaryVC.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/10/27.
@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 /// 記念日一覧を表示するメイン画面のクラス
-final class AnniversaryViewController: UICollectionViewController {
+final class AnniversaryVC: UICollectionViewController {
     
     // MARK: - IBOutletプロパティ
 
@@ -20,8 +20,6 @@ final class AnniversaryViewController: UICollectionViewController {
     
     /// データ永続化（端末保存）のためのUserDefaults
     let userDefaults = UserDefaults.standard
-    /// 日付フォーマットクラス
-    let dtf = DateTimeFormat()
     /// 正直まだよく理解していないリスナー登録？
     var listenerRegistration: ListenerRegistration?
     var authStateListenerHandler: AuthStateDidChangeListenerHandle?
@@ -87,7 +85,7 @@ final class AnniversaryViewController: UICollectionViewController {
                 // 記念日データから日付を取り出す
                 guard let anniversaryDate = (data["date"] as? Timestamp)?.dateValue() else { return }
                 // 日付から次の記念日までの残日数を計算
-                let remainingDays = self.dtf.getRemainingDays(date: anniversaryDate)
+                let remainingDays = DateTimeFormat.getRemainingDays(date: anniversaryDate)
                 // 記念日データに残日数を追加
                 data["remainingDays"] = remainingDays
                 // 残日数も含めた記念日データをローカル配列に記憶
@@ -177,7 +175,7 @@ final class AnniversaryViewController: UICollectionViewController {
     
     /// CollectionViewのセクション数
     ///
-    /// - Parameter collectionView: AnniversaryViewController
+    /// - Parameter collectionView: AnniversaryVC
     /// - Returns: セクションの数
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // セクションの数を必要であれば設定する。現段階では1つで十分
@@ -187,7 +185,7 @@ final class AnniversaryViewController: UICollectionViewController {
     /// CollectionViewのアイテム数
     ///
     /// - Parameters:
-    ///   - collectionView: AnniversaryViewController
+    ///   - collectionView: AnniversaryVC
     ///   - section: セクション番号
     /// - Returns: アイテム数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -202,17 +200,13 @@ final class AnniversaryViewController: UICollectionViewController {
     /// CollectionViewCellの表示設定
     ///
     /// - Parameters:
-    ///   - collectionView: AnniversaryViewController
+    ///   - collectionView: AnniversaryVC
     ///   - indexPath: セル番号
     /// - Returns: CollectionViewCell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // Storyboardで設定したカスタムセルIDを指定
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "anniversaryCell", for: indexPath) as! AnniversaryCell
-
-        // 日時フォーマットクラス
-        let dtf = DateTimeFormat()
-
         // 記念日データを順に取り出す
         let anniversary = self.anniversarys[indexPath.row]
         // 記念日の分類
@@ -229,7 +223,7 @@ final class AnniversaryViewController: UICollectionViewController {
         }
         // 記念日の日程
         guard let anniversaryDate = (anniversary["date"] as? Timestamp)?.dateValue() else { return cell }
-        cell.anniversaryDateLabel.text = dtf.getMonthDayString(date: anniversaryDate)
+        cell.anniversaryDateLabel.text = DateTimeFormat.getMonthDayString(date: anniversaryDate)
         // 記念日までの残り日数
         let remainingDays = anniversary["remainingDays"] as! Int
         cell.remainingDaysLabel.text = String(format: NSLocalizedString("remainingDays", comment: ""), remainingDays.description)

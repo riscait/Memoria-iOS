@@ -47,7 +47,7 @@ final class AnniversaryDetailVC: UIViewController {
             self.chineseZodiacSign = ZodiacSign.ChineseZodiacSign.getChineseZodiacSign(date: date)
             
             DispatchQueue.main.async {
-                self.anniversaryDateLabel.text = DateTimeFormat().getYMDString(date: date)
+                self.anniversaryDateLabel.text = DateTimeFormat.getYMDString(date: date)
                 self.tableView.reloadData()
             }
         }

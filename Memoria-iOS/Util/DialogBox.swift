@@ -59,7 +59,7 @@ final class DialogBox: UIAlertController {
     ///   - destructiveTitle: アクションの文字列（省略で"OK"）
     ///   - destructiveAction: アクション選択時の処理
     class func showDestructiveAlert(on rootVC: UIViewController,
-                         title: String?,
+                         title: String? = nil,
                          message: String?,
                          destructiveTitle: String,
                          destructiveAction: @escaping (() -> ())) {

@@ -2,7 +2,8 @@
 "unknown" = "Unknown";
 "ok" = "OK";
 "cancel" = "Cancel";
-"toNextPage" = "Next";
+"next" = "Next";
+"previous" = "Previous";
 "edit" = "Edit";
 "delete" = "Delete";
 "redisplay" = "Redisplay";
@@ -82,6 +83,7 @@
 "startWithoutImport" = "Start without import";
 // Anniversary view
 "letsAddAnniversary" = "Let's add an ANNIVERSARY from the \"+ button\" on the upper right!\n\nOr let's capture the contact 's birthday from the' Settings' tab!";
+"fullName" = "%2$@ %1$@"; // given name + family name
 "whoseBirthday" = "%2$@ %1$@'s Birthday"; // given name + family name
 "remainingDays" = "%@ days";
 "remainingDaysToday" = "Today!";

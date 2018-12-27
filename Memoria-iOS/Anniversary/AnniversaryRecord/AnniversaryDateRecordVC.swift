@@ -24,7 +24,6 @@ class AnniversaryDateRecordVC: UIViewController {
     
     // MARK: - プロパティ
 
-    private let dateTimeFormat = DateTimeFormat()
     // 前画面から受け取ったAnniversaryデータ
     var anniversary: AnniversaryRecordModel!
     // 端末の言語
@@ -73,9 +72,9 @@ class AnniversaryDateRecordVC: UIViewController {
     /// ピッカーのデフォルト設定を行う
     private func setPickerDefault() {
         // 現在の年月日
-        let nowYear = dateTimeFormat.getNowDateNumber(component: .year)
-        let nowMonth = dateTimeFormat.getNowDateNumber(component: .month)
-        let nowDay = dateTimeFormat.getNowDateNumber(component: .day)
+        let nowYear = DateTimeFormat.getDateComponent(.year)
+        let nowMonth = DateTimeFormat.getDateComponent(.month)
+        let nowDay = DateTimeFormat.getDateComponent(.day)
         
         guard let selectedSegment = selectedSegment,
             let dateOrder = dateOrder else { return }
@@ -138,26 +137,26 @@ class AnniversaryDateRecordVC: UIViewController {
             let month = pickerView.selectedRow(inComponent: second) + 1
             let day = pickerView.selectedRow(inComponent: third) + 1
             // 選択されている年月日をDate型に変換し記念日情報に追加
-            anniversary.date = dateTimeFormat.toDateFormat(fromYear: year, month: month, day: day)
+            anniversary.date = DateTimeFormat.toDateFormat(fromYear: year, month: month, day: day)
 
         case (.ymd, .disabledYear):
             let month = pickerView.selectedRow(inComponent: first) + 1
             let day = pickerView.selectedRow(inComponent: second) + 1
             // 選択されている年月日をDate型に変換し記念日情報に追加
-            anniversary.date = dateTimeFormat.toDateFormat(fromYear: nil, month: month, day: day)
+            anniversary.date = DateTimeFormat.toDateFormat(fromYear: nil, month: month, day: day)
 
         case (.mdy, .enabledYear):
             let year = pickerView.selectedRow(inComponent: third) + 2
             let month = pickerView.selectedRow(inComponent: first) + 1
             let day = pickerView.selectedRow(inComponent: second) + 1
             // 選択されている年月日をDate型に変換し記念日情報に追加
-            anniversary.date = dateTimeFormat.toDateFormat(fromYear: year, month: month, day: day)
+            anniversary.date = DateTimeFormat.toDateFormat(fromYear: year, month: month, day: day)
 
         case (.mdy, .disabledYear):
             let month = pickerView.selectedRow(inComponent: first) + 1
             let day = pickerView.selectedRow(inComponent: second) + 1
             // 選択されている年月日をDate型に変換し記念日情報に追加
-            anniversary.date = dateTimeFormat.toDateFormat(fromYear: nil, month: month, day: day)
+            anniversary.date = DateTimeFormat.toDateFormat(fromYear: nil, month: month, day: day)
         }
 
         // 次のVCに記念日情報を渡す

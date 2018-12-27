@@ -245,7 +245,7 @@
                             <outlet property="delegate" destination="GzO-PB-JUL" id="sXM-X2-t90"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Setting" image="SettingTabBarIcon" id="tJg-kG-CO2"/>
+                    <tabBarItem key="tabBarItem" title="Setting" image="settingTabBarIcon" id="tJg-kG-CO2"/>
                     <navigationItem key="navigationItem" title="Settings" id="RT3-Eh-lfQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
@@ -293,6 +293,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SettingTabBarIcon" width="48" height="48"/>
+        <image name="settingTabBarIcon" width="48" height="48"/>
     </resources>
 </document>

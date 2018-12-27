@@ -2,7 +2,8 @@
 "unknown" = "不明";
 "ok" = "OK";
 "cancel" = "キャンセル";
-"toNextPage" = "次へ";
+"next" = "次へ";
+"previous" = "前へ";
 "edit" = "編集";
 "delete" = "削除する";
 "redisplay" = "再表示";
@@ -15,6 +16,9 @@
 "update" = "更新する";
 "change" = "変更する";
 "later" = "あとで";
+"record" = "登録する";
+"gotGift" = "もらった";
+"gaveGift" = "あげた";
 "version" = "Version";
 "copyright" = "©︎ 2018 nerco studio";
 // アカウント登録画面
@@ -73,6 +77,12 @@
 "settings" = "設定";
 "hiddenList" = "非表示リスト";
 "titleForHeaderInSection" = "再表示するか、完全に削除することができます。";
+// プレゼント登録画面
+"recordGift" = "プレゼントを登録";
+"placeholderPerson" = "入力するか選択してください";
+"placeholderAnniversary" = "入力するか選択してください";
+"placeholderDate" = "%@";
+"placeholderGoods" = "ネクタイ";
 // Welcome画面
 "welcomeTitle" = "もう記念日は忘れません";
 "welcomeDetail" = "「メモリア」で友人や家族の誕生日、結婚記念日やサラダ記念日など様々な記念日をまとめて管理しましょう！";
@@ -82,6 +92,7 @@
 "startWithoutImport" = "あとで";
 // Anniversary画面
 "letsAddAnniversary" = "右上の＋ボタンから\n記念日を追加しましょう！\n\nまたは「設定」タブから連絡先の誕生日を取り込みましょう！";
+"fullName" = "%@ %@";
 "whoseBirthday" = "%@ %@さん\n誕生日";  // 姓 + 名さん
 "remainingDays" = "あと%@日";
 "remainingDaysToday" = "今日です！";
