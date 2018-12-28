@@ -12,6 +12,7 @@ import Firebase
 
 /// データベースへのアクセスを担うクラス
 class AnniversaryDAO {
+    
     // MARK: - プロパティ
     
     /// FirestoreDB
@@ -21,7 +22,9 @@ class AnniversaryDAO {
     /// Firebase Auth - User ID
     let uid = Auth.auth().currentUser?.uid
     
-    
+    /// Taptic Engine
+    var feedbackGenerator: UINotificationFeedbackGenerator?
+
     // MARK: - データ取得
     
     /// Firestoreから記念日データを取得する
@@ -169,16 +172,31 @@ class AnniversaryDAO {
     /// - Parameters:
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
-    func deleteQueryAnniversary(whereField: String, equalTo: Any) {
+    func deleteQueryAnniversary(whereField: String, equalTo: Any,
+                                on roorVC: UIViewController, compltion: (() -> Void)? = nil) {
+        
         guard let uid = uid else { return }
         db.collection("users").document(uid).collection("anniversary").whereField(whereField, isEqualTo: equalTo).getDocuments { (querySnapshot, error) in
+            
+            // Instantiate a new feedback-generator
+            self.feedbackGenerator = UINotificationFeedbackGenerator()
+            self.feedbackGenerator?.prepare()
+            
             if let error = error {
                 print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功しました！")
-            }
-            if let documents = querySnapshot?.documents {
+                DialogBox.showAlert(on: roorVC, message: NSLocalizedString("deleteAnniversaryFilure", comment: ""))
+                self.feedbackGenerator?.notificationOccurred(.error)
+                
+            } else if let documents = querySnapshot?.documents,
+                !documents.isEmpty {
+                print("\(#function)の実行に成功しました！", documents.description)
                 documents.forEach { $0.reference.delete() }
+                DialogBox.showAlert(on: roorVC, message: NSLocalizedString("deleteAnniversarySuccess", comment: ""))
+                self.feedbackGenerator?.notificationOccurred(.success)
+            } else {
+                print("documentsが空")
+                DialogBox.showAlert(on: roorVC, message: NSLocalizedString("deleteAnniversaryEmpty", comment: ""))
+                self.feedbackGenerator?.notificationOccurred(.warning)
             }
         }
     }

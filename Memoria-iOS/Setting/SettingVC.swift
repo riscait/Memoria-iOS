@@ -41,10 +41,25 @@ class SettingVC: UITableViewController {
         accountStateLabel.text = user.displayName  // ユーザー名を表示
     }
     
-    // MARK: - 関数
-    /// 連絡先から取得した誕生日を削除する
+    
+    // MARK: - Private method
+    
+    /// Delete imported birthday
     private func deleteContactBirthday() {
-        AnniversaryDAO().deleteQueryAnniversary(whereField: "category", equalTo: "contactBirthday")
+        DialogBox.showDestructiveAlert(on: self,
+                                       title: NSLocalizedString("deleteContactBirthdayTitle", comment: ""),
+                                       message: NSLocalizedString("deleteContactBirthdayMessage", comment: ""),
+                                       destructiveTitle: NSLocalizedString("delete", comment: ""),
+                                       destructiveAction: {AnniversaryDAO().deleteQueryAnniversary(whereField: "category", equalTo: "contactBirthday", on: self)})
+    }
+    /// Import birthday by Contacts
+    private func importBirthday() {
+        DialogBox.showAlert(on: self,
+                            hasCancel: true,
+                            title: NSLocalizedString("importBirthdayTitle", comment: ""),
+                            message: NSLocalizedString("importBirthdayMessage", comment: "")) {
+            ContactAccess().checkStatusAndImport(rootVC: self)
+        }
     }
     
     
@@ -60,18 +75,8 @@ class SettingVC: UITableViewController {
             let selectedCell = SelectableCell.init(rawValue: cell.tag) else { return }
         // セルによって処理を振り分け
         switch selectedCell {
-        case .importBirthday:
-            DialogBox.showAlert(on: self, hasCancel: true, title: NSLocalizedString("importBirthdayTitle", comment: ""), message: NSLocalizedString("importBirthdayMessage", comment: "")) {
-                ContactAccess().checkStatusAndImport(rootVC: self)
-            }
-            
-        case .deleteBirthday:
-            DialogBox.showDestructiveAlert(on: self,
-                                           title: NSLocalizedString("deleteContactBirthdayTitle", comment: ""),
-                                           message: NSLocalizedString("deleteContactBirthdayMessage", comment: ""),
-                                           destructiveTitle: NSLocalizedString("delete", comment: ""),
-                                           destructiveAction: deleteContactBirthday)
-            
+        case .importBirthday: importBirthday()
+        case .deleteBirthday: deleteContactBirthday()
         case .reviewThisApp:
             if let url = URL(string: "https://itunes.apple.com/app/id1444443848?action=write-review") {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)

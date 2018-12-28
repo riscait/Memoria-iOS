@@ -140,6 +140,9 @@
 "importBirthdayMessage" = "連絡先側の情報で更新され、非表示・削除していた連絡先誕生日も復活します。";
 "importingContact" = "連絡先を読み込み中...";
 "deleteImportedBirthday" = "インポートした誕生日を削除";
+"deleteAnniversaryFilure" = "削除に失敗しました";
+"deleteAnniversarySuccess" = "誕生日を削除しました";
+"deleteAnniversaryEmpty" = "削除できる誕生日がありません";
 // メモリアについて
 "aboutMemoria" = "メモリアについて";
 "reviewThisApp" = "メモリアを評価する";

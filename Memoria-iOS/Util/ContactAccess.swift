@@ -12,6 +12,9 @@ import Firebase
 
 class ContactAccess {
     
+    /// Taptic Engine
+    var feedbackGenerator: UINotificationFeedbackGenerator?
+
     // 連絡先のデータを格納するリスト
     private var data: [String: [Any]]?
     private var name: [String]?
@@ -27,6 +30,8 @@ class ContactAccess {
     /// - Returns: アクセス可能状態ならTrue、それ以外はfalse
     func checkStatusAndImport(rootVC: UIViewController, compltion: (() -> ())? = nil) {
         
+        // Instantiate a new feedback-generator
+        feedbackGenerator = UINotificationFeedbackGenerator()
         // 連絡帳へのアクセス許可状態を取得する
         let accessStatus = CNContactStore.authorizationStatus(for: .contacts)
         
@@ -40,12 +45,7 @@ class ContactAccess {
                     DialogBox.showAlertWithIndicator(on: rootVC, message: NSLocalizedString("importingContact", comment: "")) {
                         self.importContact { count in
                             DialogBox.dismissAlertWithIndicator(on: rootVC) {
-                                print("連絡先アクセスのコールバック開始")
-                                DialogBox.showAlert(on: rootVC,
-                                                    hasCancel: false,
-                                                    title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), count.description),
-                                                    message: NSLocalizedString("importedBirthdayMessage", comment: ""),
-                                                    defaultAction: compltion)
+                                self.importedBirthday(rootVC: rootVC, count: count, compltion: compltion)
                             }
                         }
                     }
@@ -76,12 +76,7 @@ class ContactAccess {
             DialogBox.showAlertWithIndicator(on: rootVC, message: NSLocalizedString("importingContact", comment: "")) {
                 self.importContact { count in
                     DialogBox.dismissAlertWithIndicator(on: rootVC) {
-                        print("連絡先アクセスのコールバック開始")
-                        DialogBox.showAlert(on: rootVC,
-                                            hasCancel: false,
-                                            title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), count.description),
-                                            message: NSLocalizedString("importedBirthdayMessage", comment: ""),
-                                            defaultAction: compltion)
+                        self.importedBirthday(rootVC: rootVC, count: count, compltion: compltion)
                     }
                 }
             }
@@ -147,5 +142,17 @@ class ContactAccess {
         if let callback = callback {
             callback(contacts.count)
         }
+    }
+    
+    // MARK: - Private method
+    private func importedBirthday(rootVC: UIViewController, count: Int, compltion: (() -> Void)?) {
+        feedbackGenerator?.prepare()
+        print("連絡先アクセスのコールバック開始")
+        DialogBox.showAlert(on: rootVC,
+                            hasCancel: false,
+                            title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), count.description),
+                            message: NSLocalizedString("importedBirthdayMessage", comment: ""),
+                            defaultAction: compltion)
+        feedbackGenerator?.notificationOccurred(.success)
     }
 }
