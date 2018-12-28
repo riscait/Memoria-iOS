@@ -129,6 +129,9 @@
 "importBirthdayMessage" = "It is updated with the information on the contact side, and the birthday of the contact that was hidden / deleted also revives.";
 "importingContact" = "Importing...";
 "deleteImportedBirthday" = "Delete imported birthday";
+"deleteAnniversaryFilure" = "Delete failed";
+"deleteAnniversarySuccess" = "Deleted successfully";
+"deleteAnniversaryEmpty" = "There are no birthdays available for deletion";
 // About Memoria
 "aboutMemoria" = "Memoria";
 "reviewThisApp" = "Review this App";
