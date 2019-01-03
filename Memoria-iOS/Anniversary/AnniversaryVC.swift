@@ -12,19 +12,18 @@ import Firebase
 /// 記念日一覧を表示するメイン画面のクラス
 final class AnniversaryVC: UICollectionViewController {
     
-    // MARK: - IBOutletプロパティ
+    // MARK: - IBOutlet property
 
     @IBOutlet private weak var emptySetView: UIView!
 
-    // MARK: - プロパティ
     
-    /// データ永続化（端末保存）のためのUserDefaults
-    let userDefaults = UserDefaults.standard
+    // MARK: - Property
+    
     /// 正直まだよく理解していないリスナー登録？
     var listenerRegistration: ListenerRegistration?
     var authStateListenerHandler: AuthStateDidChangeListenerHandle?
     
-    /// ユーザー一意のID
+    /// Firebase Auth - User ID
     var uid: String?
     /// データ配列
     var anniversarys: [[String: Any]] = []
@@ -33,13 +32,13 @@ final class AnniversaryVC: UICollectionViewController {
     var refresher = UIRefreshControl()
     
     
-    // MARK: - ライフサイクル
+    // MARK: - Life cycle
     
     /// Viewの読込完了後に一度だけ呼ばれる
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = NSLocalizedString("anniversary", comment: "")
+        title = "anniversary".localized
         
         /* ---------- 検索バーは未実装 ----------
         let searchController = UISearchController(searchResultsController: nil)
@@ -61,12 +60,10 @@ final class AnniversaryVC: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("AnniversaryVCの\(#function)")
+        // User ID
         uid = Auth.auth().currentUser?.uid
+        guard let uid = uid else { return }
         
-        guard let uid = uid else {
-            print("uidがnil")
-            return
-        }
         let usersCollection = Firestore.firestore().collection("users")
         let anniversaryCollection = usersCollection.document(uid).collection("anniversary")
         let filteredCollection = anniversaryCollection.whereField("isHidden", isEqualTo: false)
@@ -122,16 +119,18 @@ final class AnniversaryVC: UICollectionViewController {
         guard let id = segue.identifier else { return }
         
         if id == "toDetailSegue" {
-            let nextVc = segue.destination as! AnniversaryDetailVC
+            let nextVC = segue.destination as! AnniversaryDetailVC
             let indexPath = collectionView.indexPathsForSelectedItems?.first
             let cell = collectionView.cellForItem(at: indexPath!) as! AnniversaryCell
-            nextVc.anniversaryId = cell.anniversaryId.text
-            nextVc.anniversaryName = cell.anniversaryNameLabel.text
-            nextVc.anniversaryDate = cell.anniversaryDateLabel.text
-            nextVc.remainingDays = cell.remainingDaysLabel.text
-            nextVc.iconImage = cell.anniversaryIconImage.image
+            nextVC.anniversaryId = cell.anniversaryId.text
+            nextVC.anniversaryName = cell.anniversaryNameLabel.text
+            nextVC.anniversaryDate = cell.anniversaryDateLabel.text
+            nextVC.remainingDays = cell.remainingDaysLabel.text
+            nextVC.iconImage = cell.anniversaryIconImage.image
         }
     }
+    
+    
     // MARK: - IBAction（InterfaceBuiderとつないだActionメソッド）
     
     /// 他の画面からこの画面へ戻ってくる
@@ -141,7 +140,7 @@ final class AnniversaryVC: UICollectionViewController {
         
     }
     
-    // MARK: - 汎用メソッド
+    // MARK: - Misc method
     
     /// コレクションビューのレイアウト設定
     ///
@@ -163,11 +162,10 @@ final class AnniversaryVC: UICollectionViewController {
     /// 引っ張って更新用アクション
     @objc func refreshCollectionView() {
         print("引っ張って更新が始まります！")
-        
         DispatchQueue.main.async {
             self.collectionView.reloadData()
         }
-        self.refresher.endRefreshing()
+        refresher.endRefreshing()
     }
 
     

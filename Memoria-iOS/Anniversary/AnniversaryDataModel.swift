@@ -1,5 +1,5 @@
 //
-//  AnniversaryData.swift
+//  AnniversaryDataModel.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/12/24.
@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-struct AnniversaryData {
+struct AnniversaryDataModel {
     let id: String
     let category: String
     let title: String

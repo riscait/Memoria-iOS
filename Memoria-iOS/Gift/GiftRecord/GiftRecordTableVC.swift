@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 /// すべてのフィールドにテキストが入力されて登録ボタンを押せることを知らせる
 protocol GiftRecordTableVCDelegate: AnyObject {
@@ -22,6 +23,11 @@ enum Direction {
 /// プレゼントや渡す相手などの情報を入力するためのテーブルVC
 class GiftRecordTableVC: UITableViewController {
     
+    enum SegueVC: String {
+        case selectPersonVC = "GiftRecordSelectPersonVC"
+        case selectAnniversaryVC = "GiftRecordSelectAnniversaryVC"
+    }
+    
     @IBOutlet weak var personNameField: UITextField!
     @IBOutlet weak var personSelectIcon: UIImageView!
     @IBOutlet weak var anniversarySelectIcon: UIImageView!
@@ -30,6 +36,8 @@ class GiftRecordTableVC: UITableViewController {
     @IBOutlet weak var goodsField: UITextField!
     
     private var datePicker: UIDatePicker!
+    var timeStamp: Timestamp?
+    
     
     // 登録ボタンを押せることを知らせるプロトコルのデリゲートを宣言
     weak var giftRecordTableVCDelegate: GiftRecordTableVCDelegate?
@@ -43,6 +51,7 @@ class GiftRecordTableVC: UITableViewController {
         
         if sender == dateField {
             dateField.text = DateTimeFormat.getYMDString(date: datePicker.date)
+            timeStamp = Timestamp(date: datePicker.date)
         }
     }
     
@@ -59,16 +68,22 @@ class GiftRecordTableVC: UITableViewController {
     
     // セグエでの遷移前の準備
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // 遷移前の画面がギフト詳細画面の場合
-        if let giftRecordDetailVC = segue.destination as? GiftRecordSelectPersonVC {
-            giftRecordDetailVC.delegate = self
+        // 遷移元のVCを特定して列挙型に当てはめる
+        guard let segueVC = SegueVC(rawValue: String(describing: type(of: segue.destination))) else { return }
+        // 遷移前の画面を判別
+        switch segueVC {
+        case .selectPersonVC:
+            (segue.destination as! GiftRecordSelectPersonVC).delegate = self
+        case .selectAnniversaryVC:
+            (segue.destination as! GiftRecordSelectAnniversaryVC).delegate = self
         }
     }
     
-    func checkReadyForRecording() {
+    
+    // MARK: - Private Method
+    private func checkReadyForRecording() {
         if !(personNameField.text?.isEmpty ?? true),
             !(anniversaryNameField.text?.isEmpty ?? true),
-            !(dateField.text?.isEmpty ?? true),
             !(goodsField.text?.isEmpty ?? true) {
             print("ready!")
             // デリゲートメソッドを実行する
@@ -80,18 +95,18 @@ class GiftRecordTableVC: UITableViewController {
         }
     }
     
-    func setupDesign() {
+    private func setupDesign() {
         personSelectIcon.tintColor = UIColor.init(named: "mainColor")
         anniversarySelectIcon.tintColor = UIColor.init(named: "mainColor")
     }
     
-    func setupDatePicker() {
+    private func setupDatePicker() {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         dateField.inputAccessoryView = setupToolbar()
         dateField.inputView = datePicker
     }
-    func setupToolbar() -> UIToolbar {
+    private func setupToolbar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
         let next = UIBarButtonItem(title: "next".localized, style: .done, target: self, action: #selector(moveToDateFieldEdit))
@@ -105,14 +120,14 @@ class GiftRecordTableVC: UITableViewController {
         return toolbar
     }
     
-    @objc func moveToDateFieldEdit() {
+    @objc private func moveToDateFieldEdit() {
         editingField(dateField, moveToFieldWith: .next)
     }
-    @objc func moveToAnniversaryFieldEdit() {
+    @objc private func moveToAnniversaryFieldEdit() {
         editingField(dateField, moveToFieldWith: .previous)
     }
 
-    func editingField(_ textField: UITextField, moveToFieldWith direction: Direction) {
+    private func editingField(_ textField: UITextField, moveToFieldWith direction: Direction) {
         // 現在のtextFieldからフォーカスを外す
         textField.resignFirstResponder()
         
@@ -130,22 +145,38 @@ class GiftRecordTableVC: UITableViewController {
     }
 }
 
+// MARK: - Text field delegate
 extension GiftRecordTableVC: UITextFieldDelegate {
     
+    /// Did tap CLEAR button
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         giftRecordTableVCDelegate?.recordingStandby(false)
         return true
     }
     
+    /// Did tap Return key
     @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         editingField(textField, moveToFieldWith: .next)
         return true
     }
 }
 
+// MARK: - GiftRecordSelectPersonVC Delegate
 extension GiftRecordTableVC: GiftRecordSelectPersonVCDelegate {
+    
+    /// Update Person name
     func updatePersonName(with text: String?) {
         print(#function, text ?? "nil")
         personNameField.text = text
+    }
+}
+
+// MARK: - GiftRecordSelectAnniversaryVC Delegate
+extension GiftRecordTableVC: GiftRecordSelectAnniversaryVCDelegate {
+    
+    /// Update Anniversary name
+    func updateAnniversaryName(with text: String?) {
+        print(#function, text ?? "nil")
+        anniversaryNameField.text = text
     }
 }

@@ -17,7 +17,7 @@ protocol GiftRecordSelectPersonVCDelegate: AnyObject {
 /// gift対象者を選択するための詳細画面（テーブルセルをタップして遷移してくる）
 class GiftRecordSelectPersonVC: UIViewController {
     
-    // MARK: Conform to GiftRecordSelectProtocol
+    // Conform to GiftRecordSelectProtocol
     var displayData = [String]()
 
     @IBOutlet weak var tableView: UITableView!
@@ -27,12 +27,18 @@ class GiftRecordSelectPersonVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
         // 検索バーを常に表示する場合はfalse。消すと引っ張って出現してスクロールで隠れるようになる
         navigationItem.hidesSearchBarWhenScrolling = false
         
-        // Search DB
+        searchDB()
+    }
+}
+
+// MARK: - Confirm GiftRecordSelectProtocol
+extension GiftRecordSelectPersonVC: GiftRecordSelectProtocol {
+    
+    func searchDB() {
         AnniversaryDAO().getFilteredAnniversaryDocuments(whereField: "isHidden", equalTo: false) { (queryDoc) in
             for doc in queryDoc {
                 if doc.data()["familyName"] == nil, doc.data()["givenName"] == nil { continue }
@@ -44,13 +50,17 @@ class GiftRecordSelectPersonVC: UIViewController {
             self.tableView.reloadData()
         }
     }
+    
+    func popVC() {
+        let navC = navigationController!
+        navC.popViewController(animated: true)
+    }
+
 }
 
-extension GiftRecordSelectPersonVC: GiftRecordSelectProtocol {
-
-}
-
+// MARK: - Table view data source
 extension GiftRecordSelectPersonVC: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayData.count
     }
@@ -63,6 +73,7 @@ extension GiftRecordSelectPersonVC: UITableViewDataSource {
     }
 }
 
+// MARK: - Table view delegate
 extension GiftRecordSelectPersonVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -70,7 +81,6 @@ extension GiftRecordSelectPersonVC: UITableViewDelegate {
         print(#function, text ?? "nil")
         delegate?.updatePersonName(with: text)
         
-        let navC = navigationController!
-        navC.popViewController(animated: true)
+        popVC()
     }
 }

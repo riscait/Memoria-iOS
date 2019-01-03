@@ -16,14 +16,15 @@ class AnniversaryDAO {
     // MARK: - プロパティ
     
     /// FirestoreDB
-    var db = Firestore.firestore()
-    /// 正直まだよく理解していないリスナー登録？
-    var listenerRegistration: ListenerRegistration?
+    private var db = Firestore.firestore()
     /// Firebase Auth - User ID
-    let uid = Auth.auth().currentUser?.uid
+    private let uid = Auth.auth().currentUser?.uid
+    // Unique collection
+    private static let rootCollection = "users"
+    private static let subCollection = "anniversary"
     
     /// Taptic Engine
-    var feedbackGenerator: UINotificationFeedbackGenerator?
+    private var feedbackGenerator: UINotificationFeedbackGenerator?
 
     // MARK: - データ取得
     
@@ -32,7 +33,7 @@ class AnniversaryDAO {
     /// - Parameter:
     ///   - id: 記念日ID
     ///   - callback: ドキュメントのデータを受け取る
-    func getAnniversaryData(on id: String,
+    func get(by id: String,
                             callback: @escaping ([String: Any]) -> Void) {
         guard let uid = uid else { return }
         db.collection("users").document(uid).collection("anniversary").document(id).getDocument { (document, error) in
@@ -54,7 +55,7 @@ class AnniversaryDAO {
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
     /// - Returns: 検索結果
-    func getAnniversaryQuery(whereField: String,
+    func getQuery(whereField: String,
                              equalTo: Any) -> Query? {
         guard let uid = uid else { return nil }
         return db.collection("users").document(uid).collection("anniversary").whereField(whereField, isEqualTo: equalTo)
@@ -69,7 +70,7 @@ class AnniversaryDAO {
     func getFilteredAnniversaryDocuments(whereField: String,
                              equalTo: Any,
                              callback: @escaping ([QueryDocumentSnapshot]) -> Void) {
-        getAnniversaryQuery(whereField: whereField, equalTo: equalTo)?.getDocuments { (querySnapshot, error) in
+        getQuery(whereField: whereField, equalTo: equalTo)?.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -138,6 +139,12 @@ class AnniversaryDAO {
     
     // MARK: - データ更新
 
+    /// 登録済みのデータを更新する
+    ///
+    /// - Parameters:
+    ///   - documentPath: 一意のID
+    ///   - field: 更新データ名
+    ///   - content: 更新データ内容
     func updateAnniversary(documentPath: String, field: String, content: Any) {
         guard let uid = uid else { return }
         db.collection("users").document(uid).collection("anniversary").document(documentPath).updateData([field: content]) { error in

@@ -39,7 +39,7 @@ final class AnniversaryDetailVC: UIViewController {
         
         // IDをもとにDBから記念日データを取得する(非同期処理のコールバックで取得)
         // 非同期なので、クロージャ外の処理よりも後に反映されることになる
-        AnniversaryDAO().getAnniversaryData(on: anniversaryId) { anniversary in
+        AnniversaryDAO().get(by: anniversaryId) { anniversary in
             guard let date = (anniversary["date"] as? Timestamp)?.dateValue(),
                 let category = anniversary["category"] as? String else { return }
             self.category = category
