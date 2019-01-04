@@ -296,9 +296,9 @@
 				8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */,
 				8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */,
 				8D1C73C22183ED6C00DA5A14 /* AnniversaryVC.swift */,
+				8D11B3BB2194431100C60371 /* AnniversaryCell.swift */,
 				8D11B3C22195C5CC00C60371 /* AnniversaryDetail.storyboard */,
 				8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */,
-				8D11B3BB2194431100C60371 /* AnniversaryCell.swift */,
 				8D0BE31D21A0404900FE9B40 /* AnniversaryRecord */,
 			);
 			path = Anniversary;

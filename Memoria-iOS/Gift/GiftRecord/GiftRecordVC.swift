@@ -21,6 +21,8 @@ class GiftRecordVC: UIViewController {
     // プレゼント更新ならギフト情報を受け取る
     var selectedGiftId: String?
     
+    private var activeTextField: UITextView?
+    
 
     // MARK: - LifeCycle
 
@@ -28,6 +30,9 @@ class GiftRecordVC: UIViewController {
         super.viewDidLoad()
         
         title = selectedGiftId == nil ? "recordGift".localized : "updateGift".localized
+        
+        memoView.delegate = self
+        
         // ContainerViewを特定
         for child in children {
             if let child = child as? GiftRecordTableVC {
@@ -41,11 +46,13 @@ class GiftRecordVC: UIViewController {
         setGiftData()
     }
     
-    
+
     // MARK: - IBAction
     /// キャンセルボタンを押した時
     @IBAction func didTapCancelButton(_ sender: UIBarButtonItem) {
-        DialogBox.showDestructiveAlert(on: self, message: "realy".localized, destructiveTitle: "discard".localized) {
+        let message = selectedGiftId == nil ? "discardMessageForRecord".localized : "discardMessageForEdit".localized
+        
+        DialogBox.showDestructiveAlert(on: self, message: message, destructiveTitle: "close".localized) {
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -60,9 +67,10 @@ class GiftRecordVC: UIViewController {
                                  isReceived: isReceived,
                                  personName: tableVC.personNameField.text!,
                                  anniversaryName: tableVC.anniversaryNameField.text!,
-                                 date: tableVC.timeStamp ?? Timestamp(),
+                                 date: tableVC.timestamp ?? Timestamp(),
                                  goods: tableVC.goodsField.text!,
-                                 memo: memoView.text)
+                                 memo: memoView.text,
+                                 iconImage: nil)
         // DBに書き込んで画面を閉じる
         GiftDAO.set(documentPath: uuid, data: gift)
         dismiss(animated: true, completion: nil)
@@ -70,19 +78,51 @@ class GiftRecordVC: UIViewController {
     
     
     // MARK: - Misc method
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // 画面タッチでキーボードを下げる
+        view.endEditing(true)
+    }
+
     /// プレゼントの編集なら、元のデータを反映させる
     private func setGiftData() {
         guard let selectedGiftId = selectedGiftId else { return }
+
         GiftDAO.get(by: selectedGiftId) { (gift) in
+
             self.gotOrReceived.selectedSegmentIndex = (gift["isReceived"] as! Bool) ? 0 : 1
             self.tableVC.personNameField.text = gift["personName"] as? String
             self.tableVC.anniversaryNameField.text = gift["anniversaryName"] as? String
+            if let timestamp = (gift["date"] as? Timestamp) {
+                self.tableVC.timestamp = timestamp
+                self.tableVC.dateField.text = DateTimeFormat.getYMDString(date: timestamp.dateValue())
+            }
             self.tableVC.goodsField.text = gift["goods"] as? String
             if let memo = gift["memo"] as? String {
                 self.memoView.text = memo
                 self.memoView.togglePlaceholder()
             }
         }
+    }
+}
+
+extension GiftRecordVC: UITextViewDelegate{
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        print(#function, textView)
+        UIView.animate(withDuration: 0.3) {
+            self.view.transform = CGAffineTransform(translationX: 0, y: -200)
+        }
+
+        return true
+    }
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        print(#function, textView)
+        UIView.animate(withDuration: 0.3) {
+            self.view.transform = CGAffineTransform.identity
+        }
+
+        return true
+
     }
 }
 

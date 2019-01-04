@@ -18,6 +18,8 @@ struct GiftDataModel {
     let goods: String
     let memo: String
     let isHidden = false
+    let iconImage: Data?
+    
     
     var toDictionary: [String: Any] {
         var dictionary = [String: Any]()
@@ -30,6 +32,7 @@ struct GiftDataModel {
         dictionary["goods"] = goods
         dictionary["memo"] = memo
         dictionary["isHidden"] = isHidden
+        dictionary["iconImage"] = iconImage
         
         return dictionary
     }

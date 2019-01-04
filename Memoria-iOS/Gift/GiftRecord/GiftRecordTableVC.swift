@@ -14,7 +14,7 @@ protocol GiftRecordTableVCDelegate: AnyObject {
     func recordingStandby(_ enabled: Bool)
 }
 
-/// 進行方向を定める列挙体
+/// 進行方向を定める列挙型
 enum Direction {
     case previous
     case next
@@ -36,9 +36,10 @@ class GiftRecordTableVC: UITableViewController {
     @IBOutlet weak var goodsField: UITextField!
     
     private var datePicker: UIDatePicker!
-    var timeStamp: Timestamp?
+    var timestamp: Timestamp?
     
-    
+    private var activeTextField: UITextField?
+
     // 登録ボタンを押せることを知らせるプロトコルのデリゲートを宣言
     weak var giftRecordTableVCDelegate: GiftRecordTableVCDelegate?
     
@@ -51,7 +52,7 @@ class GiftRecordTableVC: UITableViewController {
         
         if sender == dateField {
             dateField.text = DateTimeFormat.getYMDString(date: datePicker.date)
-            timeStamp = Timestamp(date: datePicker.date)
+            timestamp = Timestamp(date: datePicker.date)
         }
     }
     
@@ -64,6 +65,11 @@ class GiftRecordTableVC: UITableViewController {
         dateField.placeholder = DateTimeFormat.getYMDString()
         setupDesign()
         setupDatePicker()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureObserver()
     }
     
     // セグエでの遷移前の準備
@@ -106,6 +112,7 @@ class GiftRecordTableVC: UITableViewController {
         dateField.inputAccessoryView = setupToolbar()
         dateField.inputView = datePicker
     }
+    
     private func setupToolbar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
@@ -123,6 +130,7 @@ class GiftRecordTableVC: UITableViewController {
     @objc private func moveToDateFieldEdit() {
         editingField(dateField, moveToFieldWith: .next)
     }
+    
     @objc private func moveToAnniversaryFieldEdit() {
         editingField(dateField, moveToFieldWith: .previous)
     }
@@ -143,6 +151,49 @@ class GiftRecordTableVC: UITableViewController {
             nextField.becomeFirstResponder()
         }
     }
+    
+    
+    // MARK: - Notification
+    
+    /// Notification発行
+    func configureObserver() {
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(keyboardWillShow(_:)),
+                                 name: UIResponder.keyboardWillShowNotification, object: nil)
+        notification.addObserver(self, selector: #selector(keyboardWillHide(_:)),
+                                 name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    /// キーボード表示時に、TextFieldとキーボードが重なるのであれば画面をずらす。
+    @objc func keyboardWillShow(_ notification: Notification?) {
+        guard let keyboardHeight = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height,
+            let duration = notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
+            let activeField = activeTextField else { return }
+        // 親Viewからの相対位位置ではなく、最上階層のviewからの位置を求めるためにはコンバートが必要
+        let convertedFrame = activeField.convert(activeField.bounds, to: self.view)
+        let textFieldOrignY = convertedFrame.minY
+        let textFieldHeight = convertedFrame.height
+        
+        let screenHeight = UIScreen.main.bounds.size.height
+        let keyboardY = screenHeight - keyboardHeight
+        let textFieldBottom = textFieldOrignY + textFieldHeight
+        let distance = keyboardY - textFieldBottom
+        // TextFieldとキーボードの距離が0未満なら（重なっていたら）画面をずらす
+        if distance < 0 {
+            UIView.animate(withDuration: duration) {
+                let transform = CGAffineTransform(translationX: 0, y: distance)
+                self.view.transform = transform
+            }
+        }
+    }
+    
+    /// キーボードが降りたら画面を戻す
+    @objc func keyboardWillHide(_ notification: Notification?) {
+        guard let duration = notification?.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? TimeInterval else { return }
+        UIView.animate(withDuration: duration) {
+            self.view.transform = CGAffineTransform.identity
+        }
+    }
 }
 
 // MARK: - Text field delegate
@@ -157,6 +208,11 @@ extension GiftRecordTableVC: UITextFieldDelegate {
     /// Did tap Return key
     @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         editingField(textField, moveToFieldWith: .next)
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        activeTextField = textField
         return true
     }
 }

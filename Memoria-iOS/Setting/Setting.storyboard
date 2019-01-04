@@ -248,7 +248,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="settingTabBarIcon" id="tJg-kG-CO2" customClass="InspectableTabBarItem" customModule="Memoria_iOS" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="setting"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="settings"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Settings" id="RT3-Eh-lfQ"/>

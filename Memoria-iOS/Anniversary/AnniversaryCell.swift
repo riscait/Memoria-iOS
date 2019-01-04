@@ -10,10 +10,9 @@ import UIKit
 
 final class AnniversaryCell: UICollectionViewCell {
     
-    @IBOutlet weak var anniversaryId: UILabel!
     @IBOutlet weak var anniversaryNameLabel: UILabel!
     @IBOutlet weak var anniversaryDateLabel: UILabel!
-    @IBOutlet weak var remainingDaysLabel: UILabel!
+    @IBOutlet weak var remainingDaysLabel: TagLabel!
     @IBOutlet weak var anniversaryIconImage: IconImageView!
     
     /// セル再利用の準備
@@ -23,6 +22,8 @@ final class AnniversaryCell: UICollectionViewCell {
         // 文字色をリセットする
         anniversaryNameLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         anniversaryDateLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        remainingDaysLabel.backgroundColor = #colorLiteral(red: 1, green: 0.6629999876, blue: 0.07800000161, alpha: 1)
         
         // 背景色として使っているグラデをリセットする
         guard let layer = layer.sublayers else { return }

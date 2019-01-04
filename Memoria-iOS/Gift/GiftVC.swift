@@ -22,7 +22,6 @@ class GiftVC: UITableViewController {
     var uid: String?
     /// 表示用ギフトデータ
     var gifts: [[String: Any]] = []
-    var selectedGiftId: String?
 
     // 引っ張って更新用のRefreshControl
     var refresher = UIRefreshControl()
@@ -71,7 +70,6 @@ class GiftVC: UITableViewController {
                 let data = doc.data()
                 // 残日数も含めた記念日データをローカル配列に記憶
                 self.gifts.append(data)
-                print("ローカルに追加したdata件数: \(data.count)")
             }
             // 並び替えて返却する
 //            self.gifts.sort(by: {($0["date"] as! Timestamp) < ($1["date"] as! Timestamp)})
@@ -106,8 +104,7 @@ class GiftVC: UITableViewController {
             let navC = segue.destination as! UINavigationController
             let nextVC = navC.topViewController as! GiftRecordVC
             let indexPath = tableView.indexPathForSelectedRow
-            selectedGiftId = gifts[indexPath!.row]["id"] as? String
-            nextVC.selectedGiftId = selectedGiftId
+            nextVC.selectedGiftId = gifts[indexPath!.row]["id"] as? String
             print(nextVC.selectedGiftId ?? "selectedGiftId = nil")
         }
     }

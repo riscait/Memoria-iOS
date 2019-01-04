@@ -1,5 +1,5 @@
 //
-//  Database.swift
+//  AnniversaryDAO.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/10/26.

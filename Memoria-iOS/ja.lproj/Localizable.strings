@@ -20,7 +20,8 @@
 "gotGift" = "もらった";
 "gaveGift" = "あげた";
 "discard" = "破棄";
-"realy" = "登録せずに破棄しますか？";
+"discardMessageForRecord" = "登録せずに閉じますか？";
+"discardMessageForEdit" = "編集せずに閉じますか？";
 "version" = "Version";
 "copyright" = "©︎ 2018 nerco studio";
 // アカウント登録画面
@@ -101,8 +102,11 @@
 "remainingDaysToday" = "今日です！";
 "remainingDaysTomorrow" = "明日です！";
 // Anniversary詳細画面
+"giftHistory" = "プレゼント履歴";
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
 "hideThisAnniversaryMessage" = "非表示にした記念日は「設定タブ」にて再表示することができます";
+"giftSectionFooterForAnniversary" = "記念日の名前が一致しているプレゼントが表示されます。";
+"giftSectionFooterForBirthday" = "人名が一致しているプレゼントがここに表示されます。";
 // 設定画面
 "settings" = "設定";
 "updateInProgress" = "更新中...";
