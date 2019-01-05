@@ -71,8 +71,10 @@ class GiftVC: UITableViewController {
                 // 残日数も含めた記念日データをローカル配列に記憶
                 self.gifts.append(data)
             }
-            // 並び替えて返却する
-//            self.gifts.sort(by: {($0["date"] as! Timestamp) < ($1["date"] as! Timestamp)})
+            // 日付順に並び替えて返却する
+            // 日付未定のものは100年ごとして比較する
+            let future = Calendar.current.date(byAdding: .year, value: 100, to: Date())!
+            self.gifts.sort(by: {(($0["date"] as? Timestamp)?.dateValue() ?? future) > (($1["date"] as? Timestamp)?.dateValue() ?? future)})
             
             self.tableView.reloadData()
         }
@@ -144,20 +146,29 @@ class GiftVC: UITableViewController {
 
         let gift = gifts[indexPath.row]
         
-        let personName = cell.viewWithTag(1) as! UILabel
-        personName.text = gift["personName"] as? String
+        let personNameLabel = cell.viewWithTag(1) as! UILabel
+        personNameLabel.text = gift["personName"] as? String
         
-        let anniversaryName = cell.viewWithTag(6) as! UILabel
-        anniversaryName.text = gift["anniversaryName"] as? String
+        let anniversaryNameLabel = cell.viewWithTag(6) as! UILabel
+        anniversaryNameLabel.text = gift["anniversaryName"] as? String
         
-        let goods = cell.viewWithTag(2) as! UILabel
-        goods.text = gift["goods"] as? String
+        let goodsLabel = cell.viewWithTag(2) as! UILabel
+        goodsLabel.text = gift["goods"] as? String
         
-        let date = cell.viewWithTag(3) as! UILabel
-        date.text = DateTimeFormat.getYMDString(date: ((gift["date"] as? Timestamp)?.dateValue())!)
+        let dateLabel = cell.viewWithTag(3) as! UILabel
+        if let date = (gift["date"] as? Timestamp)?.dateValue() {
+            dateLabel.text = DateTimeFormat.getYMDString(date: date)
+        } else {
+            dateLabel.text = "dateTBD".localized
+        }
         
-        let arrow = cell.viewWithTag(4) as! UIImageView
-        arrow.image = (gift["isReceived"] as! Bool) ? #imageLiteral(resourceName: "arrowDown") : #imageLiteral(resourceName: "arrowUp")
+        let gotOrReceivedLabel = cell.viewWithTag(4) as! UILabel
+        let isReceived = gift["isReceived"] as! Bool
+        
+        gotOrReceivedLabel.text = isReceived ? "gotGift".localized : "gaveGift".localized
+        DispatchQueue.main.async {
+            gotOrReceivedLabel.backgroundColor = isReceived ? #colorLiteral(red: 1, green: 0.6629999876, blue: 0.07800000161, alpha: 1) : #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        }
         
         let icon = cell.viewWithTag(5) as! UIImageView
         icon.image = #imageLiteral(resourceName: "PresentBox")

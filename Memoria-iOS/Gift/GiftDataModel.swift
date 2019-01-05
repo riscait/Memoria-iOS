@@ -14,7 +14,7 @@ struct GiftDataModel {
     let isReceived: Bool
     let personName: String
     let anniversaryName: String
-    let date: Timestamp
+    let date: Timestamp?
     let goods: String
     let memo: String
     let isHidden = false

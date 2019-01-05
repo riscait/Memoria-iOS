@@ -30,7 +30,7 @@ class GiftRecordVC: UIViewController {
         super.viewDidLoad()
         
         title = selectedGiftId == nil ? "recordGift".localized : "updateGift".localized
-        
+        // InspectableTextViewのデリゲートを上書きするために必要
         memoView.delegate = self
         
         // ContainerViewを特定
@@ -60,17 +60,21 @@ class GiftRecordVC: UIViewController {
     @IBAction func didTapRecordButton(_ sender: UIBarButtonItem) {
         // プレゼント新規登録なら新しくIDを生成
         let uuid = selectedGiftId ?? UUID().uuidString
-        // もらったものかあげたものか
+        // Received or Gave?
         let isReceived = gotOrReceived.selectedSegmentIndex == 0
+        // Date is TBD?
+        let isDateTBD = tableVC.dateTBDSwitch.isOn
+        
         // プレゼントデータをセット
         let gift = GiftDataModel(id: uuid,
                                  isReceived: isReceived,
                                  personName: tableVC.personNameField.text!,
                                  anniversaryName: tableVC.anniversaryNameField.text!,
-                                 date: tableVC.timestamp ?? Timestamp(),
+                                 date: isDateTBD ? nil : tableVC.timestamp ?? Timestamp(),
                                  goods: tableVC.goodsField.text!,
                                  memo: memoView.text,
                                  iconImage: nil)
+        print(gift)
         // DBに書き込んで画面を閉じる
         GiftDAO.set(documentPath: uuid, data: gift)
         dismiss(animated: true, completion: nil)
@@ -95,6 +99,9 @@ class GiftRecordVC: UIViewController {
             if let timestamp = (gift["date"] as? Timestamp) {
                 self.tableVC.timestamp = timestamp
                 self.tableVC.dateField.text = DateTimeFormat.getYMDString(date: timestamp.dateValue())
+            } else {
+                self.tableVC.dateTBDSwitch.isOn = true
+                self.tableVC.doDateTBD(isTBD: true)
             }
             self.tableVC.goodsField.text = gift["goods"] as? String
             if let memo = gift["memo"] as? String {
@@ -112,19 +119,22 @@ extension GiftRecordVC: UITextViewDelegate{
         UIView.animate(withDuration: 0.3) {
             self.view.transform = CGAffineTransform(translationX: 0, y: -200)
         }
-
         return true
     }
+    
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         print(#function, textView)
         UIView.animate(withDuration: 0.3) {
             self.view.transform = CGAffineTransform.identity
         }
-
         return true
-
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        memoView.togglePlaceholder()
     }
 }
+
 
 // MARK: - GiftRecordTableVC Delegate
 // 登録ボタンの有効・無効を切り替えるデリゲート

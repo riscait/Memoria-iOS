@@ -39,42 +39,54 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="z2W-8Y-Kxk">
-                                            <rect key="frame" x="66" y="4.5" width="301" height="71"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="z2W-8Y-Kxk">
+                                            <rect key="frame" x="66" y="5" width="301" height="69.5"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t6T-ct-BxL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="301" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="t6T-ct-BxL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="301" height="20.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="村松 龍之介" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0na-9e-cYh">
-                                                            <rect key="frame" x="0.0" y="0.0" width="205.5" height="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" text="村松 龍之介" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0na-9e-cYh">
+                                                            <rect key="frame" x="0.0" y="0.0" width="216" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" text="もらった" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dp-dS-udT" customClass="TagLabel" customModule="Memoria_iOS" customModuleProvider="target">
+                                                            <rect key="frame" x="221" y="1.5" width="80" height="18"/>
+                                                            <color key="backgroundColor" name="mainColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="z5n-rH-U9D"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="8"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="i7c-Oa-Bg2">
+                                                    <rect key="frame" x="0.0" y="24.5" width="301" height="20.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ハロウィーン" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EQD-T5-7Pt">
+                                                            <rect key="frame" x="0.0" y="0.0" width="104" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="356日前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVg-gx-W6q">
-                                                            <rect key="frame" x="205.5" y="0.0" width="65.5" height="30"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" verticalHuggingPriority="251" text="2019年12月31日" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aVg-gx-W6q">
+                                                            <rect key="frame" x="107" y="1.5" width="194" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowDown" translatesAutoresizingMaskIntoConstraints="NO" id="NQR-an-zOS">
-                                                            <rect key="frame" x="271" y="0.0" width="30" height="30"/>
-                                                            <color key="tintColor" name="mainColor"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="30" id="54S-jI-WMK"/>
-                                                                <constraint firstAttribute="height" constant="30" id="X0a-01-Si8"/>
-                                                            </constraints>
-                                                        </imageView>
                                                     </subviews>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ハロウィーン" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EQD-T5-7Pt">
-                                                    <rect key="frame" x="0.0" y="30" width="301" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Happy Hacking Keyboard Pro2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3NO-bx-9WV">
-                                                    <rect key="frame" x="0.0" y="50.5" width="301" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="49" width="301" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -83,7 +95,7 @@
                                             <constraints>
                                                 <constraint firstItem="3NO-bx-9WV" firstAttribute="width" secondItem="z2W-8Y-Kxk" secondAttribute="width" id="0jN-ZC-pQB"/>
                                                 <constraint firstItem="t6T-ct-BxL" firstAttribute="width" secondItem="z2W-8Y-Kxk" secondAttribute="width" id="IQa-Bu-UcV"/>
-                                                <constraint firstItem="EQD-T5-7Pt" firstAttribute="width" secondItem="z2W-8Y-Kxk" secondAttribute="width" id="alF-zz-WSk"/>
+                                                <constraint firstItem="i7c-Oa-Bg2" firstAttribute="width" secondItem="z2W-8Y-Kxk" secondAttribute="width" id="L4s-VB-luN"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
@@ -155,7 +167,6 @@
     <resources>
         <image name="Ribbon" width="512" height="512"/>
         <image name="addCircle" width="48" height="48"/>
-        <image name="arrowDown" width="48" height="48"/>
         <image name="roundStars" width="48" height="48"/>
         <namedColor name="mainColor">
             <color red="1" green="0.66299998760223389" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

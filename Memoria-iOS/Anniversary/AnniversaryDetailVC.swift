@@ -135,8 +135,7 @@ final class AnniversaryDetailVC: UIViewController {
                          document: uid,
                          subCollection: "anniversary",
                          subDocument: anniversaryId,
-                         data: ["isHidden": true],
-                         merge: true
+                         data: ["isHidden": true]
         )
         // 一覧画面に戻る
         navigationController?.popViewController(animated: true)

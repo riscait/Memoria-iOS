@@ -23,7 +23,7 @@ class GiftDAO {
     private static let rootCollection = "users"
     private static let usersCollection = db.collection("users")
     private static let subCollection = "gift"
-    private static let giftCollection = usersCollection.document(uid!).collection("gift")
+    static let giftCollection = usersCollection.document(uid!).collection("gift")
 
     
     // MARK: - データ取得
@@ -55,8 +55,16 @@ class GiftDAO {
     ///   - equalTo: 検索条件
     /// - Returns: 検索結果
     static func getQuery(whereField: String,
-                             equalTo: Any) -> Query? {
+                             equalTo: Any,
+                             orderBy: String? = nil,
+                             descending: Bool? = nil) -> Query? {
 //        guard let uid = uid else { return nil }
+        if let orderBy = orderBy {
+            if let descending = descending {
+                return giftCollection.whereField(whereField, isEqualTo: equalTo).order(by: orderBy, descending: descending)
+            }
+            return giftCollection.whereField(whereField, isEqualTo: equalTo).order(by: orderBy)
+        }
         return giftCollection.whereField(whereField, isEqualTo: equalTo)
     }
 
@@ -71,10 +79,10 @@ class GiftDAO {
     ///   - marge: 既存のドキュメントにデータを統合するか否か
     static func set(documentPath: String,
                     data: GiftDataModel,
-                    merge: Bool = true) {
-        guard let uid = uid else { return }
-        db.collection(rootCollection).document(uid).collection(subCollection).document(documentPath)
-            .setData(data.toDictionary, merge: merge) { error in
+                    merge: Bool = false) {
+        giftCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
+            print(data.date ?? "date is nil")
+            print(data.toDictionary["date"] ?? "date.toDictionary is nil")
                 if let error = error {
                     print("エラー発生: \(error)")
                 } else {

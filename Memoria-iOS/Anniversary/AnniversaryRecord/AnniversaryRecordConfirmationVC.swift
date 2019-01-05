@@ -53,8 +53,7 @@ class AnniversaryRecordConfirmationVC: UIViewController {
                          document: uid,
                          subCollection: "anniversary",
                          subDocument: anniversaryId,
-                         data: additionalAnniversary,
-                         merge: true
+                         data: additionalAnniversary
         )
         print("登録しました: \(additionalAnniversary)")
         dismiss(animated: true, completion: nil)

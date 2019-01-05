@@ -134,9 +134,7 @@ class ContactAccess {
                              document: uid,
                              subCollection: "anniversary",
                              subDocument: contact.identifier,
-                             data: contactBirthday,
-                             merge: true
-                             )
+                             data: contactBirthday)
         }
         // 取得した連絡先情報の件数をコールバックで返す
         if let callback = callback {

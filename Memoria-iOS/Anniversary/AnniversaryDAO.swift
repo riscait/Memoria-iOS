@@ -100,7 +100,7 @@ class AnniversaryDAO {
                  subCollection: String,
                  subDocument: String,
                  data: [String: Any],
-                 merge: Bool) {
+                 merge: Bool = false) {
             db.collection(collection).document(document).collection(subCollection)
                 .document(subDocument).setData(data, merge: merge) { error in
                     if let error = error {
@@ -109,31 +109,6 @@ class AnniversaryDAO {
                         print("\(#function)の実行に成功しました！")
                     }
             }
-    }
-    
-    /// Firestoreへのデータ登録・更新
-    ///
-    /// - Parameters:
-    ///   - collection: ルートコレクション
-    ///   - document: ドキュメント
-    ///   - subCollection: サブコレクション
-    ///   - subDocument: サブコレクション
-    ///   - data: 登録するデータ
-    ///   - marge: 上書き対象のデータ(任意)
-    func setDataWithMergeTarget(collection: String,
-                 document: String,
-                 subCollection: String,
-                 subDocument: String,
-                 data: [String: Any],
-                 mergeTarget: [String]) {
-            db.collection(collection).document(document).collection(subCollection)
-                .document(subDocument).setData(data, mergeFields: mergeTarget) { error in
-                    if let error = error {
-                        print("エラー発生: \(error)")
-                    } else {
-                        print("\(#function)の実行に成功しました！")
-                    }
-        }
     }
     
     

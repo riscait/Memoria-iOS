@@ -23,20 +23,28 @@ enum Direction {
 /// プレゼントや渡す相手などの情報を入力するためのテーブルVC
 class GiftRecordTableVC: UITableViewController {
     
+    // MARK: - Enum
+    
     enum SegueVC: String {
         case selectPersonVC = "GiftRecordSelectPersonVC"
         case selectAnniversaryVC = "GiftRecordSelectAnniversaryVC"
     }
     
+    
+    // MARK: - Property
+    
     @IBOutlet weak var personNameField: UITextField!
     @IBOutlet weak var personSelectIcon: UIImageView!
     @IBOutlet weak var anniversarySelectIcon: UIImageView!
     @IBOutlet weak var anniversaryNameField: UITextField!
+    @IBOutlet weak var dateCell: UITableViewCell!
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var goodsField: UITextField!
+    @IBOutlet weak var dateTBDSwitch: UISwitch!
     
     private var datePicker: UIDatePicker!
     var timestamp: Timestamp?
+    var dateCellHeight: CGFloat = 44
     
     private var activeTextField: UITextField?
 
@@ -44,7 +52,7 @@ class GiftRecordTableVC: UITableViewController {
     weak var giftRecordTableVCDelegate: GiftRecordTableVCDelegate?
     
     
-    // MARK: - IBAction
+    // MARK: - IBAction method
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         print(#function)
@@ -56,8 +64,23 @@ class GiftRecordTableVC: UITableViewController {
         }
     }
     
+    @IBAction private func toggleDateTBD(_ sender: UISwitch) {
+        print(#function)
+        doDateTBD(isTBD: sender.isOn)
+        checkReadyForRecording()
+    }
     
-    // MARK: - ライフサイクル
+    func doDateTBD(isTBD: Bool) {
+        dateField.text = isTBD ? "recordDateIsTBD".localized : nil
+        dateField.textColor = isTBD ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        (dateCell.viewWithTag(1) as! UILabel).textColor = isTBD ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        dateCell.backgroundColor = isTBD ? #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1) : UIColor.clear
+        dateField.isEnabled = !isTBD
+        dateField.clearButtonMode = isTBD ? .never : .unlessEditing
+        timestamp = nil
+    }
+    
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,11 +132,11 @@ class GiftRecordTableVC: UITableViewController {
     private func setupDatePicker() {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
-        dateField.inputAccessoryView = setupToolbar()
+        dateField.inputAccessoryView = setupKeyboardToolbar()
         dateField.inputView = datePicker
     }
     
-    private func setupToolbar() -> UIToolbar {
+    private func setupKeyboardToolbar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
         let next = UIBarButtonItem(title: "next".localized, style: .done, target: self, action: #selector(moveToDateFieldEdit))
