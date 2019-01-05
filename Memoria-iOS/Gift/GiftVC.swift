@@ -176,11 +176,14 @@ class GiftVC: UITableViewController {
         return cell
     }
     
-    // スワイプで削除可能になる
+    /// スワイプで削除可能になる
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // ローカル・DBのデータおよびテーブルビューの行を削除する
-        gifts.remove(at: indexPath.row)
-        GiftDAO.delete(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
+        // 対象のGift IDを特定する
+        let giftId = gifts[indexPath.row]["id"] as! String
+        // ローカルのデータ配列、DBのデータ、画面上のセル、の3つを削除
+        gifts.remove(at: indexPath.row)  // Local data Array
+        GiftDAO.delete(documentPath: giftId)  // DB data
+        tableView.deleteRows(at: [indexPath], with: .automatic)  // Table view cell
     }
 }
