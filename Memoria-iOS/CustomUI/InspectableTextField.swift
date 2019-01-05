@@ -45,7 +45,7 @@ import UIKit
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
             imageView.contentMode = .scaleAspectFit
             imageView.image = image
-            // 注意：画像に濃淡を使用するには、Assets.xcassetsで画像を選択し、[Render As]プロパティを[Template Image]に変更する必要があります。
+            // 画像に濃淡を使用するには、Assets.xcassetsで画像を選択し、[Render As]プロパティを[Template Image]に変更する必要がある。
             imageView.tintColor = leftImageColor
             leftView = imageView
         } else {

@@ -53,8 +53,7 @@ class AnniversaryRecordConfirmationVC: UIViewController {
                          document: uid,
                          subCollection: "anniversary",
                          subDocument: anniversaryId,
-                         data: additionalAnniversary,
-                         merge: true
+                         data: additionalAnniversary
         )
         print("登録しました: \(additionalAnniversary)")
         dismiss(animated: true, completion: nil)
@@ -98,7 +97,7 @@ extension AnniversaryRecordConfirmationVC: UITableViewDataSource {
         // 日付
         case (CellContent.date.rawValue, _):
             cell.textLabel?.text = NSLocalizedString("anniversarydateLabel", comment: "")
-            cell.detailTextLabel?.text = DateTimeFormat().getYMDString(date: anniversary.date!)
+            cell.detailTextLabel?.text = DateTimeFormat.getYMDString(date: anniversary.date!)
             
         default: break
         }

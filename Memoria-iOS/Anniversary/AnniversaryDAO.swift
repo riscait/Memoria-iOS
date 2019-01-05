@@ -1,5 +1,5 @@
 //
-//  Database.swift
+//  AnniversaryDAO.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/10/26.
@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 import Firebase
 
 /// データベースへのアクセスを担うクラス
@@ -14,14 +15,16 @@ class AnniversaryDAO {
     
     // MARK: - プロパティ
     
-    var db = Firestore.firestore()
-    /// 正直まだよく理解していないリスナー登録？
-    var listenerRegistration: ListenerRegistration?
-
-    let uid = Auth.auth().currentUser?.uid
+    /// FirestoreDB
+    private var db = Firestore.firestore()
+    /// Firebase Auth - User ID
+    private let uid = Auth.auth().currentUser?.uid
+    // Unique collection
+    private static let rootCollection = "users"
+    private static let subCollection = "anniversary"
     
     /// Taptic Engine
-    var feedbackGenerator: UINotificationFeedbackGenerator?
+    private var feedbackGenerator: UINotificationFeedbackGenerator?
 
     // MARK: - データ取得
     
@@ -30,7 +33,7 @@ class AnniversaryDAO {
     /// - Parameter:
     ///   - id: 記念日ID
     ///   - callback: ドキュメントのデータを受け取る
-    func getAnniversaryData(on id: String,
+    func get(by id: String,
                             callback: @escaping ([String: Any]) -> Void) {
         guard let uid = uid else { return }
         db.collection("users").document(uid).collection("anniversary").document(id).getDocument { (document, error) in
@@ -52,7 +55,7 @@ class AnniversaryDAO {
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
     /// - Returns: 検索結果
-    func getAnniversaryQuery(whereField: String,
+    func getQuery(whereField: String,
                              equalTo: Any) -> Query? {
         guard let uid = uid else { return nil }
         return db.collection("users").document(uid).collection("anniversary").whereField(whereField, isEqualTo: equalTo)
@@ -67,7 +70,7 @@ class AnniversaryDAO {
     func getFilteredAnniversaryDocuments(whereField: String,
                              equalTo: Any,
                              callback: @escaping ([QueryDocumentSnapshot]) -> Void) {
-        getAnniversaryQuery(whereField: whereField, equalTo: equalTo)?.getDocuments { (querySnapshot, error) in
+        getQuery(whereField: whereField, equalTo: equalTo)?.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -97,7 +100,7 @@ class AnniversaryDAO {
                  subCollection: String,
                  subDocument: String,
                  data: [String: Any],
-                 merge: Bool) {
+                 merge: Bool = false) {
             db.collection(collection).document(document).collection(subCollection)
                 .document(subDocument).setData(data, merge: merge) { error in
                     if let error = error {
@@ -108,34 +111,15 @@ class AnniversaryDAO {
             }
     }
     
-    /// Firestoreへのデータ登録・更新
-    ///
-    /// - Parameters:
-    ///   - collection: ルートコレクション
-    ///   - document: ドキュメント
-    ///   - subCollection: サブコレクション
-    ///   - subDocument: サブコレクション
-    ///   - data: 登録するデータ
-    ///   - marge: 上書き対象のデータ(任意)
-    func setDataWithMergeTarget(collection: String,
-                 document: String,
-                 subCollection: String,
-                 subDocument: String,
-                 data: [String: Any],
-                 mergeTarget: [String]) {
-            db.collection(collection).document(document).collection(subCollection)
-                .document(subDocument).setData(data, mergeFields: mergeTarget) { error in
-                    if let error = error {
-                        print("エラー発生: \(error)")
-                    } else {
-                        print("\(#function)の実行に成功しました！")
-                    }
-        }
-    }
-    
     
     // MARK: - データ更新
 
+    /// 登録済みのデータを更新する
+    ///
+    /// - Parameters:
+    ///   - documentPath: 一意のID
+    ///   - field: 更新データ名
+    ///   - content: 更新データ内容
     func updateAnniversary(documentPath: String, field: String, content: Any) {
         guard let uid = uid else { return }
         db.collection("users").document(uid).collection("anniversary").document(documentPath).updateData([field: content]) { error in

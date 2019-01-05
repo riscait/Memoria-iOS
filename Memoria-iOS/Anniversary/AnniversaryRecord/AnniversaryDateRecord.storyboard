@@ -23,9 +23,8 @@
                                     <constraint firstAttribute="height" constant="44" id="0dY-58-LYs"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="Jho-nY-sZn"/>
                                 </constraints>
-                                <state key="normal" title="toNextPage"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="toNextPage"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="next"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="n2e-2F-UrG" kind="show" identifier="recordDateSegue" id="2V1-i3-PC0"/>

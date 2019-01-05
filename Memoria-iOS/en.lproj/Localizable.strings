@@ -2,7 +2,8 @@
 "unknown" = "Unknown";
 "ok" = "OK";
 "cancel" = "Cancel";
-"toNextPage" = "Next";
+"next" = "Next";
+"previous" = "Previous";
 "edit" = "Edit";
 "delete" = "Delete";
 "redisplay" = "Redisplay";
@@ -15,6 +16,13 @@
 "update" = "Update";
 "change" = "Change";
 "later" = "Later";
+"record" = "Record";
+"gotGift" = "Received";
+"gaveGift" = "Gave";
+"discard" = "Discard";
+"tbd" = "To be determined";
+"discardMessageForRecord" = "Close without registering?";
+"discardMessageForEdit" = "Do you want to close without updating?";
 "version" = "Version";
 "copyright" = "©︎ 2018 nerco studio";
 // Sign up view
@@ -46,6 +54,7 @@
 "This operation is sensitive and requires recent authentication. Log in again before retrying this request." = "";
 "The user's credential is no longer valid. The user must sign in again." = ""; */
 // Record anniversary view
+"anniversary" = "Anniversary";
 "anniversaryRecord" = "Record Anniversary";
 "askForNameInput" = "Enter the name in the case of birthday";
 "givenName" = "Given name";
@@ -68,11 +77,23 @@
 "birthdayNameLabel" = "Name";
 "anniversaryNameLabel" = "Anniversary name";
 "anniversarydateLabel" = "Date";
-
-"anniversary" = "Anniversary";
-"settings" = "Settings";
 "hiddenList" = "Hidden list";
 "titleForHeaderInSection" = "You can redisplay it or delete it completely.";
+// Gift record view
+"gift" = "Gift";
+"memo" = "Memo";
+"recordGift" = "Record a new gift";
+"updateGift" = "Edit a gift";
+"personNameTitle" = "Name of opponent";
+"anniversaryTitle" = "Anniversary";
+"dateTitle" = "Date";
+"recordDateIsTBD" = "To be determined";
+"goodsTitle" = "Gift name";
+"dateTBDTitle" = "Date";
+"placeholderPerson" = "Please select or input";
+"placeholderAnniversary" = "Please select or input";
+"placeholderDate" = "%@";
+"placeholderGoods" = "Please enter a gift";
 // Welcome view
 "welcomeTitle" = "I will not forget the anniversary anymore";
 "welcomeDetail" = "Let's manage various memorial days collectively, such as friends and family's birthday, wedding anniversary and salad anniversary in \"Memoria\"!";
@@ -82,14 +103,21 @@
 "startWithoutImport" = "Start without import";
 // Anniversary view
 "letsAddAnniversary" = "Let's add an ANNIVERSARY from the \"+ button\" on the upper right!\n\nOr let's capture the contact 's birthday from the' Settings' tab!";
+"fullName" = "%2$@ %1$@"; // given name + family name
 "whoseBirthday" = "%2$@ %1$@'s Birthday"; // given name + family name
 "remainingDays" = "%@ days";
 "remainingDaysToday" = "Today!";
 "remainingDaysTomorrow" = "Tomorrow!";
 // AnniversaryDetail view
+"giftHistory" = "Gift history";
 "hideThisAnniversaryTitle" = "Hide this anniversary";
 "hideThisAnniversaryMessage" = "You can redisplay anniversaries that were hidden in the \"Settings tab\"";
+"giftSectionFooterForAnniversary" = "Gifts matching anniversary names will be displayed.";
+"giftSectionFooterForBirthday" = "A gift whose person's name matches is displayed here.";
+// Gift view
+"dateTBD" = "Date TBD";
 // Settings view
+"settings" = "Settings";
 "updateInProgress" = "Update in progress...";
 "reauthInProgress" = "Re-auth in progress...";
 "updateEmailInProgress" = "Update mail address in progress....";

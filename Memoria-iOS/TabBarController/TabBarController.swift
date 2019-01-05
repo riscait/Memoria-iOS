@@ -17,8 +17,6 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UITabBar.appearance().tintColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        UITabBar.appearance().backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,10 +24,12 @@ class TabBarController: UITabBarController {
         // START: Firebase認証リスナー
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
-                print("Firebase認証リスナー登録！")
-                print("ユーザーID: " + user.uid)
-                print("メールアドレス: \(String(describing: user.email))")
-                print("画像URL: \(String(describing: user.photoURL))")
+                print("""
+                    Firebase認証リスナー登録
+                    ユーザーID: \(user.uid)
+                    メールアドレス: \(user.email ?? "nil")
+                    画像URL: \(String(describing: user.photoURL))
+                    """)
                 // 初回起動判定
                 if !UserDefaults.standard.bool(forKey: "isFinishedTutorial") {
                     print("初回起動です!")
@@ -50,7 +50,7 @@ class TabBarController: UITabBarController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Firebase認証リスナーを破棄
-        print("Firebase認証リスナー破棄！")
+        print("Firebase認証リスナー破棄")
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     

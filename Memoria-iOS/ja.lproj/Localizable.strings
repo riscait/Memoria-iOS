@@ -2,19 +2,27 @@
 "unknown" = "不明";
 "ok" = "OK";
 "cancel" = "キャンセル";
-"toNextPage" = "次へ";
+"next" = "次へ";
+"previous" = "前へ";
 "edit" = "編集";
-"delete" = "削除する";
+"delete" = "削除";
 "redisplay" = "再表示";
-"confirm" = "確認する";
+"confirm" = "確認";
 "date" = "日付";
 "signIn" = "ログイン";
 "signOut" = "ログアウト";
 "close" = "とじる";
 "done" = "完了";
-"update" = "更新する";
-"change" = "変更する";
+"update" = "更新";
+"change" = "変更";
 "later" = "あとで";
+"record" = "登録";
+"gotGift" = "もらった";
+"gaveGift" = "あげた";
+"discard" = "破棄";
+"tbd" = "未定";
+"discardMessageForRecord" = "登録せずに閉じますか？";
+"discardMessageForEdit" = "編集せずに閉じますか？";
 "version" = "Version";
 "copyright" = "©︎ 2018 nerco studio";
 // アカウント登録画面
@@ -46,6 +54,7 @@
 "This operation is sensitive and requires recent authentication. Log in again before retrying this request." = "この操作は機密であり、最新の認証が必要です。\nこの要求を再試行する前に、再度ログインしてください。";
 "The user's credential is no longer valid. The user must sign in again." = "ユーザーの資格情報はもはや有効ではありません。\n再度ログインする必要があります。";
 // 記念日登録画面
+"anniversary" = "記念日";
 "anniversaryRecord" = "記念日の登録";
 "askForNameInput" = "誕生日の場合は名前を入力";
 "givenName" = "名";
@@ -68,11 +77,23 @@
 "birthdayNameLabel" = "名前";
 "anniversaryNameLabel" = "記念日の名前";
 "anniversarydateLabel" = "日付";
-
-"anniversary" = "Anniversary";
-"settings" = "設定";
 "hiddenList" = "非表示リスト";
 "titleForHeaderInSection" = "再表示するか、完全に削除することができます。";
+// プレゼント登録画面
+"gift" = "プレゼント";
+"memo" = "メモを残せます";
+"recordGift" = "プレゼントを新規登録";
+"updateGift" = "プレゼントを編集";
+"personNameTitle" = "相手の名前";
+"anniversaryTitle" = "記念日";
+"dateTitle" = "日付";
+"recordDateIsTBD" = "日付未定として登録されます";
+"goodsTitle" = "品名";
+"dateTBDTitle" = "日付未定で登録する";
+"placeholderPerson" = "入力するか選択してください";
+"placeholderAnniversary" = "入力するか選択してください";
+"placeholderDate" = "%@";
+"placeholderGoods" = "プレゼントを入力してください";
 // Welcome画面
 "welcomeTitle" = "もう記念日は忘れません";
 "welcomeDetail" = "「メモリア」で友人や家族の誕生日、結婚記念日やサラダ記念日など様々な記念日をまとめて管理しましょう！";
@@ -82,14 +103,21 @@
 "startWithoutImport" = "あとで";
 // Anniversary画面
 "letsAddAnniversary" = "右上の＋ボタンから\n記念日を追加しましょう！\n\nまたは「設定」タブから連絡先の誕生日を取り込みましょう！";
+"fullName" = "%@ %@";
 "whoseBirthday" = "%@ %@さん\n誕生日";  // 姓 + 名さん
 "remainingDays" = "あと%@日";
 "remainingDaysToday" = "今日です！";
 "remainingDaysTomorrow" = "明日です！";
 // Anniversary詳細画面
+"giftHistory" = "プレゼント履歴";
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
 "hideThisAnniversaryMessage" = "非表示にした記念日は「設定タブ」にて再表示することができます";
-// 設定画面
+"giftSectionFooterForAnniversary" = "記念日の名前が一致しているプレゼントが表示されます。";
+"giftSectionFooterForBirthday" = "人名が一致しているプレゼントがここに表示されます。";
+// Gift画面
+"dateTBD" = "日付未定";
+// Settings画面
+"settings" = "設定";
 "updateInProgress" = "更新中...";
 "reauthInProgress" = "再認証中...";
 "updateEmailInProgress" = "メールアドレス更新中...";

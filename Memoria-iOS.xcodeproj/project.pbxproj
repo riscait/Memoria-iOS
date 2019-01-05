@@ -30,10 +30,16 @@
 		8D11B3C52195CBF300C60371 /* AnniversaryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */; };
 		8D11B3C7219719B800C60371 /* TagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11B3C6219719B800C60371 /* TagLabel.swift */; };
 		8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */; };
-		8D1C73C32183ED6C00DA5A14 /* AnniversaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */; };
+		8D1C73C32183ED6C00DA5A14 /* AnniversaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C73C22183ED6C00DA5A14 /* AnniversaryVC.swift */; };
 		8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */; };
 		8D2507B621A44E860015A206 /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2507B521A44E850015A206 /* AccentButton.swift */; };
 		8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3E561421BAAA840090E46E /* AppInfo.swift */; };
+		8D4CBB1821C0001D009BA7C6 /* Gift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */; };
+		8D4CBB1A21C002C3009BA7C6 /* GiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1921C002C3009BA7C6 /* GiftVC.swift */; };
+		8D4CBB1C21C1511F009BA7C6 /* GiftDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */; };
+		8D4CBB1E21C159C5009BA7C6 /* GiftRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1D21C159C5009BA7C6 /* GiftRecord.storyboard */; };
+		8D4CBB2121C2A73A009BA7C6 /* InspectableNavItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB2021C2A73A009BA7C6 /* InspectableNavItem.swift */; };
+		8D4CBB2321C51F7E009BA7C6 /* InspectableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB2221C51F7E009BA7C6 /* InspectableTextView.swift */; };
 		8D56B2A221A7DAE300B90BED /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A121A7DAE300B90BED /* SettingVC.swift */; };
 		8D56B2A421A85A7900B90BED /* OpenOtherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */; };
 		8D77D17721B22AD400CF673A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D77D17621B22AD400CF673A /* SignUp.storyboard */; };
@@ -61,6 +67,18 @@
 		8DB8105921AA97880007BBC5 /* InspectableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8105821AA97880007BBC5 /* InspectableSegmentedControl.swift */; };
 		8DB8105B21AAB1AA0007BBC5 /* DeviceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8105A21AAB1AA0007BBC5 /* DeviceLanguage.swift */; };
 		8DB8105D21AC243B0007BBC5 /* ZodiacSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */; };
+		8DBB365721C5CF67008282D0 /* GiftRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */; };
+		8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */; };
+		8DC43FD821CFE39A00B911F2 /* InspectableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */; };
+		8DC43FDA21D061C900B911F2 /* AnniversaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FD921D061C900B911F2 /* AnniversaryDataModel.swift */; };
+		8DC43FDC21D3C6FF00B911F2 /* GiftRecordSelectAnniversary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC43FDB21D3C6FF00B911F2 /* GiftRecordSelectAnniversary.storyboard */; };
+		8DC43FDE21D3C78F00B911F2 /* GiftRecordSelectAnniversaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FDD21D3C78F00B911F2 /* GiftRecordSelectAnniversaryVC.swift */; };
+		8DC43FE021D3CC2900B911F2 /* GiftRecordSelectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FDF21D3CC2900B911F2 /* GiftRecordSelectProtocol.swift */; };
+		8DC43FE421D9F53600B911F2 /* GiftDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FE321D9F53600B911F2 /* GiftDataModel.swift */; };
+		8DD474B421C947CD00DD5919 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD474B321C947CD00DD5919 /* String+.swift */; };
+		8DD474B621CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD474B521CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift */; };
+		8DD474B821CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */; };
+		8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */; };
 		8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */; };
 		8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */; };
 		8DF28E8321A1DDE600B62EBA /* AnniversaryRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8221A1DDE600B62EBA /* AnniversaryRecordModel.swift */; };
@@ -96,10 +114,16 @@
 		8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryDetailVC.swift; sourceTree = "<group>"; };
 		8D11B3C6219719B800C60371 /* TagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
 		8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeFormat.swift; sourceTree = "<group>"; };
-		8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryViewController.swift; sourceTree = "<group>"; };
+		8D1C73C22183ED6C00DA5A14 /* AnniversaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryVC.swift; sourceTree = "<group>"; };
 		8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Anniversary.storyboard; path = "Memoria-iOS/Anniversary/Anniversary.storyboard"; sourceTree = SOURCE_ROOT; };
 		8D2507B521A44E850015A206 /* AccentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButton.swift; sourceTree = "<group>"; };
 		8D3E561421BAAA840090E46E /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Gift.storyboard; sourceTree = "<group>"; };
+		8D4CBB1921C002C3009BA7C6 /* GiftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftVC.swift; sourceTree = "<group>"; };
+		8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDAO.swift; sourceTree = "<group>"; };
+		8D4CBB1D21C159C5009BA7C6 /* GiftRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftRecord.storyboard; sourceTree = "<group>"; };
+		8D4CBB2021C2A73A009BA7C6 /* InspectableNavItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableNavItem.swift; sourceTree = "<group>"; };
+		8D4CBB2221C51F7E009BA7C6 /* InspectableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTextView.swift; sourceTree = "<group>"; };
 		8D56B2A121A7DAE300B90BED /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOtherApp.swift; sourceTree = "<group>"; };
 		8D77D17621B22AD400CF673A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -127,6 +151,18 @@
 		8DB8105821AA97880007BBC5 /* InspectableSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableSegmentedControl.swift; sourceTree = "<group>"; };
 		8DB8105A21AAB1AA0007BBC5 /* DeviceLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLanguage.swift; sourceTree = "<group>"; };
 		8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacSign.swift; sourceTree = "<group>"; };
+		8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordVC.swift; sourceTree = "<group>"; };
+		8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordTableVC.swift; sourceTree = "<group>"; };
+		8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTableViewCell.swift; sourceTree = "<group>"; };
+		8DC43FD921D061C900B911F2 /* AnniversaryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryDataModel.swift; sourceTree = "<group>"; };
+		8DC43FDB21D3C6FF00B911F2 /* GiftRecordSelectAnniversary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftRecordSelectAnniversary.storyboard; sourceTree = "<group>"; };
+		8DC43FDD21D3C78F00B911F2 /* GiftRecordSelectAnniversaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordSelectAnniversaryVC.swift; sourceTree = "<group>"; };
+		8DC43FDF21D3CC2900B911F2 /* GiftRecordSelectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordSelectProtocol.swift; sourceTree = "<group>"; };
+		8DC43FE321D9F53600B911F2 /* GiftDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDataModel.swift; sourceTree = "<group>"; };
+		8DD474B321C947CD00DD5919 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		8DD474B521CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordSelectPersonVC.swift; sourceTree = "<group>"; };
+		8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftRecordSelectPerson.storyboard; sourceTree = "<group>"; };
+		8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTabBarItem.swift; sourceTree = "<group>"; };
 		8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeButton.swift; sourceTree = "<group>"; };
 		8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordVC.swift; sourceTree = "<group>"; };
 		8DF28E8221A1DDE600B62EBA /* AnniversaryRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordModel.swift; sourceTree = "<group>"; };
@@ -203,6 +239,7 @@
 				8DAE855F21A2EC510049063D /* Welcome */,
 				8DA747E421A7C1C1007E7F5B /* TabBarController */,
 				8D1C73C42183ED7B00DA5A14 /* Anniversary */,
+				8D4CBB1621BFFFD2009BA7C6 /* Gift */,
 				8DA747E721A7C244007E7F5B /* Setting */,
 				8D0FB8522182062500BFCB79 /* Util */,
 				8D11B3B22193E67F00C60371 /* CustomUI */,
@@ -221,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				8D3E561421BAAA840090E46E /* AppInfo.swift */,
+				8DD474B321C947CD00DD5919 /* String+.swift */,
 				8D0FB8532182068100BFCB79 /* ContactAccess.swift */,
 				8DA7BF4C2184D747004DF508 /* DialogBox.swift */,
 				8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */,
@@ -237,12 +275,16 @@
 				8DAE856221A2F1B90049063D /* InspectableLabel.swift */,
 				8DB8105421A942E90007BBC5 /* InspectableButton.swift */,
 				8DB8105621AA8E510007BBC5 /* InspectableTextField.swift */,
+				8D4CBB2221C51F7E009BA7C6 /* InspectableTextView.swift */,
 				8DB8105821AA97880007BBC5 /* InspectableSegmentedControl.swift */,
+				8D4CBB2021C2A73A009BA7C6 /* InspectableNavItem.swift */,
+				8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */,
 				8D11B3C6219719B800C60371 /* TagLabel.swift */,
 				8D0BE32021A047CB00FE9B40 /* PositiveButton.swift */,
 				8D2507B521A44E850015A206 /* AccentButton.swift */,
 				8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */,
 				8D11B3B32193EE4F00C60371 /* IconImageView.swift */,
+				8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -250,15 +292,43 @@
 		8D1C73C42183ED7B00DA5A14 /* Anniversary */ = {
 			isa = PBXGroup;
 			children = (
+				8DC43FD921D061C900B911F2 /* AnniversaryDataModel.swift */,
+				8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */,
 				8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */,
-				8D1C73C22183ED6C00DA5A14 /* AnniversaryViewController.swift */,
+				8D1C73C22183ED6C00DA5A14 /* AnniversaryVC.swift */,
+				8D11B3BB2194431100C60371 /* AnniversaryCell.swift */,
 				8D11B3C22195C5CC00C60371 /* AnniversaryDetail.storyboard */,
 				8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */,
-				8D11B3BB2194431100C60371 /* AnniversaryCell.swift */,
-				8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */,
 				8D0BE31D21A0404900FE9B40 /* AnniversaryRecord */,
 			);
 			path = Anniversary;
+			sourceTree = "<group>";
+		};
+		8D4CBB1621BFFFD2009BA7C6 /* Gift */ = {
+			isa = PBXGroup;
+			children = (
+				8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */,
+				8D4CBB1921C002C3009BA7C6 /* GiftVC.swift */,
+				8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */,
+				8DC43FE321D9F53600B911F2 /* GiftDataModel.swift */,
+				8D4CBB1F21C159CB009BA7C6 /* GiftRecord */,
+			);
+			path = Gift;
+			sourceTree = "<group>";
+		};
+		8D4CBB1F21C159CB009BA7C6 /* GiftRecord */ = {
+			isa = PBXGroup;
+			children = (
+				8D4CBB1D21C159C5009BA7C6 /* GiftRecord.storyboard */,
+				8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */,
+				8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */,
+				8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */,
+				8DD474B521CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift */,
+				8DC43FDB21D3C6FF00B911F2 /* GiftRecordSelectAnniversary.storyboard */,
+				8DC43FDD21D3C78F00B911F2 /* GiftRecordSelectAnniversaryVC.swift */,
+				8DC43FDF21D3CC2900B911F2 /* GiftRecordSelectProtocol.swift */,
+			);
+			path = GiftRecord;
 			sourceTree = "<group>";
 		};
 		8D77D17521B22AA100CF673A /* SignUp */ = {
@@ -401,10 +471,12 @@
 				8D11B3B12193B94200C60371 /* README.md in Resources */,
 				8D0BE31F21A0418700FE9B40 /* AnniversaryRecordConfirmation.storyboard in Resources */,
 				8D00EB1321BB945C00A3A5AE /* UpdatePassword.storyboard in Resources */,
+				8DD474B821CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard in Resources */,
 				8D77D17721B22AD400CF673A /* SignUp.storyboard in Resources */,
 				8DAE856521A2F6260049063D /* WelcomeContact.storyboard in Resources */,
 				8D77D17E21B28DA400CF673A /* SignIn.storyboard in Resources */,
 				8D0FB8492182002800BFCB79 /* LaunchScreen.storyboard in Resources */,
+				8D4CBB1E21C159C5009BA7C6 /* GiftRecord.storyboard in Resources */,
 				8D0FB8512182013E00BFCB79 /* GoogleService-Info.plist in Resources */,
 				8D8559FE21B8A34F0033C7AA /* UpdateEmail.storyboard in Resources */,
 				8D11B3B721940BD100C60371 /* Localizable.strings in Resources */,
@@ -413,9 +485,11 @@
 				8DA747E921A7C26A007E7F5B /* Setting.storyboard in Resources */,
 				8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */,
 				8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */,
+				8D4CBB1821C0001D009BA7C6 /* Gift.storyboard in Resources */,
 				8D11B3C32195C5CD00C60371 /* AnniversaryDetail.storyboard in Resources */,
 				8DA747E621A7C1F6007E7F5B /* TabBar.storyboard in Resources */,
 				8DB8105121A915850007BBC5 /* HiddenList.storyboard in Resources */,
+				8DC43FDC21D3C6FF00B911F2 /* GiftRecordSelectAnniversary.storyboard in Resources */,
 				8D0BE31C21A03F8300FE9B40 /* AnniversaryDateRecord.storyboard in Resources */,
 				8D0FB8462182002800BFCB79 /* Assets.xcassets in Resources */,
 				8D0BE31A219FDFA800FE9B40 /* AnniversaryRecord.storyboard in Resources */,
@@ -503,34 +577,48 @@
 				8DB8105721AA8E510007BBC5 /* InspectableTextField.swift in Sources */,
 				8D56B2A421A85A7900B90BED /* OpenOtherApp.swift in Sources */,
 				8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */,
+				8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */,
 				8D11B3C52195CBF300C60371 /* AnniversaryDetailVC.swift in Sources */,
+				8DBB365721C5CF67008282D0 /* GiftRecordVC.swift in Sources */,
 				8DF28E8721A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift in Sources */,
 				8D77D18021B2ABD100CF673A /* SignInVC.swift in Sources */,
+				8DC43FD821CFE39A00B911F2 /* InspectableTableViewCell.swift in Sources */,
 				8DF28E8321A1DDE600B62EBA /* AnniversaryRecordModel.swift in Sources */,
 				8D11B3B42193EE4F00C60371 /* IconImageView.swift in Sources */,
 				8DB8105D21AC243B0007BBC5 /* ZodiacSign.swift in Sources */,
+				8D4CBB2321C51F7E009BA7C6 /* InspectableTextView.swift in Sources */,
 				8D11B3BC2194431100C60371 /* AnniversaryCell.swift in Sources */,
+				8D4CBB2121C2A73A009BA7C6 /* InspectableNavItem.swift in Sources */,
 				8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */,
 				8DB8105921AA97880007BBC5 /* InspectableSegmentedControl.swift in Sources */,
+				8DC43FE421D9F53600B911F2 /* GiftDataModel.swift in Sources */,
 				8D2507B621A44E860015A206 /* AccentButton.swift in Sources */,
 				8DB8105321A915B20007BBC5 /* HiddenListVC.swift in Sources */,
 				8DAE856321A2F1B90049063D /* InspectableLabel.swift in Sources */,
+				8DC43FDE21D3C78F00B911F2 /* GiftRecordSelectAnniversaryVC.swift in Sources */,
 				8D77D18521B37BED00CF673A /* PasswordlessVC.swift in Sources */,
+				8D4CBB1C21C1511F009BA7C6 /* GiftDAO.swift in Sources */,
 				8DAE856721A2FD520049063D /* WelcomContactVC.swift in Sources */,
+				8DC43FE021D3CC2900B911F2 /* GiftRecordSelectProtocol.swift in Sources */,
 				8D8559FC21B8A3380033C7AA /* UpdateEmailVC.swift in Sources */,
 				8D8559FA21B80B270033C7AA /* UserAccountVC.swift in Sources */,
 				8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */,
 				8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */,
+				8DD474B621CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift in Sources */,
 				8D00EB1521BB960C00A3A5AE /* UpdatePasswordVC.swift in Sources */,
 				8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */,
 				8DA747EB21A7C728007E7F5B /* TabBarController.swift in Sources */,
+				8D4CBB1A21C002C3009BA7C6 /* GiftVC.swift in Sources */,
 				8D77D17921B22DC000CF673A /* SignUpVC.swift in Sources */,
 				8DF28E8521A1E11400B62EBA /* AnniversaryDateRecordVC.swift in Sources */,
 				8D0FB8542182068100BFCB79 /* ContactAccess.swift in Sources */,
 				8DB8105B21AAB1AA0007BBC5 /* DeviceLanguage.swift in Sources */,
+				8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */,
 				8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */,
-				8D1C73C32183ED6C00DA5A14 /* AnniversaryViewController.swift in Sources */,
+				8DC43FDA21D061C900B911F2 /* AnniversaryDataModel.swift in Sources */,
+				8D1C73C32183ED6C00DA5A14 /* AnniversaryVC.swift in Sources */,
 				8D11B3C7219719B800C60371 /* TagLabel.swift in Sources */,
+				8DD474B421C947CD00DD5919 /* String+.swift in Sources */,
 				8D0BE32121A047CB00FE9B40 /* PositiveButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

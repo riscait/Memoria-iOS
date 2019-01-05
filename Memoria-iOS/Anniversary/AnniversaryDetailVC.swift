@@ -11,9 +11,21 @@ import Firebase
 
 final class AnniversaryDetailVC: UIViewController {
 
-    @IBOutlet weak var iconImageView: IconImageView!
-    @IBOutlet weak var anniversaryNameLabel: UILabel!
-    @IBOutlet weak var anniversaryDateLabel: UILabel!
+    // MARK: - Enum
+    
+    enum Category: String {
+        case contactBirthday
+        case manualBirthday
+        case anniversary
+    }
+    
+    enum Section: Int {
+        case topSection
+        case giftSection
+    }
+    
+    // MARK: - Property
+    
     @IBOutlet weak var tableView: UITableView!
     
     /// AnniversaryVCから受け取るデータ
@@ -23,11 +35,15 @@ final class AnniversaryDetailVC: UIViewController {
     var remainingDays: String?
     var iconImage: UIImage?
     
-    var category: String?
+    var category: Category?
     
+    var anniversaryFullDate: String?
     var starSign: String?
     var chineseZodiacSign: String?
     
+    var gifts: [[String: Any]]?
+    var selectedGiftId: String?
+
     
     // MARK: - ライフサイクル
     
@@ -39,37 +55,70 @@ final class AnniversaryDetailVC: UIViewController {
         
         // IDをもとにDBから記念日データを取得する(非同期処理のコールバックで取得)
         // 非同期なので、クロージャ外の処理よりも後に反映されることになる
-        AnniversaryDAO().getAnniversaryData(on: anniversaryId) { anniversary in
+        AnniversaryDAO().get(by: anniversaryId) { anniversary in
+            
             guard let date = (anniversary["date"] as? Timestamp)?.dateValue(),
                 let category = anniversary["category"] as? String else { return }
-            self.category = category
-            self.starSign = ZodiacSign.ZodiacStarSign.getStarSign(date: date)
-            self.chineseZodiacSign = ZodiacSign.ChineseZodiacSign.getChineseZodiacSign(date: date)
             
+            self.anniversaryFullDate = DateTimeFormat.getYMDString(date: date)
+            self.category = Category(rawValue: category)
+            
+            switch self.category! {
+            case .anniversary:
+                self.searchPresent(for: anniversary["title"] as! String)
+                
+            case .contactBirthday,
+                 .manualBirthday:
+                self.starSign = ZodiacSign.Star.getStarSign(date: date)
+                self.chineseZodiacSign = ZodiacSign.Chinese.getChineseZodiacSign(date: date)
+                let fullName = String(format: "fullName".localized,
+                                      arguments: [anniversary["familyName"] as! String,
+                                                  anniversary["givenName"] as! String])
+                self.searchPresent(for: fullName)
+
+            }
             DispatchQueue.main.async {
-                self.anniversaryDateLabel.text = DateTimeFormat().getYMDString(date: date)
                 self.tableView.reloadData()
             }
         }
         // navigationbarのタイトル
         navigationItem.title = remainingDays
-        // 前画面のセルから引き継いだ情報を表示する
-        iconImageView.image = iconImage
-        anniversaryNameLabel.text = anniversaryName
-        anniversaryDateLabel.text = anniversaryDate
         
-        let right = UIBarButtonItem(title: NSLocalizedString("hideAnniversary", comment: ""), style: .plain, target: self, action: #selector(toggleHidden))
+        let right = UIBarButtonItem(title: "hideAnniversary".localized, style: .plain, target: self, action: #selector(toggleHidden))
         
         navigationItem.rightBarButtonItem = right
     }
+    
+    
+    // MARK: - Navigation
+    
+    /// セグエで他の画面へ遷移するときに呼ばれる
+    ///
+    /// - Parameters:
+    ///   - segue: Segue
+    ///   - sender: Any?
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = segue.identifier else { return }
+        
+        if id == "editGiftSegue" {
+            let navC = segue.destination as! UINavigationController
+            let nextVC = navC.topViewController as! GiftRecordVC
+            let indexPath = tableView.indexPathForSelectedRow
+            nextVC.selectedGiftId = gifts?[indexPath!.row]["id"] as? String
+            print(nextVC.selectedGiftId ?? "selectedGiftId = nil")
+        }
+    }
+
+    
+    // MARK: - Misc method
     
     /// 非表示にするボタン
     @objc private func toggleHidden() {
         print("非表示にします")
         DialogBox.showAlert(on: self,
                             hasCancel: true,
-                            title: NSLocalizedString("hideThisAnniversaryTitle", comment: ""),
-                            message: NSLocalizedString("hideThisAnniversaryMessage", comment: ""),
+                            title: "hideThisAnniversaryTitle".localized,
+                            message: "hideThisAnniversaryMessage".localized,
                             defaultAction: hideThisAnniversary)
     }
     
@@ -86,40 +135,195 @@ final class AnniversaryDetailVC: UIViewController {
                          document: uid,
                          subCollection: "anniversary",
                          subDocument: anniversaryId,
-                         data: ["isHidden": true],
-                         merge: true
+                         data: ["isHidden": true]
         )
         // 一覧画面に戻る
         navigationController?.popViewController(animated: true)
     }
+    
+    // 該当するプレゼントを検索する
+    func searchPresent(for searchKey: String) {
+        
+        guard let category = category else { return }
+        
+        let whereField: String
+        
+        switch category {
+        case .anniversary:
+            whereField = "anniversaryName"
+
+        case .contactBirthday,
+             .manualBirthday:
+            whereField = "personName"
+        }
+        
+        GiftDAO.getQuery(whereField: whereField, equalTo: searchKey)?
+        .getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+            guard let documents = querySnapshot?.documents else { return }
+            self.gifts = [[String: Any]]()
+            for document in documents {
+                print(document.data())
+                self.gifts?.append(["id": document.data()["id"] as! String,
+                                    "personName": document.data()["personName"] as! String,
+                                    "goods": document.data()["goods"] as! String,
+                                    "anniversaryName": document.data()["anniversaryName"] as! String,
+                                    "isReceived": document.data()["isReceived"] as! Bool])
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 }
 
 
-// MARK: - UITableViewDataSource
+// MARK: - UITableView DataSource and Delegate
 
 extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // セルの数
-        return 2
+    /// セクションの数
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return gifts == nil ? 1 : 2
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // セルの中身
-        let cell = tableView.dequeueReusableCell(withIdentifier: "anniversaryDetailCell", for: indexPath)
-
-        switch (category, indexPath.row) {
-        case ("contactBirthday", 0),
-             ("manualBirthday", 0):
-            cell.textLabel?.text = NSLocalizedString("zodiacStarSign", comment: "")
-            cell.detailTextLabel?.text = starSign
-
-        case ("contactBirthday", 1),
-             ("manualBirthday", 1):
-            cell.textLabel?.text = NSLocalizedString("chineseZodiacSign", comment: "")
-            cell.detailTextLabel?.text = chineseZodiacSign
+    /// セルの数
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("プレゼントの個数: ", gifts?.count ?? "プレゼントはありません")
+        
+        switch Section(rawValue: section)! {
+        case .topSection:
+            if let category = category {
+                return category == .anniversary ? 1 : 3
+            } else {
+                return 1
+            }
             
-        default: break
+        case .giftSection:
+            return gifts?.count ?? 0
+        }
+    }
+    
+    /// セルの中身
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell: UITableViewCell
+        
+        let section = Section(rawValue: indexPath.section)!
+        
+        switch (section, indexPath.row) {
+        case (.topSection, 0):
+            cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath)
+            
+            let imageView = cell.viewWithTag(1) as! UIImageView
+            imageView.image = iconImage
+            
+            let anniversaryNameLabel = cell.viewWithTag(2) as! UILabel
+            anniversaryNameLabel.text = anniversaryName
+            
+            let anniversaryDateLabel = cell.viewWithTag(3) as! UILabel
+            anniversaryDateLabel.text = anniversaryFullDate ?? anniversaryDate
+            
+        case (.giftSection, _):
+            cell = tableView.dequeueReusableCell(withIdentifier: "giftCell", for: indexPath)
+            
+        default:
+            cell = tableView.dequeueReusableCell(withIdentifier: "anniversaryDetailCell", for: indexPath)
+        }
+        
+        if let category = category {
+            switch (category, section, indexPath.row) {
+            case (.contactBirthday, .topSection, 1),
+                 (.manualBirthday, .topSection, 1):
+                cell.textLabel?.text = "zodiacStarSign".localized
+                cell.detailTextLabel?.text = starSign
+                
+            case (.contactBirthday, .topSection, 2),
+                 (.manualBirthday, .topSection, 2):
+                cell.textLabel?.text = "chineseZodiacSign".localized
+                cell.detailTextLabel?.text = chineseZodiacSign
+                
+            case (.contactBirthday, .giftSection, _),
+                 (.manualBirthday, .giftSection, _):
+                let anniversaryLabel = cell.viewWithTag(2) as! UILabel
+                let goodsLabel = cell.viewWithTag(3) as! UILabel
+                let gotOrReceivedLabel = cell.viewWithTag(4) as! TagLabel
+
+                let isReceived = gifts?[indexPath.row]["isReceived"] as! Bool
+                
+                anniversaryLabel.text = gifts?[indexPath.row]["anniversaryName"] as? String
+                goodsLabel.text = gifts?[indexPath.row]["goods"] as? String
+                gotOrReceivedLabel.text = isReceived ? "gotGift".localized : "gaveGift".localized
+                gotOrReceivedLabel.backgroundColor = isReceived ? #colorLiteral(red: 1, green: 0.6629999876, blue: 0.07800000161, alpha: 1) : #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+                
+            case (.anniversary, .giftSection, _):
+                let personNameLabel = cell.viewWithTag(2) as! UILabel
+                let goodsLabel = cell.viewWithTag(3) as! UILabel
+                let gotOrReceivedLabel = cell.viewWithTag(4) as! TagLabel
+                
+                let isReceived = gifts?[indexPath.row]["isReceived"] as! Bool
+                
+                personNameLabel.text = gifts?[indexPath.row]["personName"] as? String
+                goodsLabel.text = gifts?[indexPath.row]["goods"] as? String
+                gotOrReceivedLabel.text = isReceived ? "gotGift".localized : "gaveGift".localized
+                gotOrReceivedLabel.backgroundColor = isReceived ? #colorLiteral(red: 1, green: 0.6629999876, blue: 0.07800000161, alpha: 1) : #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+
+            default: break
+            }
         }
         return cell
+    }
+    
+    /// ヘッダー
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        let section = Section(rawValue: section)!
+        switch section {
+        case .giftSection: return "giftHistory".localized
+        default: return nil
+        }
+    }
+    
+    /// フッター
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        
+        guard let category = category else { return nil }
+        
+        let section = Section(rawValue: section)!
+        switch (section, category) {
+        case (.giftSection, .anniversary): return "giftSectionFooterForAnniversary".localized
+        case (.giftSection, .contactBirthday),
+             (.giftSection, .manualBirthday): return "giftSectionFooterForBirthday".localized
+        default: return nil
+        }
+    }
+    
+    /// セルの高さ
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let section = Section(rawValue: indexPath.section)!
+        switch (section, indexPath.row) {
+        case (.topSection, 0): return 116
+        default: return 44
+        }
+    }
+    
+    /// ヘッダーの高さ
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        let section = Section(rawValue: section)!
+        switch section {
+        case .topSection:
+            return CGFloat.leastNormalMagnitude
+        default:
+            return 40
+        }
+    }
+    
+    /// セルを選択した時の挙動
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
