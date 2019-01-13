@@ -74,7 +74,6 @@
 "hideAnniversary" = "Hide";
 "deleteContactBirthdayTitle" = "Delete Birthday";
 "deleteContactBirthdayMessage" = "Delete birthdays captured from contacts";
-"birthdayNameLabel" = "Name";
 "anniversaryNameLabel" = "Anniversary name";
 "anniversarydateLabel" = "Date";
 "hiddenList" = "Hidden list";

@@ -18,7 +18,7 @@ class GiftRecordVC: UIViewController {
     @IBOutlet weak var memoView: InspectableTextView!
     /// コンテナビューのテーブルVC
     var tableVC: GiftRecordTableVC!
-    // プレゼント更新ならギフト情報を受け取る
+    // 編集の場合はプレゼント情報を受け取る
     var selectedGiftId: String?
     
     private var activeTextField: UITextView?

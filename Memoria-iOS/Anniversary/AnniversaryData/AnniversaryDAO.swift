@@ -16,27 +16,56 @@ class AnniversaryDAO {
     // MARK: - プロパティ
     
     /// FirestoreDB
-    private var db = Firestore.firestore()
+    private static var db = Firestore.firestore()
     /// Firebase Auth - User ID
-    private let uid = Auth.auth().currentUser?.uid
+    private static let uid = Auth.auth().currentUser?.uid
     // Unique collection
-    private static let rootCollection = "users"
-    private static let subCollection = "anniversary"
-    
-    /// Taptic Engine
-    private var feedbackGenerator: UINotificationFeedbackGenerator?
+    private static let usersCollection = db.collection("users")
+    static let anniversaryCollection = usersCollection.document(uid!).collection("anniversary")
+
 
     // MARK: - データ取得
     
-    /// Firestoreから記念日データを取得する
+    /// Firestoreから記念日データを全件取得する
     ///
     /// - Parameter:
     ///   - id: 記念日ID
     ///   - callback: ドキュメントのデータを受け取る
-    func get(by id: String,
-                            callback: @escaping ([String: Any]) -> Void) {
-        guard let uid = uid else { return }
-        db.collection("users").document(uid).collection("anniversary").document(id).getDocument { (document, error) in
+    static func getAll(callback: @escaping ([AnniversaryDataModel]) -> Void) {
+        anniversaryCollection.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("エラー発生: \(error)")
+            } else {
+                print("\(#function)の実行に成功しました！")
+            }
+
+            var anniversarysArray = [[String: Any]]()
+            
+            querySnapshot?.documents.forEach { anniversarysArray.append($0.data()) }
+            let anniversaryData = anniversarysArray.map { AnniversaryDataModel(dictionary: $0)}
+            
+            callback(anniversaryData as! [AnniversaryDataModel])
+        }
+//        { (document, error) in
+//            if let error = error {
+//                print("エラー発生: \(error)")
+//            } else {
+//                print("\(#function)の実行に成功しました！")
+//            }
+//            // ドキュメントのアンラップと存在チェック
+//            if let document = document, document.exists {
+//                callback(document.data()!)
+//            }
+//        }
+    }
+    
+    /// Firestoreから記念日データを1件取得する
+    ///
+    /// - Parameter:
+    ///   - id: 記念日ID
+    ///   - callback: ドキュメントのデータを受け取る
+    static func get(by anniversaryId: String, callback: @escaping ([String: Any]) -> Void) {
+        anniversaryCollection.document(anniversaryId).getDocument { (document, error) in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -48,17 +77,15 @@ class AnniversaryDAO {
             }
         }
     }
-    
+
     /// Anniversaryドキュメントの検索結果Queryを取得する
     ///
     /// - Parameters:
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
     /// - Returns: 検索結果
-    func getQuery(whereField: String,
-                             equalTo: Any) -> Query? {
-        guard let uid = uid else { return nil }
-        return db.collection("users").document(uid).collection("anniversary").whereField(whereField, isEqualTo: equalTo)
+    static func getQuery(whereField: String, equalTo: Any) -> Query? {
+        return anniversaryCollection.whereField(whereField, isEqualTo: equalTo)
     }
     
     /// getAnniversaryQuery()の検索結果ドキュメントを取得する
@@ -67,7 +94,7 @@ class AnniversaryDAO {
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
     ///   - callback: ドキュメントのデータを受け取る
-    func getFilteredAnniversaryDocuments(whereField: String,
+    static func getFilteredAnniversaryDocuments(whereField: String,
                              equalTo: Any,
                              callback: @escaping ([QueryDocumentSnapshot]) -> Void) {
         getQuery(whereField: whereField, equalTo: equalTo)?.getDocuments { (querySnapshot, error) in
@@ -89,20 +116,13 @@ class AnniversaryDAO {
     /// Firestoreへのデータ登録・更新
     ///
     /// - Parameters:
-    ///   - collection: ルートコレクション
-    ///   - document: ドキュメント
-    ///   - subCollection: サブコレクション
-    ///   - subDocument: サブコレクション
+    ///   - documentPath: 一意のID
     ///   - data: 登録するデータ
     ///   - marge: 既存のドキュメントにデータを統合するか否か
-    func setData(collection: String,
-                 document: String,
-                 subCollection: String,
-                 subDocument: String,
-                 data: [String: Any],
+    static func set(documentPath: String,
+                 data: AnniversaryDataModel,
                  merge: Bool = false) {
-            db.collection(collection).document(document).collection(subCollection)
-                .document(subDocument).setData(data, merge: merge) { error in
+            anniversaryCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
                     if let error = error {
                         print("エラー発生: \(error)")
                     } else {
@@ -111,7 +131,25 @@ class AnniversaryDAO {
             }
     }
     
+    /// Firestoreへのデータ登録・更新
+    ///
+    /// - Parameters:
+    ///   - documentPath: 一意のID
+    ///   - data: 登録するデータ
+    ///   - marge: falseなら既存のフィールドは削除され、新しくsetしたフィールドのみとなる
+    static func set(documentPath: String,
+                    data: [String: Any],
+                    merge: Bool = false) {
+        anniversaryCollection.document(documentPath).setData(data, merge: merge) { error in
+            if let error = error {
+                print("エラー発生: \(error)")
+            } else {
+                print("\(#function)の実行に成功しました！")
+            }
+        }
+    }
     
+
     // MARK: - データ更新
 
     /// 登録済みのデータを更新する
@@ -120,9 +158,8 @@ class AnniversaryDAO {
     ///   - documentPath: 一意のID
     ///   - field: 更新データ名
     ///   - content: 更新データ内容
-    func updateAnniversary(documentPath: String, field: String, content: Any) {
-        guard let uid = uid else { return }
-        db.collection("users").document(uid).collection("anniversary").document(documentPath).updateData([field: content]) { error in
+    static func update(anniversaryId: String, field: String, content: Any) {
+        anniversaryCollection.document(anniversaryId).updateData([field: content]) { error in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -138,9 +175,8 @@ class AnniversaryDAO {
     /// - Parameters:
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
-    func deleteAnniversary(documentPath: String) {
-        guard let uid = uid else { return }
-        db.collection("users").document(uid).collection("anniversary").document(documentPath).delete() { error in
+    static func deleteAnniversary(documentPath: String) {
+        anniversaryCollection.document(documentPath).delete() { error in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -154,31 +190,29 @@ class AnniversaryDAO {
     /// - Parameters:
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
-    func deleteQueryAnniversary(whereField: String, equalTo: Any,
+    static func deleteQueryAnniversary(whereField: String, equalTo: Any,
                                 on roorVC: UIViewController, compltion: (() -> Void)? = nil) {
-        
-        guard let uid = uid else { return }
-        db.collection("users").document(uid).collection("anniversary").whereField(whereField, isEqualTo: equalTo).getDocuments { (querySnapshot, error) in
-            
+        anniversaryCollection.whereField(whereField, isEqualTo: equalTo).getDocuments { (querySnapshot, error) in
             // Instantiate a new feedback-generator
-            self.feedbackGenerator = UINotificationFeedbackGenerator()
-            self.feedbackGenerator?.prepare()
+            let feedbackGenerator = UINotificationFeedbackGenerator()
+            feedbackGenerator.prepare()
             
             if let error = error {
                 print("エラー発生: \(error)")
                 DialogBox.showAlert(on: roorVC, message: NSLocalizedString("deleteAnniversaryFilure", comment: ""))
-                self.feedbackGenerator?.notificationOccurred(.error)
+                feedbackGenerator.notificationOccurred(.error)
                 
             } else if let documents = querySnapshot?.documents,
                 !documents.isEmpty {
                 print("\(#function)の実行に成功しました！", documents.description)
                 documents.forEach { $0.reference.delete() }
                 DialogBox.showAlert(on: roorVC, message: NSLocalizedString("deleteAnniversarySuccess", comment: ""))
-                self.feedbackGenerator?.notificationOccurred(.success)
+                feedbackGenerator.notificationOccurred(.success)
+                
             } else {
                 print("documentsが空")
                 DialogBox.showAlert(on: roorVC, message: NSLocalizedString("deleteAnniversaryEmpty", comment: ""))
-                self.feedbackGenerator?.notificationOccurred(.warning)
+                feedbackGenerator.notificationOccurred(.warning)
             }
         }
     }

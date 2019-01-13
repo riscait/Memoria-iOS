@@ -180,6 +180,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nkZ-Sg-SxQ"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5Va-YT-6ff">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="old-ew-PBa" customClass="InspectableBarButtonItem" customModule="Memoria_iOS" customModuleProvider="target">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="edit"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <segue destination="C5v-MH-sGv" kind="presentation" identifier="editAnniversarySegue" id="ueX-f4-6Hh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="x64-zo-csL" id="1Yn-2Y-MhW"/>
@@ -188,6 +198,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkc-Fj-mSO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-149.59999999999999" y="82.3088455772114"/>
+        </scene>
+        <!--AnniversaryEdit-->
+        <scene sceneID="hGW-PJ-7s3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AnniversaryEdit" id="C5v-MH-sGv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0MY-Vl-8av" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="386" y="-63"/>
         </scene>
         <!--GiftRecord-->
         <scene sceneID="8ho-cG-yN0">

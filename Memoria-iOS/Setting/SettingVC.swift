@@ -50,7 +50,9 @@ class SettingVC: UITableViewController {
                                        title: NSLocalizedString("deleteContactBirthdayTitle", comment: ""),
                                        message: NSLocalizedString("deleteContactBirthdayMessage", comment: ""),
                                        destructiveTitle: NSLocalizedString("delete", comment: ""),
-                                       destructiveAction: {AnniversaryDAO().deleteQueryAnniversary(whereField: "category", equalTo: "contactBirthday", on: self)})
+                                       destructiveAction: {
+                                        AnniversaryDAO.deleteQueryAnniversary(whereField: "isFromContact", equalTo: true, on: self)
+        })
     }
     /// Import birthday by Contacts
     private func importBirthday() {

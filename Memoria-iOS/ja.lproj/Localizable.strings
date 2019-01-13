@@ -55,6 +55,13 @@
 "The user's credential is no longer valid. The user must sign in again." = "ユーザーの資格情報はもはや有効ではありません。\n再度ログインする必要があります。";
 // 記念日登録画面
 "anniversary" = "記念日";
+"birthday" = "誕生日";
+"anniversaryTitleLabel" = "記念日の名称";
+"birthdayNameLabel" = "誕生日の人名";
+"anniversaryTitlePlaceholder" = "例）サラダ記念日";
+"leftNamePlaceholder" = "姓";
+"rightNamePlaceholder" = "名";
+"repeatableTitle" = "毎年繰り返す";
 "anniversaryRecord" = "記念日の登録";
 "askForNameInput" = "誕生日の場合は名前を入力";
 "givenName" = "名";
@@ -71,10 +78,9 @@
 "japaneseOnlyYear" = "年";
 "japaneseOnlyDay" = "日";
 "confirmAndRecord" = "登録する";
-"hideAnniversary" = "非表示にする";
+"hideAnniversary" = "この記念日を非表示にする";
 "deleteContactBirthdayTitle" = "誕生日の消去";
 "deleteContactBirthdayMessage" = "連絡先から取り込んだ誕生日を消去します";
-"birthdayNameLabel" = "名前";
 "anniversaryNameLabel" = "記念日の名前";
 "anniversarydateLabel" = "日付";
 "hiddenList" = "非表示リスト";

@@ -14,9 +14,12 @@ final class AnniversaryDetailVC: UIViewController {
     // MARK: - Enum
     
     enum Category: String {
+        case anniversary
+        // Since Ver.2.1.0
+        case birthday
+        // Until Ver.2.0.0
         case contactBirthday
         case manualBirthday
-        case anniversary
     }
     
     enum Section: Int {
@@ -44,6 +47,9 @@ final class AnniversaryDetailVC: UIViewController {
     var gifts: [[String: Any]]?
     var selectedGiftId: String?
 
+    // 次の画面に渡すようの記念日データ
+    var anniversaryData: AnniversaryDataModel?
+    
     
     // MARK: - ライフサイクル
     
@@ -55,19 +61,22 @@ final class AnniversaryDetailVC: UIViewController {
         
         // IDをもとにDBから記念日データを取得する(非同期処理のコールバックで取得)
         // 非同期なので、クロージャ外の処理よりも後に反映されることになる
-        AnniversaryDAO().get(by: anniversaryId) { anniversary in
+        AnniversaryDAO.get(by: anniversaryId) { anniversary in
+            
+            self.anniversaryData = AnniversaryDataModel(dictionary: anniversary)
             
             guard let date = (anniversary["date"] as? Timestamp)?.dateValue(),
                 let category = anniversary["category"] as? String else { return }
             
             self.anniversaryFullDate = DateTimeFormat.getYMDString(date: date)
-            self.category = Category(rawValue: category)
+            self.category = self.migrateAnniversaryType(anniversaryType: Category(rawValue: category)!)
             
             switch self.category! {
             case .anniversary:
                 self.searchPresent(for: anniversary["title"] as! String)
                 
-            case .contactBirthday,
+            case .birthday,
+                 .contactBirthday,
                  .manualBirthday:
                 self.starSign = ZodiacSign.Star.getStarSign(date: date)
                 self.chineseZodiacSign = ZodiacSign.Chinese.getChineseZodiacSign(date: date)
@@ -75,7 +84,6 @@ final class AnniversaryDetailVC: UIViewController {
                                       arguments: [anniversary["familyName"] as! String,
                                                   anniversary["givenName"] as! String])
                 self.searchPresent(for: fullName)
-
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -84,9 +92,10 @@ final class AnniversaryDetailVC: UIViewController {
         // navigationbarのタイトル
         navigationItem.title = remainingDays
         
-        let right = UIBarButtonItem(title: "hideAnniversary".localized, style: .plain, target: self, action: #selector(toggleHidden))
         
-        navigationItem.rightBarButtonItem = right
+//        let right = UIBarButtonItem(title: "hideAnniversary".localized, style: .plain, target: self, action: #selector(toggleHidden))
+//
+//        navigationItem.rightBarButtonItem = right
     }
     
     
@@ -100,6 +109,12 @@ final class AnniversaryDetailVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let id = segue.identifier else { return }
         
+        if id == "editAnniversarySegue" {
+            let navC = segue.destination as! UINavigationController
+            let nextVC = navC.topViewController as! AnniversaryEditVC
+            nextVC.anniversaryData = anniversaryData
+        }
+        
         if id == "editGiftSegue" {
             let navC = segue.destination as! UINavigationController
             let nextVC = navC.topViewController as! GiftRecordVC
@@ -112,34 +127,36 @@ final class AnniversaryDetailVC: UIViewController {
     
     // MARK: - Misc method
     
-    /// 非表示にするボタン
-    @objc private func toggleHidden() {
-        print("非表示にします")
-        DialogBox.showAlert(on: self,
-                            hasCancel: true,
-                            title: "hideThisAnniversaryTitle".localized,
-                            message: "hideThisAnniversaryMessage".localized,
-                            defaultAction: hideThisAnniversary)
-    }
-    
-    /// 非表示にするボタンを承諾した時の処理
-    func hideThisAnniversary() {
-        // ユーザーのユニークIDを読み込む
-        guard let uid = Auth.auth().currentUser?.uid else {
-            print("UIDが見つかりません！")
-            return
+    // 誕生日をbirthdayに統一する
+    private func migrateAnniversaryType(anniversaryType: Category) -> Category {
+        switch anniversaryType {
+        case .birthday,
+             .contactBirthday,
+             .manualBirthday:
+            return .birthday
+            
+        case .anniversary:
+            return .anniversary
         }
-        // データベースに連絡先の誕生日情報を保存する
-        let database = AnniversaryDAO()
-        database.setData(collection: "users",
-                         document: uid,
-                         subCollection: "anniversary",
-                         subDocument: anniversaryId,
-                         data: ["isHidden": true]
-        )
-        // 一覧画面に戻る
-        navigationController?.popViewController(animated: true)
     }
+
+//    /// 非表示にするボタン
+//    @objc private func toggleHidden() {
+//        print("非表示にします")
+//        DialogBox.showAlert(on: self,
+//                            hasCancel: true,
+//                            title: "hideThisAnniversaryTitle".localized,
+//                            message: "hideThisAnniversaryMessage".localized,
+//                            defaultAction: hideThisAnniversary)
+//    }
+//
+//    /// 非表示にするボタンを承諾した時の処理
+//    func hideThisAnniversary() {
+//        // データベースに連絡先の誕生日情報を保存する
+//        AnniversaryDAO.set(documentPath: anniversaryId, data: ["isHidden": true])
+//        // 一覧画面に戻る
+//        navigationController?.popViewController(animated: true)
+//    }
     
     // 該当するプレゼントを検索する
     func searchPresent(for searchKey: String) {
@@ -152,7 +169,8 @@ final class AnniversaryDetailVC: UIViewController {
         case .anniversary:
             whereField = "anniversaryName"
 
-        case .contactBirthday,
+        case .birthday,
+             .contactBirthday,
              .manualBirthday:
             whereField = "personName"
         }
@@ -233,20 +251,19 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
             cell = tableView.dequeueReusableCell(withIdentifier: "anniversaryDetailCell", for: indexPath)
         }
         
-        if let category = category {
+        if var category = category {
+            category = migrateAnniversaryType(anniversaryType: category)
+            
             switch (category, section, indexPath.row) {
-            case (.contactBirthday, .topSection, 1),
-                 (.manualBirthday, .topSection, 1):
+            case (.birthday, .topSection, 1):
                 cell.textLabel?.text = "zodiacStarSign".localized
                 cell.detailTextLabel?.text = starSign
                 
-            case (.contactBirthday, .topSection, 2),
-                 (.manualBirthday, .topSection, 2):
+            case (.birthday, .topSection, 2):
                 cell.textLabel?.text = "chineseZodiacSign".localized
                 cell.detailTextLabel?.text = chineseZodiacSign
                 
-            case (.contactBirthday, .giftSection, _),
-                 (.manualBirthday, .giftSection, _):
+            case (.birthday, .giftSection, _):
                 let anniversaryLabel = cell.viewWithTag(2) as! UILabel
                 let goodsLabel = cell.viewWithTag(3) as! UILabel
                 let gotOrReceivedLabel = cell.viewWithTag(4) as! TagLabel
@@ -289,13 +306,13 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
     /// フッター
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         
-        guard let category = category else { return nil }
+        guard var category = category else { return nil }
+        category = migrateAnniversaryType(anniversaryType: category)
         
         let section = Section(rawValue: section)!
         switch (section, category) {
         case (.giftSection, .anniversary): return "giftSectionFooterForAnniversary".localized
-        case (.giftSection, .contactBirthday),
-             (.giftSection, .manualBirthday): return "giftSectionFooterForBirthday".localized
+        case (.giftSection, .birthday): return "giftSectionFooterForBirthday".localized
         default: return nil
         }
     }

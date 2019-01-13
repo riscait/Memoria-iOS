@@ -18,39 +18,36 @@ class HiddenListVC: UITableViewController {
     /// 正直まだよく理解していないリスナー登録？
     var listenerRegistration: ListenerRegistration?
 
-    var anniversarys = [[String:Any]]()
+    var anniversarys: [[String: Any]]?
     // MARK: - ライフサイクル
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Title of this screen
         title = NSLocalizedString("hiddenList", comment: "")
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
     }
     
     /// Viewが表示される直前に呼ばれる（タブ切り替え等も含む）
     override func viewWillAppear(_ animated: Bool) {
         
         // anniversaryコレクションの変更を監視する
-        listenerRegistration = AnniversaryDAO()
-            .getQuery(whereField: "isHidden", equalTo: true)?
+        listenerRegistration = AnniversaryDAO.getQuery(whereField: "isHidden", equalTo: true)?
             .addSnapshotListener { documentSnapshot, error in
                 
                 guard let documentSnapshot = documentSnapshot else {
                     print("ドキュメント取得エラー: \(error!)")
                     return
                 }
-                self.anniversarys = []
+                self.anniversarys = [[String: Any]]()
+                print("documents are \(documentSnapshot.documents)")
                 // 記念日データが入ったドキュメントの数だけ繰り返す
                 for doc in documentSnapshot.documents {
                     // ドキュメントから記念日データを取り出す
                     var data = doc.data()
+                    print("data is... ", data)
                     // 記念日データをローカル配列に記憶
-                    self.anniversarys.append(data)
-                    print("非表示の記念日: \(data["familyName"] ?? "") \(data["givenName"] ?? "")")
+                    self.anniversarys?.append(data)
+                    print("非表示の記念日: \(data["familyName"] ?? "") \(data["givenName"] ?? "")\(data["title"] ?? "")")
                 }
                 // 並び替えて返却する
                 //            self.anniversarys.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
@@ -87,13 +84,13 @@ class HiddenListVC: UITableViewController {
     
     /// 選択したセルの記念日を削除する
     func deleteThisAnniversary() {
-        let documentPath = anniversarys[selectedRow]["id"] as! String
-        AnniversaryDAO().deleteAnniversary(documentPath: documentPath)
+        let documentPath = anniversarys?[selectedRow]["id"] as! String
+        AnniversaryDAO.deleteAnniversary(documentPath: documentPath)
     }
     /// 選択したセルの記念日を再表示する
     func redisplayThisAnniversary() {
-        let documentPath = anniversarys[selectedRow]["id"] as! String
-        AnniversaryDAO().updateAnniversary(documentPath: documentPath, field: "isHidden", content: false)
+        let documentPath = anniversarys?[selectedRow]["id"] as! String
+        AnniversaryDAO.update(anniversaryId: documentPath, field: "isHidden", content: false)
     }
 
     
@@ -104,7 +101,7 @@ class HiddenListVC: UITableViewController {
 
     /// 行数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return anniversarys.count
+        return anniversarys?.count ?? 0
     }
 
     /// セルの内容
@@ -114,10 +111,12 @@ class HiddenListVC: UITableViewController {
         let iconImageView = cell.viewWithTag(1) as! UIImageView
         let titleLabel = cell.viewWithTag(2) as! UILabel
 
-        let anniversary = anniversarys[indexPath.row]
-        
-        if anniversary["category"] as! String == "contactBirthday" ||
-           anniversary["category"] as! String == "manualBirthday" {
+        guard let anniversary = anniversarys?[indexPath.row] else { return cell }
+        print(anniversarys?.description)
+        print(anniversary["category"] ?? "anniversary category is nil", anniversary["id"] ?? "id is nil")
+        if anniversary["category"] as! String == "birthday" ||
+            anniversary["category"] as! String == "contactBirthday" ||
+            anniversary["category"] as! String == "manualBirthday" {
             // 誕生日の場合
             titleLabel.text = String(format: NSLocalizedString("whoseBirthday", comment: ""),
                                      arguments: [anniversary["familyName"] as! String, anniversary["givenName"] as! String])
@@ -132,7 +131,8 @@ class HiddenListVC: UITableViewController {
             
         } else {
             // デフォルトアイコン
-            iconImageView.image = anniversary["category"] as! String == "contactBirthday" ||
+            iconImageView.image = anniversary["category"] as! String == "birthday" ||
+                anniversary["category"] as! String == "contactBirthday" ||
                 anniversary["category"] as! String == "manualBirthday"
                 ? #imageLiteral(resourceName: "Ribbon") // 誕生日
                 : #imageLiteral(resourceName: "PresentBox") // それ以外
