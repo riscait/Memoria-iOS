@@ -36,7 +36,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功")
             }
 
             var anniversarysArray = [[String: Any]]()
@@ -69,7 +69,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功:", anniversaryId)
             }
             // ドキュメントのアンラップと存在チェック
             if let document = document, document.exists {
@@ -101,7 +101,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功")
             }
             // ドキュメントのアンラップと存在チェック
             if let documents = querySnapshot?.documents {
@@ -126,7 +126,7 @@ class AnniversaryDAO {
                     if let error = error {
                         print("エラー発生: \(error)")
                     } else {
-                        print("\(#function)の実行に成功しました！")
+                        print("\(#function)の実行:", documentPath)
                     }
             }
     }
@@ -144,7 +144,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功:", documentPath)
             }
         }
     }
@@ -163,7 +163,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功:", anniversaryId)
             }
         }
     }
@@ -180,7 +180,7 @@ class AnniversaryDAO {
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#function)の実行に成功しました！")
+                print("\(#function)の実行に成功:", documentPath)
             }
         }
     }
@@ -204,7 +204,7 @@ class AnniversaryDAO {
                 
             } else if let documents = querySnapshot?.documents,
                 !documents.isEmpty {
-                print("\(#function)の実行に成功しました！", documents.description)
+                print("\(#function)の実行に成功:", documents.description)
                 documents.forEach { $0.reference.delete() }
                 DialogBox.showAlert(on: roorVC, message: NSLocalizedString("deleteAnniversarySuccess", comment: ""))
                 feedbackGenerator.notificationOccurred(.success)

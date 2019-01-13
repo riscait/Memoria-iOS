@@ -116,13 +116,6 @@ class ContactAccess {
                 print("\(contact.familyName, contact.givenName)の誕生日がnilだったため処理を終了します")
                 return
             }
-//            let contactBirthday: [String: Any] = ["id": contact.identifier,
-//                                       "givenName": contact.givenName,
-//                                       "familyName": contact.familyName,
-//                                       "date": date,
-//                                       "iconImage": contact.thumbnailImageData ?? "",
-//                                       "category": "contactBirthday",
-//                                       "isHidden": false]
             let birthday = AnniversaryDataModel(id: contact.identifier,
                                                 category: .birthday,
                                                 title: nil,
@@ -133,7 +126,6 @@ class ContactAccess {
                                                 isHidden: false,
                                                 isAnnualy: true,
                                                 isFromContact: true)
-                
             
             // データベースに連絡先の誕生日情報を保存する
             AnniversaryDAO.set(documentPath: contact.identifier, data: birthday.toDictionary)

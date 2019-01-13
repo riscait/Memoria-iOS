@@ -13,15 +13,6 @@ final class AnniversaryDetailVC: UIViewController {
 
     // MARK: - Enum
     
-    enum Category: String {
-        case anniversary
-        // Since Ver.2.1.0
-        case birthday
-        // Until Ver.2.0.0
-        case contactBirthday
-        case manualBirthday
-    }
-    
     enum Section: Int {
         case topSection
         case giftSection
@@ -38,7 +29,7 @@ final class AnniversaryDetailVC: UIViewController {
     var remainingDays: String?
     var iconImage: UIImage?
     
-    var category: Category?
+    var category: AnniversaryType?
     
     var anniversaryFullDate: String?
     var starSign: String?
@@ -69,15 +60,13 @@ final class AnniversaryDetailVC: UIViewController {
                 let category = anniversary["category"] as? String else { return }
             
             self.anniversaryFullDate = DateTimeFormat.getYMDString(date: date)
-            self.category = self.migrateAnniversaryType(anniversaryType: Category(rawValue: category)!)
+            self.category = AnniversaryType(category: category)
             
             switch self.category! {
             case .anniversary:
                 self.searchPresent(for: anniversary["title"] as! String)
                 
-            case .birthday,
-                 .contactBirthday,
-                 .manualBirthday:
+            case .birthday:
                 self.starSign = ZodiacSign.Star.getStarSign(date: date)
                 self.chineseZodiacSign = ZodiacSign.Chinese.getChineseZodiacSign(date: date)
                 let fullName = String(format: "fullName".localized,
@@ -127,37 +116,6 @@ final class AnniversaryDetailVC: UIViewController {
     
     // MARK: - Misc method
     
-    // 誕生日をbirthdayに統一する
-    private func migrateAnniversaryType(anniversaryType: Category) -> Category {
-        switch anniversaryType {
-        case .birthday,
-             .contactBirthday,
-             .manualBirthday:
-            return .birthday
-            
-        case .anniversary:
-            return .anniversary
-        }
-    }
-
-//    /// 非表示にするボタン
-//    @objc private func toggleHidden() {
-//        print("非表示にします")
-//        DialogBox.showAlert(on: self,
-//                            hasCancel: true,
-//                            title: "hideThisAnniversaryTitle".localized,
-//                            message: "hideThisAnniversaryMessage".localized,
-//                            defaultAction: hideThisAnniversary)
-//    }
-//
-//    /// 非表示にするボタンを承諾した時の処理
-//    func hideThisAnniversary() {
-//        // データベースに連絡先の誕生日情報を保存する
-//        AnniversaryDAO.set(documentPath: anniversaryId, data: ["isHidden": true])
-//        // 一覧画面に戻る
-//        navigationController?.popViewController(animated: true)
-//    }
-    
     // 該当するプレゼントを検索する
     func searchPresent(for searchKey: String) {
         
@@ -169,9 +127,7 @@ final class AnniversaryDetailVC: UIViewController {
         case .anniversary:
             whereField = "anniversaryName"
 
-        case .birthday,
-             .contactBirthday,
-             .manualBirthday:
+        case .birthday:
             whereField = "personName"
         }
         
@@ -251,8 +207,7 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
             cell = tableView.dequeueReusableCell(withIdentifier: "anniversaryDetailCell", for: indexPath)
         }
         
-        if var category = category {
-            category = migrateAnniversaryType(anniversaryType: category)
+        if let category = category {
             
             switch (category, section, indexPath.row) {
             case (.birthday, .topSection, 1):
@@ -306,8 +261,7 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
     /// フッター
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         
-        guard var category = category else { return nil }
-        category = migrateAnniversaryType(anniversaryType: category)
+        guard let category = category else { return nil }
         
         let section = Section(rawValue: section)!
         switch (section, category) {

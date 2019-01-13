@@ -37,7 +37,8 @@ final class AnniversaryVC: UICollectionViewController {
         super.viewDidLoad()
         
         title = "anniversary".localized
-        
+        Migration.db(on: self)
+
         /* ---------- 検索バーは未実装 ----------
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
@@ -198,27 +199,34 @@ final class AnniversaryVC: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "anniversaryCell", for: indexPath) as! AnniversaryCell
         // 記念日データを順に取り出す
         guard let anniversary = self.anniversarys?[indexPath.row] else { return cell }
+        
         // 記念日の分類
-        let category = anniversary["category"] as! String
+        let category = AnniversaryType(category: anniversary["category"] as! String)
+        
         // 記念日の名称。誕生日だったら苗字と名前を繋げて表示
-        if category == "birthday" || category == "contactBirthday" ||  category == "manualBirthday" {
+        switch category {
+        case .anniversary:
+            cell.anniversaryNameLabel.text = anniversary["title"] as? String
+
+        case .birthday:
             cell.anniversaryNameLabel.text = String(format: "whoseBirthday".localized,
                                                     arguments: [anniversary["familyName"] as! String, anniversary["givenName"] as! String])
-        } else {
-            cell.anniversaryNameLabel.text = anniversary["title"] as? String
         }
+        
         // 記念日の日程
         guard let anniversaryDate = (anniversary["date"] as? Timestamp)?.dateValue() else { return cell }
         cell.anniversaryDateLabel.text = DateTimeFormat.getMonthDayString(date: anniversaryDate)
+        
         // 記念日までの残り日数
         let remainingDays = anniversary["remainingDays"] as! Int
         cell.remainingDaysLabel.text = String(format: NSLocalizedString("remainingDays", comment: ""), remainingDays.description)
+        
         // 記念日のアイコン
         if let iconImage = anniversary["iconImage"] as? Data {
             cell.anniversaryIconImage.image = UIImage(data: iconImage)
         } else {
-            // デフォルトアイコン
-            cell.anniversaryIconImage.image = category == "contactBirthday"
+            // アイコンがない場合はデフォルトアイコンを使用
+            cell.anniversaryIconImage.image = category == .birthday
                 ? #imageLiteral(resourceName: "Ribbon") // 誕生日
                 : #imageLiteral(resourceName: "PresentBox") // それ以外
         }

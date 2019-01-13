@@ -19,11 +19,11 @@ enum AnniversaryType: Int, CustomStringConvertible {
         case "anniversary":
             self = .anniversary
             
-        case "contactBirthday",
-             "manualBirthday": fallthrough
+        case "birthday":
+             self = .birthday
+            
         default:
-            // Ver.2.0.0 まではカテゴリーを文字列で管理しており、誕生日を2種類に分けていたが
-            // 今後は誕生日とそれ以外の記念日の列挙型とし、連絡先からかどうかはisFromContactにて判断することにした
+            print("既定値以外の記念日タイプ:", category)
             self = .birthday
         }
     }
@@ -83,13 +83,9 @@ extension AnniversaryDataModel {
         self.date = dictionary["date"] as! Timestamp
         self.iconImage = dictionary["iconImage"] as? Data
         self.isHidden = dictionary["isHidden"] as! Bool
-        // 以下プロパティは、Ver.2.1.0 にて追加。nilの可能性があるためデフォルト値対応を行う
-        self.isAnnualy = (dictionary["isAnnualy"] != nil) ? dictionary["isAnnualy"] as! Bool : true
-        if let isFromContact = dictionary["isFromContact"] as? Bool {
-            self.isFromContact = isFromContact
-        } else {
-            self.isFromContact = category == "contactBirthday"
-        }
+        // 以下プロパティは、Ver.2.1.0 にて追加
+        self.isAnnualy = dictionary["isAnnualy"] as! Bool
+        self.isFromContact = dictionary["isFromContact"] as! Bool
     }
 }
 

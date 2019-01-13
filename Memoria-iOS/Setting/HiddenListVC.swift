@@ -24,7 +24,7 @@ class HiddenListVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Title of this screen
-        title = NSLocalizedString("hiddenList", comment: "")
+        title = "hiddenList".localized
     }
     
     /// Viewが表示される直前に呼ばれる（タブ切り替え等も含む）
@@ -72,8 +72,8 @@ class HiddenListVC: UITableViewController {
         guard let indexPath = hiddenTableView.indexPath(for: sender.superview!.superview as! UITableViewCell) else { return }
         print("\(indexPath)の編集ボタンが押されました")
         
-        let defaultActionSet = [NSLocalizedString("redisplay", comment: ""): redisplayThisAnniversary]
-        let destructiveActionSet = [NSLocalizedString("delete", comment: ""): deleteThisAnniversary]
+        let defaultActionSet = ["redisplay".localized: redisplayThisAnniversary]
+        let destructiveActionSet = ["delete".localized: deleteThisAnniversary]
         // 選択されたセルの行番号
         selectedRow = indexPath.row
         // ActionSheetを表示
@@ -111,19 +111,18 @@ class HiddenListVC: UITableViewController {
         let iconImageView = cell.viewWithTag(1) as! UIImageView
         let titleLabel = cell.viewWithTag(2) as! UILabel
 
-        guard let anniversary = anniversarys?[indexPath.row] else { return cell }
-        print(anniversarys?.description)
-        print(anniversary["category"] ?? "anniversary category is nil", anniversary["id"] ?? "id is nil")
-        if anniversary["category"] as! String == "birthday" ||
-            anniversary["category"] as! String == "contactBirthday" ||
-            anniversary["category"] as! String == "manualBirthday" {
-            // 誕生日の場合
-            titleLabel.text = String(format: NSLocalizedString("whoseBirthday", comment: ""),
-                                     arguments: [anniversary["familyName"] as! String, anniversary["givenName"] as! String])
-
-        } else {
-            // 記念日の場合
+        guard let anniversary = anniversarys?[indexPath.row],
+            let category = anniversary["category"] as? String else { return cell }
+        
+        let type = AnniversaryType(category: category)
+        
+        switch type {
+        case .anniversary:
             titleLabel.text = anniversary["title"] as? String
+
+        case .birthday:
+            titleLabel.text = String(format: "whoseBirthday".localized,
+                                     arguments: [anniversary["familyName"] as! String, anniversary["givenName"] as! String])
         }
 
         if let iconImage = anniversary["iconImage"] as? Data {
@@ -131,9 +130,7 @@ class HiddenListVC: UITableViewController {
             
         } else {
             // デフォルトアイコン
-            iconImageView.image = anniversary["category"] as! String == "birthday" ||
-                anniversary["category"] as! String == "contactBirthday" ||
-                anniversary["category"] as! String == "manualBirthday"
+            iconImageView.image = type == .birthday
                 ? #imageLiteral(resourceName: "Ribbon") // 誕生日
                 : #imageLiteral(resourceName: "PresentBox") // それ以外
         }
@@ -145,7 +142,7 @@ class HiddenListVC: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return NSLocalizedString("titleForHeaderInSection", comment: "")
+            return "titleForHeaderInSection".localized
 
         default:
             return nil

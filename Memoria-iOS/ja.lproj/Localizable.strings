@@ -23,6 +23,8 @@
 "tbd" = "未定";
 "discardMessageForRecord" = "登録せずに閉じますか？";
 "discardMessageForEdit" = "編集せずに閉じますか？";
+"startMigration" = "データアップデートを開始\n少々お待ちください";
+"underMigration" = "データアップデート中です\n%d / %d";
 "version" = "Version";
 "copyright" = "©︎ 2018 nerco studio";
 // アカウント登録画面
