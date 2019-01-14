@@ -11,7 +11,7 @@ import Firebase
 
 class GiftRecordVC: UIViewController {
 
-    // MARK: - Property
+    // MARK: - Properties
     
     @IBOutlet weak var recordButton: UIBarButtonItem!
     @IBOutlet weak var gotOrReceived: InspectableSegmentedControl!
@@ -24,7 +24,7 @@ class GiftRecordVC: UIViewController {
     private var activeTextField: UITextView?
     
 
-    // MARK: - LifeCycle
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,21 +33,13 @@ class GiftRecordVC: UIViewController {
         // InspectableTextViewのデリゲートを上書きするために必要
         memoView.delegate = self
         
-        // ContainerViewを特定
-        for child in children {
-            if let child = child as? GiftRecordTableVC {
-                tableVC = child
-                // GiftRecordTableVCのデリゲートをこのクラスに移譲する
-                tableVC.giftRecordTableVCDelegate = self
-                break
-            }
-        }
+        discoverChildVC()
         // 新規登録ではなく、ギフト更新なら登録済みデータを反映する
         setGiftData()
     }
     
 
-    // MARK: - IBAction
+    // MARK: - IBAction methods
     /// キャンセルボタンを押した時
     @IBAction func didTapCancelButton(_ sender: UIBarButtonItem) {
         let message = selectedGiftId == nil ? "discardMessageForRecord".localized : "discardMessageForEdit".localized
@@ -60,9 +52,9 @@ class GiftRecordVC: UIViewController {
     @IBAction func didTapRecordButton(_ sender: UIBarButtonItem) {
         // プレゼント新規登録なら新しくIDを生成
         let uuid = selectedGiftId ?? UUID().uuidString
-        // Received or Gave?
+        // もらいもの？あげたもの？
         let isReceived = gotOrReceived.selectedSegmentIndex == 0
-        // Date is TBD?
+        // 日付未定の記念日か否か
         let isDateTBD = tableVC.dateTBDSwitch.isOn
         
         // プレゼントデータをセット
@@ -81,10 +73,24 @@ class GiftRecordVC: UIViewController {
     }
     
     
-    // MARK: - Misc method
+    // MARK: - Misc methods
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // 画面タッチでキーボードを下げる
         view.endEditing(true)
+    }
+    
+    /// 子VCを特定する
+    private func discoverChildVC() {
+        // ContainerViewを特定
+        for child in children {
+            if let child = child as? GiftRecordTableVC {
+                tableVC = child
+                // GiftRecordTableVCのデリゲートをこのクラスに移譲する
+                tableVC.giftRecordTableVCDelegate = self
+                break
+            }
+        }
     }
 
     /// プレゼントの編集なら、元のデータを反映させる

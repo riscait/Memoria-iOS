@@ -48,7 +48,7 @@ struct Migration {
                         query?.documents.forEach { $0.reference.updateData(["isHidden" : false]) }
                         print("Ver.2.1.0 のisHiddenマイグレーションを終了")
                         
-                        DialogBox.updateAlert(with: "後半のマイグレーション".localized, on: rootVC) {
+                        DialogBox.updateAlert(with: "nextMigration".localized, on: rootVC) {
                             // ☆ 二つに分けた誕生日を一つにまとめる
                             // ① 非表示ではない記念日を検索
                             AnniversaryDAO.getFilteredAnniversaryDocuments(whereField: "isHidden", equalTo: false) { (query) in
@@ -93,15 +93,16 @@ struct Migration {
                                         print("\(id) is 'Other anniversary', Add new properties")
                                         AnniversaryDAO.update(anniversaryId: id, field: "isFromContact", content: false)
                                     }
-                                    // ③ isAnnualyはすべてのタイプで更新する
-                                    AnniversaryDAO.anniversaryCollection.document(id).updateData(["isAnnualy": true]) { error in
+                                    // ③ isAnnualyとmemoはすべてのタイプで更新する
+                                    AnniversaryDAO.anniversaryCollection.document(id)
+                                        .updateData(["isAnnualy": true, "memo": ""]) { error in
                                         if let error = error {
                                             DialogBox.dismissAlertWithIndicator(on: rootVC, completion: nil)
                                             print("エラー発生: \(error)")
                                             return
                                             
                                         } else {
-                                            print(count, "個目のisAnnualyアップデートを成功")
+                                            print(count, "個目のアップデートを成功")
                                         }
                                         // ダイアログのメッセージを更新
                                         let message = String(format: "underMigration".localized, arguments: [count, max])

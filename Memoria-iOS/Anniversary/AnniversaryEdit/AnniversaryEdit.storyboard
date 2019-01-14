@@ -29,7 +29,7 @@
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SpR-bI-R5I" customClass="InspectableSegmentedControl" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="112.5" y="82" width="150" height="29"/>
+                                <rect key="frame" x="103" y="82" width="169" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="jeo-Ix-jwd"/>
                                 </constraints>
@@ -70,28 +70,40 @@
                                         <rect key="frame" x="0.0" y="0.0" width="106.5" height="44.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizedStringKey" value="anniversaryTitlePlaceholder"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="textFieldEditingChanged:" destination="CDS-0C-eHY" eventType="editingChanged" id="FwC-pz-jTQ"/>
+                                            <outlet property="delegate" destination="CDS-0C-eHY" id="weO-Ms-2bv"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="osb-jM-eE3" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
                                         <rect key="frame" x="118.5" y="0.0" width="106" height="44.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizedStringKey" value="leftNamePlaceholder"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="textFieldEditingChanged:" destination="CDS-0C-eHY" eventType="editingDidEnd" id="b3C-bb-gt9"/>
+                                            <outlet property="delegate" destination="CDS-0C-eHY" id="A1e-Lb-ISC"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kR2-0O-kI4" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
                                         <rect key="frame" x="236.5" y="0.0" width="106.5" height="44.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizedStringKey" value="rightNamePlaceholder"/>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="textFieldEditingChanged:" destination="CDS-0C-eHY" eventType="editingDidEnd" id="woI-qX-w8L"/>
+                                            <outlet property="delegate" destination="CDS-0C-eHY" id="fdc-px-hYe"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -152,7 +164,7 @@
                         <barButtonItem key="rightBarButtonItem" enabled="NO" image="checkmark" style="done" id="lKB-8f-uar">
                             <color key="tintColor" name="mainColor"/>
                             <connections>
-                                <action selector="didTapApprovalButton:" destination="CDS-0C-eHY" id="nfn-5H-KDg"/>
+                                <action selector="didTapRecordlButton:" destination="CDS-0C-eHY" id="NgI-j4-K5b"/>
                             </connections>
                         </barButtonItem>
                         <userDefinedRuntimeAttributes>
@@ -166,6 +178,8 @@
                         <outlet property="anniversaryTypeLabel" destination="OyB-St-2Xs" id="Y8x-nl-lZy"/>
                         <outlet property="hideAnniversaryButton" destination="L1y-eR-Vh1" id="BJl-OH-VTZ"/>
                         <outlet property="leftNameField" destination="osb-jM-eE3" id="pje-hU-rmg"/>
+                        <outlet property="memoView" destination="NIa-Cw-DWR" id="5DK-tS-TMF"/>
+                        <outlet property="recordButton" destination="lKB-8f-uar" id="BSp-7f-VcN"/>
                         <outlet property="rightNameField" destination="kR2-0O-kI4" id="PIs-nl-k2E"/>
                     </connections>
                 </viewController>
@@ -206,6 +220,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <connections>
+                                                        <action selector="textFieldEditingChanged:" destination="TZb-Mu-70l" eventType="editingDidEnd" id="ylS-E1-F7g"/>
                                                         <outlet property="delegate" destination="TZb-Mu-70l" id="mEA-GI-v01"/>
                                                     </connections>
                                                 </textField>
@@ -239,6 +254,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZJN-8M-OiU">
                                                     <rect key="frame" x="310" y="7" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="toggleAnnualy:" destination="TZb-Mu-70l" eventType="valueChanged" id="RMl-uK-K0o"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -260,6 +278,7 @@
                     </tableView>
                     <connections>
                         <outlet property="annualySwitch" destination="ZJN-8M-OiU" id="Ug5-Vl-5Q0"/>
+                        <outlet property="dateField" destination="DqN-3B-BeO" id="dOT-51-Ewv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bws-5v-IeA" userLabel="First Responder" sceneMemberID="firstResponder"/>

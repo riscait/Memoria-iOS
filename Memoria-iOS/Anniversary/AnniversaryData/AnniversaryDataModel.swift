@@ -49,6 +49,8 @@ struct AnniversaryDataModel {
     // Added Ver.2.1.0
     let isAnnualy: Bool
     let isFromContact: Bool
+    let memo: String
+    
     
     /// FirestoreがSwiftのカスタムオブジェクトに非対応なので辞書型に変換する必要がある
     var toDictionary: [String: Any] {
@@ -64,6 +66,7 @@ struct AnniversaryDataModel {
         dictionary["iconImage"] = iconImage
         dictionary["isHidden"] = isHidden
         dictionary["isFromContact"] = isFromContact
+        dictionary["memo"] = memo
 
         return dictionary
     }
@@ -86,6 +89,7 @@ extension AnniversaryDataModel {
         // 以下プロパティは、Ver.2.1.0 にて追加
         self.isAnnualy = dictionary["isAnnualy"] as! Bool
         self.isFromContact = dictionary["isFromContact"] as! Bool
+        self.memo = dictionary["memo"] as! String
     }
 }
 

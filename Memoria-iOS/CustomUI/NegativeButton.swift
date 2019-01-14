@@ -22,7 +22,7 @@ class NegativeButton: UIButton {
         layer.cornerRadius = frame.height / 2
         clipsToBounds = true
         // 文字色
-        self.setTitleColor(#colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1), for: .normal)
+        self.setTitleColor(#colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1), for: .normal)
 
         super.draw(rect)
     }

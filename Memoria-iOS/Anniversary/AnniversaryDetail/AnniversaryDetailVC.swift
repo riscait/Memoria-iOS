@@ -80,11 +80,6 @@ final class AnniversaryDetailVC: UIViewController {
         }
         // navigationbarのタイトル
         navigationItem.title = remainingDays
-        
-        
-//        let right = UIBarButtonItem(title: "hideAnniversary".localized, style: .plain, target: self, action: #selector(toggleHidden))
-//
-//        navigationItem.rightBarButtonItem = right
     }
     
     
@@ -265,9 +260,13 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
         
         let section = Section(rawValue: section)!
         switch (section, category) {
+        case (.topSection, _):
+            if let memo = anniversaryData?.memo, memo != "" {
+                return "memo:".localized + memo
+            }
+            return nil
         case (.giftSection, .anniversary): return "giftSectionFooterForAnniversary".localized
         case (.giftSection, .birthday): return "giftSectionFooterForBirthday".localized
-        default: return nil
         }
     }
     

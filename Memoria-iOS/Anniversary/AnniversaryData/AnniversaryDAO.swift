@@ -121,7 +121,7 @@ class AnniversaryDAO {
     ///   - marge: 既存のドキュメントにデータを統合するか否か
     static func set(documentPath: String,
                  data: AnniversaryDataModel,
-                 merge: Bool = false) {
+                 merge: Bool = true) {
             anniversaryCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
                     if let error = error {
                         print("エラー発生: \(error)")
@@ -139,7 +139,7 @@ class AnniversaryDAO {
     ///   - marge: falseなら既存のフィールドは削除され、新しくsetしたフィールドのみとなる
     static func set(documentPath: String,
                     data: [String: Any],
-                    merge: Bool = false) {
+                    merge: Bool = true) {
         anniversaryCollection.document(documentPath).setData(data, merge: merge) { error in
             if let error = error {
                 print("エラー発生: \(error)")

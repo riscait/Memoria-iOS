@@ -125,7 +125,8 @@ class ContactAccess {
                                                 iconImage: contact.thumbnailImageData,
                                                 isHidden: false,
                                                 isAnnualy: true,
-                                                isFromContact: true)
+                                                isFromContact: true,
+                                                memo: "")
             
             // データベースに連絡先の誕生日情報を保存する
             AnniversaryDAO.set(documentPath: contact.identifier, data: birthday.toDictionary)
