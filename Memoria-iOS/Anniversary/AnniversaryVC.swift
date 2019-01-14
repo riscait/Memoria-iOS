@@ -37,7 +37,6 @@ final class AnniversaryVC: UICollectionViewController {
         super.viewDidLoad()
         
         title = "anniversary".localized
-        Migration.db(on: self)
 
         /* ---------- 検索バーは未実装 ----------
         let searchController = UISearchController(searchResultsController: nil)
@@ -58,6 +57,9 @@ final class AnniversaryVC: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("AnniversaryVCの\(#function)")
+        if ((Auth.auth().currentUser?.uid) == nil) {
+            return
+        }
         registerListener()
     }
     

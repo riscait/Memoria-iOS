@@ -168,6 +168,60 @@ class AnniversaryDAO {
         }
     }
     
+    /// ドキュメントを検索して、更新する
+    ///
+    /// - Parameters:
+    ///   - searchField: 検索対象フィールド
+    ///   - isEqualTo: 検索条件
+    ///   - updateField: 更新対象フィールド
+    ///   - turns content: 更新データ
+    static func update(searchField: String,
+                       isEqualTo: Any,
+                       updateField: String,
+                       turns content: Any,
+                       callback: (() -> Void)?) {
+        anniversaryCollection.whereField(searchField, isEqualTo: true).getDocuments { (query, error) in
+            if let error = error {
+                print("エラー発生: \(error)")
+            } else {
+                print("\(#function)の実行に成功:")
+            }
+            query?.documents.forEach { $0.reference.updateData([updateField : content]) }
+            if let callback = callback {
+                callback()
+            }
+        }
+    }
+
+    /// 2つの検索条件でドキュメントを検索して、更新する
+    ///
+    /// - Parameters:
+    ///   - searchField: 検索対象フィールド
+    ///   - isEqualTo: 検索条件
+    ///   - updateField: 更新対象フィールド
+    ///   - turns content: 更新データ
+    static func update(searchField: String,
+                       isEqualTo: Any,
+                       secondSearchField: String,
+                       secondIsEqualTo: Any,
+                       updateField: String,
+                       turns content: Any,
+                       callback: (() -> Void)?) {
+        anniversaryCollection.whereField(searchField, isEqualTo: true)
+            .whereField(secondSearchField, isEqualTo: secondIsEqualTo).getDocuments { (query, error) in
+            if let error = error {
+                print("エラー発生: \(error)")
+            } else {
+                print("\(#function)の実行に成功:")
+            }
+            query?.documents.forEach { $0.reference.updateData([updateField : content]) }
+            if let callback = callback {
+                callback()
+            }
+        }
+    }
+
+
     // MARK: - データ削除
     
     /// 検索して該当したAnniversaryドキュメントを削除する
