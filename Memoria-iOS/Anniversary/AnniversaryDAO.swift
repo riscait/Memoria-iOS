@@ -100,7 +100,7 @@ class AnniversaryDAO {
                  subCollection: String,
                  subDocument: String,
                  data: [String: Any],
-                 merge: Bool = false) {
+                 merge: Bool = true) {
             db.collection(collection).document(document).collection(subCollection)
                 .document(subDocument).setData(data, merge: merge) { error in
                     if let error = error {

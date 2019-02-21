@@ -79,7 +79,7 @@ class GiftDAO {
     ///   - marge: 既存のドキュメントにデータを統合するか否か
     static func set(documentPath: String,
                     data: GiftDataModel,
-                    merge: Bool = false) {
+                    merge: Bool = true) {
         giftCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
             print(data.date ?? "date is nil")
             print(data.toDictionary["date"] ?? "date.toDictionary is nil")
