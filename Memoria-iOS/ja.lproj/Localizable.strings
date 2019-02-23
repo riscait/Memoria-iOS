@@ -115,8 +115,10 @@
 "fullName" = "%@ %@";
 "whoseBirthday" = "%@ %@さん\n誕生日";  // 姓 + 名さん
 "remainingDays" = "あと%@日";
+"elapsedDays" = "%@日前";
 "remainingDaysToday" = "今日です！";
 "remainingDaysTomorrow" = "明日です！";
+"remainingDaysYesterday" = "昨日でした";
 // Anniversary詳細画面
 "giftHistory" = "プレゼント履歴";
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";

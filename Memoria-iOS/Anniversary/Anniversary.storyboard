@@ -71,7 +71,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="RemainingDays" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="60m-3V-zWw" customClass="TagLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                                            <rect key="frame" x="37.5" y="13.5" width="111.5" height="19.5"/>
+                                                            <rect key="frame" x="34.5" y="13.5" width="114.5" height="19.5"/>
                                                             <color key="backgroundColor" red="0.91928410530090332" green="0.58592182397842407" blue="0.26450419425964355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,7 +104,7 @@
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" white="0.89727296068075113" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Tia-a3-1Ay" secondAttribute="bottom" constant="8" id="0bh-Vs-NcO"/>
                                     <constraint firstItem="Tia-a3-1Ay" firstAttribute="top" secondItem="be1-Rq-g1l" secondAttribute="top" constant="8" id="CKq-yW-rLA"/>

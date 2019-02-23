@@ -22,7 +22,7 @@ class AnniversaryEditTableVC: UITableViewController {
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var annualySwitch: UISwitch!
     
-    private var datePicker: UIDatePicker!
+    var datePicker: UIDatePicker!
 
     var timestamp: Timestamp?
     
@@ -58,17 +58,12 @@ class AnniversaryEditTableVC: UITableViewController {
 
     @IBAction private func toggleAnnualy(_ sender: UISwitch) {
         print(#function)
-        doAnnualy(isAnnualy: sender.isOn)
         checkReadyForRecording()
     }
-
-    func doAnnualy(isAnnualy: Bool) {
-    }
-
     
     // MARK: - Private Method
     
-    private func checkReadyForRecording() {
+    @objc private func checkReadyForRecording() {
         if !(dateField.text?.isEmpty ?? true) {
             print("ready!")
             // デリゲートメソッドを実行する
@@ -83,6 +78,7 @@ class AnniversaryEditTableVC: UITableViewController {
     private func setupDatePicker() {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(checkReadyForRecording), for: .valueChanged)
         // placeholder is today
         dateField.placeholder = DateTimeFormat.getYMDString()
         dateField.inputView = datePicker

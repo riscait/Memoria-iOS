@@ -84,6 +84,7 @@
 		8DD474B821CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */; };
 		8DD486F221E254E70072983A /* AnniversaryEditTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD486F121E254E70072983A /* AnniversaryEditTableVC.swift */; };
 		8DD486F421EAD68D0072983A /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD486F321EAD68D0072983A /* Migration.swift */; };
+		8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */; };
 		8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */; };
 		8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */; };
 		8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */; };
@@ -174,6 +175,7 @@
 		8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftRecordSelectPerson.storyboard; sourceTree = "<group>"; };
 		8DD486F121E254E70072983A /* AnniversaryEditTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryEditTableVC.swift; sourceTree = "<group>"; };
 		8DD486F321EAD68D0072983A /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
+		8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDifferenceCalculator.swift; sourceTree = "<group>"; };
 		8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTabBarItem.swift; sourceTree = "<group>"; };
 		8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeButton.swift; sourceTree = "<group>"; };
 		8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordVC.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 			children = (
 				8DC43FD921D061C900B911F2 /* AnniversaryDataModel.swift */,
 				8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */,
+				8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */,
 			);
 			path = AnniversaryData;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				8DB8105B21AAB1AA0007BBC5 /* DeviceLanguage.swift in Sources */,
 				8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */,
 				8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */,
+				8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */,
 				8DC43FDA21D061C900B911F2 /* AnniversaryDataModel.swift in Sources */,
 				8D1C73C32183ED6C00DA5A14 /* AnniversaryVC.swift in Sources */,
 				8D910B5521E239C000D072EA /* InspectableStackView.swift in Sources */,

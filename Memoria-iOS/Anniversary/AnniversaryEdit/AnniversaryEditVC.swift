@@ -151,6 +151,9 @@ class AnniversaryEditVC: UIViewController {
                 tableVC = child
                 // GiftRecordTableVCのデリゲートをこのクラスに移譲する
                 tableVC.anniversaryEditTableVCDelegate = self
+                if let date = anniversaryData?.date.dateValue() {
+                    tableVC.datePicker.setDate(date, animated: true)
+                }
                 break
             }
         }
@@ -227,11 +230,6 @@ extension AnniversaryEditVC: UITextFieldDelegate {
         }
         return true
     }
-    
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        activeTextField = textField
-//        return true
-//    }
 }
 
 
@@ -256,6 +254,27 @@ extension AnniversaryEditVC: UITextViewDelegate{
     
     func textViewDidChange(_ textView: UITextView) {
         memoView.togglePlaceholder()
+        
+        // TODO: 重複内容だから共通化するAnniversaryType生成するのは一回のみにする
+        switch AnniversaryType(rawValue: anniversaryTypeChoice.selectedSegmentIndex)! {
+        case .anniversary:
+            if !(anniversaryTitleField.text?.isEmpty ?? true) {
+                recordButton.isEnabled = true
+            } else {
+                recordButton.isEnabled = false
+            }
+            
+        case .birthday:
+            if !(leftNameField.text?.isEmpty ?? true),
+                !(rightNameField.text?.isEmpty ?? true) {
+                recordButton.isEnabled = true
+                print("enabled")
+            } else {
+                recordButton.isEnabled = false
+                print("desabled")
+            }
+        }
+
     }
 }
 

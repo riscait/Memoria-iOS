@@ -24,7 +24,9 @@ final class AnniversaryVC: UICollectionViewController {
     var authStateListenerHandler: AuthStateDidChangeListenerHandle?
     
     /// 記念日データ配列
-    var anniversarys: [[String: Any]]?
+    var anniversarys = [[String: Any]]()
+    /// 繰り返さない記念日かつ、もう過ぎた記念日の数
+    var alreadyFinishedAnniversary = [[String: Any]]()
     
     // 引っ張って更新用のRefreshControl
     var refresher = UIRefreshControl()
@@ -83,15 +85,20 @@ final class AnniversaryVC: UICollectionViewController {
     ///   - segue: Segue
     ///   - sender: Any?
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let id = segue.identifier, let anniversarys = anniversarys else { return }
+        guard let id = segue.identifier else { return }
         
         if id == "toDetailSegue" {
             let nextVC = segue.destination as! AnniversaryDetailVC
             guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
             let cell = collectionView.cellForItem(at: indexPath) as! AnniversaryCell
-            nextVC.anniversaryId = anniversarys[indexPath.row]["id"] as? String
+            switch indexPath.section {
+            case 0:
+                nextVC.anniversary = anniversarys[indexPath.row]
+            case 1:
+                nextVC.anniversary = alreadyFinishedAnniversary[indexPath.row]
+            default : fatalError()
+            }
             nextVC.anniversaryName = cell.anniversaryNameLabel.text
-            nextVC.anniversaryDate = cell.anniversaryDateLabel.text
             nextVC.remainingDays = cell.remainingDaysLabel.text
             nextVC.iconImage = cell.anniversaryIconImage.image
         }
@@ -134,23 +141,30 @@ final class AnniversaryVC: UICollectionViewController {
                 return
             }
             print("anniversaryコレクション変更リスナー登録！")
-            self.anniversarys = [[String: Any]]()
+            self.anniversarys.removeAll()
+            self.alreadyFinishedAnniversary.removeAll()
             // 記念日データが入ったドキュメントの数だけ繰り返す
             for doc in snapshot.documents {
                 // ドキュメントから記念日データを取り出す
                 var data = doc.data()
                 // 記念日データから日付を取り出す
                 guard let anniversaryDate = (data["date"] as? Timestamp)?.dateValue() else { return }
+                let isAnnualy = data["isAnnualy"] as? Bool ?? true
                 // 日付から次の記念日までの残日数を計算
-                let remainingDays = DateTimeFormat.getRemainingDays(date: anniversaryDate)
+                let remainingDays = DateDifferenceCalculator.getDifference(from: anniversaryDate, isAnnualy: isAnnualy)
                 // 記念日データに残日数を追加
                 data["remainingDays"] = remainingDays
                 // 残日数も含めた記念日データをローカル配列に記憶
-                self.anniversarys?.append(data)
+                if remainingDays < 0 {
+                    self.alreadyFinishedAnniversary.append(data)
+                } else {
+                    self.anniversarys.append(data)
+                }
             }
             // 記念日までの残日数順で並び替える
-            self.anniversarys?.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
-            
+            self.anniversarys.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
+            self.alreadyFinishedAnniversary.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
+
             self.collectionView.reloadData()
         }
     }
@@ -172,8 +186,10 @@ final class AnniversaryVC: UICollectionViewController {
     /// - Parameter collectionView: AnniversaryVC
     /// - Returns: セクションの数
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // セクションの数を必要であれば設定する。現段階では1つで十分
-        return 1
+        // 終了済み記念日があればセクション数を2に増やす
+        let sectionNum = alreadyFinishedAnniversary.isEmpty ? 1 : 2
+        print("sectionNum:", sectionNum)
+        return sectionNum
     }
     
     /// CollectionViewのアイテム数
@@ -183,11 +199,17 @@ final class AnniversaryVC: UICollectionViewController {
     ///   - section: セクション番号
     /// - Returns: アイテム数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("記念日データ件数: \(anniversarys?.count ?? 0)件")
+        print("記念日データ件数: \(anniversarys.count)件")
+        print("終了済み件数: \(alreadyFinishedAnniversary.count)件")
         // 記念日が一つもないときはガイド用Viewを表示
-        emptySetView.isHidden = anniversarys?.count != 0
+        emptySetView.isHidden = anniversarys.count != 0
 
-        return anniversarys?.count ?? 0
+        switch section {
+        case 0: return anniversarys.count
+        case 1: return alreadyFinishedAnniversary.count
+            
+        default: return 0
+        }
     }
     
     /// CollectionViewCellの表示設定
@@ -200,8 +222,12 @@ final class AnniversaryVC: UICollectionViewController {
         // Storyboardで設定したカスタムセルIDを指定
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "anniversaryCell", for: indexPath) as! AnniversaryCell
         // 記念日データを順に取り出す
-        guard let anniversary = self.anniversarys?[indexPath.row] else { return cell }
-        
+        let anniversary: [String : Any]
+        switch indexPath.section {
+        case 0: anniversary = self.anniversarys[indexPath.row]
+        case 1: anniversary = self.alreadyFinishedAnniversary[indexPath.row]
+        default: fatalError()
+        }
         // 記念日の分類
         let category = AnniversaryType(category: anniversary["category"] as! String)
         
@@ -219,10 +245,6 @@ final class AnniversaryVC: UICollectionViewController {
         guard let anniversaryDate = (anniversary["date"] as? Timestamp)?.dateValue() else { return cell }
         cell.anniversaryDateLabel.text = DateTimeFormat.getMonthDayString(date: anniversaryDate)
         
-        // 記念日までの残り日数
-        let remainingDays = anniversary["remainingDays"] as! Int
-        cell.remainingDaysLabel.text = String(format: NSLocalizedString("remainingDays", comment: ""), remainingDays.description)
-        
         // 記念日のアイコン
         if let iconImage = anniversary["iconImage"] as? Data {
             cell.anniversaryIconImage.image = UIImage(data: iconImage)
@@ -233,9 +255,15 @@ final class AnniversaryVC: UICollectionViewController {
                 : #imageLiteral(resourceName: "PresentBox") // それ以外
         }
         
+        // 記念日までの残り日数
+        let remainingDays = anniversary["remainingDays"] as! Int
+        cell.remainingDaysLabel.text = remainingDays >= 0
+            ? String(format: "remainingDays".localized, remainingDays.description)
+            : String(format: "elapsedDays".localized, (-remainingDays).description)
+        
         // 残り日数によってセルの見た目を変化させる
         var layer: CAGradientLayer?
-        if remainingDays <= 30 {
+        if 0 < remainingDays, remainingDays <= 30 {
             // 文字
             cell.anniversaryNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.anniversaryDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -247,6 +275,12 @@ final class AnniversaryVC: UICollectionViewController {
             layer?.name = "grade"
         }
         switch remainingDays {
+        case -1:
+            cell.remainingDaysLabel.text = "remainingDaysYesterday".localized
+            fallthrough
+        case ...0:
+            cell.alpha = 0.7
+            
         case 0:
             // 背景
             let startColor = #colorLiteral(red: 0.8235294118, green: 0.0862745098, blue: 0.3921568627, alpha: 1).cgColor

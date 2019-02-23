@@ -23,17 +23,12 @@ final class AnniversaryDetailVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     /// AnniversaryVCから受け取るデータ
-    var anniversaryId: String!
+    var anniversary: [String: Any]!
     var anniversaryName: String?
-    var anniversaryDate: String?
     var remainingDays: String?
     var iconImage: UIImage?
     
     var category: AnniversaryType?
-    
-    var anniversaryFullDate: String?
-    var starSign: String?
-    var chineseZodiacSign: String?
     
     var gifts: [[String: Any]]?
     var selectedGiftId: String?
@@ -52,14 +47,12 @@ final class AnniversaryDetailVC: UIViewController {
         
         // IDをもとにDBから記念日データを取得する(非同期処理のコールバックで取得)
         // 非同期なので、クロージャ外の処理よりも後に反映されることになる
-        AnniversaryDAO.get(by: anniversaryId) { anniversary in
+        AnniversaryDAO.get(by: anniversary["id"] as! String) { anniversary in
             
             self.anniversaryData = AnniversaryDataModel(dictionary: anniversary)
             
-            guard let date = (anniversary["date"] as? Timestamp)?.dateValue(),
-                let category = anniversary["category"] as? String else { return }
+            guard let category = anniversary["category"] as? String else { return }
             
-            self.anniversaryFullDate = DateTimeFormat.getYMDString(date: date)
             self.category = AnniversaryType(category: category)
             
             switch self.category! {
@@ -67,8 +60,6 @@ final class AnniversaryDetailVC: UIViewController {
                 self.searchPresent(for: anniversary["title"] as! String)
                 
             case .birthday:
-                self.starSign = ZodiacSign.Star.getStarSign(date: date)
-                self.chineseZodiacSign = ZodiacSign.Chinese.getChineseZodiacSign(date: date)
                 let fullName = String(format: "fullName".localized,
                                       arguments: [anniversary["familyName"] as! String,
                                                   anniversary["givenName"] as! String])
@@ -182,6 +173,8 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
         
         let section = Section(rawValue: indexPath.section)!
         
+        let anniversaryDate = (anniversary["date"] as! Timestamp).dateValue()
+        
         switch (section, indexPath.row) {
         case (.topSection, 0):
             cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath)
@@ -192,8 +185,9 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
             let anniversaryNameLabel = cell.viewWithTag(2) as! UILabel
             anniversaryNameLabel.text = anniversaryName
             
+            // 記念日の日程
             let anniversaryDateLabel = cell.viewWithTag(3) as! UILabel
-            anniversaryDateLabel.text = anniversaryFullDate ?? anniversaryDate
+            anniversaryDateLabel.text = DateTimeFormat.getYMDString(date: anniversaryDate)
             
         case (.giftSection, _):
             cell = tableView.dequeueReusableCell(withIdentifier: "giftCell", for: indexPath)
@@ -207,11 +201,11 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
             switch (category, section, indexPath.row) {
             case (.birthday, .topSection, 1):
                 cell.textLabel?.text = "zodiacStarSign".localized
-                cell.detailTextLabel?.text = starSign
+                cell.detailTextLabel?.text = ZodiacSign.Star.getStarSign(date: anniversaryDate)
                 
             case (.birthday, .topSection, 2):
                 cell.textLabel?.text = "chineseZodiacSign".localized
-                cell.detailTextLabel?.text = chineseZodiacSign
+                cell.detailTextLabel?.text = ZodiacSign.Chinese.getChineseZodiacSign(date: anniversaryDate)
                 
             case (.birthday, .giftSection, _):
                 let anniversaryLabel = cell.viewWithTag(2) as! UILabel
