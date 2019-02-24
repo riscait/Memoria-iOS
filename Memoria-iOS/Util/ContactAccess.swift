@@ -112,29 +112,24 @@ class ContactAccess {
         
         for contact in contacts {
             
-            guard let birthday = contact.birthday?.date else {
+            guard let date = contact.birthday?.date else {
                 print("\(contact.familyName, contact.givenName)の誕生日がnilだったため処理を終了します")
                 return
             }
-            let contactBirthday: [String: Any] = ["id": contact.identifier,
-                                       "givenName": contact.givenName,
-                                       "familyName": contact.familyName,
-                                       "date": birthday,
-                                       "iconImage": contact.thumbnailImageData ?? "",
-                                       "category": "contactBirthday",
-                                       "isHidden": false,
-            ]
+            let birthday = AnniversaryDataModel(id: contact.identifier,
+                                                category: .birthday,
+                                                title: nil,
+                                                familyName: contact.familyName,
+                                                givenName: contact.givenName,
+                                                date: Timestamp(date: date),
+                                                iconImage: contact.thumbnailImageData,
+                                                isHidden: false,
+                                                isAnnualy: true,
+                                                isFromContact: true,
+                                                memo: "")
             
-            // ユーザーのユニークIDを読み込む
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-
             // データベースに連絡先の誕生日情報を保存する
-            let database = AnniversaryDAO()
-            database.setData(collection: "users",
-                             document: uid,
-                             subCollection: "anniversary",
-                             subDocument: contact.identifier,
-                             data: contactBirthday)
+            AnniversaryDAO.set(documentPath: contact.identifier, data: birthday.toDictionary)
         }
         // 取得した連絡先情報の件数をコールバックで返す
         if let callback = callback {

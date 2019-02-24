@@ -24,12 +24,12 @@ class AnniversaryRecordVC: UIViewController {
     }
     
     
-    // MARK: - ライフサイクル
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = NSLocalizedString("anniversaryRecord", comment: "")
+        // Title of this screen
+        title = "anniversaryRecord".localized
     }
     
     override func viewWillAppear(_ animated: Bool) {

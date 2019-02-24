@@ -23,6 +23,9 @@
 "tbd" = "未定";
 "discardMessageForRecord" = "登録せずに閉じますか？";
 "discardMessageForEdit" = "編集せずに閉じますか？";
+"startMigration" = "データアップデートを開始\n少々お待ちください";
+"nextMigration" = "データアップデート中です\n残り時間計算中";
+"underMigration" = "データアップデート中です\n%d / %d";
 "version" = "Version";
 "copyright" = "©︎ 2018 nerco studio";
 // アカウント登録画面
@@ -55,6 +58,13 @@
 "The user's credential is no longer valid. The user must sign in again." = "ユーザーの資格情報はもはや有効ではありません。\n再度ログインする必要があります。";
 // 記念日登録画面
 "anniversary" = "記念日";
+"birthday" = "誕生日";
+"anniversaryTitleLabel" = "記念日の名称";
+"birthdayNameLabel" = "誕生日の人名";
+"anniversaryTitlePlaceholder" = "例）サラダ記念日";
+"leftNamePlaceholder" = "姓";
+"rightNamePlaceholder" = "名";
+"repeatableTitle" = "毎年繰り返す";
 "anniversaryRecord" = "記念日の登録";
 "askForNameInput" = "誕生日の場合は名前を入力";
 "givenName" = "名";
@@ -71,10 +81,9 @@
 "japaneseOnlyYear" = "年";
 "japaneseOnlyDay" = "日";
 "confirmAndRecord" = "登録する";
-"hideAnniversary" = "非表示にする";
+"hideAnniversary" = "この記念日を非表示にする";
 "deleteContactBirthdayTitle" = "誕生日の消去";
 "deleteContactBirthdayMessage" = "連絡先から取り込んだ誕生日を消去します";
-"birthdayNameLabel" = "名前";
 "anniversaryNameLabel" = "記念日の名前";
 "anniversarydateLabel" = "日付";
 "hiddenList" = "非表示リスト";
@@ -106,11 +115,14 @@
 "fullName" = "%@ %@";
 "whoseBirthday" = "%@ %@さん\n誕生日";  // 姓 + 名さん
 "remainingDays" = "あと%@日";
+"elapsedDays" = "%@日前";
 "remainingDaysToday" = "今日です！";
 "remainingDaysTomorrow" = "明日です！";
+"remainingDaysYesterday" = "昨日でした";
 // Anniversary詳細画面
 "giftHistory" = "プレゼント履歴";
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
+"memo:" = "メモ\n";
 "hideThisAnniversaryMessage" = "非表示にした記念日は「設定タブ」にて再表示することができます";
 "giftSectionFooterForAnniversary" = "記念日の名前が一致しているプレゼントが表示されます。";
 "giftSectionFooterForBirthday" = "人名が一致しているプレゼントがここに表示されます。";

@@ -31,7 +31,7 @@ class GiftRecordTableVC: UITableViewController {
     }
     
     
-    // MARK: - Property
+    // MARK: - Properties
     
     @IBOutlet weak var personNameField: UITextField!
     @IBOutlet weak var personSelectIcon: UIImageView!
@@ -43,6 +43,7 @@ class GiftRecordTableVC: UITableViewController {
     @IBOutlet weak var dateTBDSwitch: UISwitch!
     
     private var datePicker: UIDatePicker!
+    
     var timestamp: Timestamp?
     var dateCellHeight: CGFloat = 44
     
@@ -50,6 +51,38 @@ class GiftRecordTableVC: UITableViewController {
 
     // 登録ボタンを押せることを知らせるプロトコルのデリゲートを宣言
     weak var giftRecordTableVCDelegate: GiftRecordTableVCDelegate?
+    
+    
+    // MARK: - Life cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // placeholder is today
+        dateField.placeholder = DateTimeFormat.getYMDString()
+        setupDesign()
+        setupDatePicker()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureObserver()
+    }
+    
+    
+    // MARK: - Navigation
+    
+    // セグエでの遷移前の準備
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // 遷移元のVCを特定して列挙型に当てはめる
+        guard let segueVC = SegueVC(rawValue: String(describing: type(of: segue.destination))) else { return }
+        // 遷移前の画面を判別
+        switch segueVC {
+        case .selectPersonVC:
+            (segue.destination as! GiftRecordSelectPersonVC).delegate = self
+        case .selectAnniversaryVC:
+            (segue.destination as! GiftRecordSelectAnniversaryVC).delegate = self
+        }
+    }
     
     
     // MARK: - IBAction method
@@ -80,36 +113,9 @@ class GiftRecordTableVC: UITableViewController {
         timestamp = nil
     }
     
-    // MARK: - Life cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // placeholder is today
-        dateField.placeholder = DateTimeFormat.getYMDString()
-        setupDesign()
-        setupDatePicker()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureObserver()
-    }
-    
-    // セグエでの遷移前の準備
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // 遷移元のVCを特定して列挙型に当てはめる
-        guard let segueVC = SegueVC(rawValue: String(describing: type(of: segue.destination))) else { return }
-        // 遷移前の画面を判別
-        switch segueVC {
-        case .selectPersonVC:
-            (segue.destination as! GiftRecordSelectPersonVC).delegate = self
-        case .selectAnniversaryVC:
-            (segue.destination as! GiftRecordSelectAnniversaryVC).delegate = self
-        }
-    }
-    
     
     // MARK: - Private Method
+    
     private func checkReadyForRecording() {
         if !(personNameField.text?.isEmpty ?? true),
             !(anniversaryNameField.text?.isEmpty ?? true),
@@ -132,6 +138,8 @@ class GiftRecordTableVC: UITableViewController {
     private func setupDatePicker() {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        // placeholder is today
+        dateField.placeholder = DateTimeFormat.getYMDString()
         dateField.inputAccessoryView = setupKeyboardToolbar()
         dateField.inputView = datePicker
     }

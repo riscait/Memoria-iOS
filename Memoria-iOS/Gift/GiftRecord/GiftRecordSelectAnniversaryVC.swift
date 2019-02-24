@@ -39,7 +39,7 @@ class GiftRecordSelectAnniversaryVC: UIViewController {
 extension GiftRecordSelectAnniversaryVC: GiftRecordSelectProtocol {
     
     func searchDB() {
-        AnniversaryDAO().getFilteredAnniversaryDocuments(whereField: "isHidden", equalTo: false) { (queryDoc) in
+        AnniversaryDAO.getFilteredAnniversaryDocuments(whereField: "isHidden", equalTo: false) { (queryDoc) in
             for doc in queryDoc {
                 guard let title = doc.data()["title"] as? String else{ continue }
                 self.displayData.append(title)

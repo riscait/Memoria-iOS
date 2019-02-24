@@ -63,8 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // デフォルト値を設定
         userDefaults.register(defaults: [launchCount: 0,
-                                         "isFinishedTutorial": false
-            ])
+                                         "isFinishedTutorial": false])
         
         if userDefaults.integer(forKey: launchCount) == 0 {
             print("初回起動です。")

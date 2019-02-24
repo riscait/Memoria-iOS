@@ -20,9 +20,7 @@ class GiftDAO {
     /// Firebase Auth - User ID
     private static let uid = Auth.auth().currentUser?.uid
     // Unique collection
-    private static let rootCollection = "users"
     private static let usersCollection = db.collection("users")
-    private static let subCollection = "gift"
     static let giftCollection = usersCollection.document(uid!).collection("gift")
 
     
@@ -33,8 +31,7 @@ class GiftDAO {
     /// - Parameter:
     ///   - id: Gift ID
     ///   - callback: ドキュメントのデータを受け取る
-    static func get(by id: String,
-                            callback: @escaping ([String: Any]) -> Void) {
+    static func get(by id: String, callback: @escaping ([String: Any]) -> Void) {
         giftCollection.document(id).getDocument { (document, error) in
             if let error = error {
                 print("エラー発生: \(error)")
@@ -58,7 +55,6 @@ class GiftDAO {
                              equalTo: Any,
                              orderBy: String? = nil,
                              descending: Bool? = nil) -> Query? {
-//        guard let uid = uid else { return nil }
         if let orderBy = orderBy {
             if let descending = descending {
                 return giftCollection.whereField(whereField, isEqualTo: equalTo).order(by: orderBy, descending: descending)
@@ -81,8 +77,6 @@ class GiftDAO {
                     data: GiftDataModel,
                     merge: Bool = true) {
         giftCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
-            print(data.date ?? "date is nil")
-            print(data.toDictionary["date"] ?? "date.toDictionary is nil")
                 if let error = error {
                     print("エラー発生: \(error)")
                 } else {
@@ -101,8 +95,7 @@ class GiftDAO {
     ///   - field: 更新データ名
     ///   - content: 更新データ内容
     static func update(documentPath: String, field: String, content: Any) {
-        guard let uid = uid else { return }
-        db.collection(rootCollection).document(uid).collection(subCollection).document(documentPath)
+        giftCollection.document(documentPath)
             .updateData([field: content]) { error in
                 if let error = error {
                     print("エラー発生: \(error)")

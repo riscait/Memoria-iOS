@@ -104,7 +104,7 @@
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" white="0.89727296068075113" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.8901960784313725" green="0.8901960784313725" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Tia-a3-1Ay" secondAttribute="bottom" constant="8" id="0bh-Vs-NcO"/>
                                     <constraint firstItem="Tia-a3-1Ay" firstAttribute="top" secondItem="be1-Rq-g1l" secondAttribute="top" constant="8" id="CKq-yW-rLA"/>
@@ -139,7 +139,7 @@
                         <barButtonItem key="rightBarButtonItem" title="add" image="addCircle" id="cJx-LK-0d5">
                             <color key="tintColor" name="mainColor"/>
                             <connections>
-                                <segue destination="2NZ-qm-UAF" kind="show" id="nWy-uT-pJT"/>
+                                <segue destination="Z4Z-aK-Pdu" kind="show" id="c3T-84-S6u"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -181,13 +181,13 @@
             </objects>
             <point key="canvasLocation" x="1517" y="160"/>
         </scene>
-        <!--AnniversaryRecord-->
-        <scene sceneID="xXL-NL-oRt">
+        <!--AnniversaryEdit-->
+        <scene sceneID="e3y-sp-VVx">
             <objects>
-                <viewControllerPlaceholder storyboardName="AnniversaryRecord" id="2NZ-qm-UAF" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WmF-Go-wdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="AnniversaryEdit" id="Z4Z-aK-Pdu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="85K-y8-ll0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1523" y="4"/>
+            <point key="canvasLocation" x="1359" y="-135"/>
         </scene>
     </scenes>
     <resources>

@@ -28,7 +28,7 @@ class AnniversaryRecordConfirmationVC: UIViewController {
         title = NSLocalizedString("confirm", comment: "")
     }
     
-    /// 登録ボタン
+    /// 登録確認ボタン
     @IBAction func didTapRecordButton(_ sender: PositiveButton) {
         let anniversaryId = UUID().uuidString
         // 登録するデータの辞書
@@ -37,6 +37,18 @@ class AnniversaryRecordConfirmationVC: UIViewController {
                                               "isHidden" : false,
                                               "category" : anniversary.category.rawValue
         ]
+        guard let date = anniversary.date else { return }
+//        var anniversary2 = AnniversaryDataModel(id: anniversaryId,
+//                                                category: <#AnniversaryType#>,
+//                                                title: <#String?#>,
+//                                                familyName: <#String?#>,
+//                                                givenName: <#String?#>,
+//                                                date: Timestamp(date: date),
+//                                                isAnnualy: true,
+//                                                iconImage: <#Data?#>,
+//                                                isHidden: <#Bool#>,
+//                                                isFromContact: <#Bool#>)
+        
         // 誕生日か記念日かで登録するデータ内容が変わる
         switch anniversary.category {
         case .manualBirthday:  // 誕生日の場合
@@ -45,16 +57,8 @@ class AnniversaryRecordConfirmationVC: UIViewController {
         case .anniversary:  // 記念日の場合
             additionalAnniversary["title"] = anniversary.title
         }
-        // ユーザーのユニークIDを読み込む
-        guard let uid = Auth.auth().currentUser?.uid else { return }
         // データベースに記念日を保存する
-        let database = AnniversaryDAO()
-        database.setData(collection: "users",
-                         document: uid,
-                         subCollection: "anniversary",
-                         subDocument: anniversaryId,
-                         data: additionalAnniversary
-        )
+        AnniversaryDAO.set(documentPath: anniversaryId, data: additionalAnniversary)
         print("登録しました: \(additionalAnniversary)")
         dismiss(animated: true, completion: nil)
     }

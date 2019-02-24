@@ -23,6 +23,9 @@
 "tbd" = "To be determined";
 "discardMessageForRecord" = "Close without registering?";
 "discardMessageForEdit" = "Do you want to close without updating?";
+"startMigration" = "Updating...\nplease wait a moment";
+"nextMigration" = "Updating...\nCalculating remaining time";
+"underMigration" = "Updating...\n%d / %d";
 "version" = "Version";
 "copyright" = "©︎ 2018 nerco studio";
 // Sign up view
@@ -74,7 +77,6 @@
 "hideAnniversary" = "Hide";
 "deleteContactBirthdayTitle" = "Delete Birthday";
 "deleteContactBirthdayMessage" = "Delete birthdays captured from contacts";
-"birthdayNameLabel" = "Name";
 "anniversaryNameLabel" = "Anniversary name";
 "anniversarydateLabel" = "Date";
 "hiddenList" = "Hidden list";
@@ -89,7 +91,7 @@
 "dateTitle" = "Date";
 "recordDateIsTBD" = "To be determined";
 "goodsTitle" = "Gift name";
-"dateTBDTitle" = "Date";
+"dateTBDTitle" = "Date is TBD?";
 "placeholderPerson" = "Please select or input";
 "placeholderAnniversary" = "Please select or input";
 "placeholderDate" = "%@";
@@ -106,8 +108,10 @@
 "fullName" = "%2$@ %1$@"; // given name + family name
 "whoseBirthday" = "%2$@ %1$@'s Birthday"; // given name + family name
 "remainingDays" = "%@ days";
+"elapsedDays" = "%@days ago";
 "remainingDaysToday" = "Today!";
 "remainingDaysTomorrow" = "Tomorrow!";
+"remainingDaysYesterday" = "Yesterday";
 // AnniversaryDetail view
 "giftHistory" = "Gift history";
 "hideThisAnniversaryTitle" = "Hide this anniversary";

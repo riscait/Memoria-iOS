@@ -133,9 +133,13 @@ final class DialogBox: UIAlertController {
     /// - Parameters:
     ///   - rootVC: 呼び出し元のViewController
     ///   - message: Alertのメッセージ文字列
-    class func updateAlert(with message: String, on rootVC: UIViewController) {
+    class func updateAlert(with message: String, on rootVC: UIViewController,
+                           completion: (() -> Void)? = nil) {
         guard let alert = (rootVC.presentedViewController as? UIAlertController) else { return }
         alert.message = message
+        if let completion = completion {
+            completion()
+        }
     }
     
     /// 表示されているインジケーター付きアラートを消す

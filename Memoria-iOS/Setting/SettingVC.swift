@@ -30,7 +30,7 @@ class SettingVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = NSLocalizedString("settings", comment: "")
+        title = "settings".localized
         clearsSelectionOnViewWillAppear = false
         versionAndBuildLabel.text = "\(AppInfo.getVersion() ?? "")(\(AppInfo.getBuild() ?? ""))"
     }
@@ -47,17 +47,20 @@ class SettingVC: UITableViewController {
     /// Delete imported birthday
     private func deleteContactBirthday() {
         DialogBox.showDestructiveAlert(on: self,
-                                       title: NSLocalizedString("deleteContactBirthdayTitle", comment: ""),
-                                       message: NSLocalizedString("deleteContactBirthdayMessage", comment: ""),
-                                       destructiveTitle: NSLocalizedString("delete", comment: ""),
-                                       destructiveAction: {AnniversaryDAO().deleteQueryAnniversary(whereField: "category", equalTo: "contactBirthday", on: self)})
+                                       title: "deleteContactBirthdayTitle".localized,
+                                       message: "deleteContactBirthdayMessage".localized,
+                                       destructiveTitle: "delete".localized,
+                                       destructiveAction: {
+                                        AnniversaryDAO.deleteQueryAnniversary(whereField: "isFromContact", equalTo: true, on: self)
+        })
     }
+    
     /// Import birthday by Contacts
     private func importBirthday() {
         DialogBox.showAlert(on: self,
                             hasCancel: true,
-                            title: NSLocalizedString("importBirthdayTitle", comment: ""),
-                            message: NSLocalizedString("importBirthdayMessage", comment: "")) {
+                            title: "importBirthdayTitle".localized,
+                            message: "importBirthdayMessage".localized) {
             ContactAccess().checkStatusAndImport(rootVC: self)
         }
     }
@@ -97,9 +100,9 @@ class SettingVC: UITableViewController {
     /// セクションのヘッダータイトル
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0: return NSLocalizedString("aboutAccount", comment: "")
-        case 1: return NSLocalizedString("aboutAnniversary", comment: "")
-        case 2: return NSLocalizedString("aboutMemoria", comment: "")
+        case 0: return "aboutAccount".localized
+        case 1: return "aboutAnniversary".localized
+        case 2: return "aboutMemoria".localized
         default: return nil
         }
     }
@@ -108,7 +111,7 @@ class SettingVC: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
         case 0, 1: return nil
-        case 2: return NSLocalizedString("copyright", comment: "")
+        case 2: return "copyright".localized
         default: return nil
         }
 

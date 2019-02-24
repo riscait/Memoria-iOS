@@ -52,6 +52,10 @@
 		8D8559FA21B80B270033C7AA /* UserAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8559F921B80B270033C7AA /* UserAccountVC.swift */; };
 		8D8559FC21B8A3380033C7AA /* UpdateEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8559FB21B8A3380033C7AA /* UpdateEmailVC.swift */; };
 		8D8559FE21B8A34F0033C7AA /* UpdateEmail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8559FD21B8A34F0033C7AA /* UpdateEmail.storyboard */; };
+		8D910B4D21E19F5C00D072EA /* AnniversaryEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D910B4C21E19F5C00D072EA /* AnniversaryEdit.storyboard */; };
+		8D910B4F21E1C55500D072EA /* AnniversaryEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D910B4E21E1C55500D072EA /* AnniversaryEditVC.swift */; };
+		8D910B5321E2307400D072EA /* InspectableBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D910B5221E2307400D072EA /* InspectableBarButtonItem.swift */; };
+		8D910B5521E239C000D072EA /* InspectableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D910B5421E239C000D072EA /* InspectableStackView.swift */; };
 		8DA747E621A7C1F6007E7F5B /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA747E521A7C1F6007E7F5B /* TabBar.storyboard */; };
 		8DA747E921A7C26A007E7F5B /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA747E821A7C26A007E7F5B /* Setting.storyboard */; };
 		8DA747EB21A7C728007E7F5B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA747EA21A7C728007E7F5B /* TabBarController.swift */; };
@@ -78,6 +82,9 @@
 		8DD474B421C947CD00DD5919 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD474B321C947CD00DD5919 /* String+.swift */; };
 		8DD474B621CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD474B521CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift */; };
 		8DD474B821CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */; };
+		8DD486F221E254E70072983A /* AnniversaryEditTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD486F121E254E70072983A /* AnniversaryEditTableVC.swift */; };
+		8DD486F421EAD68D0072983A /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD486F321EAD68D0072983A /* Migration.swift */; };
+		8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */; };
 		8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */; };
 		8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */; };
 		8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */; };
@@ -136,6 +143,10 @@
 		8D8559F921B80B270033C7AA /* UserAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountVC.swift; sourceTree = "<group>"; };
 		8D8559FB21B8A3380033C7AA /* UpdateEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailVC.swift; sourceTree = "<group>"; };
 		8D8559FD21B8A34F0033C7AA /* UpdateEmail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateEmail.storyboard; sourceTree = "<group>"; };
+		8D910B4C21E19F5C00D072EA /* AnniversaryEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnniversaryEdit.storyboard; sourceTree = "<group>"; };
+		8D910B4E21E1C55500D072EA /* AnniversaryEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryEditVC.swift; sourceTree = "<group>"; };
+		8D910B5221E2307400D072EA /* InspectableBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableBarButtonItem.swift; sourceTree = "<group>"; };
+		8D910B5421E239C000D072EA /* InspectableStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableStackView.swift; sourceTree = "<group>"; };
 		8DA747E521A7C1F6007E7F5B /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
 		8DA747E821A7C26A007E7F5B /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		8DA747EA21A7C728007E7F5B /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -162,6 +173,9 @@
 		8DD474B321C947CD00DD5919 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		8DD474B521CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordSelectPersonVC.swift; sourceTree = "<group>"; };
 		8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftRecordSelectPerson.storyboard; sourceTree = "<group>"; };
+		8DD486F121E254E70072983A /* AnniversaryEditTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryEditTableVC.swift; sourceTree = "<group>"; };
+		8DD486F321EAD68D0072983A /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
+		8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDifferenceCalculator.swift; sourceTree = "<group>"; };
 		8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTabBarItem.swift; sourceTree = "<group>"; };
 		8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeButton.swift; sourceTree = "<group>"; };
 		8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordVC.swift; sourceTree = "<group>"; };
@@ -265,6 +279,7 @@
 				8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */,
 				8DB8105A21AAB1AA0007BBC5 /* DeviceLanguage.swift */,
 				8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */,
+				8DD486F321EAD68D0072983A /* Migration.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -278,13 +293,15 @@
 				8D4CBB2221C51F7E009BA7C6 /* InspectableTextView.swift */,
 				8DB8105821AA97880007BBC5 /* InspectableSegmentedControl.swift */,
 				8D4CBB2021C2A73A009BA7C6 /* InspectableNavItem.swift */,
+				8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */,
+				8D910B5221E2307400D072EA /* InspectableBarButtonItem.swift */,
 				8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */,
+				8D910B5421E239C000D072EA /* InspectableStackView.swift */,
 				8D11B3C6219719B800C60371 /* TagLabel.swift */,
 				8D0BE32021A047CB00FE9B40 /* PositiveButton.swift */,
 				8D2507B521A44E850015A206 /* AccentButton.swift */,
 				8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */,
 				8D11B3B32193EE4F00C60371 /* IconImageView.swift */,
-				8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -292,14 +309,13 @@
 		8D1C73C42183ED7B00DA5A14 /* Anniversary */ = {
 			isa = PBXGroup;
 			children = (
-				8DC43FD921D061C900B911F2 /* AnniversaryDataModel.swift */,
-				8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */,
+				8D910B5121E20D1300D072EA /* AnniversaryData */,
 				8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */,
 				8D1C73C22183ED6C00DA5A14 /* AnniversaryVC.swift */,
 				8D11B3BB2194431100C60371 /* AnniversaryCell.swift */,
-				8D11B3C22195C5CC00C60371 /* AnniversaryDetail.storyboard */,
-				8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */,
+				8D910B5021E20CC300D072EA /* AnniversaryDetail */,
 				8D0BE31D21A0404900FE9B40 /* AnniversaryRecord */,
+				8D910B4B21E19F1000D072EA /* AnniversaryEdit */,
 			);
 			path = Anniversary;
 			sourceTree = "<group>";
@@ -356,6 +372,35 @@
 				8D77D18421B37BED00CF673A /* PasswordlessVC.swift */,
 			);
 			path = Passwordless;
+			sourceTree = "<group>";
+		};
+		8D910B4B21E19F1000D072EA /* AnniversaryEdit */ = {
+			isa = PBXGroup;
+			children = (
+				8D910B4C21E19F5C00D072EA /* AnniversaryEdit.storyboard */,
+				8D910B4E21E1C55500D072EA /* AnniversaryEditVC.swift */,
+				8DD486F121E254E70072983A /* AnniversaryEditTableVC.swift */,
+			);
+			path = AnniversaryEdit;
+			sourceTree = "<group>";
+		};
+		8D910B5021E20CC300D072EA /* AnniversaryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				8D11B3C22195C5CC00C60371 /* AnniversaryDetail.storyboard */,
+				8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */,
+			);
+			path = AnniversaryDetail;
+			sourceTree = "<group>";
+		};
+		8D910B5121E20D1300D072EA /* AnniversaryData */ = {
+			isa = PBXGroup;
+			children = (
+				8DC43FD921D061C900B911F2 /* AnniversaryDataModel.swift */,
+				8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */,
+				8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */,
+			);
+			path = AnniversaryData;
 			sourceTree = "<group>";
 		};
 		8DA747E421A7C1C1007E7F5B /* TabBarController */ = {
@@ -476,6 +521,7 @@
 				8DAE856521A2F6260049063D /* WelcomeContact.storyboard in Resources */,
 				8D77D17E21B28DA400CF673A /* SignIn.storyboard in Resources */,
 				8D0FB8492182002800BFCB79 /* LaunchScreen.storyboard in Resources */,
+				8D910B4D21E19F5C00D072EA /* AnniversaryEdit.storyboard in Resources */,
 				8D4CBB1E21C159C5009BA7C6 /* GiftRecord.storyboard in Resources */,
 				8D0FB8512182013E00BFCB79 /* GoogleService-Info.plist in Resources */,
 				8D8559FE21B8A34F0033C7AA /* UpdateEmail.storyboard in Resources */,
@@ -579,6 +625,7 @@
 				8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */,
 				8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */,
 				8D11B3C52195CBF300C60371 /* AnniversaryDetailVC.swift in Sources */,
+				8DD486F221E254E70072983A /* AnniversaryEditTableVC.swift in Sources */,
 				8DBB365721C5CF67008282D0 /* GiftRecordVC.swift in Sources */,
 				8DF28E8721A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift in Sources */,
 				8D77D18021B2ABD100CF673A /* SignInVC.swift in Sources */,
@@ -596,12 +643,15 @@
 				8DB8105321A915B20007BBC5 /* HiddenListVC.swift in Sources */,
 				8DAE856321A2F1B90049063D /* InspectableLabel.swift in Sources */,
 				8DC43FDE21D3C78F00B911F2 /* GiftRecordSelectAnniversaryVC.swift in Sources */,
+				8DD486F421EAD68D0072983A /* Migration.swift in Sources */,
 				8D77D18521B37BED00CF673A /* PasswordlessVC.swift in Sources */,
 				8D4CBB1C21C1511F009BA7C6 /* GiftDAO.swift in Sources */,
+				8D910B5321E2307400D072EA /* InspectableBarButtonItem.swift in Sources */,
 				8DAE856721A2FD520049063D /* WelcomContactVC.swift in Sources */,
 				8DC43FE021D3CC2900B911F2 /* GiftRecordSelectProtocol.swift in Sources */,
 				8D8559FC21B8A3380033C7AA /* UpdateEmailVC.swift in Sources */,
 				8D8559FA21B80B270033C7AA /* UserAccountVC.swift in Sources */,
+				8D910B4F21E1C55500D072EA /* AnniversaryEditVC.swift in Sources */,
 				8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */,
 				8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */,
 				8DD474B621CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift in Sources */,
@@ -615,8 +665,10 @@
 				8DB8105B21AAB1AA0007BBC5 /* DeviceLanguage.swift in Sources */,
 				8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */,
 				8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */,
+				8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */,
 				8DC43FDA21D061C900B911F2 /* AnniversaryDataModel.swift in Sources */,
 				8D1C73C32183ED6C00DA5A14 /* AnniversaryVC.swift in Sources */,
+				8D910B5521E239C000D072EA /* InspectableStackView.swift in Sources */,
 				8D11B3C7219719B800C60371 /* TagLabel.swift in Sources */,
 				8DD474B421C947CD00DD5919 /* String+.swift in Sources */,
 				8D0BE32121A047CB00FE9B40 /* PositiveButton.swift in Sources */,

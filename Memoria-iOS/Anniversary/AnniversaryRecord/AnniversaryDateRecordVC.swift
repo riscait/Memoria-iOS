@@ -22,7 +22,7 @@ class AnniversaryDateRecordVC: UIViewController {
     @IBOutlet private weak var pickerView: UIPickerView!
     
     
-    // MARK: - プロパティ
+    // MARK: - Properties
 
     // 前画面から受け取ったAnniversaryデータ
     var anniversary: AnniversaryRecordModel!
@@ -42,7 +42,8 @@ class AnniversaryDateRecordVC: UIViewController {
 
     var selectedSegment: SelectedSegment!
 
-    // MARK: - ライフサイクル
+    
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()

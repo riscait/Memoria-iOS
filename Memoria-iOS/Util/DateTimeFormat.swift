@@ -57,22 +57,4 @@ struct DateTimeFormat {
     static func toDateFormat(fromYear year: Int?, month: Int, day: Int) -> Date {
         return calendar.date(from: DateComponents(year: year, month: month, day: day))!
     }
-    
-    /// 次回の記念日までの残り日数を計算して返す
-    ///
-    /// - Parameter date: 記念日
-    /// - Returns: 記念日までの残り日数
-    static func getRemainingDays(date: Date) -> Int {
-        // 日付の「月」と「日」を取得
-        let monthAndDayDate = calendar.dateComponents([.month, .day], from: date)
-        // 当日なら0を返す
-        if calendar.date(Date(), matchesComponents: monthAndDayDate) {
-            return 0
-        }
-        // 今日以降の直近記念日を取得
-        let nextDay = calendar.nextDate(after: Date(), matching: monthAndDayDate, matchingPolicy: .nextTime)
-        // 次回記念日までの日数を取得
-        let remainingDays = calendar.dateComponents([.day], from: Date(), to: nextDay!).day!
-        return remainingDays + 1 // 時間を切り上げ
-    }
 }

@@ -37,6 +37,8 @@ class TabBarController: UITabBarController {
                     let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
                     let nextView = storyboard.instantiateInitialViewController()
                     self.present(nextView!, animated: true, completion: nil)
+                } else {
+                    Migration.db(on: self)
                 }
             } else {
                 // 未ログイン状態なら、ログイン画面へ遷移
