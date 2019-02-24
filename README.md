@@ -13,21 +13,14 @@ Memoria-iOSの開発の始め方を解説します。
    ```
    Swift --version
    ```
-3. CocoaPods 1.5.3
-   ```
-   pod --version
-   ```
 
 ## Memoria for iOS をクローンしてライブラリをインストールする
-1.	クローンします（DevOpsのRepos→CloneボタンからもURLをた確認することができます）
+1.	クローンします。（お好きな方法で♪下記は一例）
     ```
-    git clone https://{ユーザーID}@dev.azure.com/nerco/Memoria/_git/Memoria-iOS
+    git clone git@github.com:Riscait/Memoria-iOS.git
     ```
-2.	CocoaPodsを使って、必要なライブラリをインストールします。
-    ※podfileはGitに含まれています。
-    ```
-    pod install
-    ```
+2.	Podsファイルはリポジトリに含まれているので pod installは不要です。
+
 3.	Xcodeを立ち上げてまずは「ビルド」しましょう！
 
 # 使用ライブラリ
