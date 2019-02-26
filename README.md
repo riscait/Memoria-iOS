@@ -1,6 +1,11 @@
 # これは何？
 Memoria-iOSは、Memoria（メモリア）プロジェクトのiOSアプリリポジトリです。
 
+# Gitのフローは？
+GitHub Flowを使います。
+1. masterブランチはいつでもデプロイ可能状態
+2. 機能追加と不具合修正はmasterブランチから生やして作って(e.g. add-brack-thema)プルリクエスト！
+
 # 開発の始め方
 Memoria-iOSの開発の始め方を解説します。
 主に「ターミナル」を使ったコマンドを紹介しますが、その他GUIソフトを使う方はそちらを使ってください。
@@ -19,9 +24,9 @@ Memoria-iOSの開発の始め方を解説します。
     ```
     git clone git@github.com:Riscait/Memoria-iOS.git
     ```
-2.	Podsファイルはリポジトリに含まれているので pod installは不要です。
+2.	Podsファイルをリポジトリに含めているので各自での`pod install`は不要です。
 
-3.	Xcodeを立ち上げてまずは「ビルド」しましょう！
+3.	Xcodeを立ち上げて「ビルド」しましょう！
 
 # 使用ライブラリ
 ## CocoaPodsで管理
