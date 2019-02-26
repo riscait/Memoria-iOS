@@ -27,10 +27,6 @@ class GiftRecordSelectAnniversaryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.searchController = searchController
-        // 検索バーを常に表示する場合はfalse。消すと引っ張って出現してスクロールで隠れるようになる
-        navigationItem.hidesSearchBarWhenScrolling = false
-
         searchDB()
     }
 }
