@@ -199,7 +199,10 @@ class AnniversaryEditVC: UIViewController {
             tableVC.timestamp = anniversary.date
             tableVC.dateField.text = DateTimeFormat.getYMDString(date: anniversary.date.dateValue())
             tableVC.annualySwitch.isOn = anniversary.isAnnualy
-            
+            if !anniversary.memo.isEmpty {
+                memoView.text = anniversary.memo
+                memoView.togglePlaceholder()
+            }
         } else {
             // 新規登録時の処理
             // 非表示ボタンを表示しない
@@ -274,7 +277,6 @@ extension AnniversaryEditVC: UITextViewDelegate{
                 print("desabled")
             }
         }
-
     }
 }
 
