@@ -79,7 +79,7 @@ class AnniversaryEditVC: UIViewController {
                                                isHidden: false,
                                                isAnnualy: isAnnualy,
                                                isFromContact: isFromContact,
-                                               memo: memoView.text)
+                                               memo: memoView.text.trimmingCharacters(in: .whitespacesAndNewlines))
         print(anniversary)
         // DBに書き込んで画面を閉じる
         AnniversaryDAO.set(documentPath: uuid, data: anniversary)
@@ -143,6 +143,9 @@ class AnniversaryEditVC: UIViewController {
         view.endEditing(true)
     }
 
+    
+    // MARK: - Private methods
+    
     /// 子VCを特定する
     private func discoverChildVC() {
         // ContainerViewを特定
@@ -181,7 +184,7 @@ class AnniversaryEditVC: UIViewController {
     }
     
     /// 編集なら、前の画面から受け取った記念日を反映する
-    func configureField(with anniversary: AnniversaryDataModel?) {
+    private func configureField(with anniversary: AnniversaryDataModel?) {
         
         if let anniversary = anniversary {
             // 編集時の処理
@@ -199,8 +202,8 @@ class AnniversaryEditVC: UIViewController {
             tableVC.timestamp = anniversary.date
             tableVC.dateField.text = DateTimeFormat.getYMDString(date: anniversary.date.dateValue())
             tableVC.annualySwitch.isOn = anniversary.isAnnualy
+            memoView.text = anniversary.memo
             if !anniversary.memo.isEmpty {
-                memoView.text = anniversary.memo
                 memoView.togglePlaceholder()
             }
         } else {
