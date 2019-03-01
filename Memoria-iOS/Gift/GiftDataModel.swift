@@ -29,11 +29,11 @@ struct GiftDataModel {
         dictionary["isReceived"] = isReceived
         dictionary["personName"] = personName
         dictionary["anniversaryName"] = anniversaryName
-        dictionary["date"] = date
+        dictionary["date"] = date ?? NSNull()
         dictionary["goods"] = goods
         dictionary["memo"] = memo
         dictionary["isHidden"] = isHidden
-        dictionary["iconImage"] = iconImage
+        dictionary["iconImage"] = iconImage ?? NSNull()
         
         return dictionary
     }
