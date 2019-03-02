@@ -21,7 +21,7 @@ class GiftRecordSelectAnniversaryVC: UIViewController {
     var displayData = [String]()
     
     @IBOutlet weak var tableView: UITableView!
-    // TextFieldの文字列を書き換えるらためのDelegateを宣言
+    // TextFieldの文字列を書き換えるためのDelegateを宣言
     weak var delegate: GiftRecordSelectAnniversaryVCDelegate?
 
     override func viewDidLoad() {
@@ -35,10 +35,12 @@ class GiftRecordSelectAnniversaryVC: UIViewController {
 extension GiftRecordSelectAnniversaryVC: GiftRecordSelectProtocol {
     
     func searchDB() {
-        AnniversaryDAO.getFilteredAnniversaryDocuments(whereField: "isHidden", equalTo: false) { (queryDoc) in
+        // 非表示ではない記念日を検索する
+        AnniversaryDAO.getDocumentsAtDualFilter(first: "isHidden", equalTo: false, secondWhereField: "category", secondEqualTo: "anniversary") { (queryDoc) in
             for doc in queryDoc {
-                guard let title = doc.data()["title"] as? String else{ continue }
-                self.displayData.append(title)
+                if let title = doc.data()["title"] as? String {
+                    self.displayData.append(title)
+                }
             }
             self.tableView.reloadData()
         }
