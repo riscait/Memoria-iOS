@@ -24,35 +24,60 @@ final class AnniversaryDetailVC: UIViewController {
     
     /// AnniversaryVCから受け取るデータ
     var anniversary: [String: Any]!
-    var anniversaryName: String?
-    var remainingDays: String?
-    var iconImage: UIImage?
     
     var category: AnniversaryType?
     
     var gifts: [[String: Any]]?
     var selectedGiftId: String?
 
-    // 次の画面に渡すようの記念日データ
+    /// Firestoreのコレクションを監視するリスナー登録
+    var listenerRegistration: ListenerRegistration?
+
+    // 次の画面に渡す用の記念日データを持っておく
     var anniversaryData: AnniversaryDataModel?
-    
+
     
     // MARK: - ライフサイクル
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // 大きいタイトルの表示設定
         navigationItem.largeTitleDisplayMode = .automatic
-        
-        // IDをもとにDBから記念日データを取得する(非同期処理のコールバックで取得)
-        // 非同期なので、クロージャ外の処理よりも後に反映されることになる
-        AnniversaryDAO.get(by: anniversary["id"] as! String) { anniversary in
-            
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // リスナー登録
+        registerListener()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // リスナーを破棄
+        listenerRegistration?.remove()
+    }
+
+    /// 記念日データ変更監視用リスナー登録
+    private func registerListener() {
+        let filteredCollection = AnniversaryDAO.getQuery(whereField: "id", equalTo: anniversary["id"] as! String)
+        // anniversaryコレクションの変更を監視するリスナー登録
+        listenerRegistration = filteredCollection?.addSnapshotListener { snapshot, error in
+            print("AnniversaryDetailVCでリスナー登録")
+            guard let anniversary = snapshot?.documents.first?.data() else {
+                print("ドキュメント取得エラー: \(error!)")
+                return
+            }
+            // 編集画面に渡す用のデータをセット
             self.anniversaryData = AnniversaryDataModel(dictionary: anniversary)
+            // 記念日データから日付を取り出す
+            if let date = (anniversary["date"] as? Timestamp)?.dateValue() {
+                let remainingDays = DateDifferenceCalculator.getDifference(from: date, isAnnualy: anniversary["isAnnualy"] as? Bool ?? true)
+                self.navigationItem.title = AnniversaryUtil.getRemainingDaysString(from: remainingDays)
+            }
+            // テーブルのデータ更新のために渡す
+            self.anniversary = anniversary
             
             guard let category = anniversary["category"] as? String else { return }
-            
             self.category = AnniversaryType(category: category)
             
             switch self.category! {
@@ -69,11 +94,9 @@ final class AnniversaryDetailVC: UIViewController {
                 self.tableView.reloadData()
             }
         }
-        // navigationbarのタイトル
-        navigationItem.title = remainingDays
     }
     
-    
+
     // MARK: - Navigation
     
     /// セグエで他の画面へ遷移するときに呼ばれる
@@ -151,8 +174,6 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
     
     /// セルの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("プレゼントの個数: ", gifts?.count ?? "プレゼントはありません")
-        
         switch Section(rawValue: section)! {
         case .topSection:
             if let category = category {
@@ -178,13 +199,14 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
         switch (section, indexPath.row) {
         case (.topSection, 0):
             cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath)
-            
+            // 記念日のアイコン
             let imageView = cell.viewWithTag(1) as! UIImageView
-            imageView.image = iconImage
-            
+            if let iconImage = anniversary["iconImage"] as? Data {
+                imageView.image = UIImage(data: iconImage)
+            }
+            // 記念日の名前
             let anniversaryNameLabel = cell.viewWithTag(2) as! UILabel
-            anniversaryNameLabel.text = anniversaryName
-            
+            anniversaryNameLabel.text = AnniversaryUtil.getName(from: anniversary)
             // 記念日の日程
             let anniversaryDateLabel = cell.viewWithTag(3) as! UILabel
             anniversaryDateLabel.text = DateTimeFormat.getYMDString(date: anniversaryDate)
