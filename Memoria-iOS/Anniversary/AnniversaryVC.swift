@@ -225,23 +225,11 @@ final class AnniversaryVC: UICollectionViewController {
         }
         // 記念日の名前
         cell.anniversaryNameLabel.text = AnniversaryUtil.getName(from: anniversary)
-        
         // 記念日の日程
         guard let anniversaryDate = (anniversary["date"] as? Timestamp)?.dateValue() else { return cell }
         cell.anniversaryDateLabel.text = DateTimeFormat.getMonthDayString(date: anniversaryDate)
-        
         // 記念日のアイコン
-        if let iconImage = anniversary["iconImage"] as? Data {
-            cell.anniversaryIconImage.image = UIImage(data: iconImage)
-        } else {
-            // 記念日の分類
-            let category = AnniversaryType(category: anniversary["category"] as! String)
-            // アイコンがない場合はデフォルトアイコンを使用
-            cell.anniversaryIconImage.image = category == .birthday
-                ? #imageLiteral(resourceName: "Ribbon") // 誕生日
-                : #imageLiteral(resourceName: "PresentBox") // それ以外
-        }
-        
+        cell.anniversaryIconImage.image = AnniversaryUtil.getIconImage(from: anniversary)
         // 記念日までの残り日数
         let remainingDays = anniversary["remainingDays"] as! Int
         cell.remainingDaysLabel.text = AnniversaryUtil.getRemainingDaysString(from: remainingDays)

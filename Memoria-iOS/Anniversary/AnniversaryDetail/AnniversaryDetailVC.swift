@@ -201,9 +201,7 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
             cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath)
             // 記念日のアイコン
             let imageView = cell.viewWithTag(1) as! UIImageView
-            if let iconImage = anniversary["iconImage"] as? Data {
-                imageView.image = UIImage(data: iconImage)
-            }
+            imageView.image = AnniversaryUtil.getIconImage(from: anniversary)
             // 記念日の名前
             let anniversaryNameLabel = cell.viewWithTag(2) as! UILabel
             anniversaryNameLabel.text = AnniversaryUtil.getName(from: anniversary)
