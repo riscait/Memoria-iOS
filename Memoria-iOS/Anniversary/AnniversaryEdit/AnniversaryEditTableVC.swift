@@ -66,6 +66,7 @@ class AnniversaryEditTableVC: UITableViewController {
         dateField.text = DateTimeFormat.getYMDString(date: datePicker.date)
         // 登録時の日付参照用変数に日付情報を代入
         timestamp = Timestamp(date: datePicker.date)
+        anniversaryEditTableVCDelegate?.needValidation(with: true)
     }
     
     

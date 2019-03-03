@@ -190,7 +190,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizedStringKey" value="placeholderAnniversary"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="textFieldEditingChanged:" destination="ZrE-8n-IyQ" eventType="editingDidEnd" id="bPP-qY-gdJ"/>
+                                                        <action selector="textFieldEditingChanged:" destination="ZrE-8n-IyQ" eventType="editingChanged" id="QzL-Kf-DcR"/>
                                                         <outlet property="delegate" destination="ZrE-8n-IyQ" id="lzN-3Z-xem"/>
                                                     </connections>
                                                 </textField>
@@ -242,7 +242,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <connections>
-                                                        <action selector="textFieldEditingChanged:" destination="ZrE-8n-IyQ" eventType="editingDidEnd" id="pHd-qR-GPX"/>
+                                                        <action selector="textFieldEditingChanged:" destination="ZrE-8n-IyQ" eventType="editingChanged" id="Kyn-6r-Jwe"/>
                                                         <outlet property="delegate" destination="ZrE-8n-IyQ" id="fd2-vA-lfU"/>
                                                     </connections>
                                                 </textField>
@@ -283,7 +283,7 @@
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizedStringKey" value="placeholderGoods"/>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="textFieldEditingChanged:" destination="ZrE-8n-IyQ" eventType="editingDidEnd" id="CW8-1C-JXf"/>
+                                                        <action selector="textFieldEditingChanged:" destination="ZrE-8n-IyQ" eventType="editingChanged" id="3lK-f5-VeZ"/>
                                                         <outlet property="delegate" destination="ZrE-8n-IyQ" id="jpG-7x-G2o"/>
                                                     </connections>
                                                 </textField>

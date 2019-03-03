@@ -88,19 +88,13 @@ class GiftRecordTableVC: UITableViewController {
     // MARK: - IBAction method
     
     @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        print(#function)
-        checkReadyForRecording()
-        
-        if sender == dateField {
-            dateField.text = DateTimeFormat.getYMDString(date: datePicker.date)
-            timestamp = Timestamp(date: datePicker.date)
-        }
+        validate()
     }
     
     @IBAction private func toggleDateTBD(_ sender: UISwitch) {
         print(#function)
         doDateTBD(isTBD: sender.isOn)
-        checkReadyForRecording()
+        validate()
     }
     
     func doDateTBD(isTBD: Bool) {
@@ -116,7 +110,7 @@ class GiftRecordTableVC: UITableViewController {
     
     // MARK: - Private Method
     
-    private func checkReadyForRecording() {
+    private func validate() {
         if !(personNameField.text?.isEmpty ?? true),
             !(anniversaryNameField.text?.isEmpty ?? true),
             !(goodsField.text?.isEmpty ?? true) {
@@ -138,12 +132,21 @@ class GiftRecordTableVC: UITableViewController {
     private func setupDatePicker() {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(didChangedDatePickerDate), for: .valueChanged)
         // placeholder is today
         dateField.placeholder = DateTimeFormat.getYMDString()
         dateField.inputAccessoryView = setupKeyboardToolbar()
         dateField.inputView = datePicker
     }
     
+    @objc private func didChangedDatePickerDate() {
+        // 日付ラベルにピッカーの日付を反映する
+        dateField.text = DateTimeFormat.getYMDString(date: datePicker.date)
+        // 登録時の日付参照用変数に日付情報を代入
+        timestamp = Timestamp(date: datePicker.date)
+        validate()
+    }
+
     private func setupKeyboardToolbar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
@@ -230,9 +233,14 @@ class GiftRecordTableVC: UITableViewController {
 // MARK: - Text field delegate
 extension GiftRecordTableVC: UITextFieldDelegate {
     
-    /// Did tap CLEAR button
+    /// クリアボタンを押した時
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        giftRecordTableVCDelegate?.recordingStandby(false)
+        if textField == dateField {
+            let today = Date()
+            datePicker.date = today
+            timestamp = Timestamp(date: today)
+        }
+        validate()
         return true
     }
     
@@ -250,20 +258,18 @@ extension GiftRecordTableVC: UITextFieldDelegate {
 
 // MARK: - GiftRecordSelectPersonVC Delegate
 extension GiftRecordTableVC: GiftRecordSelectPersonVCDelegate {
-    
-    /// Update Person name
+    /// 選択用画面経由で人名を更新した時
     func updatePersonName(with text: String?) {
-        print(#function, text ?? "nil")
         personNameField.text = text
+        validate()
     }
 }
 
 // MARK: - GiftRecordSelectAnniversaryVC Delegate
 extension GiftRecordTableVC: GiftRecordSelectAnniversaryVCDelegate {
-    
-    /// Update Anniversary name
+    /// 選択用画面経由で記念日名を更新した時
     func updateAnniversaryName(with text: String?) {
-        print(#function, text ?? "nil")
         anniversaryNameField.text = text
+        validate()
     }
 }
