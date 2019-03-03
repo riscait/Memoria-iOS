@@ -11,7 +11,7 @@ import Firebase
 
 /// すべてのフィールドにテキストが入力されて登録ボタンを押せることを知らせる
 protocol AnniversaryEditTableVCDelegate: AnyObject {
-    func recordingStandby(_ enabled: Bool)
+    func needValidation(with enabled: Bool)
 }
 
 /// Anniversaryの情報を入力するためのテーブルVC
@@ -34,7 +34,6 @@ class AnniversaryEditTableVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupDatePicker()
     }
 
@@ -46,45 +45,30 @@ class AnniversaryEditTableVC: UITableViewController {
     
     // MARK: - IBAction method
 
-    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
-        print(#function)
-        checkReadyForRecording()
-        
-        if sender == dateField {
-            dateField.text = DateTimeFormat.getYMDString(date: datePicker.date)
-            timestamp = Timestamp(date: datePicker.date)
-        }
-    }
-
     @IBAction private func toggleAnnualy(_ sender: UISwitch) {
-        print(#function)
-        checkReadyForRecording()
+        // 繰り返すか否かのスイッチ押下されたら、検証を求める
+        anniversaryEditTableVCDelegate?.needValidation(with: true)
     }
     
     // MARK: - Private Method
     
-    @objc private func checkReadyForRecording() {
-        if !(dateField.text?.isEmpty ?? true) {
-            print("ready!")
-            // デリゲートメソッドを実行する
-            anniversaryEditTableVCDelegate?.recordingStandby(true)
-        } else {
-            print("not ready!")
-            // デリゲートメソッドを実行する
-            anniversaryEditTableVCDelegate?.recordingStandby(false)
-        }
-    }
-
     private func setupDatePicker() {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
-        datePicker.addTarget(self, action: #selector(checkReadyForRecording), for: .valueChanged)
+        datePicker.addTarget(self, action: #selector(didChangedDatePickerDate), for: .valueChanged)
         // placeholder is today
         dateField.placeholder = DateTimeFormat.getYMDString()
         dateField.inputView = datePicker
     }
 
-
+    @objc private func didChangedDatePickerDate() {
+        // 日付ラベルにピッカーの日付を反映する
+        dateField.text = DateTimeFormat.getYMDString(date: datePicker.date)
+        // 登録時の日付参照用変数に日付情報を代入
+        timestamp = Timestamp(date: datePicker.date)
+    }
+    
+    
     // MARK: - Notification
     
     /// Notification発行
@@ -124,5 +108,17 @@ class AnniversaryEditTableVC: UITableViewController {
         UIView.animate(withDuration: duration) {
             self.view.transform = CGAffineTransform.identity
         }
+    }
+}
+
+// MARK: - Text field delegate
+extension AnniversaryEditTableVC: UITextFieldDelegate {
+    /// クリアボタンが押されたら今日の日付を設定する
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        let today = Date()
+        datePicker.date = today
+        timestamp = Timestamp(date: today)
+        anniversaryEditTableVCDelegate?.needValidation(with: true)
+        return true
     }
 }
