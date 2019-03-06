@@ -24,7 +24,7 @@ final class AnniversaryCell: UICollectionViewCell {
         anniversaryDateLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8901960784, blue: 0.8901960784, alpha: 1)
         remainingDaysLabel.backgroundColor = #colorLiteral(red: 1, green: 0.6629999876, blue: 0.07800000161, alpha: 1)
-        
+        contentView.alpha = 1.0
         // 背景色として使っているグラデをリセットする
         guard let layer = layer.sublayers else { return }
         for layer in layer {
