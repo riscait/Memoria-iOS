@@ -35,7 +35,7 @@ class GiftRecordSelectPersonVC: UIViewController {
 extension GiftRecordSelectPersonVC: GiftRecordSelectProtocol {
     
     func searchDB() {
-        AnniversaryDAO.getFilteredAnniversaryDocuments(whereField: "isHidden", equalTo: false) { (queryDoc) in
+        AnniversaryDAO.getFilteredDocuments(whereField: "isHidden", equalTo: false) { (queryDoc) in
             for doc in queryDoc {
                 if doc.data()["familyName"] == nil, doc.data()["givenName"] == nil { continue }
                 var fullName = [String]()

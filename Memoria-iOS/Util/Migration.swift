@@ -51,7 +51,7 @@ struct Migration {
                         DialogBox.updateAlert(with: "nextMigration".localized, on: rootVC) {
                             // ☆ 二つに分けた誕生日を一つにまとめる
                             // ① 非表示ではない記念日を検索
-                            AnniversaryDAO.getFilteredAnniversaryDocuments(whereField: "isHidden", equalTo: false) { (query) in
+                            AnniversaryDAO.getFilteredDocuments(whereField: "isHidden", equalTo: false) { (query) in
                                 print("Ver.2.1.0 の誕生日タイプマイグレーションを開始")
                                 guard query.count > 0 else {
                                     print("queryが空っぽです")

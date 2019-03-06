@@ -34,6 +34,7 @@
 		8D1C73C62183EE0D00DA5A14 /* Anniversary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */; };
 		8D2507B621A44E860015A206 /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2507B521A44E850015A206 /* AccentButton.swift */; };
 		8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3E561421BAAA840090E46E /* AppInfo.swift */; };
+		8D42F605222AC4BE00F01A77 /* AnniversaryUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D42F604222AC4BE00F01A77 /* AnniversaryUtil.swift */; };
 		8D4CBB1821C0001D009BA7C6 /* Gift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */; };
 		8D4CBB1A21C002C3009BA7C6 /* GiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1921C002C3009BA7C6 /* GiftVC.swift */; };
 		8D4CBB1C21C1511F009BA7C6 /* GiftDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */; };
@@ -125,6 +126,7 @@
 		8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Anniversary.storyboard; path = "Memoria-iOS/Anniversary/Anniversary.storyboard"; sourceTree = SOURCE_ROOT; };
 		8D2507B521A44E850015A206 /* AccentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButton.swift; sourceTree = "<group>"; };
 		8D3E561421BAAA840090E46E /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		8D42F604222AC4BE00F01A77 /* AnniversaryUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryUtil.swift; sourceTree = "<group>"; };
 		8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Gift.storyboard; sourceTree = "<group>"; };
 		8D4CBB1921C002C3009BA7C6 /* GiftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftVC.swift; sourceTree = "<group>"; };
 		8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDAO.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				8D910B5021E20CC300D072EA /* AnniversaryDetail */,
 				8D0BE31D21A0404900FE9B40 /* AnniversaryRecord */,
 				8D910B4B21E19F1000D072EA /* AnniversaryEdit */,
+				8D42F604222AC4BE00F01A77 /* AnniversaryUtil.swift */,
 			);
 			path = Anniversary;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				8DC43FE421D9F53600B911F2 /* GiftDataModel.swift in Sources */,
 				8D2507B621A44E860015A206 /* AccentButton.swift in Sources */,
 				8DB8105321A915B20007BBC5 /* HiddenListVC.swift in Sources */,
+				8D42F605222AC4BE00F01A77 /* AnniversaryUtil.swift in Sources */,
 				8DAE856321A2F1B90049063D /* InspectableLabel.swift in Sources */,
 				8DC43FDE21D3C78F00B911F2 /* GiftRecordSelectAnniversaryVC.swift in Sources */,
 				8DD486F421EAD68D0072983A /* Migration.swift in Sources */,

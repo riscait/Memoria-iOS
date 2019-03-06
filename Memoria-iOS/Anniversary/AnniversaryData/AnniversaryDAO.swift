@@ -94,7 +94,7 @@ class AnniversaryDAO {
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
     ///   - callback: ドキュメントのデータを受け取る
-    static func getFilteredAnniversaryDocuments(whereField: String,
+    static func getFilteredDocuments(whereField: String,
                              equalTo: Any,
                              callback: @escaping ([QueryDocumentSnapshot]) -> Void) {
         getQuery(whereField: whereField, equalTo: equalTo)?.getDocuments { (querySnapshot, error) in
@@ -110,6 +110,21 @@ class AnniversaryDAO {
         }
     }
 
+    static func getDocumentsAtDualFilter(first whereField: String, equalTo: Any,
+                             secondWhereField: String, secondEqualTo: Any,
+                             callback: @escaping ([QueryDocumentSnapshot]) -> Void) {
+        getQuery(whereField: whereField, equalTo: equalTo)?.whereField(secondWhereField, isEqualTo: secondEqualTo).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("エラー発生: \(error)")
+            } else {
+                print("\(#function)の実行に成功")
+            }
+            // ドキュメントのアンラップと存在チェック
+            if let documents = querySnapshot?.documents {
+                callback(documents)
+            }
+        }
+    }
 
     // MARK: - データ登録・更新
     
