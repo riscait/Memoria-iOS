@@ -29,7 +29,7 @@
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SpR-bI-R5I" customClass="InspectableSegmentedControl" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="103" y="82" width="169" height="29"/>
+                                <rect key="frame" x="112.5" y="82" width="150" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="jeo-Ix-jwd"/>
                                 </constraints>
@@ -66,7 +66,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="1kt-Gh-au1" customClass="InspectableStackView" customModule="Memoria_iOS" customModuleProvider="target">
                                 <rect key="frame" x="16" y="158.5" width="343" height="44.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y6a-G3-5nv" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Y6a-G3-5nv" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="106.5" height="44.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -79,7 +79,7 @@
                                             <outlet property="delegate" destination="CDS-0C-eHY" id="weO-Ms-2bv"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="osb-jM-eE3" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="osb-jM-eE3" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
                                         <rect key="frame" x="118.5" y="0.0" width="106" height="44.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -88,11 +88,11 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizedStringKey" value="leftNamePlaceholder"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="textFieldEditingChanged:" destination="CDS-0C-eHY" eventType="editingDidEnd" id="b3C-bb-gt9"/>
+                                            <action selector="textFieldEditingChanged:" destination="CDS-0C-eHY" eventType="editingChanged" id="uAT-sn-rxp"/>
                                             <outlet property="delegate" destination="CDS-0C-eHY" id="A1e-Lb-ISC"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kR2-0O-kI4" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kR2-0O-kI4" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
                                         <rect key="frame" x="236.5" y="0.0" width="106.5" height="44.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -101,7 +101,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizedStringKey" value="rightNamePlaceholder"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="textFieldEditingChanged:" destination="CDS-0C-eHY" eventType="editingDidEnd" id="woI-qX-w8L"/>
+                                            <action selector="textFieldEditingChanged:" destination="CDS-0C-eHY" eventType="editingChanged" id="xfx-h3-CEv"/>
                                             <outlet property="delegate" destination="CDS-0C-eHY" id="fdc-px-hYe"/>
                                         </connections>
                                     </textField>
@@ -220,7 +220,6 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                     <connections>
-                                                        <action selector="textFieldEditingChanged:" destination="TZb-Mu-70l" eventType="editingDidEnd" id="ylS-E1-F7g"/>
                                                         <outlet property="delegate" destination="TZb-Mu-70l" id="mEA-GI-v01"/>
                                                     </connections>
                                                 </textField>

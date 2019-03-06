@@ -115,24 +115,7 @@ class AnniversaryEditVC: UIViewController {
     }
     
     @IBAction func textFieldEditingChanged(_ sender: InspectableTextField) {
-        switch AnniversaryType(rawValue: anniversaryTypeChoice.selectedSegmentIndex)! {
-        case .anniversary:
-            if !(anniversaryTitleField.text?.isEmpty ?? true) {
-                recordButton.isEnabled = true
-            } else {
-                recordButton.isEnabled = false
-            }
-            
-        case .birthday:
-            if !(leftNameField.text?.isEmpty ?? true),
-                !(rightNameField.text?.isEmpty ?? true) {
-                recordButton.isEnabled = true
-                print("enabled")
-            } else {
-                recordButton.isEnabled = false
-                print("desabled")
-            }
-        }
+        validate()
     }
     
     
@@ -212,6 +195,17 @@ class AnniversaryEditVC: UIViewController {
             hideAnniversaryButton.isHidden = true
         }
     }
+    
+    private func validate() {
+        switch AnniversaryType(rawValue: anniversaryTypeChoice.selectedSegmentIndex)! {
+        case .anniversary: // 記念日名が入力されていればOK
+            recordButton.isEnabled = !(anniversaryTitleField.text?.isEmpty ?? true)
+            
+        case .birthday: // 姓名が入力されていればOK
+            recordButton.isEnabled = !(leftNameField.text?.isEmpty ?? true)
+                && !(rightNameField.text?.isEmpty ?? true)
+        }
+    }
 }
 
 
@@ -220,6 +214,7 @@ extension AnniversaryEditVC: UITextFieldDelegate {
     
     /// Did tap CLEAR button
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        // 記念日の名前か姓名TextFieldのクリアボタンが押されたら登録ボタンを無効化する（ここには日付含まず）
         recordButton.isEnabled = false
         return true
     }
@@ -257,37 +252,19 @@ extension AnniversaryEditVC: UITextViewDelegate{
         }
         return true
     }
-    
+    /// メモが書き換えられたら
     func textViewDidChange(_ textView: UITextView) {
         memoView.togglePlaceholder()
-        
-        // TODO: 重複内容だから共通化するAnniversaryType生成するのは一回のみにする
-        switch AnniversaryType(rawValue: anniversaryTypeChoice.selectedSegmentIndex)! {
-        case .anniversary:
-            if !(anniversaryTitleField.text?.isEmpty ?? true) {
-                recordButton.isEnabled = true
-            } else {
-                recordButton.isEnabled = false
-            }
-            
-        case .birthday:
-            if !(leftNameField.text?.isEmpty ?? true),
-                !(rightNameField.text?.isEmpty ?? true) {
-                recordButton.isEnabled = true
-                print("enabled")
-            } else {
-                recordButton.isEnabled = false
-                print("desabled")
-            }
-        }
+        validate()
     }
 }
 
 
 // MARK: - AnniversaryEditTableVC Delegate
-// 登録ボタンの有効・無効を切り替えるデリゲート
+// TableVCから通知を受けて、登録ボタンの有効・非有効化を検証するメソッドを呼ぶ
 extension AnniversaryEditVC: AnniversaryEditTableVCDelegate {
-    func recordingStandby(_ enabled: Bool) {
-        recordButton.isEnabled = enabled
+    func needValidation(with enabled: Bool) {
+        // v2.0.1現在、必ずtrueで呼ばれる
+        if enabled { validate() }
     }
 }
