@@ -230,13 +230,19 @@ final class AnniversaryVC: UICollectionViewController {
         cell.anniversaryDateLabel.text = DateTimeFormat.getMonthDayString(date: anniversaryDate)
         // 記念日のアイコン
         cell.anniversaryIconImage.image = AnniversaryUtil.getIconImage(from: anniversary)
-        // 記念日までの残り日数
+        // 記念日までの残り日数によって分岐させていく
         let remainingDays = anniversary["remainingDays"] as! Int
+        // 過去の記念日かどうか
+        let isPastAnniversary = remainingDays < 0
+        // 過去の記念日は薄くする
+        cell.contentView.alpha = isPastAnniversary ? 0.4 : 1.0
+        // 記念日までの残り日数文字列
         cell.remainingDaysLabel.text = AnniversaryUtil.getRemainingDaysString(from: remainingDays)
-        
-        // 残り日数によってセルの見た目を変化させる
+
+        // グラデーションのためのレイヤー
         var layer: CAGradientLayer?
-        if 0 < remainingDays, remainingDays <= 30 {
+        // 近日中の記念日設定
+        if 0...30 ~= remainingDays {
             // 文字
             cell.anniversaryNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.anniversaryDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -247,34 +253,34 @@ final class AnniversaryVC: UICollectionViewController {
             layer?.endPoint = CGPoint(x: 0.5, y: 0)
             layer?.name = "grade"
         }
+        // 特別な残日数の設定
         switch remainingDays {
-        case -1:
+        case -1:  // 昨日
             cell.remainingDaysLabel.text = "remainingDaysYesterday".localized
-            fallthrough
-        case ...0:
-            cell.alpha = 0.7
             
-        case 0:
-            // 背景
-            let startColor = #colorLiteral(red: 0.8235294118, green: 0.0862745098, blue: 0.3921568627, alpha: 1).cgColor
-            let endColor = #colorLiteral(red: 0.5529411765, green: 0.2235294118, blue: 1, alpha: 1).cgColor
-            layer?.colors = [startColor, endColor]
-            cell.layer.insertSublayer(layer!, at: 0)
-            // 「当日」と表示する
+        case 0:  // 当日
+            if let layer = layer {
+                // 背景
+                let startColor = #colorLiteral(red: 0.8235294118, green: 0.0862745098, blue: 0.3921568627, alpha: 1).cgColor
+                let endColor = #colorLiteral(red: 0.5529411765, green: 0.2235294118, blue: 1, alpha: 1).cgColor
+                layer.colors = [startColor, endColor]
+                cell.layer.insertSublayer(layer, at: 0)
+            }
             cell.remainingDaysLabel.text = "remainingDaysToday".localized
 
-        case 1:
-            // 「明日」と表示する
+        case 1:  // 明日
             cell.remainingDaysLabel.text = "remainingDaysTomorrow".localized
             fallthrough
-        case ...30:
-            // 背景
-            cell.remainingDaysLabel.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
-            let startColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1).cgColor
-            let endColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1).cgColor
-            layer?.colors = [startColor, endColor]
-            cell.layer.insertSublayer(layer!, at: 0)
             
+        case ...30:  // 30日以内
+            if let layer = layer {
+            // 背景
+                cell.remainingDaysLabel.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+                let startColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1).cgColor
+                let endColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1).cgColor
+                layer.colors = [startColor, endColor]
+                cell.layer.insertSublayer(layer, at: 0)
+            }
         default: break
         }
         return cell
