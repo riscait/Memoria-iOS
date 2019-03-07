@@ -17,10 +17,16 @@ struct DateDifferenceCalculator {
         // 日付の「月」と「日」を取得
         let monthAndDayDate = calendar.dateComponents([.month, .day], from: fromDate)
         // 当日なら0を返す
-        if calendar.date(Date(), matchesComponents: monthAndDayDate) {
+        if calendar.isDateInToday(fromDate) {
             return 0
         }
-        // 毎年繰り返す記念日か否か
+        if calendar.isDateInTomorrow(fromDate) {
+            return 1
+        }
+        if calendar.isDateInYesterday(fromDate) {
+            return -1
+        }
+        // 毎年繰り返す記念日
         if isAnnualy {
             // 今日以降の直近記念日を取得
             let nextDay = calendar.nextDate(after: Date(), matching: monthAndDayDate, matchingPolicy: .nextTime)
@@ -28,9 +34,8 @@ struct DateDifferenceCalculator {
             let remainingDays = calendar.dateComponents([.day], from: Date(), to: nextDay!).day!
             return remainingDays + 1 // 時間を切り上げ
         }
-        
+        // 一度きりの記念日
         let dateDifference = calendar.dateComponents([.day], from: toDate, to: fromDate).day!
-        print(dateDifference, "days")
         return dateDifference
     }
 }
