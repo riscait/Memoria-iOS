@@ -10,9 +10,6 @@
 		6E8CBC0D324DE6FDCA8B1E9D /* Pods_Memoria_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D879946004ED7C834459C0 /* Pods_Memoria_iOS.framework */; };
 		8D00EB1321BB945C00A3A5AE /* UpdatePassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D00EB1221BB945C00A3A5AE /* UpdatePassword.storyboard */; };
 		8D00EB1521BB960C00A3A5AE /* UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00EB1421BB960C00A3A5AE /* UpdatePasswordVC.swift */; };
-		8D0BE31A219FDFA800FE9B40 /* AnniversaryRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0BE319219FDFA800FE9B40 /* AnniversaryRecord.storyboard */; };
-		8D0BE31C21A03F8300FE9B40 /* AnniversaryDateRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0BE31B21A03F8200FE9B40 /* AnniversaryDateRecord.storyboard */; };
-		8D0BE31F21A0418700FE9B40 /* AnniversaryRecordConfirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0BE31E21A0418700FE9B40 /* AnniversaryRecordConfirmation.storyboard */; };
 		8D0BE32121A047CB00FE9B40 /* PositiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BE32021A047CB00FE9B40 /* PositiveButton.swift */; };
 		8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB83E2182002700BFCB79 /* AppDelegate.swift */; };
 		8D0FB8442182002700BFCB79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB8422182002700BFCB79 /* Main.storyboard */; };
@@ -88,10 +85,6 @@
 		8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */; };
 		8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */; };
 		8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */; };
-		8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */; };
-		8DF28E8321A1DDE600B62EBA /* AnniversaryRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8221A1DDE600B62EBA /* AnniversaryRecordModel.swift */; };
-		8DF28E8521A1E11400B62EBA /* AnniversaryDateRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8421A1E11400B62EBA /* AnniversaryDateRecordVC.swift */; };
-		8DF28E8721A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E8621A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,9 +92,6 @@
 		76D879946004ED7C834459C0 /* Pods_Memoria_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memoria_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D00EB1221BB945C00A3A5AE /* UpdatePassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdatePassword.storyboard; sourceTree = "<group>"; };
 		8D00EB1421BB960C00A3A5AE /* UpdatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordVC.swift; sourceTree = "<group>"; };
-		8D0BE319219FDFA800FE9B40 /* AnniversaryRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnniversaryRecord.storyboard; sourceTree = "<group>"; };
-		8D0BE31B21A03F8200FE9B40 /* AnniversaryDateRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnniversaryDateRecord.storyboard; sourceTree = "<group>"; };
-		8D0BE31E21A0418700FE9B40 /* AnniversaryRecordConfirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnniversaryRecordConfirmation.storyboard; sourceTree = "<group>"; };
 		8D0BE32021A047CB00FE9B40 /* PositiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositiveButton.swift; sourceTree = "<group>"; };
 		8D0FB83B2182002700BFCB79 /* Memoria-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Memoria-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0FB83E2182002700BFCB79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,10 +170,6 @@
 		8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDifferenceCalculator.swift; sourceTree = "<group>"; };
 		8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTabBarItem.swift; sourceTree = "<group>"; };
 		8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeButton.swift; sourceTree = "<group>"; };
-		8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordVC.swift; sourceTree = "<group>"; };
-		8DF28E8221A1DDE600B62EBA /* AnniversaryRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordModel.swift; sourceTree = "<group>"; };
-		8DF28E8421A1E11400B62EBA /* AnniversaryDateRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryDateRecordVC.swift; sourceTree = "<group>"; };
-		8DF28E8621A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryRecordConfirmationVC.swift; sourceTree = "<group>"; };
 		CB9FB5A45A0F138434E9F5F0 /* Pods-Memoria-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memoria-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memoria-iOS/Pods-Memoria-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,20 +196,6 @@
 				8D00EB1421BB960C00A3A5AE /* UpdatePasswordVC.swift */,
 			);
 			path = UserAccountSettings;
-			sourceTree = "<group>";
-		};
-		8D0BE31D21A0404900FE9B40 /* AnniversaryRecord */ = {
-			isa = PBXGroup;
-			children = (
-				8DF28E8221A1DDE600B62EBA /* AnniversaryRecordModel.swift */,
-				8D0BE319219FDFA800FE9B40 /* AnniversaryRecord.storyboard */,
-				8DF28E8021A1D9A600B62EBA /* AnniversaryRecordVC.swift */,
-				8D0BE31B21A03F8200FE9B40 /* AnniversaryDateRecord.storyboard */,
-				8DF28E8421A1E11400B62EBA /* AnniversaryDateRecordVC.swift */,
-				8D0BE31E21A0418700FE9B40 /* AnniversaryRecordConfirmation.storyboard */,
-				8DF28E8621A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift */,
-			);
-			path = AnniversaryRecord;
 			sourceTree = "<group>";
 		};
 		8D0FB8322182002700BFCB79 = {
@@ -316,7 +288,6 @@
 				8D1C73C22183ED6C00DA5A14 /* AnniversaryVC.swift */,
 				8D11B3BB2194431100C60371 /* AnniversaryCell.swift */,
 				8D910B5021E20CC300D072EA /* AnniversaryDetail */,
-				8D0BE31D21A0404900FE9B40 /* AnniversaryRecord */,
 				8D910B4B21E19F1000D072EA /* AnniversaryEdit */,
 				8D42F604222AC4BE00F01A77 /* AnniversaryUtil.swift */,
 			);
@@ -517,7 +488,6 @@
 			files = (
 				8D77D18321B37ADE00CF673A /* Passwordless.storyboard in Resources */,
 				8D11B3B12193B94200C60371 /* README.md in Resources */,
-				8D0BE31F21A0418700FE9B40 /* AnniversaryRecordConfirmation.storyboard in Resources */,
 				8D00EB1321BB945C00A3A5AE /* UpdatePassword.storyboard in Resources */,
 				8DD474B821CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard in Resources */,
 				8D77D17721B22AD400CF673A /* SignUp.storyboard in Resources */,
@@ -539,9 +509,7 @@
 				8DA747E621A7C1F6007E7F5B /* TabBar.storyboard in Resources */,
 				8DB8105121A915850007BBC5 /* HiddenList.storyboard in Resources */,
 				8DC43FDC21D3C6FF00B911F2 /* GiftRecordSelectAnniversary.storyboard in Resources */,
-				8D0BE31C21A03F8300FE9B40 /* AnniversaryDateRecord.storyboard in Resources */,
 				8D0FB8462182002800BFCB79 /* Assets.xcassets in Resources */,
-				8D0BE31A219FDFA800FE9B40 /* AnniversaryRecord.storyboard in Resources */,
 				8D0FB8442182002700BFCB79 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -625,15 +593,12 @@
 				8D56B2A221A7DAE300B90BED /* SettingVC.swift in Sources */,
 				8DB8105721AA8E510007BBC5 /* InspectableTextField.swift in Sources */,
 				8D56B2A421A85A7900B90BED /* OpenOtherApp.swift in Sources */,
-				8DF28E8121A1D9A600B62EBA /* AnniversaryRecordVC.swift in Sources */,
 				8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */,
 				8D11B3C52195CBF300C60371 /* AnniversaryDetailVC.swift in Sources */,
 				8DD486F221E254E70072983A /* AnniversaryEditTableVC.swift in Sources */,
 				8DBB365721C5CF67008282D0 /* GiftRecordVC.swift in Sources */,
-				8DF28E8721A1E13300B62EBA /* AnniversaryRecordConfirmationVC.swift in Sources */,
 				8D77D18021B2ABD100CF673A /* SignInVC.swift in Sources */,
 				8DC43FD821CFE39A00B911F2 /* InspectableTableViewCell.swift in Sources */,
-				8DF28E8321A1DDE600B62EBA /* AnniversaryRecordModel.swift in Sources */,
 				8D11B3B42193EE4F00C60371 /* IconImageView.swift in Sources */,
 				8DB8105D21AC243B0007BBC5 /* ZodiacSign.swift in Sources */,
 				8D4CBB2321C51F7E009BA7C6 /* InspectableTextView.swift in Sources */,
@@ -664,7 +629,6 @@
 				8DA747EB21A7C728007E7F5B /* TabBarController.swift in Sources */,
 				8D4CBB1A21C002C3009BA7C6 /* GiftVC.swift in Sources */,
 				8D77D17921B22DC000CF673A /* SignUpVC.swift in Sources */,
-				8DF28E8521A1E11400B62EBA /* AnniversaryDateRecordVC.swift in Sources */,
 				8D0FB8542182068100BFCB79 /* ContactAccess.swift in Sources */,
 				8DB8105B21AAB1AA0007BBC5 /* DeviceLanguage.swift in Sources */,
 				8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */,
