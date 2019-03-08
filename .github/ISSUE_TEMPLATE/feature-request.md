@@ -2,7 +2,7 @@
 name: Feature request
 about: メモリアに実装する機能を提案
 title: "[]"
-labels: enhancement
+labels: ''
 assignees: ''
 
 ---
