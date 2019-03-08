@@ -276,6 +276,7 @@ final class AnniversaryVC: UICollectionViewController {
                 layer.colors = [startColor, endColor]
                 cell.layer.insertSublayer(layer, at: 0)
             }
+            fallthrough // 残日数文字列をセットするためにdefaultへ
         default: // 2日以前、31日以降の記念日すべて
             // 記念日までの残り日数文字列
             cell.remainingDaysLabel.text = AnniversaryUtil.getRemainingDaysString(from: remainingDays)
