@@ -1,5 +1,5 @@
 //
-//  AnniversaryDAO.swift
+//  AnnivDAO.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/10/26.
@@ -7,11 +7,10 @@
 //
 
 import UIKit
-
 import Firebase
 
 /// データベースへのアクセスを担うクラス
-class AnniversaryDAO {
+class AnnivDAO {
     
     // MARK: - プロパティ
     
@@ -21,7 +20,7 @@ class AnniversaryDAO {
     private static let uid = Auth.auth().currentUser?.uid
     // Unique collection
     private static let usersCollection = db.collection("users")
-    static let anniversaryCollection = usersCollection.document(uid!).collection("anniversary")
+    static let annivCollection = usersCollection.document(uid!).collection("anniversary")
 
 
     // MARK: - データ取得
@@ -31,8 +30,8 @@ class AnniversaryDAO {
     /// - Parameter:
     ///   - id: 記念日ID
     ///   - callback: ドキュメントのデータを受け取る
-    static func getAll(callback: @escaping ([AnniversaryDataModel]) -> Void) {
-        anniversaryCollection.getDocuments { (querySnapshot, error) in
+    static func getAll(callback: @escaping ([AnnivModel]) -> Void) {
+        annivCollection.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -42,9 +41,9 @@ class AnniversaryDAO {
             var anniversarysArray = [[String: Any]]()
             
             querySnapshot?.documents.forEach { anniversarysArray.append($0.data()) }
-            let anniversaryData = anniversarysArray.map { AnniversaryDataModel(dictionary: $0)}
+            let anniversaryData = anniversarysArray.map { AnnivModel(dictionary: $0)}
             
-            callback(anniversaryData as! [AnniversaryDataModel])
+            callback(anniversaryData as! [AnnivModel])
         }
 //        { (document, error) in
 //            if let error = error {
@@ -64,12 +63,12 @@ class AnniversaryDAO {
     /// - Parameter:
     ///   - id: 記念日ID
     ///   - callback: ドキュメントのデータを受け取る
-    static func get(by anniversaryId: String, callback: @escaping ([String: Any]) -> Void) {
-        anniversaryCollection.document(anniversaryId).getDocument { (document, error) in
+    static func get(by id: String, callback: @escaping ([String: Any]) -> Void) {
+        annivCollection.document(id).getDocument { (document, error) in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#function)の実行に成功:", anniversaryId)
+                print("\(#function)の実行に成功:", id)
             }
             // ドキュメントのアンラップと存在チェック
             if let document = document, document.exists {
@@ -85,7 +84,7 @@ class AnniversaryDAO {
     ///   - equalTo: 検索条件
     /// - Returns: 検索結果
     static func getQuery(whereField: String, equalTo: Any) -> Query? {
-        return anniversaryCollection.whereField(whereField, isEqualTo: equalTo)
+        return annivCollection.whereField(whereField, isEqualTo: equalTo)
     }
     
     /// getAnniversaryQuery()の検索結果ドキュメントを取得する
@@ -135,9 +134,9 @@ class AnniversaryDAO {
     ///   - data: 登録するデータ
     ///   - marge: 既存のドキュメントにデータを統合するか否か
     static func set(documentPath: String,
-                 data: AnniversaryDataModel,
+                 data: AnnivModel,
                  merge: Bool = true) {
-            anniversaryCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
+            annivCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
                     if let error = error {
                         print("エラー発生: \(error)")
                     } else {
@@ -155,7 +154,7 @@ class AnniversaryDAO {
     static func set(documentPath: String,
                     data: [String: Any],
                     merge: Bool = true) {
-        anniversaryCollection.document(documentPath).setData(data, merge: merge) { error in
+        annivCollection.document(documentPath).setData(data, merge: merge) { error in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -173,12 +172,12 @@ class AnniversaryDAO {
     ///   - documentPath: 一意のID
     ///   - field: 更新データ名
     ///   - content: 更新データ内容
-    static func update(anniversaryId: String, field: String, content: Any) {
-        anniversaryCollection.document(anniversaryId).updateData([field: content]) { error in
+    static func update(with id: String, field: String, content: Any) {
+        annivCollection.document(id).updateData([field: content]) { error in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#function)の実行に成功:", anniversaryId)
+                print("\(#function)の実行に成功:", id)
             }
         }
     }
@@ -195,7 +194,7 @@ class AnniversaryDAO {
                        updateField: String,
                        turns content: Any,
                        callback: (() -> Void)?) {
-        anniversaryCollection.whereField(searchField, isEqualTo: true).getDocuments { (query, error) in
+        annivCollection.whereField(searchField, isEqualTo: true).getDocuments { (query, error) in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
@@ -222,7 +221,7 @@ class AnniversaryDAO {
                        updateField: String,
                        turns content: Any,
                        callback: (() -> Void)?) {
-        anniversaryCollection.whereField(searchField, isEqualTo: true)
+        annivCollection.whereField(searchField, isEqualTo: true)
             .whereField(secondSearchField, isEqualTo: secondIsEqualTo).getDocuments { (query, error) in
             if let error = error {
                 print("エラー発生: \(error)")
@@ -244,12 +243,12 @@ class AnniversaryDAO {
     /// - Parameters:
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
-    static func deleteAnniversary(documentPath: String) {
-        anniversaryCollection.document(documentPath).delete() { error in
+    static func delete(with id: String) {
+        annivCollection.document(id).delete() { error in
             if let error = error {
                 print("エラー発生: \(error)")
             } else {
-                print("\(#function)の実行に成功:", documentPath)
+                print("\(#function)の実行に成功:", id)
             }
         }
     }
@@ -259,9 +258,9 @@ class AnniversaryDAO {
     /// - Parameters:
     ///   - whereField: 検索対象
     ///   - equalTo: 検索条件
-    static func deleteQueryAnniversary(whereField: String, equalTo: Any,
+    static func deleteByQuery(with whereField: String, isEqualTo: Any,
                                 on roorVC: UIViewController, compltion: (() -> Void)? = nil) {
-        anniversaryCollection.whereField(whereField, isEqualTo: equalTo).getDocuments { (querySnapshot, error) in
+        annivCollection.whereField(whereField, isEqualTo: isEqualTo).getDocuments { (querySnapshot, error) in
             // Instantiate a new feedback-generator
             let feedbackGenerator = UINotificationFeedbackGenerator()
             feedbackGenerator.prepare()

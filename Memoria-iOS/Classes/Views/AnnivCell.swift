@@ -1,5 +1,5 @@
 //
-//  AnniversaryCell.swift
+//  AnnivCell.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/11/08.
@@ -8,20 +8,20 @@
 
 import UIKit
 
-final class AnniversaryCell: UICollectionViewCell {
+final class AnnivCell: UICollectionViewCell {
     
-    @IBOutlet weak var anniversaryNameLabel: UILabel!
-    @IBOutlet weak var anniversaryDateLabel: UILabel!
+    @IBOutlet weak var annivNameLabel: UILabel!
+    @IBOutlet weak var annivDateLabel: UILabel!
     @IBOutlet weak var remainingDaysLabel: TagLabel!
-    @IBOutlet weak var anniversaryIconImage: IconImageView!
+    @IBOutlet weak var annivIconImage: IconImageView!
     
     /// セル再利用の準備
     override func prepareForReuse() {
         super.prepareForReuse()
         
         // 色をリセットする
-        anniversaryNameLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        anniversaryDateLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        annivNameLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        annivDateLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8901960784, blue: 0.8901960784, alpha: 1)
         remainingDaysLabel.backgroundColor = #colorLiteral(red: 1, green: 0.6629999876, blue: 0.07800000161, alpha: 1)
         contentView.alpha = 1.0

@@ -33,10 +33,10 @@ struct Migration {
             DialogBox.showAlertWithIndicator(on: rootVC, message: "startMigration".localized) {
                 // ☆ isHiddenしかないドキュメントを消すマイグレーションが必要
                 // ① まず、非表示フラグがtrueのデータを検索し、非表示フラグをすべてNullにする
-                AnniversaryDAO.update(searchField: "isHidden", isEqualTo: true, updateField: "isHidden", turns: NSNull()) {
+                AnnivDAO.update(searchField: "isHidden", isEqualTo: true, updateField: "isHidden", turns: NSNull()) {
                     print("Ver.2.1.0 のisHiddenマイグレーションを開始")
                     // ② 非表示フラグがNullかつ、idがある記念日を検索
-                    AnniversaryDAO.getQuery(whereField: "isHidden", equalTo: NSNull())?.whereField("id", isGreaterThan: "").getDocuments { (query, error) in
+                    AnnivDAO.getQuery(whereField: "isHidden", equalTo: NSNull())?.whereField("id", isGreaterThan: "").getDocuments { (query, error) in
                         if let error = error {
                             print("Ver.2.1.0 のisHiddenマイグレーション中にエラー発生: \(error)")
                             DialogBox.dismissAlertWithIndicator(on: rootVC, completion: nil)
@@ -51,7 +51,7 @@ struct Migration {
                         DialogBox.updateAlert(with: "nextMigration".localized, on: rootVC) {
                             // ☆ 二つに分けた誕生日を一つにまとめる
                             // ① 非表示ではない記念日を検索
-                            AnniversaryDAO.getFilteredDocuments(whereField: "isHidden", equalTo: false) { (query) in
+                            AnnivDAO.getFilteredDocuments(whereField: "isHidden", equalTo: false) { (query) in
                                 print("Ver.2.1.0 の誕生日タイプマイグレーションを開始")
                                 guard query.count > 0 else {
                                     print("queryが空っぽです")
@@ -75,13 +75,13 @@ struct Migration {
                                     switch category {
                                     case "contactBirthday":
                                         print("\(id) is 'Contact birthday', Migrate to the 'birthday'")
-                                        AnniversaryDAO.update(anniversaryId: id, field: "category", content: "birthday")
-                                        AnniversaryDAO.update(anniversaryId: id, field: "isFromContact", content: true)
+                                        AnnivDAO.update(with: id, field: "category", content: "birthday")
+                                        AnnivDAO.update(with: id, field: "isFromContact", content: true)
                                         
                                     case "manualBirthday":
                                         print("\(id) is 'Manual birthday', Migrate to the 'birthday'")
-                                        AnniversaryDAO.update(anniversaryId: id, field: "category", content: "birthday")
-                                        AnniversaryDAO.update(anniversaryId: id, field: "isFromContact", content: false)
+                                        AnnivDAO.update(with: id, field: "category", content: "birthday")
+                                        AnnivDAO.update(with: id, field: "isFromContact", content: false)
                                         
                                     case "birthday":
                                         print("\(id) is 'birthday', Migration is unnecessary")
@@ -91,10 +91,10 @@ struct Migration {
                                         fallthrough
                                     default:
                                         print("\(id) is 'Other anniversary', Add new properties")
-                                        AnniversaryDAO.update(anniversaryId: id, field: "isFromContact", content: false)
+                                        AnnivDAO.update(with: id, field: "isFromContact", content: false)
                                     }
                                     // ③ isAnnualyとmemoはすべてのタイプで更新する
-                                    AnniversaryDAO.anniversaryCollection.document(id)
+                                    AnnivDAO.annivCollection.document(id)
                                         .updateData(["isAnnualy": true, "memo": ""]) { error in
                                         if let error = error {
                                             DialogBox.dismissAlertWithIndicator(on: rootVC, completion: nil)

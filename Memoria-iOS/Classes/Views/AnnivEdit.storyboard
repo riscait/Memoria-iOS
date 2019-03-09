@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zxw-NY-r7d">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Anniversary EditVC-->
+        <!--Anniv EditVC-->
         <scene sceneID="fsU-19-kCK">
             <objects>
-                <viewController storyboardIdentifier="GiftRecordVC" id="CDS-0C-eHY" customClass="AnniversaryEditVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GiftRecordVC" id="CDS-0C-eHY" customClass="AnnivEditVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CPF-JW-H7q">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xn4-1s-ZnT">
-                                <rect key="frame" x="0.0" y="223" width="375" height="90"/>
+                                <rect key="frame" x="0.0" y="223" width="600" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="Hez-z0-1Ia"/>
                                 </constraints>
@@ -29,7 +25,7 @@
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SpR-bI-R5I" customClass="InspectableSegmentedControl" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="112.5" y="82" width="150" height="29"/>
+                                <rect key="frame" x="225" y="82" width="150" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="jeo-Ix-jwd"/>
                                 </constraints>
@@ -43,11 +39,11 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey2" value="birthday"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="toggleAnniversaryType:" destination="CDS-0C-eHY" eventType="valueChanged" id="hxX-hJ-VRz"/>
+                                    <action selector="toggleAnnivTypeTapped:" destination="CDS-0C-eHY" eventType="valueChanged" id="hxX-hJ-VRz"/>
                                 </connections>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NIa-Cw-DWR" customClass="InspectableTextView" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="12" y="329" width="347" height="185"/>
+                                <rect key="frame" x="12" y="329" width="572" height="118"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -64,10 +60,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="1kt-Gh-au1" customClass="InspectableStackView" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="16" y="158.5" width="343" height="44.5"/>
+                                <rect key="frame" x="16" y="158.5" width="568" height="44.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Y6a-G3-5nv" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="106.5" height="44.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="181.5" height="44.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -80,7 +76,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="osb-jM-eE3" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="118.5" y="0.0" width="106" height="44.5"/>
+                                        <rect key="frame" x="193.5" y="0.0" width="181" height="44.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -93,7 +89,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kR2-0O-kI4" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="236.5" y="0.0" width="106.5" height="44.5"/>
+                                        <rect key="frame" x="386.5" y="0.0" width="181.5" height="44.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -116,7 +112,7 @@
                                 </userDefinedRuntimeAttributes>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1y-eR-Vh1" customClass="NegativeButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="97.5" y="548" width="180" height="54"/>
+                                <rect key="frame" x="210" y="481" width="180" height="54"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="Ipu-Vh-vUp"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="n74-cV-HXK"/>
@@ -173,10 +169,10 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="anniversaryTitleField" destination="Y6a-G3-5nv" id="KP1-cL-fqF"/>
-                        <outlet property="anniversaryTypeChoice" destination="SpR-bI-R5I" id="OPj-kk-9x6"/>
-                        <outlet property="anniversaryTypeLabel" destination="OyB-St-2Xs" id="Y8x-nl-lZy"/>
-                        <outlet property="hideAnniversaryButton" destination="L1y-eR-Vh1" id="BJl-OH-VTZ"/>
+                        <outlet property="annivHideButton" destination="L1y-eR-Vh1" id="BJl-OH-VTZ"/>
+                        <outlet property="annivTitleField" destination="Y6a-G3-5nv" id="KP1-cL-fqF"/>
+                        <outlet property="annivTypeLabel" destination="OyB-St-2Xs" id="Y8x-nl-lZy"/>
+                        <outlet property="annivTypeSegment" destination="SpR-bI-R5I" id="OPj-kk-9x6"/>
                         <outlet property="leftNameField" destination="osb-jM-eE3" id="pje-hU-rmg"/>
                         <outlet property="memoView" destination="NIa-Cw-DWR" id="5DK-tS-TMF"/>
                         <outlet property="recordButton" destination="lKB-8f-uar" id="BSp-7f-VcN"/>
@@ -187,10 +183,10 @@
             </objects>
             <point key="canvasLocation" x="1080.8" y="132.68365817091455"/>
         </scene>
-        <!--Anniversary Edit TableVC-->
+        <!--Anniv Edit TableVC-->
         <scene sceneID="CjQ-mL-H9U">
             <objects>
-                <tableViewController id="TZb-Mu-70l" customClass="AnniversaryEditTableVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="TZb-Mu-70l" customClass="AnnivEditTableVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LPf-tu-HfX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

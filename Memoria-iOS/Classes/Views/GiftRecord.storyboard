@@ -217,7 +217,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Q2c-qO-WPn" kind="show" id="uVZ-xr-yhC"/>
+                                            <segue destination="Q2c-qO-WPn" kind="show" id="uab-Xh-jI5"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateCell" id="yr0-Og-zsA">
@@ -340,8 +340,8 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="anniversaryNameField" destination="Ejd-qn-dk2" id="sWm-zw-3oV"/>
-                        <outlet property="anniversarySelectIcon" destination="XiV-ob-9X2" id="KVh-cw-RHT"/>
+                        <outlet property="annivNameField" destination="Ejd-qn-dk2" id="sWm-zw-3oV"/>
+                        <outlet property="annivSelectIcon" destination="XiV-ob-9X2" id="KVh-cw-RHT"/>
                         <outlet property="dateCell" destination="yr0-Og-zsA" id="qWh-zr-gDz"/>
                         <outlet property="dateField" destination="ghx-vA-H5I" id="1pw-mA-Mk2"/>
                         <outlet property="dateTBDSwitch" destination="OEJ-9p-99Q" id="6c6-Cm-dfx"/>
@@ -380,10 +380,10 @@
             </objects>
             <point key="canvasLocation" x="2402" y="132"/>
         </scene>
-        <!--GiftRecordSelectAnniversary-->
+        <!--GiftRecordSelectAnniv-->
         <scene sceneID="ftl-Kg-EKw">
             <objects>
-                <viewControllerPlaceholder storyboardName="GiftRecordSelectAnniversary" id="Q2c-qO-WPn" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="GiftRecordSelectAnniv" id="Q2c-qO-WPn" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gON-EG-Db1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2402" y="171"/>

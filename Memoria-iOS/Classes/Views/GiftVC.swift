@@ -134,7 +134,7 @@ class GiftVC: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("データ件数: \(gifts.count)件")
         // 一つもないときはガイド用Viewを表示
-//        emptySetView.isHidden = anniversarys.count == 0
+//        emptySetView.isHidden = annivs.count == 0
 //            ? false : true
         
         return gifts.count

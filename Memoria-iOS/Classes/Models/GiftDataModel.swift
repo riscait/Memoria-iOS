@@ -14,7 +14,7 @@ struct GiftDataModel {
     let id: String
     let isReceived: Bool
     let personName: String
-    let anniversaryName: String
+    let annivName: String
     let date: Timestamp?
     let goods: String
     let memo: String
@@ -28,7 +28,7 @@ struct GiftDataModel {
         dictionary["id"] = id
         dictionary["isReceived"] = isReceived
         dictionary["personName"] = personName
-        dictionary["anniversaryName"] = anniversaryName
+        dictionary["anniversaryName"] = annivName
         dictionary["date"] = date ?? NSNull()
         dictionary["goods"] = goods
         dictionary["memo"] = memo

@@ -1,5 +1,5 @@
 //
-//  AnniversaryUtil.swift
+//  AnnivUtil.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2019/03/02.
@@ -8,23 +8,23 @@
 
 import UIKit
 
-struct AnniversaryUtil {
+struct AnnivUtil {
     /// 記念日か誕生日かによってタイトルが違うので、ここで判断して返す
     ///
     /// - Parameter anniversary: 記念日データ
     /// - Returns: 記念日名か、人名を文字列で返却
-    static func getName(from anniversary: [String : Any]) -> String? {
+    static func getName(from anniv: [String : Any]) -> String? {
         // 記念日の分類
-        let category = AnniversaryType(category: anniversary["category"] as! String)
+        let category = AnnivType(category: anniv["category"] as! String)
         // 記念日の名称。誕生日だったら苗字と名前を繋げて表示
         switch category {
-        case .anniversary:
-            return anniversary["title"] as? String
+        case .anniv:
+            return anniv["title"] as? String
             
         case .birthday:
             return String(format: "whoseBirthday".localized,
-                          arguments: [anniversary["familyName"] as! String,
-                                      anniversary["givenName"] as! String])
+                          arguments: [anniv["familyName"] as! String,
+                                      anniv["givenName"] as! String])
         }
     }
     
@@ -43,13 +43,13 @@ struct AnniversaryUtil {
     ///
     /// - Parameter anniversary: 記念日データ
     /// - Returns: 登録済みデータで作ったアイコン画像か、デフォルト画像を返す
-    static func getIconImage(from anniversary: [String : Any]) -> UIImage {
-        if let iconImageData = anniversary["iconImage"] as? Data,
+    static func getIconImage(from anniv: [String : Any]) -> UIImage {
+        if let iconImageData = anniv["iconImage"] as? Data,
             let iconImage = UIImage(data: iconImageData) {
             return iconImage
         } else {
             // 記念日の分類
-            let category = AnniversaryType(category: anniversary["category"] as! String)
+            let category = AnnivType(category: anniv["category"] as! String)
             // アイコンがない場合はデフォルトアイコンを使用
             return category == .birthday
                 ? #imageLiteral(resourceName: "Ribbon") // 誕生日

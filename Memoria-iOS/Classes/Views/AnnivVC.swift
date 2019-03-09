@@ -1,5 +1,5 @@
 //
-//  AnniversaryVC.swift
+//  AnnivVC.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/10/27.
@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 /// 記念日一覧を表示するメイン画面のクラス
-final class AnniversaryVC: UICollectionViewController {
+final class AnnivVC: UICollectionViewController {
     
     // MARK: - IBOutlet property
 
@@ -22,9 +22,9 @@ final class AnniversaryVC: UICollectionViewController {
     /// リスナー登録
     var listenerRegistration: ListenerRegistration?
     /// 未来の日付、または繰り返す記念日
-    var notFinishedAnniversarys = [[String: Any]]()
+    var notFinishedAnnivs = [[String: Any]]()
     /// 繰り返さない記念日かつ、もう過ぎた記念日の数
-    var finishedAnniversarys = [[String: Any]]()
+    var finishedAnnivs = [[String: Any]]()
     
     // 引っ張って更新用のRefreshControl
     var refresher = UIRefreshControl()
@@ -83,13 +83,13 @@ final class AnniversaryVC: UICollectionViewController {
         guard let id = segue.identifier else { return }
         
         if id == "toDetailSegue" {
-            let nextVC = segue.destination as! AnniversaryDetailVC
+            let nextVC = segue.destination as! AnnivDetailVC
             guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
             switch indexPath.section {
             case 0:
-                nextVC.anniversary = notFinishedAnniversarys[indexPath.row]
+                nextVC.anniv = notFinishedAnnivs[indexPath.row]
             case 1:
-                nextVC.anniversary = finishedAnniversarys[indexPath.row]
+                nextVC.anniv = finishedAnnivs[indexPath.row]
             default : fatalError()
             }
         }
@@ -101,7 +101,7 @@ final class AnniversaryVC: UICollectionViewController {
     /// 他の画面からこの画面へ戻ってくる
     ///
     /// - Parameter segue: Segue
-    @IBAction func returnToAnniversaryVC(segue: UIStoryboardSegue) {}
+    @IBAction func returnToAnnivVC(segue: UIStoryboardSegue) {}
     
     // MARK: - Misc method
     
@@ -124,7 +124,7 @@ final class AnniversaryVC: UICollectionViewController {
     
     /// 記念日データ変更監視用リスナー登録
     private func registerListener() {
-        let filteredCollection = AnniversaryDAO.getQuery(whereField: "isHidden", equalTo: false)
+        let filteredCollection = AnnivDAO.getQuery(whereField: "isHidden", equalTo: false)
         // anniversaryコレクションの変更を監視するリスナー登録
         listenerRegistration = filteredCollection?.addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else {
@@ -132,8 +132,8 @@ final class AnniversaryVC: UICollectionViewController {
                 return
             }
             print("anniversaryコレクション変更リスナー登録！")
-            self.notFinishedAnniversarys.removeAll()
-            self.finishedAnniversarys.removeAll()
+            self.notFinishedAnnivs.removeAll()
+            self.finishedAnnivs.removeAll()
             // 記念日データが入ったドキュメントの数だけ繰り返す
             for doc in snapshot.documents {
                 // ドキュメントから記念日データを取り出す
@@ -147,18 +147,18 @@ final class AnniversaryVC: UICollectionViewController {
                 data["remainingDays"] = remainingDays
                 // 残日数も含めた記念日データをローカル配列に記憶
                 if remainingDays < 0, !isAnnualy {
-                    self.finishedAnniversarys.append(data)
+                    self.finishedAnnivs.append(data)
                 } else {
-                    self.notFinishedAnniversarys.append(data)
+                    self.notFinishedAnnivs.append(data)
                 }
             }
             // 記念日までの残日数順で並び替える
-            self.notFinishedAnniversarys.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
-            self.finishedAnniversarys.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
+            self.notFinishedAnnivs.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
+            self.finishedAnnivs.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
 
-            let yesterdays = self.notFinishedAnniversarys.filter { $0["remainingDays"] as! Int == -1}
-            let otherDays = self.notFinishedAnniversarys.filter { $0["remainingDays"] as! Int != -1}
-            self.notFinishedAnniversarys = otherDays + yesterdays
+            let yesterdays = self.notFinishedAnnivs.filter { $0["remainingDays"] as! Int == -1}
+            let otherDays = self.notFinishedAnnivs.filter { $0["remainingDays"] as! Int != -1}
+            self.notFinishedAnnivs = otherDays + yesterdays
             self.collectionView.reloadData()
         }
     }
@@ -180,7 +180,7 @@ final class AnniversaryVC: UICollectionViewController {
     /// - Returns: セクションの数
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // 終了済み記念日があればセクション数を2に増やす
-        let sectionNum = finishedAnniversarys.isEmpty ? 1 : 2
+        let sectionNum = finishedAnnivs.isEmpty ? 1 : 2
         return sectionNum
     }
     
@@ -192,11 +192,11 @@ final class AnniversaryVC: UICollectionViewController {
     /// - Returns: アイテム数
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // 記念日が一つもないときはガイド用Viewを表示
-        emptySetView.isHidden = notFinishedAnniversarys.count != 0
+        emptySetView.isHidden = notFinishedAnnivs.count != 0
 
         switch section {
-        case 0: return notFinishedAnniversarys.count
-        case 1: return finishedAnniversarys.count
+        case 0: return notFinishedAnnivs.count
+        case 1: return finishedAnnivs.count
             
         default: return 0
         }
@@ -210,23 +210,23 @@ final class AnniversaryVC: UICollectionViewController {
     /// - Returns: CollectionViewCell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Storyboardで設定したカスタムセルIDを指定
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "anniversaryCell", for: indexPath) as! AnniversaryCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "anniversaryCell", for: indexPath) as! AnnivCell
         // 記念日データを順に取り出す
         let anniversary: [String : Any]
         switch indexPath.section {
-        case 0: anniversary = self.notFinishedAnniversarys[indexPath.row]
-        case 1: anniversary = self.finishedAnniversarys[indexPath.row]
+        case 0: anniversary = self.notFinishedAnnivs[indexPath.row]
+        case 1: anniversary = self.finishedAnnivs[indexPath.row]
         default: fatalError()
         }
         // 記念日の名前
-        cell.anniversaryNameLabel.text = AnniversaryUtil.getName(from: anniversary)
+        cell.annivNameLabel.text = AnnivUtil.getName(from: anniversary)
         // 記念日の日程
         guard let anniversaryDate = (anniversary["date"] as? Timestamp)?.dateValue() else { return cell }
-        cell.anniversaryDateLabel.text = DateTimeFormat.getMonthDayString(date: anniversaryDate)
+        cell.annivDateLabel.text = DateTimeFormat.getMonthDayString(date: anniversaryDate)
         // 繰り返す記念日か否か
         let isAnnualy = anniversary["isAnnualy"] as! Bool
         // 記念日のアイコン
-        cell.anniversaryIconImage.image = AnniversaryUtil.getIconImage(from: anniversary)
+        cell.annivIconImage.image = AnnivUtil.getIconImage(from: anniversary)
         // 記念日までの残り日数
         let remainingDays = anniversary["remainingDays"] as! Int
         // 過去の記念日かどうか
@@ -239,8 +239,8 @@ final class AnniversaryVC: UICollectionViewController {
         // 近日中の記念日設定
         if 0...30 ~= remainingDays {
             // 文字
-            cell.anniversaryNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            cell.anniversaryDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.annivNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.annivDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.remainingDaysLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             layer = CAGradientLayer()
             layer?.frame = view.bounds
@@ -279,7 +279,7 @@ final class AnniversaryVC: UICollectionViewController {
             fallthrough // 残日数文字列をセットするためにdefaultへ
         default: // 2日以前、31日以降の記念日すべて
             // 記念日までの残り日数文字列
-            cell.remainingDaysLabel.text = AnniversaryUtil.getRemainingDaysString(from: remainingDays)
+            cell.remainingDaysLabel.text = AnnivUtil.getRemainingDaysString(from: remainingDays)
         }
         return cell
     }

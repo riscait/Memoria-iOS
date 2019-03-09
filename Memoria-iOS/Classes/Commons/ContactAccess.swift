@@ -14,13 +14,6 @@ class ContactAccess {
     
     /// Taptic Engine
     var feedbackGenerator: UINotificationFeedbackGenerator?
-
-    // 連絡先のデータを格納するリスト
-    private var data: [String: [Any]]?
-    private var name: [String]?
-    private var birthday: [Date]?
-    private var anniversary: [Date]?
-    private var image: [UIImage]?
     
     // 連絡先を取得するクラスのインスタンス
     let store = CNContactStore.init()
@@ -116,7 +109,7 @@ class ContactAccess {
                 print("\(contact.familyName, contact.givenName)の誕生日がnilだったため処理を終了します")
                 return
             }
-            let birthday = AnniversaryDataModel(id: contact.identifier,
+            let birthday = AnnivModel(id: contact.identifier,
                                                 category: .birthday,
                                                 title: nil,
                                                 familyName: contact.familyName,
@@ -129,7 +122,7 @@ class ContactAccess {
                                                 memo: "")
             
             // データベースに連絡先の誕生日情報を保存する
-            AnniversaryDAO.set(documentPath: contact.identifier, data: birthday.toDictionary)
+            AnnivDAO.set(documentPath: contact.identifier, data: birthday.toDictionary)
         }
         // 取得した連絡先情報の件数をコールバックで返す
         if let callback = callback {

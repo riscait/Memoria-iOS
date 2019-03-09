@@ -112,7 +112,7 @@
 "remainingDaysToday" = "Today!";
 "remainingDaysTomorrow" = "Tomorrow!";
 "remainingDaysYesterday" = "Yesterday";
-// AnniversaryDetail view
+// Anniversary Detail view
 "giftHistory" = "Gift history";
 "hideThisAnniversaryTitle" = "Hide this anniversary";
 "hideThisAnniversaryMessage" = "You can redisplay anniversaries that were hidden in the \"Settings tab\"";

@@ -1,5 +1,5 @@
 //
-//  AnniversaryDetailVC.swift
+//  AnnivDetailVC.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/11/09.
@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-final class AnniversaryDetailVC: UIViewController {
+final class AnnivDetailVC: UIViewController {
 
     // MARK: - Enum
     
@@ -22,10 +22,10 @@ final class AnniversaryDetailVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    /// AnniversaryVCから受け取るデータ
-    var anniversary: [String: Any]!
+    /// AnnivVCから受け取るデータ
+    var anniv: [String: Any]!
     
-    var category: AnniversaryType?
+    var category: AnnivType?
     
     var gifts: [[String: Any]]?
     var selectedGiftId: String?
@@ -34,7 +34,7 @@ final class AnniversaryDetailVC: UIViewController {
     var listenerRegistration: ListenerRegistration?
 
     // 次の画面に渡す用の記念日データを持っておく
-    var anniversaryData: AnniversaryDataModel?
+    var annivModel: AnnivModel?
 
     
     // MARK: - ライフサイクル
@@ -59,7 +59,7 @@ final class AnniversaryDetailVC: UIViewController {
 
     /// 記念日データ変更監視用リスナー登録
     private func registerListener() {
-        let filteredCollection = AnniversaryDAO.getQuery(whereField: "id", equalTo: anniversary["id"] as! String)
+        let filteredCollection = AnnivDAO.getQuery(whereField: "id", equalTo: anniv["id"] as! String)
         // anniversaryコレクションの変更を監視するリスナー登録
         listenerRegistration = filteredCollection?.addSnapshotListener { snapshot, error in
             print("AnniversaryDetailVCでリスナー登録")
@@ -68,20 +68,20 @@ final class AnniversaryDetailVC: UIViewController {
                 return
             }
             // 編集画面に渡す用のデータをセット
-            self.anniversaryData = AnniversaryDataModel(dictionary: anniversary)
+            self.annivModel = AnnivModel(dictionary: anniversary)
             // 記念日データから日付を取り出す
             if let date = (anniversary["date"] as? Timestamp)?.dateValue() {
                 let remainingDays = DateDifferenceCalculator.getDifference(from: date, isAnnualy: anniversary["isAnnualy"] as? Bool ?? true)
-                self.navigationItem.title = AnniversaryUtil.getRemainingDaysString(from: remainingDays)
+                self.navigationItem.title = AnnivUtil.getRemainingDaysString(from: remainingDays)
             }
             // テーブルのデータ更新のために渡す
-            self.anniversary = anniversary
+            self.anniv = anniversary
             
             guard let category = anniversary["category"] as? String else { return }
-            self.category = AnniversaryType(category: category)
+            self.category = AnnivType(category: category)
             
             switch self.category! {
-            case .anniversary:
+            case .anniv:
                 self.searchGift(with: anniversary["title"] as! String)
                 
             case .birthday:
@@ -109,8 +109,8 @@ final class AnniversaryDetailVC: UIViewController {
         
         if id == "editAnniversarySegue" {
             let navC = segue.destination as! UINavigationController
-            let nextVC = navC.topViewController as! AnniversaryEditVC
-            nextVC.anniversaryData = anniversaryData
+            let nextVC = navC.topViewController as! AnnivEditVC
+            nextVC.annivModel = annivModel
         }
         
         if id == "editGiftSegue" {
@@ -133,7 +133,7 @@ final class AnniversaryDetailVC: UIViewController {
         let whereField: String
         
         switch category {
-        case .anniversary:
+        case .anniv:
             whereField = "anniversaryName"
 
         case .birthday:
@@ -166,7 +166,7 @@ final class AnniversaryDetailVC: UIViewController {
 
 // MARK: - UITableView DataSource and Delegate
 
-extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
+extension AnnivDetailVC: UITableViewDataSource, UITableViewDelegate {
     /// セクションの数
     func numberOfSections(in tableView: UITableView) -> Int {
         return gifts == nil ? 1 : 2
@@ -177,7 +177,7 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
         switch Section(rawValue: section)! {
         case .topSection:
             if let category = category {
-                return category == .anniversary ? 1 : 3
+                return category == .anniv ? 1 : 3
             } else {
                 return 1
             }
@@ -194,17 +194,17 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
         
         let section = Section(rawValue: indexPath.section)!
         
-        let anniversaryDate = (anniversary["date"] as! Timestamp).dateValue()
+        let anniversaryDate = (anniv["date"] as! Timestamp).dateValue()
         
         switch (section, indexPath.row) {
         case (.topSection, 0):
             cell = tableView.dequeueReusableCell(withIdentifier: "topCell", for: indexPath)
             // 記念日のアイコン
             let imageView = cell.viewWithTag(1) as! UIImageView
-            imageView.image = AnniversaryUtil.getIconImage(from: anniversary)
+            imageView.image = AnnivUtil.getIconImage(from: anniv)
             // 記念日の名前
             let anniversaryNameLabel = cell.viewWithTag(2) as! UILabel
-            anniversaryNameLabel.text = AnniversaryUtil.getName(from: anniversary)
+            anniversaryNameLabel.text = AnnivUtil.getName(from: anniv)
             // 記念日の日程
             let anniversaryDateLabel = cell.viewWithTag(3) as! UILabel
             anniversaryDateLabel.text = DateTimeFormat.getYMDString(date: anniversaryDate)
@@ -213,7 +213,7 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
             cell = tableView.dequeueReusableCell(withIdentifier: "giftCell", for: indexPath)
             
         default:
-            cell = tableView.dequeueReusableCell(withIdentifier: "anniversaryDetailCell", for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: "annivDetailCell", for: indexPath)
         }
         
         if let category = category {
@@ -239,7 +239,7 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
                 gotOrReceivedLabel.text = isReceived ? "gotGift".localized : "gaveGift".localized
                 gotOrReceivedLabel.backgroundColor = isReceived ? #colorLiteral(red: 1, green: 0.6629999876, blue: 0.07800000161, alpha: 1) : #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
                 
-            case (.anniversary, .giftSection, _):
+            case (.anniv, .giftSection, _):
                 let personNameLabel = cell.viewWithTag(2) as! UILabel
                 let goodsLabel = cell.viewWithTag(3) as! UILabel
                 let gotOrReceivedLabel = cell.viewWithTag(4) as! TagLabel
@@ -275,11 +275,11 @@ extension AnniversaryDetailVC: UITableViewDataSource, UITableViewDelegate {
         let section = Section(rawValue: section)!
         switch (section, category) {
         case (.topSection, _):
-            if let memo = anniversaryData?.memo, memo != "" {
+            if let memo = annivModel?.memo, memo != "" {
                 return "memo:".localized + memo
             }
             return nil
-        case (.giftSection, .anniversary): return "giftSectionFooterForAnniversary".localized
+        case (.giftSection, .anniv): return "giftSectionFooterForAnniversary".localized
         case (.giftSection, .birthday): return "giftSectionFooterForBirthday".localized
         }
     }
