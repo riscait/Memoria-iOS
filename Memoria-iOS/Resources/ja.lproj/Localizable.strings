@@ -88,11 +88,11 @@
 "anniversarydateLabel" = "日付";
 "hiddenList" = "非表示リスト";
 "titleForHeaderInSection" = "再表示するか、完全に削除することができます。";
-// プレゼント登録画面
-"gift" = "プレゼント";
+// ギフト登録画面
+"gift" = "ギフト";
 "memo" = "メモを残せます";
-"recordGift" = "プレゼントを新規登録";
-"updateGift" = "プレゼントを編集";
+"recordGift" = "ギフトを新規登録";
+"updateGift" = "ギフトを編集";
 "personNameTitle" = "相手の名前";
 "anniversaryTitle" = "記念日";
 "dateTitle" = "日付";
@@ -102,7 +102,7 @@
 "placeholderPerson" = "入力するか選択してください";
 "placeholderAnniversary" = "入力するか選択してください";
 "placeholderDate" = "%@";
-"placeholderGoods" = "プレゼントを入力してください";
+"placeholderGoods" = "ギフトを入力してください";
 // Welcome画面
 "welcomeTitle" = "もう記念日は忘れません";
 "welcomeDetail" = "「メモリア」で友人や家族の誕生日、結婚記念日やサラダ記念日など様々な記念日をまとめて管理しましょう！";
@@ -120,12 +120,12 @@
 "remainingDaysTomorrow" = "明日です！";
 "remainingDaysYesterday" = "昨日でした";
 // Anniversary詳細画面
-"giftHistory" = "プレゼント履歴";
+"giftHistory" = "ギフト履歴";
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
 "memo:" = "メモ\n";
 "hideThisAnniversaryMessage" = "非表示にした記念日は「設定タブ」にて再表示することができます";
-"giftSectionFooterForAnniversary" = "記念日の名前が一致しているプレゼントが表示されます。";
-"giftSectionFooterForBirthday" = "人名が一致しているプレゼントがここに表示されます。";
+"giftSectionFooterForAnniversary" = "記念日の名前が一致しているギフトが表示されます。";
+"giftSectionFooterForBirthday" = "人名が一致しているギフトがここに表示されます。";
 // Gift画面
 "dateTBD" = "日付未定";
 // Settings画面

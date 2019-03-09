@@ -53,7 +53,7 @@ struct AnniversaryUtil {
             // アイコンがない場合はデフォルトアイコンを使用
             return category == .birthday
                 ? #imageLiteral(resourceName: "Ribbon") // 誕生日
-                : #imageLiteral(resourceName: "PresentBox") // それ以外
+                : #imageLiteral(resourceName: "giftBox") // それ以外
         }
     }
 }

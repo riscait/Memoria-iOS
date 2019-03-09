@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-/// プレゼントデータのモデル
+/// ギフトデータのモデル
 struct GiftDataModel {
     let id: String
     let isReceived: Bool

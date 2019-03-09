@@ -18,7 +18,7 @@ class GiftRecordVC: UIViewController {
     @IBOutlet weak var memoView: InspectableTextView!
     /// コンテナビューのテーブルVC
     var tableVC: GiftRecordTableVC!
-    // 編集の場合はプレゼント情報を受け取る
+    // 編集の場合はギフト情報を受け取る
     var selectedGiftId: String?
     
     private var activeTextField: UITextView?
@@ -50,14 +50,14 @@ class GiftRecordVC: UIViewController {
     }
     /// 登録ボタンを押した時
     @IBAction func didTapRecordButton(_ sender: UIBarButtonItem) {
-        // プレゼント新規登録なら新しくIDを生成
+        // ギフト新規登録なら新しくIDを生成
         let uuid = selectedGiftId ?? UUID().uuidString
         // もらいもの？あげたもの？
         let isReceived = gotOrReceived.selectedSegmentIndex == 0
         // 日付未定の記念日か否か
         let isDateTBD = tableVC.dateTBDSwitch.isOn
         
-        // プレゼントデータをセット
+        // ギフトデータをセット
         let gift = GiftDataModel(id: uuid,
                                  isReceived: isReceived,
                                  personName: tableVC.personNameField.text!,
@@ -93,7 +93,7 @@ class GiftRecordVC: UIViewController {
         }
     }
 
-    /// プレゼントの編集なら、元のデータを反映させる
+    /// ギフトの編集なら、元のデータを反映させる
     private func setGiftData() {
         guard let selectedGiftId = selectedGiftId else { return }
 

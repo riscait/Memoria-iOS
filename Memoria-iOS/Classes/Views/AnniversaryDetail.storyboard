@@ -107,7 +107,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PresentBox" translatesAutoresizingMaskIntoConstraints="NO" id="OxR-ES-4X8" customClass="IconImageView" customModule="Memoria_iOS" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="giftBox" translatesAutoresizingMaskIntoConstraints="NO" id="OxR-ES-4X8" customClass="IconImageView" customModule="Memoria_iOS" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="2" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="5q5-aK-QQX"/>
@@ -217,7 +217,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="PresentBox" width="512" height="512"/>
+        <image name="giftBox" width="512" height="512"/>
         <namedColor name="mainColor">
             <color red="1" green="0.66299998760223389" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

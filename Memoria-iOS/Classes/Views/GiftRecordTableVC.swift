@@ -20,7 +20,7 @@ enum Direction {
     case next
 }
 
-/// プレゼントや渡す相手などの情報を入力するためのテーブルVC
+/// ギフトや渡す相手などの情報を入力するためのテーブルVC
 class GiftRecordTableVC: UITableViewController {
     
     // MARK: - Enum
