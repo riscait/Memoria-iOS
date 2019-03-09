@@ -96,10 +96,10 @@
 		8D0FB83B2182002700BFCB79 /* Memoria-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Memoria-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0FB83E2182002700BFCB79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D0FB8432182002700BFCB79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8D0FB8452182002800BFCB79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D0FB8452182002800BFCB79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Resources/Assets.xcassets; sourceTree = "<group>"; };
 		8D0FB8482182002800BFCB79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8D0FB84A2182002800BFCB79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8D0FB84A2182002800BFCB79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Resources/Info.plist; sourceTree = "<group>"; };
+		8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../Resources/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8D0FB8532182068100BFCB79 /* ContactAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactAccess.swift; sourceTree = "<group>"; };
 		8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryDAO.swift; sourceTree = "<group>"; };
 		8D11B3B02193B94200C60371 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		8D11B3C6219719B800C60371 /* TagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
 		8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeFormat.swift; sourceTree = "<group>"; };
 		8D1C73C22183ED6C00DA5A14 /* AnniversaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryVC.swift; sourceTree = "<group>"; };
-		8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Anniversary.storyboard; path = "Memoria-iOS/Anniversary/Anniversary.storyboard"; sourceTree = SOURCE_ROOT; };
+		8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Anniversary.storyboard; path = "Memoria-iOS/Classes/Views/Anniversary.storyboard"; sourceTree = SOURCE_ROOT; };
 		8D2507B521A44E850015A206 /* AccentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButton.swift; sourceTree = "<group>"; };
 		8D3E561421BAAA840090E46E /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		8D42F604222AC4BE00F01A77 /* AnniversaryUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnniversaryUtil.swift; sourceTree = "<group>"; };
@@ -185,19 +185,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D00EB1121BB942C00A3A5AE /* UserAccountSettings */ = {
-			isa = PBXGroup;
-			children = (
-				8D8559F721B80AF00033C7AA /* UserAccount.storyboard */,
-				8D8559F921B80B270033C7AA /* UserAccountVC.swift */,
-				8D8559FD21B8A34F0033C7AA /* UpdateEmail.storyboard */,
-				8D8559FB21B8A3380033C7AA /* UpdateEmailVC.swift */,
-				8D00EB1221BB945C00A3A5AE /* UpdatePassword.storyboard */,
-				8D00EB1421BB960C00A3A5AE /* UpdatePasswordVC.swift */,
-			);
-			path = UserAccountSettings;
-			sourceTree = "<group>";
-		};
 		8D0FB8322182002700BFCB79 = {
 			isa = PBXGroup;
 			children = (
@@ -220,31 +207,29 @@
 		8D0FB83D2182002700BFCB79 /* Memoria-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				8D0FB83E2182002700BFCB79 /* AppDelegate.swift */,
-				8D77D17C21B28D6200CF673A /* SignIn */,
-				8D77D17521B22AA100CF673A /* SignUp */,
-				8D77D18121B37A3200CF673A /* Passwordless */,
-				8DAE855F21A2EC510049063D /* Welcome */,
-				8DA747E421A7C1C1007E7F5B /* TabBarController */,
-				8D1C73C42183ED7B00DA5A14 /* Anniversary */,
-				8D4CBB1621BFFFD2009BA7C6 /* Gift */,
-				8DA747E721A7C244007E7F5B /* Setting */,
-				8D0FB8522182062500BFCB79 /* Util */,
-				8D11B3B22193E67F00C60371 /* CustomUI */,
-				8D0FB8422182002700BFCB79 /* Main.storyboard */,
-				8D0FB8452182002800BFCB79 /* Assets.xcassets */,
-				8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */,
-				8D0FB84A2182002800BFCB79 /* Info.plist */,
-				8D11B3C121947EAF00C60371 /* InfoPlist.strings */,
-				8D11B3B921940BD100C60371 /* Localizable.strings */,
-				8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */,
+				8D17324022334B8C005CD22C /* Classes */,
+				8D17325622334C5E005CD22C /* Resources */,
 			);
 			path = "Memoria-iOS";
 			sourceTree = "<group>";
 		};
-		8D0FB8522182062500BFCB79 /* Util */ = {
+		8D17324022334B8C005CD22C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8D17325122334C12005CD22C /* Commons */,
+				8D17325422334C12005CD22C /* Models */,
+				8D17325222334C12005CD22C /* Views */,
+				8D17325522334C13005CD22C /* Presenters */,
+			);
+			name = Classes;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		8D17325122334C12005CD22C /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				8D0FB83E2182002700BFCB79 /* AppDelegate.swift */,
+				8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */,
 				8D3E561421BAAA840090E46E /* AppInfo.swift */,
 				8DD474B321C947CD00DD5919 /* String+.swift */,
 				8D0FB8532182068100BFCB79 /* ContactAccess.swift */,
@@ -255,10 +240,60 @@
 				8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */,
 				8DD486F321EAD68D0072983A /* Migration.swift */,
 			);
-			path = Util;
-			sourceTree = "<group>";
+			name = Commons;
+			path = "Memoria-iOS/Classes/Commons";
+			sourceTree = SOURCE_ROOT;
 		};
-		8D11B3B22193E67F00C60371 /* CustomUI */ = {
+		8D17325222334C12005CD22C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8D17325322334C12005CD22C /* CustomViews */,
+				8D0FB8422182002700BFCB79 /* Main.storyboard */,
+				8D77D17D21B28DA400CF673A /* SignIn.storyboard */,
+				8D77D17F21B2ABD100CF673A /* SignInVC.swift */,
+				8D77D17621B22AD400CF673A /* SignUp.storyboard */,
+				8D77D17821B22DC000CF673A /* SignUpVC.swift */,
+				8D77D18221B37ADE00CF673A /* Passwordless.storyboard */,
+				8D77D18421B37BED00CF673A /* PasswordlessVC.swift */,
+				8DAE856021A2EC6C0049063D /* Welcome.storyboard */,
+				8DAE856421A2F6260049063D /* WelcomeContact.storyboard */,
+				8DAE856621A2FD520049063D /* WelcomContactVC.swift */,
+				8DA747E521A7C1F6007E7F5B /* TabBar.storyboard */,
+				8DA747EA21A7C728007E7F5B /* TabBarController.swift */,
+				8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */,
+				8D1C73C22183ED6C00DA5A14 /* AnniversaryVC.swift */,
+				8D11B3BB2194431100C60371 /* AnniversaryCell.swift */,
+				8D11B3C22195C5CC00C60371 /* AnniversaryDetail.storyboard */,
+				8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */,
+				8D910B4C21E19F5C00D072EA /* AnniversaryEdit.storyboard */,
+				8D910B4E21E1C55500D072EA /* AnniversaryEditVC.swift */,
+				8DD486F121E254E70072983A /* AnniversaryEditTableVC.swift */,
+				8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */,
+				8D4CBB1921C002C3009BA7C6 /* GiftVC.swift */,
+				8D4CBB1D21C159C5009BA7C6 /* GiftRecord.storyboard */,
+				8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */,
+				8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */,
+				8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */,
+				8DD474B521CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift */,
+				8DC43FDB21D3C6FF00B911F2 /* GiftRecordSelectAnniversary.storyboard */,
+				8DC43FDD21D3C78F00B911F2 /* GiftRecordSelectAnniversaryVC.swift */,
+				8DC43FDF21D3CC2900B911F2 /* GiftRecordSelectProtocol.swift */,
+				8DA747E821A7C26A007E7F5B /* Setting.storyboard */,
+				8D56B2A121A7DAE300B90BED /* SettingVC.swift */,
+				8D8559F721B80AF00033C7AA /* UserAccount.storyboard */,
+				8D8559F921B80B270033C7AA /* UserAccountVC.swift */,
+				8D8559FD21B8A34F0033C7AA /* UpdateEmail.storyboard */,
+				8D8559FB21B8A3380033C7AA /* UpdateEmailVC.swift */,
+				8D00EB1221BB945C00A3A5AE /* UpdatePassword.storyboard */,
+				8D00EB1421BB960C00A3A5AE /* UpdatePasswordVC.swift */,
+				8DB8105021A915850007BBC5 /* HiddenList.storyboard */,
+				8DB8105221A915B20007BBC5 /* HiddenListVC.swift */,
+			);
+			name = Views;
+			path = "Memoria-iOS/Classes/Views";
+			sourceTree = SOURCE_ROOT;
+		};
+		8D17325322334C12005CD22C /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
 				8DAE856221A2F1B90049063D /* InspectableLabel.swift */,
@@ -277,135 +312,42 @@
 				8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */,
 				8D11B3B32193EE4F00C60371 /* IconImageView.swift */,
 			);
-			path = CustomUI;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
-		8D1C73C42183ED7B00DA5A14 /* Anniversary */ = {
+		8D17325422334C12005CD22C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8D910B5121E20D1300D072EA /* AnniversaryData */,
-				8D1C73C52183EE0D00DA5A14 /* Anniversary.storyboard */,
-				8D1C73C22183ED6C00DA5A14 /* AnniversaryVC.swift */,
-				8D11B3BB2194431100C60371 /* AnniversaryCell.swift */,
-				8D910B5021E20CC300D072EA /* AnniversaryDetail */,
-				8D910B4B21E19F1000D072EA /* AnniversaryEdit */,
 				8D42F604222AC4BE00F01A77 /* AnniversaryUtil.swift */,
-			);
-			path = Anniversary;
-			sourceTree = "<group>";
-		};
-		8D4CBB1621BFFFD2009BA7C6 /* Gift */ = {
-			isa = PBXGroup;
-			children = (
-				8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */,
-				8D4CBB1921C002C3009BA7C6 /* GiftVC.swift */,
-				8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */,
-				8DC43FE321D9F53600B911F2 /* GiftDataModel.swift */,
-				8D4CBB1F21C159CB009BA7C6 /* GiftRecord */,
-			);
-			path = Gift;
-			sourceTree = "<group>";
-		};
-		8D4CBB1F21C159CB009BA7C6 /* GiftRecord */ = {
-			isa = PBXGroup;
-			children = (
-				8D4CBB1D21C159C5009BA7C6 /* GiftRecord.storyboard */,
-				8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */,
-				8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */,
-				8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */,
-				8DD474B521CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift */,
-				8DC43FDB21D3C6FF00B911F2 /* GiftRecordSelectAnniversary.storyboard */,
-				8DC43FDD21D3C78F00B911F2 /* GiftRecordSelectAnniversaryVC.swift */,
-				8DC43FDF21D3CC2900B911F2 /* GiftRecordSelectProtocol.swift */,
-			);
-			path = GiftRecord;
-			sourceTree = "<group>";
-		};
-		8D77D17521B22AA100CF673A /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				8D77D17621B22AD400CF673A /* SignUp.storyboard */,
-				8D77D17821B22DC000CF673A /* SignUpVC.swift */,
-			);
-			path = SignUp;
-			sourceTree = "<group>";
-		};
-		8D77D17C21B28D6200CF673A /* SignIn */ = {
-			isa = PBXGroup;
-			children = (
-				8D77D17D21B28DA400CF673A /* SignIn.storyboard */,
-				8D77D17F21B2ABD100CF673A /* SignInVC.swift */,
-			);
-			path = SignIn;
-			sourceTree = "<group>";
-		};
-		8D77D18121B37A3200CF673A /* Passwordless */ = {
-			isa = PBXGroup;
-			children = (
-				8D77D18221B37ADE00CF673A /* Passwordless.storyboard */,
-				8D77D18421B37BED00CF673A /* PasswordlessVC.swift */,
-			);
-			path = Passwordless;
-			sourceTree = "<group>";
-		};
-		8D910B4B21E19F1000D072EA /* AnniversaryEdit */ = {
-			isa = PBXGroup;
-			children = (
-				8D910B4C21E19F5C00D072EA /* AnniversaryEdit.storyboard */,
-				8D910B4E21E1C55500D072EA /* AnniversaryEditVC.swift */,
-				8DD486F121E254E70072983A /* AnniversaryEditTableVC.swift */,
-			);
-			path = AnniversaryEdit;
-			sourceTree = "<group>";
-		};
-		8D910B5021E20CC300D072EA /* AnniversaryDetail */ = {
-			isa = PBXGroup;
-			children = (
-				8D11B3C22195C5CC00C60371 /* AnniversaryDetail.storyboard */,
-				8D11B3C42195CBF300C60371 /* AnniversaryDetailVC.swift */,
-			);
-			path = AnniversaryDetail;
-			sourceTree = "<group>";
-		};
-		8D910B5121E20D1300D072EA /* AnniversaryData */ = {
-			isa = PBXGroup;
-			children = (
 				8DC43FD921D061C900B911F2 /* AnniversaryDataModel.swift */,
 				8D0FB85521821B3B00BFCB79 /* AnniversaryDAO.swift */,
 				8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */,
+				8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */,
+				8DC43FE321D9F53600B911F2 /* GiftDataModel.swift */,
 			);
-			path = AnniversaryData;
-			sourceTree = "<group>";
+			name = Models;
+			path = "Memoria-iOS/Classes/Models";
+			sourceTree = SOURCE_ROOT;
 		};
-		8DA747E421A7C1C1007E7F5B /* TabBarController */ = {
+		8D17325522334C13005CD22C /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
-				8DA747E521A7C1F6007E7F5B /* TabBar.storyboard */,
-				8DA747EA21A7C728007E7F5B /* TabBarController.swift */,
 			);
-			path = TabBarController;
-			sourceTree = "<group>";
+			name = Presenters;
+			path = "Memoria-iOS/Classes/Presenters";
+			sourceTree = SOURCE_ROOT;
 		};
-		8DA747E721A7C244007E7F5B /* Setting */ = {
+		8D17325622334C5E005CD22C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8DA747E821A7C26A007E7F5B /* Setting.storyboard */,
-				8D56B2A121A7DAE300B90BED /* SettingVC.swift */,
-				8D00EB1121BB942C00A3A5AE /* UserAccountSettings */,
-				8DB8105021A915850007BBC5 /* HiddenList.storyboard */,
-				8DB8105221A915B20007BBC5 /* HiddenListVC.swift */,
+				8D0FB8452182002800BFCB79 /* Assets.xcassets */,
+				8D0FB84A2182002800BFCB79 /* Info.plist */,
+				8D11B3C121947EAF00C60371 /* InfoPlist.strings */,
+				8D11B3B921940BD100C60371 /* Localizable.strings */,
+				8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */,
 			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
-		8DAE855F21A2EC510049063D /* Welcome */ = {
-			isa = PBXGroup;
-			children = (
-				8DAE856021A2EC6C0049063D /* Welcome.storyboard */,
-				8DAE856421A2F6260049063D /* WelcomeContact.storyboard */,
-				8DAE856621A2FD520049063D /* WelcomContactVC.swift */,
-			);
-			path = Welcome;
+			name = Resources;
+			path = "New Group1";
 			sourceTree = "<group>";
 		};
 		BC6767E9807FAE23F80305EF /* Pods */ = {
@@ -669,6 +611,7 @@
 				8D11B3BA21940BF600C60371 /* ja */,
 			);
 			name = Localizable.strings;
+			path = ../Resources;
 			sourceTree = "<group>";
 		};
 		8D11B3C121947EAF00C60371 /* InfoPlist.strings */ = {
@@ -677,6 +620,7 @@
 				8D11B3C021947EAF00C60371 /* ja */,
 			);
 			name = InfoPlist.strings;
+			path = ../Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -807,7 +751,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3537BAHE48;
-				INFOPLIST_FILE = "Memoria-iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Memoria-iOS/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -826,7 +770,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3537BAHE48;
-				INFOPLIST_FILE = "Memoria-iOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Memoria-iOS/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
