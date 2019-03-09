@@ -171,7 +171,7 @@ class GiftVC: UITableViewController {
         }
         
         let icon = cell.viewWithTag(5) as! UIImageView
-        icon.image = #imageLiteral(resourceName: "PresentBox")
+        icon.image = #imageLiteral(resourceName: "giftBox")
 
         return cell
     }

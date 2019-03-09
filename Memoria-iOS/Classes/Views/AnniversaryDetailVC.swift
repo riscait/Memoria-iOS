@@ -82,13 +82,13 @@ final class AnniversaryDetailVC: UIViewController {
             
             switch self.category! {
             case .anniversary:
-                self.searchPresent(for: anniversary["title"] as! String)
+                self.searchGift(with: anniversary["title"] as! String)
                 
             case .birthday:
                 let fullName = String(format: "fullName".localized,
                                       arguments: [anniversary["familyName"] as! String,
                                                   anniversary["givenName"] as! String])
-                self.searchPresent(for: fullName)
+                self.searchGift(with: fullName)
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -125,8 +125,8 @@ final class AnniversaryDetailVC: UIViewController {
     
     // MARK: - Misc method
     
-    // 該当するプレゼントを検索する
-    func searchPresent(for searchKey: String) {
+    // 該当するギフトを検索する
+    func searchGift(with searchKey: String) {
         
         guard let category = category else { return }
         
