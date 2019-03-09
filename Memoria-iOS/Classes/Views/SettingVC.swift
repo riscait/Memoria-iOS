@@ -51,7 +51,7 @@ class SettingVC: UITableViewController {
                                        message: "deleteContactBirthdayMessage".localized,
                                        destructiveTitle: "delete".localized,
                                        destructiveAction: {
-                                        AnniversaryDAO.deleteQueryAnniversary(whereField: "isFromContact", equalTo: true, on: self)
+                                        AnnivDAO.deleteByQuery(with: "isFromContact", isEqualTo: true, on: self)
         })
     }
     

@@ -1,5 +1,5 @@
 //
-//  AnniversaryDataModel.swift
+//  AnnivModel.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/12/24.
@@ -10,14 +10,14 @@ import Foundation
 import Firebase
 
 // MARK: - Enum
-enum AnniversaryType: Int, CustomStringConvertible {
-    case anniversary
+enum AnnivType: Int, CustomStringConvertible {
+    case anniv
     case birthday
     
     init(category: String) {
         switch category{
         case "anniversary":
-            self = .anniversary
+            self = .anniv
             
         case "birthday":
              self = .birthday
@@ -30,16 +30,16 @@ enum AnniversaryType: Int, CustomStringConvertible {
     
     var description: String {
         switch self {
-        case .anniversary: return "anniversary"
+        case .anniv: return "anniversary"
         case .birthday: return "birthday"
         }
     }
 }
 
 /// 記念日データのモデル
-struct AnniversaryDataModel {
+struct AnnivModel {
     let id: String
-    let category: AnniversaryType
+    let category: AnnivType
     let title: String?
     let familyName: String?
     let givenName: String?
@@ -72,14 +72,14 @@ struct AnniversaryDataModel {
     }
 }
 
-extension AnniversaryDataModel {
+extension AnnivModel {
     
     // 辞書型データからデータモデルを作る
     init?(dictionary: [String: Any]) {
         guard let category = dictionary["category"] as? String else { return nil }
         
         self.id = dictionary["id"] as! String
-        self.category = AnniversaryType(category: category)
+        self.category = AnnivType(category: category)
         self.title = dictionary["title"] as? String
         self.familyName = dictionary["familyName"] as? String
         self.givenName = dictionary["givenName"] as? String

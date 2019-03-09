@@ -27,7 +27,7 @@ class GiftRecordTableVC: UITableViewController {
     
     enum SegueVC: String {
         case selectPersonVC = "GiftRecordSelectPersonVC"
-        case selectAnniversaryVC = "GiftRecordSelectAnniversaryVC"
+        case selectAnnivVC = "GiftRecordSelectAnnivVC"
     }
     
     
@@ -35,8 +35,8 @@ class GiftRecordTableVC: UITableViewController {
     
     @IBOutlet weak var personNameField: UITextField!
     @IBOutlet weak var personSelectIcon: UIImageView!
-    @IBOutlet weak var anniversarySelectIcon: UIImageView!
-    @IBOutlet weak var anniversaryNameField: UITextField!
+    @IBOutlet weak var annivSelectIcon: UIImageView!
+    @IBOutlet weak var annivNameField: UITextField!
     @IBOutlet weak var dateCell: UITableViewCell!
     @IBOutlet weak var dateField: UITextField!
     @IBOutlet weak var goodsField: UITextField!
@@ -79,8 +79,8 @@ class GiftRecordTableVC: UITableViewController {
         switch segueVC {
         case .selectPersonVC:
             (segue.destination as! GiftRecordSelectPersonVC).delegate = self
-        case .selectAnniversaryVC:
-            (segue.destination as! GiftRecordSelectAnniversaryVC).delegate = self
+        case .selectAnnivVC:
+            (segue.destination as! GiftRecordSelectAnnivVC).delegate = self
         }
     }
     
@@ -112,7 +112,7 @@ class GiftRecordTableVC: UITableViewController {
     
     private func validate() {
         if !(personNameField.text?.isEmpty ?? true),
-            !(anniversaryNameField.text?.isEmpty ?? true),
+            !(annivNameField.text?.isEmpty ?? true),
             !(goodsField.text?.isEmpty ?? true) {
             print("ready!")
             // デリゲートメソッドを実行する
@@ -126,7 +126,7 @@ class GiftRecordTableVC: UITableViewController {
     
     private func setupDesign() {
         personSelectIcon.tintColor = UIColor.init(named: "mainColor")
-        anniversarySelectIcon.tintColor = UIColor.init(named: "mainColor")
+        annivSelectIcon.tintColor = UIColor.init(named: "mainColor")
     }
     
     private func setupDatePicker() {
@@ -152,7 +152,7 @@ class GiftRecordTableVC: UITableViewController {
         toolbar.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
         let next = UIBarButtonItem(title: "next".localized, style: .done, target: self, action: #selector(moveToDateFieldEdit))
         next.tintColor = UIColor.init(named: "mainColor")
-        let previous = UIBarButtonItem(title: "previous".localized, style: .plain, target: self, action: #selector(moveToAnniversaryFieldEdit))
+        let previous = UIBarButtonItem(title: "previous".localized, style: .plain, target: self, action: #selector(moveToAnnivFieldEdit))
         previous.tintColor = UIColor.init(named: "mainColor")
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
@@ -165,7 +165,7 @@ class GiftRecordTableVC: UITableViewController {
         editingField(dateField, moveToFieldWith: .next)
     }
     
-    @objc private func moveToAnniversaryFieldEdit() {
+    @objc private func moveToAnnivFieldEdit() {
         editingField(dateField, moveToFieldWith: .previous)
     }
 
@@ -265,11 +265,11 @@ extension GiftRecordTableVC: GiftRecordSelectPersonVCDelegate {
     }
 }
 
-// MARK: - GiftRecordSelectAnniversaryVC Delegate
-extension GiftRecordTableVC: GiftRecordSelectAnniversaryVCDelegate {
+// MARK: - GiftRecordSelectAnnivVC Delegate
+extension GiftRecordTableVC: GiftRecordSelectAnnivVCDelegate {
     /// 選択用画面経由で記念日名を更新した時
-    func updateAnniversaryName(with text: String?) {
-        anniversaryNameField.text = text
+    func updateAnnivName(with text: String?) {
+        annivNameField.text = text
         validate()
     }
 }

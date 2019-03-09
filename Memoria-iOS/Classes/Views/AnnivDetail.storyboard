@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Anniversary DetailVC-->
+        <!--Anniv DetailVC-->
         <scene sceneID="KsI-AI-oqW">
             <objects>
-                <viewController id="lYt-3l-Q4d" customClass="AnniversaryDetailVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lYt-3l-Q4d" customClass="AnnivDetailVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lL8-lY-4WJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="topCell" rowHeight="116" id="CvQ-rC-reh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="topCell" rowHeight="116" id="CvQ-rC-reh">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CvQ-rC-reh" id="xYM-qi-Tww">
@@ -76,7 +76,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="mainColor"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="anniversaryDetailCell" textLabel="Bmy-Lm-aDX" detailTextLabel="62T-vY-izV" style="IBUITableViewCellStyleValue1" id="MxC-3V-yqD">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="annivDetailCell" textLabel="Bmy-Lm-aDX" detailTextLabel="62T-vY-izV" style="IBUITableViewCellStyleValue1" id="MxC-3V-yqD">
                                         <rect key="frame" x="0.0" y="171.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MxC-3V-yqD" id="Hr5-CE-ew1">
@@ -100,7 +100,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="giftCell" id="udm-0n-ErA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="giftCell" id="udm-0n-ErA">
                                         <rect key="frame" x="0.0" y="215.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="udm-0n-ErA" id="bPB-ue-JRO">
@@ -199,10 +199,10 @@
             </objects>
             <point key="canvasLocation" x="-149.59999999999999" y="82.3088455772114"/>
         </scene>
-        <!--AnniversaryEdit-->
+        <!--AnnivEdit-->
         <scene sceneID="hGW-PJ-7s3">
             <objects>
-                <viewControllerPlaceholder storyboardName="AnniversaryEdit" id="C5v-MH-sGv" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AnnivEdit" id="C5v-MH-sGv" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0MY-Vl-8av" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="386" y="-63"/>

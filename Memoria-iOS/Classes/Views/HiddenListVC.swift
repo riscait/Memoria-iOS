@@ -15,10 +15,12 @@ class HiddenListVC: UITableViewController {
     @IBOutlet var hiddenTableView: UITableView!
     
     var selectedRow: Int!
-    /// 正直まだよく理解していないリスナー登録？
+    /// リスナー登録
     var listenerRegistration: ListenerRegistration?
-
-    var anniversarys: [[String: Any]]?
+    
+    var annivs: [[String: Any]]?
+    
+    
     // MARK: - ライフサイクル
     
     override func viewDidLoad() {
@@ -31,14 +33,14 @@ class HiddenListVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         // anniversaryコレクションの変更を監視する
-        listenerRegistration = AnniversaryDAO.getQuery(whereField: "isHidden", equalTo: true)?
+        listenerRegistration = AnnivDAO.getQuery(whereField: "isHidden", equalTo: true)?
             .addSnapshotListener { documentSnapshot, error in
                 
                 guard let documentSnapshot = documentSnapshot else {
                     print("ドキュメント取得エラー: \(error!)")
                     return
                 }
-                self.anniversarys = [[String: Any]]()
+                self.annivs = [[String: Any]]()
                 print("documents are \(documentSnapshot.documents)")
                 // 記念日データが入ったドキュメントの数だけ繰り返す
                 for doc in documentSnapshot.documents {
@@ -46,11 +48,11 @@ class HiddenListVC: UITableViewController {
                     var data = doc.data()
                     print("data is... ", data)
                     // 記念日データをローカル配列に記憶
-                    self.anniversarys?.append(data)
+                    self.annivs?.append(data)
                     print("非表示の記念日: \(data["familyName"] ?? "") \(data["givenName"] ?? "")\(data["title"] ?? "")")
                 }
                 // 並び替えて返却する
-                //            self.anniversarys.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
+                //            self.annivs.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
                 
                 self.tableView.reloadData()
         }
@@ -72,8 +74,8 @@ class HiddenListVC: UITableViewController {
         guard let indexPath = hiddenTableView.indexPath(for: sender.superview!.superview as! UITableViewCell) else { return }
         print("\(indexPath)の編集ボタンが押されました")
         
-        let defaultActionSet = ["redisplay".localized: redisplayThisAnniversary]
-        let destructiveActionSet = ["delete".localized: deleteThisAnniversary]
+        let defaultActionSet = ["redisplay".localized: redisplayThisAnniv]
+        let destructiveActionSet = ["delete".localized: deleteThisAnniv]
         // 選択されたセルの行番号
         selectedRow = indexPath.row
         // ActionSheetを表示
@@ -83,14 +85,14 @@ class HiddenListVC: UITableViewController {
     }
     
     /// 選択したセルの記念日を削除する
-    func deleteThisAnniversary() {
-        let documentPath = anniversarys?[selectedRow]["id"] as! String
-        AnniversaryDAO.deleteAnniversary(documentPath: documentPath)
+    func deleteThisAnniv() {
+        let documentPath = annivs?[selectedRow]["id"] as! String
+        AnnivDAO.delete(with: documentPath)
     }
     /// 選択したセルの記念日を再表示する
-    func redisplayThisAnniversary() {
-        let documentPath = anniversarys?[selectedRow]["id"] as! String
-        AnniversaryDAO.update(anniversaryId: documentPath, field: "isHidden", content: false)
+    func redisplayThisAnniv() {
+        let documentPath = annivs?[selectedRow]["id"] as! String
+        AnnivDAO.update(with: documentPath, field: "isHidden", content: false)
     }
 
     
@@ -101,7 +103,7 @@ class HiddenListVC: UITableViewController {
 
     /// 行数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return anniversarys?.count ?? 0
+        return annivs?.count ?? 0
     }
 
     /// セルの内容
@@ -111,13 +113,13 @@ class HiddenListVC: UITableViewController {
         let iconImageView = cell.viewWithTag(1) as! UIImageView
         let titleLabel = cell.viewWithTag(2) as! UILabel
 
-        guard let anniversary = anniversarys?[indexPath.row],
+        guard let anniversary = annivs?[indexPath.row],
             let category = anniversary["category"] as? String else { return cell }
         
-        let type = AnniversaryType(category: category)
+        let type = AnnivType(category: category)
         
         switch type {
-        case .anniversary:
+        case .anniv:
             titleLabel.text = anniversary["title"] as? String
 
         case .birthday:

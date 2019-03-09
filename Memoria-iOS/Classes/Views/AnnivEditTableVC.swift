@@ -1,5 +1,5 @@
 //
-//  AnniversaryEditTableVC.swift
+//  AnnivEditTableVC.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2019/01/07.
@@ -10,12 +10,12 @@ import UIKit
 import Firebase
 
 /// すべてのフィールドにテキストが入力されて登録ボタンを押せることを知らせる
-protocol AnniversaryEditTableVCDelegate: AnyObject {
+protocol AnnivEditTableVCDelegate: AnyObject {
     func needValidation(with enabled: Bool)
 }
 
 /// Anniversaryの情報を入力するためのテーブルVC
-class AnniversaryEditTableVC: UITableViewController {
+class AnnivEditTableVC: UITableViewController {
 
     // MARK: - Properties
 
@@ -27,7 +27,7 @@ class AnniversaryEditTableVC: UITableViewController {
     var timestamp: Timestamp?
     
     // 登録ボタンを押せることを知らせるプロトコルのデリゲートを宣言
-    weak var anniversaryEditTableVCDelegate: AnniversaryEditTableVCDelegate?
+    weak var annivEditTableVCDelegate: AnnivEditTableVCDelegate?
     
     
     // MARK: - Life cycle
@@ -47,7 +47,7 @@ class AnniversaryEditTableVC: UITableViewController {
 
     @IBAction private func toggleAnnualy(_ sender: UISwitch) {
         // 繰り返すか否かのスイッチ押下されたら、検証を求める
-        anniversaryEditTableVCDelegate?.needValidation(with: true)
+        annivEditTableVCDelegate?.needValidation(with: true)
     }
     
     // MARK: - Private Method
@@ -66,7 +66,7 @@ class AnniversaryEditTableVC: UITableViewController {
         dateField.text = DateTimeFormat.getYMDString(date: datePicker.date)
         // 登録時の日付参照用変数に日付情報を代入
         timestamp = Timestamp(date: datePicker.date)
-        anniversaryEditTableVCDelegate?.needValidation(with: true)
+        annivEditTableVCDelegate?.needValidation(with: true)
     }
     
     
@@ -113,13 +113,13 @@ class AnniversaryEditTableVC: UITableViewController {
 }
 
 // MARK: - Text field delegate
-extension AnniversaryEditTableVC: UITextFieldDelegate {
+extension AnnivEditTableVC: UITextFieldDelegate {
     /// クリアボタンが押されたら今日の日付を設定する
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         let today = Date()
         datePicker.date = today
         timestamp = Timestamp(date: today)
-        anniversaryEditTableVCDelegate?.needValidation(with: true)
+        annivEditTableVCDelegate?.needValidation(with: true)
         return true
     }
 }

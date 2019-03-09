@@ -13,7 +13,7 @@
         <!--Anniversary-->
         <scene sceneID="F59-UR-Zbt">
             <objects>
-                <collectionViewController id="sES-Td-IIs" customClass="AnniversaryVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="sES-Td-IIs" customClass="AnnivVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="GR3-AA-OB8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,7 +47,7 @@
                             </constraints>
                         </view>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="anniversaryCell" id="be1-Rq-g1l" customClass="AnniversaryCell" customModule="Memoria_iOS" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="anniversaryCell" id="be1-Rq-g1l" customClass="AnnivCell" customModule="Memoria_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="161" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -71,7 +71,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="RemainingDays" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="60m-3V-zWw" customClass="TagLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                                            <rect key="frame" x="34.5" y="13.5" width="114.5" height="19.5"/>
+                                                            <rect key="frame" x="37.5" y="13.5" width="111.5" height="19.5"/>
                                                             <color key="backgroundColor" red="0.91928410530090332" green="0.58592182397842407" blue="0.26450419425964355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -117,9 +117,9 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <outlet property="anniversaryDateLabel" destination="opE-H9-apJ" id="vRC-wp-Hda"/>
-                                    <outlet property="anniversaryIconImage" destination="7lE-sw-m9w" id="6ZO-GZ-S1i"/>
-                                    <outlet property="anniversaryNameLabel" destination="HNi-0C-mqs" id="shl-Hn-Tqs"/>
+                                    <outlet property="annivDateLabel" destination="opE-H9-apJ" id="vRC-wp-Hda"/>
+                                    <outlet property="annivIconImage" destination="7lE-sw-m9w" id="6ZO-GZ-S1i"/>
+                                    <outlet property="annivNameLabel" destination="HNi-0C-mqs" id="shl-Hn-Tqs"/>
                                     <outlet property="remainingDaysLabel" destination="60m-3V-zWw" id="aWa-eL-zJx"/>
                                     <segue destination="7kk-Fl-mow" kind="show" identifier="toDetailSegue" id="b46-oi-PmK"/>
                                 </connections>
@@ -173,18 +173,18 @@
             </objects>
             <point key="canvasLocation" x="76" y="80"/>
         </scene>
-        <!--AnniversaryDetail-->
+        <!--AnnivDetail-->
         <scene sceneID="LQA-2e-eJr">
             <objects>
-                <viewControllerPlaceholder storyboardName="AnniversaryDetail" id="7kk-Fl-mow" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AnnivDetail" id="7kk-Fl-mow" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40w-7g-lFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1517" y="160"/>
         </scene>
-        <!--AnniversaryEdit-->
+        <!--AnnivEdit-->
         <scene sceneID="e3y-sp-VVx">
             <objects>
-                <viewControllerPlaceholder storyboardName="AnniversaryEdit" id="Z4Z-aK-Pdu" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AnnivEdit" id="Z4Z-aK-Pdu" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="85K-y8-ll0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1359" y="-135"/>

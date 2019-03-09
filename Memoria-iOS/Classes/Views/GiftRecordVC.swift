@@ -61,7 +61,7 @@ class GiftRecordVC: UIViewController {
         let gift = GiftDataModel(id: uuid,
                                  isReceived: isReceived,
                                  personName: tableVC.personNameField.text!,
-                                 anniversaryName: tableVC.anniversaryNameField.text!,
+                                 annivName: tableVC.annivNameField.text!,
                                  date: isDateTBD ? nil : tableVC.timestamp ?? Timestamp(),
                                  goods: tableVC.goodsField.text!,
                                  memo: memoView.text,
@@ -101,7 +101,7 @@ class GiftRecordVC: UIViewController {
 
             self.gotOrReceived.selectedSegmentIndex = (gift["isReceived"] as! Bool) ? 0 : 1
             self.tableVC.personNameField.text = gift["personName"] as? String
-            self.tableVC.anniversaryNameField.text = gift["anniversaryName"] as? String
+            self.tableVC.annivNameField.text = gift["anniversaryName"] as? String
             if let timestamp = (gift["date"] as? Timestamp) {
                 self.tableVC.timestamp = timestamp
                 self.tableVC.dateField.text = DateTimeFormat.getYMDString(date: timestamp.dateValue())

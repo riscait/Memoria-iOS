@@ -1,5 +1,5 @@
 //
-//  AnniversaryEditVC.swift
+//  AnnivEditVC.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2019/01/06.
@@ -9,26 +9,26 @@
 import UIKit
 import Firebase
 
-class AnniversaryEditVC: UIViewController {
+class AnnivEditVC: UIViewController {
 
     // MARK: - Property
     
     @IBOutlet weak var recordButton: UIBarButtonItem!
-    @IBOutlet weak var anniversaryTypeChoice: InspectableSegmentedControl!
-    @IBOutlet weak var anniversaryTypeLabel: UILabel!
-    @IBOutlet weak var anniversaryTitleField: InspectableTextField!
+    @IBOutlet weak var annivTypeSegment: InspectableSegmentedControl!
+    @IBOutlet weak var annivTypeLabel: UILabel!
+    @IBOutlet weak var annivTitleField: InspectableTextField!
     @IBOutlet weak var leftNameField: InspectableTextField!
     @IBOutlet weak var rightNameField: InspectableTextField!
     @IBOutlet weak var memoView: InspectableTextView!
-    @IBOutlet weak var hideAnniversaryButton: UIButton!
+    @IBOutlet weak var annivHideButton: UIButton!
     
-    var anniversaryType: AnniversaryType?
+    var annivType: AnnivType?
     
     /// コンテナビューのテーブルVC
-    var tableVC: AnniversaryEditTableVC!
+    var tableVC: AnnivEditTableVC!
 
     // 編集の場合は記念日情報を前の画面から受け取る
-    var anniversaryData: AnniversaryDataModel?
+    var annivModel: AnnivModel?
     
     
     // MARK: - Life cycle
@@ -41,9 +41,9 @@ class AnniversaryEditVC: UIViewController {
         memoView.delegate = self
         
         discoverChildVC()
-        configureUI(with: anniversaryData?.category ?? .anniversary)
+        configureUI(with: annivModel?.category ?? .anniv)
         // 新規登録ではなく、編集なら登録済みデータを反映する
-        configureField(with: anniversaryData)
+        configureField(with: annivModel)
     }
     
     
@@ -51,7 +51,7 @@ class AnniversaryEditVC: UIViewController {
     
     /// 閉じるボタンが押された時
     @IBAction func didTapDismissButton(_ sender: UIBarButtonItem) {
-        let message = anniversaryData == nil ? "discardMessageForRecord".localized : "discardMessageForEdit".localized
+        let message = annivModel == nil ? "discardMessageForRecord".localized : "discardMessageForEdit".localized
         
         DialogBox.showDestructiveAlert(on: self, message: message, destructiveTitle: "close".localized) {
             self.dismiss(animated: true, completion: nil)
@@ -60,18 +60,18 @@ class AnniversaryEditVC: UIViewController {
     /// 記念日登録ボタンが押された時
     @IBAction func didTapRecordlButton(_ sender: UIBarButtonItem) {
         // 新規登録なら新しくIDを生成
-        let uuid = anniversaryData?.id ?? UUID().uuidString
+        let uuid = annivModel?.id ?? UUID().uuidString
         // 記念日のタイプはセグメントコントロールの選択から判断
-        anniversaryType = AnniversaryType(rawValue: anniversaryTypeChoice.selectedSegmentIndex)
+        annivType = AnnivType(rawValue: annivTypeSegment.selectedSegmentIndex)
         // 毎年繰り返す記念日か否かはスイッチで
         let isAnnualy = tableVC.annualySwitch.isOn
         // 連絡先からインポートしたデータであるか否か。新規登録ならfalse
-        let isFromContact = anniversaryData?.isFromContact ?? false
+        let isFromContact = annivModel?.isFromContact ?? false
         
         // 記念日データをセット
-        let anniversary = AnniversaryDataModel(id: uuid,
-                                               category: anniversaryType!,
-                                               title: anniversaryTitleField.text,
+        let anniversary = AnnivModel(id: uuid,
+                                               category: annivType!,
+                                               title: annivTitleField.text,
                                                familyName: leftNameField.text,
                                                givenName: rightNameField.text,
                                                date: tableVC.timestamp ?? Timestamp(),
@@ -82,17 +82,17 @@ class AnniversaryEditVC: UIViewController {
                                                memo: memoView.text.trimmingCharacters(in: .whitespacesAndNewlines))
         print(anniversary)
         // DBに書き込んで画面を閉じる
-        AnniversaryDAO.set(documentPath: uuid, data: anniversary)
+        AnnivDAO.set(documentPath: uuid, data: anniversary)
         dismiss(animated: true, completion: nil)
     }
     
     /// 記念日の種類を切り替えるボタンが押された時
-    @IBAction func toggleAnniversaryType(_ sender: InspectableSegmentedControl) {
-        anniversaryType = AnniversaryType(rawValue: sender.selectedSegmentIndex)
-        configureUI(with: anniversaryType!)
+    @IBAction func toggleAnnivTypeTapped(_ sender: InspectableSegmentedControl) {
+        annivType = AnnivType(rawValue: sender.selectedSegmentIndex)
+        configureUI(with: annivType!)
         
         // 名称入力欄をリセットする
-        anniversaryTitleField.text = nil
+        annivTitleField.text = nil
         leftNameField.text = nil
         rightNameField.text = nil
         // 登録ボタンを無効化する
@@ -107,8 +107,8 @@ class AnniversaryEditVC: UIViewController {
                             title: "hideThisAnniversaryTitle".localized,
                             message: "hideThisAnniversaryMessage".localized,
                             defaultAction: {
-                                guard let anniversaryData = self.anniversaryData else { return }
-                                AnniversaryDAO.update(anniversaryId: anniversaryData.id, field: "isHidden", content: true)
+                                guard let anniversaryData = self.annivModel else { return }
+                                AnnivDAO.update(with: anniversaryData.id, field: "isHidden", content: true)
                                 // 画面を閉じる
                                 self.dismiss(animated: true, completion: nil)
         })
@@ -133,11 +133,11 @@ class AnniversaryEditVC: UIViewController {
     private func discoverChildVC() {
         // ContainerViewを特定
         for child in children {
-            if let child = child as? AnniversaryEditTableVC {
+            if let child = child as? AnnivEditTableVC {
                 tableVC = child
                 // GiftRecordTableVCのデリゲートをこのクラスに移譲する
-                tableVC.anniversaryEditTableVCDelegate = self
-                if let date = anniversaryData?.date.dateValue() {
+                tableVC.annivEditTableVCDelegate = self
+                if let date = annivModel?.date.dateValue() {
                     tableVC.datePicker.setDate(date, animated: true)
                 }
                 break
@@ -147,36 +147,36 @@ class AnniversaryEditVC: UIViewController {
 
     /// 記念日の種類をもとに画面を構成する
     ///
-    /// - Parameter anniversaryType: 記念日の種類の列挙型
-    private func configureUI(with anniversaryType: AnniversaryType) {
-        switch anniversaryType {
-        case .anniversary:
-            anniversaryTypeChoice.selectedSegmentIndex = 0
-            anniversaryTypeLabel.text = "anniversaryTitleLabel".localized
-            anniversaryTitleField.isHidden = false
+    /// - Parameter annivType: 記念日の種類の列挙型
+    private func configureUI(with annivType: AnnivType) {
+        switch annivType {
+        case .anniv:
+            annivTypeSegment.selectedSegmentIndex = 0
+            annivTypeLabel.text = "anniversaryTitleLabel".localized
+            annivTitleField.isHidden = false
             leftNameField.isHidden = true
             rightNameField.isHidden = true
             
         case .birthday:
-            anniversaryTypeChoice.selectedSegmentIndex = 1
-            anniversaryTypeLabel.text = "birthdayNameLabel".localized
-            anniversaryTitleField.isHidden = true
+            annivTypeSegment.selectedSegmentIndex = 1
+            annivTypeLabel.text = "birthdayNameLabel".localized
+            annivTitleField.isHidden = true
             leftNameField.isHidden = false
             rightNameField.isHidden = false
         }
     }
     
     /// 編集なら、前の画面から受け取った記念日を反映する
-    private func configureField(with anniversary: AnniversaryDataModel?) {
+    private func configureField(with annivModel: AnnivModel?) {
         
-        if let anniversary = anniversary {
+        if let anniversary = annivModel {
             // 編集時の処理
             // 記念日タイプを選択不可にする
-            anniversaryTypeChoice.isEnabled = false
+            annivTypeSegment.isEnabled = false
             // フィールドに値を表示する
             switch anniversary.category {
-            case .anniversary:
-                anniversaryTitleField.text = anniversary.title
+            case .anniv:
+                annivTitleField.text = anniversary.title
                 
             case .birthday:
                 leftNameField.text = anniversary.familyName
@@ -192,14 +192,14 @@ class AnniversaryEditVC: UIViewController {
         } else {
             // 新規登録時の処理
             // 非表示ボタンを表示しない
-            hideAnniversaryButton.isHidden = true
+            annivHideButton.isHidden = true
         }
     }
     
     private func validate() {
-        switch AnniversaryType(rawValue: anniversaryTypeChoice.selectedSegmentIndex)! {
-        case .anniversary: // 記念日名が入力されていればOK
-            recordButton.isEnabled = !(anniversaryTitleField.text?.isEmpty ?? true)
+        switch AnnivType(rawValue: annivTypeSegment.selectedSegmentIndex)! {
+        case .anniv: // 記念日名が入力されていればOK
+            recordButton.isEnabled = !(annivTitleField.text?.isEmpty ?? true)
             
         case .birthday: // 姓名が入力されていればOK
             recordButton.isEnabled = !(leftNameField.text?.isEmpty ?? true)
@@ -210,7 +210,7 @@ class AnniversaryEditVC: UIViewController {
 
 
 // MARK: - Text field delegate
-extension AnniversaryEditVC: UITextFieldDelegate {
+extension AnnivEditVC: UITextFieldDelegate {
     
     /// Did tap CLEAR button
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
@@ -235,7 +235,7 @@ extension AnniversaryEditVC: UITextFieldDelegate {
 
 
 // MARK: - Text view delegate
-extension AnniversaryEditVC: UITextViewDelegate{
+extension AnnivEditVC: UITextViewDelegate{
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         print(#function, textView)
@@ -262,7 +262,7 @@ extension AnniversaryEditVC: UITextViewDelegate{
 
 // MARK: - AnniversaryEditTableVC Delegate
 // TableVCから通知を受けて、登録ボタンの有効・非有効化を検証するメソッドを呼ぶ
-extension AnniversaryEditVC: AnniversaryEditTableVCDelegate {
+extension AnnivEditVC: AnnivEditTableVCDelegate {
     func needValidation(with enabled: Bool) {
         // v2.0.1現在、必ずtrueで呼ばれる
         if enabled { validate() }

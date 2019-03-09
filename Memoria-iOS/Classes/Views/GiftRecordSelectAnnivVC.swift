@@ -1,5 +1,5 @@
 //
-//  GiftRecordSelectAnniversaryVC.swift
+//  GiftRecordSelectAnnivVC.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/12/26.
@@ -9,20 +9,20 @@
 import UIKit
 import Firebase
 
-protocol GiftRecordSelectAnniversaryVCDelegate: AnyObject {
+protocol GiftRecordSelectAnnivVCDelegate: AnyObject {
     /// TextFieldの文字列を書き換える
-    func updateAnniversaryName(with text: String?)
+    func updateAnnivName(with text: String?)
 }
 
 /// gift対象記念日を選択するための詳細画面（テーブルセルをタップして遷移してくる）
-class GiftRecordSelectAnniversaryVC: UIViewController {
+class GiftRecordSelectAnnivVC: UIViewController {
 
     // Conform to GiftRecordSelectProtocol
     var displayData = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     // TextFieldの文字列を書き換えるためのDelegateを宣言
-    weak var delegate: GiftRecordSelectAnniversaryVCDelegate?
+    weak var delegate: GiftRecordSelectAnnivVCDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +32,11 @@ class GiftRecordSelectAnniversaryVC: UIViewController {
 }
 
 // MARK: - Confirm GiftRecordSelectProtocol
-extension GiftRecordSelectAnniversaryVC: GiftRecordSelectProtocol {
+extension GiftRecordSelectAnnivVC: GiftRecordSelectProtocol {
     
     func searchDB() {
         // 非表示ではない記念日を検索する
-        AnniversaryDAO.getDocumentsAtDualFilter(first: "isHidden", equalTo: false, secondWhereField: "category", secondEqualTo: "anniversary") { (queryDoc) in
+        AnnivDAO.getDocumentsAtDualFilter(first: "isHidden", equalTo: false, secondWhereField: "category", secondEqualTo: "anniversary") { (queryDoc) in
             for doc in queryDoc {
                 if let title = doc.data()["title"] as? String {
                     self.displayData.append(title)
@@ -53,7 +53,7 @@ extension GiftRecordSelectAnniversaryVC: GiftRecordSelectProtocol {
 }
 
 // MARK: - Table view data source
-extension GiftRecordSelectAnniversaryVC: UITableViewDataSource {
+extension GiftRecordSelectAnnivVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return displayData.count
@@ -68,12 +68,12 @@ extension GiftRecordSelectAnniversaryVC: UITableViewDataSource {
 }
 
 // MARK: - Table view delegate
-extension GiftRecordSelectAnniversaryVC: UITableViewDelegate {
+extension GiftRecordSelectAnnivVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let text = tableView.cellForRow(at: indexPath)?.textLabel?.text
         print(#function, text ?? "nil")
-        delegate?.updateAnniversaryName(with: text)
+        delegate?.updateAnnivName(with: text)
         
         popVC()
     }
