@@ -34,7 +34,7 @@ final class AnnivDetailVC: UIViewController {
     var listenerRegistration: ListenerRegistration?
 
     // 次の画面に渡す用の記念日データを持っておく
-    var annivModel: AnnivModel?
+    var annivModel: Anniv?
 
     
     // MARK: - ライフサイクル
@@ -68,7 +68,7 @@ final class AnnivDetailVC: UIViewController {
                 return
             }
             // 編集画面に渡す用のデータをセット
-            self.annivModel = AnnivModel(dictionary: anniversary)
+            self.annivModel = Anniv(dictionary: anniversary)
             // 記念日データから日付を取り出す
             if let date = (anniversary["date"] as? Timestamp)?.dateValue() {
                 let remainingDays = DateDifferenceCalculator.getDifference(from: date, isAnnualy: anniversary["isAnnualy"] as? Bool ?? true)

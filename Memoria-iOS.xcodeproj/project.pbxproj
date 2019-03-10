@@ -26,10 +26,12 @@
 		8D11B3C32195C5CD00C60371 /* AnnivDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D11B3C22195C5CC00C60371 /* AnnivDetail.storyboard */; };
 		8D11B3C52195CBF300C60371 /* AnnivDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11B3C42195CBF300C60371 /* AnnivDetailVC.swift */; };
 		8D11B3C7219719B800C60371 /* TagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11B3C6219719B800C60371 /* TagLabel.swift */; };
+		8D1732582234120E005CD22C /* AnnivPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1732572234120E005CD22C /* AnnivPresenter.swift */; };
 		8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */; };
-		8D1C73C32183ED6C00DA5A14 /* AnnivVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C73C22183ED6C00DA5A14 /* AnnivVC.swift */; };
-		8D1C73C62183EE0D00DA5A14 /* Anniv.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C73C52183EE0D00DA5A14 /* Anniv.storyboard */; };
+		8D1C73C32183ED6C00DA5A14 /* AnnivListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C73C22183ED6C00DA5A14 /* AnnivListVC.swift */; };
+		8D1C73C62183EE0D00DA5A14 /* AnnivList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C73C52183EE0D00DA5A14 /* AnnivList.storyboard */; };
 		8D2507B621A44E860015A206 /* AccentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2507B521A44E850015A206 /* AccentButton.swift */; };
+		8D2921ED223A96B40046917F /* AnnivListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921EC223A96B40046917F /* AnnivListModel.swift */; };
 		8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3E561421BAAA840090E46E /* AppInfo.swift */; };
 		8D42F605222AC4BE00F01A77 /* AnnivUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */; };
 		8D4CBB1821C0001D009BA7C6 /* Gift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */; };
@@ -72,7 +74,7 @@
 		8DBB365721C5CF67008282D0 /* GiftRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */; };
 		8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */; };
 		8DC43FD821CFE39A00B911F2 /* InspectableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */; };
-		8DC43FDA21D061C900B911F2 /* AnnivModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FD921D061C900B911F2 /* AnnivModel.swift */; };
+		8DC43FDA21D061C900B911F2 /* Anniv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FD921D061C900B911F2 /* Anniv.swift */; };
 		8DC43FDC21D3C6FF00B911F2 /* GiftRecordSelectAnniv.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC43FDB21D3C6FF00B911F2 /* GiftRecordSelectAnniv.storyboard */; };
 		8DC43FDE21D3C78F00B911F2 /* GiftRecordSelectAnnivVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FDD21D3C78F00B911F2 /* GiftRecordSelectAnnivVC.swift */; };
 		8DC43FE021D3CC2900B911F2 /* GiftRecordSelectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FDF21D3CC2900B911F2 /* GiftRecordSelectProtocol.swift */; };
@@ -111,10 +113,12 @@
 		8D11B3C22195C5CC00C60371 /* AnnivDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnivDetail.storyboard; sourceTree = "<group>"; };
 		8D11B3C42195CBF300C60371 /* AnnivDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivDetailVC.swift; sourceTree = "<group>"; };
 		8D11B3C6219719B800C60371 /* TagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
+		8D1732572234120E005CD22C /* AnnivPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivPresenter.swift; sourceTree = "<group>"; };
 		8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeFormat.swift; sourceTree = "<group>"; };
-		8D1C73C22183ED6C00DA5A14 /* AnnivVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivVC.swift; sourceTree = "<group>"; };
-		8D1C73C52183EE0D00DA5A14 /* Anniv.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Anniv.storyboard; path = "Memoria-iOS/Classes/Views/Anniv.storyboard"; sourceTree = SOURCE_ROOT; };
+		8D1C73C22183ED6C00DA5A14 /* AnnivListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivListVC.swift; sourceTree = "<group>"; };
+		8D1C73C52183EE0D00DA5A14 /* AnnivList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = AnnivList.storyboard; path = "Memoria-iOS/Classes/Views/AnnivList.storyboard"; sourceTree = SOURCE_ROOT; };
 		8D2507B521A44E850015A206 /* AccentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentButton.swift; sourceTree = "<group>"; };
+		8D2921EC223A96B40046917F /* AnnivListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivListModel.swift; sourceTree = "<group>"; };
 		8D3E561421BAAA840090E46E /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivUtil.swift; sourceTree = "<group>"; };
 		8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Gift.storyboard; sourceTree = "<group>"; };
@@ -157,7 +161,7 @@
 		8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordVC.swift; sourceTree = "<group>"; };
 		8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordTableVC.swift; sourceTree = "<group>"; };
 		8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTableViewCell.swift; sourceTree = "<group>"; };
-		8DC43FD921D061C900B911F2 /* AnnivModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivModel.swift; sourceTree = "<group>"; };
+		8DC43FD921D061C900B911F2 /* Anniv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anniv.swift; sourceTree = "<group>"; };
 		8DC43FDB21D3C6FF00B911F2 /* GiftRecordSelectAnniv.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftRecordSelectAnniv.storyboard; sourceTree = "<group>"; };
 		8DC43FDD21D3C78F00B911F2 /* GiftRecordSelectAnnivVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordSelectAnnivVC.swift; sourceTree = "<group>"; };
 		8DC43FDF21D3CC2900B911F2 /* GiftRecordSelectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordSelectProtocol.swift; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				8D17325122334C12005CD22C /* Commons */,
+				8D2921EB223A8B0B0046917F /* Entity */,
 				8D17325422334C12005CD22C /* Models */,
 				8D17325222334C12005CD22C /* Views */,
 				8D17325522334C13005CD22C /* Presenters */,
@@ -259,8 +264,8 @@
 				8DAE856621A2FD520049063D /* WelcomContactVC.swift */,
 				8DA747E521A7C1F6007E7F5B /* TabBar.storyboard */,
 				8DA747EA21A7C728007E7F5B /* TabBarController.swift */,
-				8D1C73C52183EE0D00DA5A14 /* Anniv.storyboard */,
-				8D1C73C22183ED6C00DA5A14 /* AnnivVC.swift */,
+				8D1C73C52183EE0D00DA5A14 /* AnnivList.storyboard */,
+				8D1C73C22183ED6C00DA5A14 /* AnnivListVC.swift */,
 				8D11B3BB2194431100C60371 /* AnnivCell.swift */,
 				8D11B3C22195C5CC00C60371 /* AnnivDetail.storyboard */,
 				8D11B3C42195CBF300C60371 /* AnnivDetailVC.swift */,
@@ -318,8 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */,
-				8DC43FD921D061C900B911F2 /* AnnivModel.swift */,
 				8D0FB85521821B3B00BFCB79 /* AnnivDAO.swift */,
+				8D2921EC223A96B40046917F /* AnnivListModel.swift */,
 				8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */,
 				8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */,
 				8DC43FE321D9F53600B911F2 /* GiftDataModel.swift */,
@@ -331,6 +336,7 @@
 		8D17325522334C13005CD22C /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				8D1732572234120E005CD22C /* AnnivPresenter.swift */,
 			);
 			name = Presenters;
 			path = "Memoria-iOS/Classes/Presenters";
@@ -346,6 +352,14 @@
 				8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		8D2921EB223A8B0B0046917F /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				8DC43FD921D061C900B911F2 /* Anniv.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		BC6767E9807FAE23F80305EF /* Pods */ = {
@@ -442,7 +456,7 @@
 				8D8559F821B80AF00033C7AA /* UserAccount.storyboard in Resources */,
 				8DAE856121A2EC6D0049063D /* Welcome.storyboard in Resources */,
 				8DA747E921A7C26A007E7F5B /* Setting.storyboard in Resources */,
-				8D1C73C62183EE0D00DA5A14 /* Anniv.storyboard in Resources */,
+				8D1C73C62183EE0D00DA5A14 /* AnnivList.storyboard in Resources */,
 				8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */,
 				8D4CBB1821C0001D009BA7C6 /* Gift.storyboard in Resources */,
 				8D11B3C32195C5CD00C60371 /* AnnivDetail.storyboard in Resources */,
@@ -544,6 +558,7 @@
 				8D4CBB2321C51F7E009BA7C6 /* InspectableTextView.swift in Sources */,
 				8D11B3BC2194431100C60371 /* AnnivCell.swift in Sources */,
 				8D4CBB2121C2A73A009BA7C6 /* InspectableNavItem.swift in Sources */,
+				8D1732582234120E005CD22C /* AnnivPresenter.swift in Sources */,
 				8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */,
 				8DB8105921AA97880007BBC5 /* InspectableSegmentedControl.swift in Sources */,
 				8DC43FE421D9F53600B911F2 /* GiftDataModel.swift in Sources */,
@@ -561,6 +576,7 @@
 				8D8559FC21B8A3380033C7AA /* UpdateEmailVC.swift in Sources */,
 				8D8559FA21B80B270033C7AA /* UserAccountVC.swift in Sources */,
 				8D910B4F21E1C55500D072EA /* AnnivEditVC.swift in Sources */,
+				8D2921ED223A96B40046917F /* AnnivListModel.swift in Sources */,
 				8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */,
 				8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */,
 				8DD474B621CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift in Sources */,
@@ -574,8 +590,8 @@
 				8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */,
 				8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */,
 				8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */,
-				8DC43FDA21D061C900B911F2 /* AnnivModel.swift in Sources */,
-				8D1C73C32183ED6C00DA5A14 /* AnnivVC.swift in Sources */,
+				8DC43FDA21D061C900B911F2 /* Anniv.swift in Sources */,
+				8D1C73C32183ED6C00DA5A14 /* AnnivListVC.swift in Sources */,
 				8D910B5521E239C000D072EA /* InspectableStackView.swift in Sources */,
 				8D11B3C7219719B800C60371 /* TagLabel.swift in Sources */,
 				8DD474B421C947CD00DD5919 /* String+.swift in Sources */,

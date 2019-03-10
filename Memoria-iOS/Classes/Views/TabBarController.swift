@@ -52,10 +52,6 @@ class TabBarController: UITabBarController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // Firebase認証リスナーを破棄
-        print("Firebase認証リスナー破棄")
         Auth.auth().removeStateDidChangeListener(handle!)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
     }
 }

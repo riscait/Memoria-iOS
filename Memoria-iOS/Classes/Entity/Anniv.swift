@@ -1,5 +1,5 @@
 //
-//  AnnivModel.swift
+//  Anniv.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/12/24.
@@ -9,7 +9,8 @@
 import Foundation
 import Firebase
 
-// MARK: - Enum
+// MARK: - 列挙型
+/// 記念日の種類
 enum AnnivType: Int, CustomStringConvertible {
     case anniv
     case birthday
@@ -36,8 +37,15 @@ enum AnnivType: Int, CustomStringConvertible {
     }
 }
 
+/// 記念日リスト画面のSection
+enum AnnivListSection: Int {
+    case notFinishedAnniv
+    case finishedAnniv
+}
+
+// MARK: - 構造体
 /// 記念日データのモデル
-struct AnnivModel {
+struct Anniv {
     let id: String
     let category: AnnivType
     let title: String?
@@ -46,11 +54,12 @@ struct AnnivModel {
     let date: Timestamp
     let iconImage: Data?
     let isHidden: Bool
-    // Added Ver.2.1.0
+    // Added V2.1.0
     let isAnnualy: Bool
     let isFromContact: Bool
     let memo: String
-    
+    // Added v2.2.0
+    var remainingDays: Int?
     
     /// FirestoreがSwiftのカスタムオブジェクトに非対応なので辞書型に変換する必要がある
     var toDictionary: [String: Any] {
@@ -72,9 +81,8 @@ struct AnnivModel {
     }
 }
 
-extension AnnivModel {
-    
-    // 辞書型データからデータモデルを作る
+extension Anniv {
+    // Firestoreのデータは辞書型なので、手動で「Anniv」に変換する
     init?(dictionary: [String: Any]) {
         guard let category = dictionary["category"] as? String else { return nil }
         
@@ -86,10 +94,11 @@ extension AnnivModel {
         self.date = dictionary["date"] as! Timestamp
         self.iconImage = dictionary["iconImage"] as? Data
         self.isHidden = dictionary["isHidden"] as! Bool
-        // 以下プロパティは、Ver.2.1.0 にて追加
+        // Added V2.1.0
         self.isAnnualy = dictionary["isAnnualy"] as! Bool
         self.isFromContact = dictionary["isFromContact"] as! Bool
         self.memo = dictionary["memo"] as! String
+        // Added V2.2.0
     }
 }
 

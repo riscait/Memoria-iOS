@@ -113,12 +113,12 @@
 // Anniversary画面
 "letsAddAnniversary" = "右上の＋ボタンから\n記念日を追加しましょう！\n\nまたは「設定」タブから連絡先の誕生日を取り込みましょう！";
 "fullName" = "%@ %@";
-"whoseBirthday" = "%@ %@さん\n誕生日";  // 姓 + 名さん
+"whoseBirthday" = "%@ %@さん\nの誕生日";  // 姓 + 名さん
 "remainingDays" = "あと%@日";
 "elapsedDays" = "%@日前";
-"remainingDaysToday" = "今日です！";
-"remainingDaysTomorrow" = "明日です！";
-"remainingDaysYesterday" = "昨日でした";
+"remainingDaysToday" = "Today!";
+"remainingDaysTomorrow" = "明日";
+"remainingDaysYesterday" = "昨日";
 // Anniversary詳細画面
 "giftHistory" = "ギフト履歴";
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
