@@ -1,40 +1,29 @@
-# これは何？
+# What's this?
 Memoria-iOSは、Memoria（メモリア）プロジェクトのiOSアプリリポジトリです。
 
-# Gitのフローは？
-GitHub Flowを使います。
-1. masterブランチはいつでもデプロイ可能状態
-2. 機能追加と不具合修正はmasterブランチから生やして作って(e.g. add-brack-thema)プルリクエスト！
+# Development requirement
+## Development environment
+1. Xcode 10.1  
+2. Swift 4.2.1
 
-# 開発の始め方
+## How to start development
 Memoria-iOSの開発の始め方を解説します。
 主に「ターミナル」を使ったコマンドを紹介しますが、その他GUIソフトを使う方はそちらを使ってください。
 
-## 意識すべきバージョン情報と調べ方
-1. Xcode 10.1  
-   [Xcodeのバージョン確認方法](http://pippi-pro.com/xcode-version-confirmation)
-
-2. Swift 4.2.1
-   ```
-   Swift --version
-   ```
-
-## Memoria for iOS をクローンしてライブラリをインストールする
-1.	クローンします。（お好きな方法で♪下記は一例）
-    ```
-    git clone git@github.com:Riscait/Memoria-iOS.git
-    ```
-2.	Podsファイルをリポジトリに含めているので各自での`pod install`は不要です。
-
-3.	Xcodeを立ち上げて「ビルド」しましょう！
-
-# 使用ライブラリ
-## CocoaPodsで管理
+## Using "Library"
+### CocoaPodsで管理
 1.  Firebase Core
+2.  FirebaseAuth（認証機能）
 2.  Firestore（データベース機能）
 
-## Carthageで管理
+### Carthageで管理
 1.  まだなし
 
-# 設計パターン
-MVP
+## Architecture(設計パターン)
+MVP(Passive View)に移行中
+
+## Using "GitHub Flow"
+1. masterブランチはいつでもデプロイ可能状態
+2. 機能追加と不具合修正はmasterブランチから生やして作って(e.g. add-brack-thema)プルリクエスト！
+
+Copyright 2019 村松 龍之介
