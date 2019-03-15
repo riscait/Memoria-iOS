@@ -27,6 +27,8 @@
 		8D11B3C52195CBF300C60371 /* AnnivDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11B3C42195CBF300C60371 /* AnnivDetailVC.swift */; };
 		8D11B3C7219719B800C60371 /* TagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D11B3C6219719B800C60371 /* TagLabel.swift */; };
 		8D1732582234120E005CD22C /* AnnivPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1732572234120E005CD22C /* AnnivPresenter.swift */; };
+		8D17325A22373354005CD22C /* Migration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D17325922373354005CD22C /* Migration.storyboard */; };
+		8D17325C22373382005CD22C /* MigrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D17325B22373382005CD22C /* MigrationVC.swift */; };
 		8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */; };
 		8D1C73C32183ED6C00DA5A14 /* AnnivListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1C73C22183ED6C00DA5A14 /* AnnivListVC.swift */; };
 		8D1C73C62183EE0D00DA5A14 /* AnnivList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1C73C52183EE0D00DA5A14 /* AnnivList.storyboard */; };
@@ -114,6 +116,8 @@
 		8D11B3C42195CBF300C60371 /* AnnivDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivDetailVC.swift; sourceTree = "<group>"; };
 		8D11B3C6219719B800C60371 /* TagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
 		8D1732572234120E005CD22C /* AnnivPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivPresenter.swift; sourceTree = "<group>"; };
+		8D17325922373354005CD22C /* Migration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Migration.storyboard; sourceTree = "<group>"; };
+		8D17325B22373382005CD22C /* MigrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MigrationVC.swift; sourceTree = "<group>"; };
 		8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeFormat.swift; sourceTree = "<group>"; };
 		8D1C73C22183ED6C00DA5A14 /* AnnivListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivListVC.swift; sourceTree = "<group>"; };
 		8D1C73C52183EE0D00DA5A14 /* AnnivList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = AnnivList.storyboard; path = "Memoria-iOS/Classes/Views/AnnivList.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -213,6 +217,8 @@
 			children = (
 				8D17324022334B8C005CD22C /* Classes */,
 				8D17325622334C5E005CD22C /* Resources */,
+				8D17325922373354005CD22C /* Migration.storyboard */,
+				8D17325B22373382005CD22C /* MigrationVC.swift */,
 			);
 			path = "Memoria-iOS";
 			sourceTree = "<group>";
@@ -455,6 +461,7 @@
 				8D11B3B721940BD100C60371 /* Localizable.strings in Resources */,
 				8D8559F821B80AF00033C7AA /* UserAccount.storyboard in Resources */,
 				8DAE856121A2EC6D0049063D /* Welcome.storyboard in Resources */,
+				8D17325A22373354005CD22C /* Migration.storyboard in Resources */,
 				8DA747E921A7C26A007E7F5B /* Setting.storyboard in Resources */,
 				8D1C73C62183EE0D00DA5A14 /* AnnivList.storyboard in Resources */,
 				8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */,
@@ -570,6 +577,7 @@
 				8DD486F421EAD68D0072983A /* Migration.swift in Sources */,
 				8D77D18521B37BED00CF673A /* PasswordlessVC.swift in Sources */,
 				8D4CBB1C21C1511F009BA7C6 /* GiftDAO.swift in Sources */,
+				8D17325C22373382005CD22C /* MigrationVC.swift in Sources */,
 				8D910B5321E2307400D072EA /* InspectableBarButtonItem.swift in Sources */,
 				8DAE856721A2FD520049063D /* WelcomContactVC.swift in Sources */,
 				8DC43FE021D3CC2900B911F2 /* GiftRecordSelectProtocol.swift in Sources */,
