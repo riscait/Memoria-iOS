@@ -217,8 +217,6 @@
 			children = (
 				8D17324022334B8C005CD22C /* Classes */,
 				8D17325622334C5E005CD22C /* Resources */,
-				8D17325922373354005CD22C /* Migration.storyboard */,
-				8D17325B22373382005CD22C /* MigrationVC.swift */,
 			);
 			path = "Memoria-iOS";
 			sourceTree = "<group>";
@@ -259,6 +257,8 @@
 			children = (
 				8D17325322334C12005CD22C /* CustomViews */,
 				8D0FB8422182002700BFCB79 /* Main.storyboard */,
+				8D17325922373354005CD22C /* Migration.storyboard */,
+				8D17325B22373382005CD22C /* MigrationVC.swift */,
 				8D77D17D21B28DA400CF673A /* SignIn.storyboard */,
 				8D77D17F21B2ABD100CF673A /* SignInVC.swift */,
 				8D77D17621B22AD400CF673A /* SignUp.storyboard */,
