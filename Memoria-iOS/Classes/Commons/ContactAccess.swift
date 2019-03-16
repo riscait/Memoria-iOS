@@ -109,7 +109,7 @@ class ContactAccess {
                 print("\(contact.familyName, contact.givenName)の誕生日がnilだったため処理を終了します")
                 return
             }
-            let birthday = AnnivModel(id: contact.identifier,
+            let birthday = Anniv(id: contact.identifier,
                                                 category: .birthday,
                                                 title: nil,
                                                 familyName: contact.familyName,
@@ -119,7 +119,8 @@ class ContactAccess {
                                                 isHidden: false,
                                                 isAnnualy: true,
                                                 isFromContact: true,
-                                                memo: "")
+                                                memo: "",
+                                                remainingDays: nil)
             
             // データベースに連絡先の誕生日情報を保存する
             AnnivDAO.set(documentPath: contact.identifier, data: birthday.toDictionary)

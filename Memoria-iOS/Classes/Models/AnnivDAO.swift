@@ -30,7 +30,7 @@ class AnnivDAO {
     /// - Parameter:
     ///   - id: 記念日ID
     ///   - callback: ドキュメントのデータを受け取る
-    static func getAll(callback: @escaping ([AnnivModel]) -> Void) {
+    static func getAll(callback: @escaping ([Anniv]) -> Void) {
         annivCollection.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("エラー発生: \(error)")
@@ -41,9 +41,9 @@ class AnnivDAO {
             var anniversarysArray = [[String: Any]]()
             
             querySnapshot?.documents.forEach { anniversarysArray.append($0.data()) }
-            let anniversaryData = anniversarysArray.map { AnnivModel(dictionary: $0)}
+            let anniversaryData = anniversarysArray.map { Anniv(dictionary: $0)}
             
-            callback(anniversaryData as! [AnnivModel])
+            callback(anniversaryData as! [Anniv])
         }
 //        { (document, error) in
 //            if let error = error {
@@ -134,7 +134,7 @@ class AnnivDAO {
     ///   - data: 登録するデータ
     ///   - marge: 既存のドキュメントにデータを統合するか否か
     static func set(documentPath: String,
-                 data: AnnivModel,
+                 data: Anniv,
                  merge: Bool = true) {
             annivCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
                     if let error = error {

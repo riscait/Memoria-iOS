@@ -28,7 +28,7 @@ class AnnivEditVC: UIViewController {
     var tableVC: AnnivEditTableVC!
 
     // 編集の場合は記念日情報を前の画面から受け取る
-    var annivModel: AnnivModel?
+    var annivModel: Anniv?
     
     
     // MARK: - Life cycle
@@ -69,7 +69,7 @@ class AnnivEditVC: UIViewController {
         let isFromContact = annivModel?.isFromContact ?? false
         
         // 記念日データをセット
-        let anniversary = AnnivModel(id: uuid,
+        let anniversary = Anniv(id: uuid,
                                                category: annivType!,
                                                title: annivTitleField.text,
                                                familyName: leftNameField.text,
@@ -79,7 +79,8 @@ class AnnivEditVC: UIViewController {
                                                isHidden: false,
                                                isAnnualy: isAnnualy,
                                                isFromContact: isFromContact,
-                                               memo: memoView.text.trimmingCharacters(in: .whitespacesAndNewlines))
+                                               memo: memoView.text.trimmingCharacters(in: .whitespacesAndNewlines),
+                                               remainingDays: nil)
         print(anniversary)
         // DBに書き込んで画面を閉じる
         AnnivDAO.set(documentPath: uuid, data: anniversary)
@@ -167,7 +168,7 @@ class AnnivEditVC: UIViewController {
     }
     
     /// 編集なら、前の画面から受け取った記念日を反映する
-    private func configureField(with annivModel: AnnivModel?) {
+    private func configureField(with annivModel: Anniv?) {
         
         if let anniversary = annivModel {
             // 編集時の処理

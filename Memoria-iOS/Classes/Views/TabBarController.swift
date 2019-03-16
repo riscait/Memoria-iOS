@@ -67,5 +67,5 @@ class TabBarController: UITabBarController {
         super.viewWillDisappear(animated)
         // Firebase認証リスナーを破棄
         Auth.auth().removeStateDidChangeListener(handle!)
-    }    
+    }
 }
