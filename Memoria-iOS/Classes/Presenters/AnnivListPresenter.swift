@@ -15,11 +15,12 @@ protocol AnnivListPresenterInput: AnyObject {
     func removeAnnivListener()
     func numberOfAnnivs(forSection section: Int) -> Int
     func anniv(forSection section: Int, forRow row: Int) -> Anniv?
+    func didSelectItem(at indexPath: IndexPath)
 }
 /// Viewに指示を出すためのデリゲート
 protocol AnnivListPresenterOutput: AnyObject {
     func updateAnnivs(forNotFinished notFinishedAnnivs: [Anniv], forFinished finishedAnnivs: [Anniv])
-    func transitionToAnnivDetail(userName: String)
+    func transitionToAnnivDetail(anniv: Anniv)
 }
 
 /// 記念日リスト画面とモデルの仲介役
@@ -35,7 +36,7 @@ final class AnnivListPresenter: AnnivListPresenterInput {
     var numberOfSections: Int {
         return finishedAnnivs.isEmpty ? 1 : 2
     }
-    // 指示を受けるViewと指示を受けるModelを初期化する
+    // PresenterはViewとModelの参照を持つ
     required init(view: AnnivListPresenterOutput, model: AnnivListModelInput) {
         self.view = view
         self.model = model
@@ -52,7 +53,7 @@ final class AnnivListPresenter: AnnivListPresenterInput {
             }
         }
     }
-    
+
     /// リスナー登録を破棄する
     func removeAnnivListener() {
         model.stopFetchAnnivs()
@@ -70,7 +71,7 @@ final class AnnivListPresenter: AnnivListPresenterInput {
             return 0
         }
     }
-    // セクションと行を用いて、一つの記念日を返す
+    /// セクションと行を用いて、一つの記念日を返す
     func anniv(forSection section: Int, forRow row: Int) -> Anniv? {
         switch section {
         case AnnivListSection.notFinishedAnniv.rawValue:
@@ -82,5 +83,10 @@ final class AnnivListPresenter: AnnivListPresenterInput {
         default:
             fatalError()
         }
+    }
+    /// 記念日が選択されたら記念日データを取得して、Viewに詳細画面への遷移指示を出す
+    func didSelectItem(at indexPath: IndexPath) {
+        guard let anniv = self.anniv(forSection: indexPath.section, forRow: indexPath.row) else { return }
+        view.transitionToAnnivDetail(anniv: anniv)
     }
 }
