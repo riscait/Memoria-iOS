@@ -1,19 +1,14 @@
 @startuml
 
-actor Entrant
-
-Entrant -> Ticket : Attend Event Request
-
-activate Ticket
-Ticket -> Member : Create Member Request
-
-activate Member
-Member -> Member : Create Member
-Ticket <-- Member : Create Member Response
-deactivate Member
-
-Ticket -> Ticket : Create Ticket
-Entrant <-- Ticket : Attend Event Response
-deactivate Ticket
+actor User
+User -> AnnivListVC : UIを使ったユーザーアクション
+AnnivListVC -> AnnivListPresenter : Presenterを生成（Viewの参照を渡す）
+AnnivListPresenter -> AnnivListModel : Modelを生成する
+entity Anniv
+AnnivListModel -> Anniv : 記念日データを監視して取得
+Anniv -> AnnivListModel : 記念日データのへ香があれば取得
+AnnivListModel -> AnnivListPresenter : データや結果をPresenterに返す
+AnnivListPresenter -> AnnivListVC : UIの変更を指示する
+AnnivListVC -> User : Viewを更新してユーザーに表示する
 
 @enduml

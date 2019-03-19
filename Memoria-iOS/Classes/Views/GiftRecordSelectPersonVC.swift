@@ -35,15 +35,17 @@ class GiftRecordSelectPersonVC: UIViewController {
 extension GiftRecordSelectPersonVC: GiftRecordSelectProtocol {
     
     func searchDB() {
-        AnnivDAO.getFilteredDocuments(whereField: "isHidden", equalTo: false) { (queryDoc) in
+        AnnivDAO.getDocumentsAtDualFilter(first: "isHidden", equalTo: false, secondWhereField: "category", secondEqualTo: "birthday") { queryDoc in
             for doc in queryDoc {
-                if doc.data()["familyName"] == nil, doc.data()["givenName"] == nil { continue }
+                let anniv = Anniv(dictionary: doc.data())
                 var fullName = [String]()
-                if let familyName = doc.data()["familyName"] as? String { fullName.append(familyName) }
-                if let givenName = doc.data()["givenName"] as? String { fullName.append(givenName) }
+                if let familyName = anniv?.familyName { fullName.append(familyName) }
+                if let givenName = anniv?.givenName { fullName.append(givenName) }
                 self.displayData.append(String(format: "fullName".localized, arguments: fullName))
             }
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
