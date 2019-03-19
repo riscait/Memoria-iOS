@@ -25,9 +25,6 @@ final class AnnivDetailVC: UIViewController {
 
     // MARK: - IBOutlet properties
     @IBOutlet private weak var tableView: UITableView!
-    
-    // MARK: - Properties
-    var selectedGiftId: String?
 
     // MARK: - Life cycle methods
     override func viewDidLoad() {
@@ -81,15 +78,24 @@ extension AnnivDetailVC: UITableViewDataSource {
     /// TableViewのセルの中身
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let section = TableSection(rawValue: indexPath.section) else { fatalError() }
+        
         switch (section, indexPath.row) {
         case (.annivInfo, 0):  // 記念日情報メインセル
             let cell = tableView.dequeueReusableCell(withIdentifier: "annivDetailTopCell", for: indexPath) as! AnnivDetailTopCell
             cell.configure(anniv: presenter.anniv)
             return cell
+            
         case (.annivInfo, let row):  // 記念日付加情報
             let cell = tableView.dequeueReusableCell(withIdentifier: "annivDetailInfoCell", for: indexPath) as! AnnivDetailInfoCell
-            cell.configure(anniv: presenter.anniv, row: row)
+            var content: AnnivDetailInfoCell.contentType
+            switch row {
+            case 1: content = AnnivDetailInfoCell.contentType.zodiacStarSign
+            case 2: content = AnnivDetailInfoCell.contentType.chineseZodiacSign
+            default: fatalError()  // セルの数を増やした時、設定忘れを防ぐため fatalError() とする
+            }
+            cell.configure(anniv: presenter.anniv, contentType: content)
             return cell
+            
         case (.giftInfo, let row):  // 関連ギフト一覧
             let cell = tableView.dequeueReusableCell(withIdentifier: "annivDetailGiftCell", for: indexPath) as! AnnivDetailGiftCell
             cell.configure(annivCategory: presenter.anniv.category, gifts: presenter.gifts!, row: row)

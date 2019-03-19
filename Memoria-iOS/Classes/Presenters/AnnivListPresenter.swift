@@ -20,6 +20,7 @@ protocol AnnivListPresenterInput: AnyObject {
 /// Viewに指示を出すためのデリゲート
 protocol AnnivListPresenterOutput: AnyObject {
     func updateAnnivs(forNotFinished notFinishedAnnivs: [Anniv], forFinished finishedAnnivs: [Anniv])
+    func toggleEmptySetView(hasAnniv: Bool)
     func transitionToAnnivDetail(anniv: Anniv)
 }
 
@@ -61,7 +62,9 @@ final class AnnivListPresenter: AnnivListPresenterInput {
     /// 記念日の数を返す
     func numberOfAnnivs(forSection section: Int) -> Int {
         // 記念日が一つもないときはガイド用Viewを表示
-//        view.emptySetView.isHidden = !(notFinishedAnnivs.isEmpty && finishedAnnivs.isEmpty)
+        let hasAnniv = !(notFinishedAnnivs.isEmpty && finishedAnnivs.isEmpty)
+        view.toggleEmptySetView(hasAnniv: hasAnniv)
+        
         switch section {
         case AnnivListSection.notFinishedAnniv.rawValue:
             return notFinishedAnnivs.count
@@ -86,7 +89,7 @@ final class AnnivListPresenter: AnnivListPresenterInput {
     }
     /// 記念日が選択されたら記念日データを取得して、Viewに詳細画面への遷移指示を出す
     func didSelectItem(at indexPath: IndexPath) {
-        guard let anniv = self.anniv(forSection: indexPath.section, forRow: indexPath.row) else { return }
+        guard let anniv = anniv(forSection: indexPath.section, forRow: indexPath.row) else { return }
         view.transitionToAnnivDetail(anniv: anniv)
     }
 }

@@ -16,7 +16,7 @@ protocol AnnivDetailModelInput {
 
 final class AnnivDetailModel: AnnivDetailModelInput {
     /// 記念日データの変更を監視するリスナー登録
-    var listenerRegistration: ListenerRegistration?
+    private var listenerRegistration: ListenerRegistration?
     /// 記念日の更新を監視し、記念日とギフト情報を取得するリスナー登録
     func startFetchAnnivAndGifts(anniv: Anniv, completion: @escaping (Anniv, [[String : Any]]) -> ()) {
         let filteredCollection = AnnivDAO.getQuery(whereField: "id", equalTo: anniv.id)
@@ -30,7 +30,6 @@ final class AnnivDetailModel: AnnivDetailModelInput {
             guard var anniv = Anniv(dictionary: data) else { return }
             // 残日数を追加
             anniv.remainingDays = DateDifferenceCalculator.getDifference(from: anniv.date.dateValue(), isAnnualy: anniv.isAnnualy)
-            //TODO:ここからチェックしていく！！！
             var gifts: [[String: Any]] = []
             let searchKey: String
             
@@ -51,6 +50,9 @@ final class AnnivDetailModel: AnnivDetailModelInput {
     func stopFetchAnnivAndGifts() {
         listenerRegistration?.remove()
     }
+}
+
+private extension AnnivDetailModel {
     /// ギフトを検索する
     private func searchGift(with searchKey: String,
                             for annivCategory: AnnivType,

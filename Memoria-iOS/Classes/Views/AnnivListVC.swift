@@ -22,8 +22,8 @@ final class AnnivListVC: UIViewController {
     private var presenter: AnnivListPresenterInput!
     
     // MARK: - IBOutlet properties
-    @IBOutlet weak var emptySetView: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var emptySetView: UIView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Life cycle methods
     override func viewDidLoad() {
@@ -100,6 +100,11 @@ extension AnnivListVC: UICollectionViewDelegate {
 
 // MARK: - AnnivListPresenterOutput
 extension AnnivListVC: AnnivListPresenterOutput {
+    /// 記念日が一つもない場合は、記念日の追加を促すViewを表示する
+    func toggleEmptySetView(hasAnniv: Bool) {
+        emptySetView.isHidden = hasAnniv
+    }
+    
     /// 記念日リストを更新する
     func updateAnnivs(forNotFinished notFinishedAnnivs: [Anniv], forFinished finishedAnnivs: [Anniv]) {
         DispatchQueue.main.async {
