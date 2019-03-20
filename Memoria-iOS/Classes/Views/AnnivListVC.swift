@@ -9,9 +9,6 @@
 import UIKit
 import Firebase
 
-protocol AnnivListView: AnyObject {
-    func reloadData()
-}
 /// 記念日一覧を表示するメイン画面のクラス
 final class AnnivListVC: UIViewController {
     // MARK: - Enum
@@ -25,17 +22,8 @@ final class AnnivListVC: UIViewController {
     private var presenter: AnnivListPresenterInput!
     
     // MARK: - IBOutlet properties
-    @IBOutlet weak var emptySetView: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    // MARK: - Properties
-    // 引っ張って更新用のRefreshControl
-    private lazy var refresher: UIRefreshControl = {
-        let refresher = UIRefreshControl()
-        // リフレッシュ実行時に呼び出すメソッドを指定
-        refresher.addTarget(self, action: #selector(reloadData), for: .valueChanged)
-        return refresher
-    }()
+    @IBOutlet private weak var emptySetView: UIView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Life cycle methods
     override func viewDidLoad() {
@@ -43,9 +31,6 @@ final class AnnivListVC: UIViewController {
         // プレゼンターをインスタンス化
         // TabBarControllerから表示されるので自ら注入する？
         presenter = AnnivListPresenter(view: self, model: AnnivListModel())
-        
-        // コレクションビューにRefreshControlを設定
-        collectionView.refreshControl = refresher
         // CollectionViewのレイアウト設定
         setup(withMargin: 6.0)
     }
@@ -62,25 +47,11 @@ final class AnnivListVC: UIViewController {
         presenter.removeAnnivListener()
     }
     
-    // MARK: - Navigation methods
-    /// セグエで他の画面へ遷移するときに呼ばれる
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let id = segue.identifier else { return }
-        
-        if id == "toDetailSegue" {
-            let nextVC = segue.destination as! AnnivDetailVC
-            guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return }
-            // TODO: AnnivDetailVCのMVP化で消す
-            nextVC.anniv = presenter.anniv(forSection: indexPath.section, forRow: indexPath.row)!.toDictionary
-        }
-    }
-    
     // MARK: - IBAction methods
-    /// 他の画面からこの画面へ戻ってくるのに使う
+    /// FIXME: 他の画面からこの画面へ戻ってくるのに使っている？
     @IBAction func returnToAnnivVC(segue: UIStoryboardSegue) {}
     
-    // MARK: - Misc methods
-    
+    // MARK: - Private methods
     /// コレクションビューのレイアウト設定
     private func setup(withMargin margin: CGFloat) {
         let margin2x = margin * 2
@@ -97,20 +68,9 @@ final class AnnivListVC: UIViewController {
     }
 }
 
-// MARK: - AnnivListView Delegate
-extension AnnivListVC: AnnivListView {
-    // CollectionViewを更新する
-    @objc func reloadData() {
-        DispatchQueue.main.async {
-            self.collectionView.refreshControl?.endRefreshing()
-            self.collectionView.reloadData()
-        }
-    }
-}
-
 // MARK: - UICollectionView DataSource
 extension AnnivListVC: UICollectionViewDataSource {
-/// CollectionViewのセクション数
+    /// CollectionViewのセクション数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return presenter.numberOfSections
     }
@@ -130,20 +90,39 @@ extension AnnivListVC: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionView Dalegate
+extension AnnivListVC: UICollectionViewDelegate {
+    /// CollectionViewのセルを選択した時
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectItem(at: indexPath)
+    }
+}
+
 // MARK: - AnnivListPresenterOutput
 extension AnnivListVC: AnnivListPresenterOutput {
+    /// 記念日が一つもない場合は、記念日の追加を促すViewを表示する
+    func toggleEmptySetView(hasAnniv: Bool) {
+        emptySetView.isHidden = hasAnniv
+    }
+    
     /// 記念日リストを更新する
     func updateAnnivs(forNotFinished notFinishedAnnivs: [Anniv], forFinished finishedAnnivs: [Anniv]) {
-        collectionView.reloadData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     /// 詳細画面へ遷移する
-    func transitionToAnnivDetail(userName: String) {
+    func transitionToAnnivDetail(anniv: Anniv) {
         let annivDetailVC = UIStoryboard(name: "AnnivDetail", bundle: nil).instantiateInitialViewController() as! AnnivDetailVC
-        // FIXME: M & P
-        // let model = AnnivDetailModel()
-        // let presenter = AnnivDetailPresenter()
-        // annivDetailVC.inject(presenter: presenter)
+        // ModelとPresenterをインスタンス化
+        let model = AnnivDetailModel()
+        // PresenterはViewとModelの参照を持っている
+        let presenter = AnnivDetailPresenter(anniv: anniv, view: annivDetailVC, model: model)
+        print("Debug log:", "presenter", "->", presenter)
+        // ViewにPresenterを注入
+        annivDetailVC.inject(presenter: presenter)
+        // 詳細画面へPushで遷移
         navigationController?.pushViewController(annivDetailVC, animated: true)
     }
 }

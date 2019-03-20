@@ -33,14 +33,6 @@
             </objects>
             <point key="canvasLocation" x="76" y="80"/>
         </scene>
-        <!--AnnivDetail-->
-        <scene sceneID="LQA-2e-eJr">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AnnivDetail" id="7kk-Fl-mow" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="40w-7g-lFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1419" y="174"/>
-        </scene>
         <!--AnnivEdit-->
         <scene sceneID="e3y-sp-VVx">
             <objects>
@@ -113,7 +105,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="RemainingDays" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nio-qA-JTb" customClass="TagLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                                                    <rect key="frame" x="34.5" y="13.5" width="114.5" height="19.5"/>
+                                                                    <rect key="frame" x="37.5" y="13.5" width="111.5" height="19.5"/>
                                                                     <color key="backgroundColor" red="0.91928410530000004" green="0.58592182400000004" blue="0.2645041943" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -163,7 +155,6 @@
                                             <outlet property="annivIconImage" destination="I2H-77-wkQ" id="9JV-cW-x3H"/>
                                             <outlet property="annivNameLabel" destination="o8w-Ly-ABE" id="22j-FR-rVJ"/>
                                             <outlet property="remainingDaysLabel" destination="nio-qA-JTb" id="4i7-c1-cEY"/>
-                                            <segue destination="7kk-Fl-mow" kind="show" identifier="toDetailSegue" id="9MX-p5-gVb"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
