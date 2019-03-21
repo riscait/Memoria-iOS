@@ -1,0 +1,15 @@
+//
+//  Debug.xcconfig
+//  Memoria-iOS
+//
+//  Created by 村松龍之介 on 2019/03/21.
+//  Copyright © 2019 nerco studio. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// CocoaPodsで生成されたConfigurationファイルを含める
+#include "Pods/Target Support Files/Pods-Memoria-iOS/Pods-Memoria-iOS.debug.xcconfig"
+
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "DEBUG"
