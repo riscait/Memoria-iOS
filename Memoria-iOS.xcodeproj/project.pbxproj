@@ -39,6 +39,7 @@
 		8D2921F3223DEB790046917F /* AnnivDetailTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921F2223DEB780046917F /* AnnivDetailTopCell.swift */; };
 		8D2921F52240F9B80046917F /* AnnivDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921F42240F9B80046917F /* AnnivDetailInfoCell.swift */; };
 		8D2921F72240F9F00046917F /* AnnivDetailGiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921F62240F9F00046917F /* AnnivDetailGiftCell.swift */; };
+		8D2921F92241C0990046917F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921F82241C0990046917F /* Log.swift */; };
 		8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3E561421BAAA840090E46E /* AppInfo.swift */; };
 		8D42F605222AC4BE00F01A77 /* AnnivUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */; };
 		8D4CBB1821C0001D009BA7C6 /* Gift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */; };
@@ -133,6 +134,8 @@
 		8D2921F2223DEB780046917F /* AnnivDetailTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivDetailTopCell.swift; sourceTree = "<group>"; };
 		8D2921F42240F9B80046917F /* AnnivDetailInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivDetailInfoCell.swift; sourceTree = "<group>"; };
 		8D2921F62240F9F00046917F /* AnnivDetailGiftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivDetailGiftCell.swift; sourceTree = "<group>"; };
+		8D2921F82241C0990046917F /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		8D2921FA224300410046917F /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		8D3E561421BAAA840090E46E /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivUtil.swift; sourceTree = "<group>"; };
 		8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Gift.storyboard; sourceTree = "<group>"; };
@@ -257,6 +260,7 @@
 				8DB8105A21AAB1AA0007BBC5 /* DeviceLanguage.swift */,
 				8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */,
 				8DD486F321EAD68D0072983A /* Migration.swift */,
+				8D2921F82241C0990046917F /* Log.swift */,
 			);
 			name = Commons;
 			path = "Memoria-iOS/Classes/Commons";
@@ -371,6 +375,7 @@
 				8D11B3C121947EAF00C60371 /* InfoPlist.strings */,
 				8D11B3B921940BD100C60371 /* Localizable.strings */,
 				8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */,
+				8D2921FA224300410046917F /* Debug.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -611,6 +616,7 @@
 				8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */,
 				8DA747EB21A7C728007E7F5B /* TabBarController.swift in Sources */,
 				8D4CBB1A21C002C3009BA7C6 /* GiftVC.swift in Sources */,
+				8D2921F92241C0990046917F /* Log.swift in Sources */,
 				8D77D17921B22DC000CF673A /* SignUpVC.swift in Sources */,
 				8D0FB8542182068100BFCB79 /* ContactAccess.swift in Sources */,
 				8D2921F1223D0FE50046917F /* AnnivDetailModel.swift in Sources */,
@@ -788,7 +794,7 @@
 		};
 		8D0FB84E2182002800BFCB79 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72D548FBFFB5AAD46BCC4078 /* Pods-Memoria-iOS.debug.xcconfig */;
+			baseConfigurationReference = 8D2921FA224300410046917F /* Debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
