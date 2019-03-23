@@ -1,6 +1,6 @@
 ---
 name: Task
-about: 新機能でもバグでもない「タスク」のテンプレート
+about: 新機能でもバグでもない「タスク」やリファクタリング等のテンプレート
 title: ''
 labels: タスク
 assignees: ''
