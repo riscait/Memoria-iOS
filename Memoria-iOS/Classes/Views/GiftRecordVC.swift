@@ -58,13 +58,14 @@ class GiftRecordVC: UIViewController {
         let isDateTBD = tableVC.dateTBDSwitch.isOn
         
         // ギフトデータをセット
-        let gift = GiftDataModel(id: uuid,
+        let gift = Gift(id: uuid,
                                  isReceived: isReceived,
                                  personName: tableVC.personNameField.text!,
                                  annivName: tableVC.annivNameField.text!,
                                  date: isDateTBD ? nil : tableVC.timestamp ?? Timestamp(),
                                  goods: tableVC.goodsField.text!,
                                  memo: memoView.text,
+                                 isHidden: false,
                                  iconImage: nil)
         print(gift)
         // DBに書き込んで画面を閉じる

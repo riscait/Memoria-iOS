@@ -40,10 +40,14 @@
 		8D2921F52240F9B80046917F /* AnnivDetailInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921F42240F9B80046917F /* AnnivDetailInfoCell.swift */; };
 		8D2921F72240F9F00046917F /* AnnivDetailGiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921F62240F9F00046917F /* AnnivDetailGiftCell.swift */; };
 		8D2921F92241C0990046917F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921F82241C0990046917F /* Log.swift */; };
+		8D2921FC2243A94E0046917F /* GiftListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921FB2243A94E0046917F /* GiftListPresenter.swift */; };
+		8D2921FE2243A9760046917F /* GiftListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921FD2243A9760046917F /* GiftListModel.swift */; };
+		8D2922032244EF550046917F /* GiftListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2922012244EF550046917F /* GiftListCell.swift */; };
+		8D2922042244EF550046917F /* GiftListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2922022244EF550046917F /* GiftListCell.xib */; };
 		8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3E561421BAAA840090E46E /* AppInfo.swift */; };
 		8D42F605222AC4BE00F01A77 /* AnnivUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */; };
-		8D4CBB1821C0001D009BA7C6 /* Gift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */; };
-		8D4CBB1A21C002C3009BA7C6 /* GiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1921C002C3009BA7C6 /* GiftVC.swift */; };
+		8D4CBB1821C0001D009BA7C6 /* GiftList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1721C0001D009BA7C6 /* GiftList.storyboard */; };
+		8D4CBB1A21C002C3009BA7C6 /* GiftListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1921C002C3009BA7C6 /* GiftListVC.swift */; };
 		8D4CBB1C21C1511F009BA7C6 /* GiftDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */; };
 		8D4CBB1E21C159C5009BA7C6 /* GiftRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1D21C159C5009BA7C6 /* GiftRecord.storyboard */; };
 		8D4CBB2121C2A73A009BA7C6 /* InspectableNavItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB2021C2A73A009BA7C6 /* InspectableNavItem.swift */; };
@@ -86,7 +90,7 @@
 		8DC43FDC21D3C6FF00B911F2 /* GiftRecordSelectAnniv.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DC43FDB21D3C6FF00B911F2 /* GiftRecordSelectAnniv.storyboard */; };
 		8DC43FDE21D3C78F00B911F2 /* GiftRecordSelectAnnivVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FDD21D3C78F00B911F2 /* GiftRecordSelectAnnivVC.swift */; };
 		8DC43FE021D3CC2900B911F2 /* GiftRecordSelectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FDF21D3CC2900B911F2 /* GiftRecordSelectProtocol.swift */; };
-		8DC43FE421D9F53600B911F2 /* GiftDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FE321D9F53600B911F2 /* GiftDataModel.swift */; };
+		8DC43FE421D9F53600B911F2 /* Gift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FE321D9F53600B911F2 /* Gift.swift */; };
 		8DD474B421C947CD00DD5919 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD474B321C947CD00DD5919 /* String+.swift */; };
 		8DD474B621CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD474B521CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift */; };
 		8DD474B821CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */; };
@@ -136,10 +140,14 @@
 		8D2921F62240F9F00046917F /* AnnivDetailGiftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivDetailGiftCell.swift; sourceTree = "<group>"; };
 		8D2921F82241C0990046917F /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		8D2921FA224300410046917F /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		8D2921FB2243A94E0046917F /* GiftListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListPresenter.swift; sourceTree = "<group>"; };
+		8D2921FD2243A9760046917F /* GiftListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListModel.swift; sourceTree = "<group>"; };
+		8D2922012244EF550046917F /* GiftListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListCell.swift; sourceTree = "<group>"; };
+		8D2922022244EF550046917F /* GiftListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftListCell.xib; sourceTree = "<group>"; };
 		8D3E561421BAAA840090E46E /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivUtil.swift; sourceTree = "<group>"; };
-		8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Gift.storyboard; sourceTree = "<group>"; };
-		8D4CBB1921C002C3009BA7C6 /* GiftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftVC.swift; sourceTree = "<group>"; };
+		8D4CBB1721C0001D009BA7C6 /* GiftList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftList.storyboard; sourceTree = "<group>"; };
+		8D4CBB1921C002C3009BA7C6 /* GiftListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListVC.swift; sourceTree = "<group>"; };
 		8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDAO.swift; sourceTree = "<group>"; };
 		8D4CBB1D21C159C5009BA7C6 /* GiftRecord.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftRecord.storyboard; sourceTree = "<group>"; };
 		8D4CBB2021C2A73A009BA7C6 /* InspectableNavItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableNavItem.swift; sourceTree = "<group>"; };
@@ -182,7 +190,7 @@
 		8DC43FDB21D3C6FF00B911F2 /* GiftRecordSelectAnniv.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftRecordSelectAnniv.storyboard; sourceTree = "<group>"; };
 		8DC43FDD21D3C78F00B911F2 /* GiftRecordSelectAnnivVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordSelectAnnivVC.swift; sourceTree = "<group>"; };
 		8DC43FDF21D3CC2900B911F2 /* GiftRecordSelectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordSelectProtocol.swift; sourceTree = "<group>"; };
-		8DC43FE321D9F53600B911F2 /* GiftDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftDataModel.swift; sourceTree = "<group>"; };
+		8DC43FE321D9F53600B911F2 /* Gift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gift.swift; sourceTree = "<group>"; };
 		8DD474B321C947CD00DD5919 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		8DD474B521CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordSelectPersonVC.swift; sourceTree = "<group>"; };
 		8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftRecordSelectPerson.storyboard; sourceTree = "<group>"; };
@@ -295,8 +303,10 @@
 				8D910B4C21E19F5C00D072EA /* AnnivEdit.storyboard */,
 				8D910B4E21E1C55500D072EA /* AnnivEditVC.swift */,
 				8DD486F121E254E70072983A /* AnnivEditTableVC.swift */,
-				8D4CBB1721C0001D009BA7C6 /* Gift.storyboard */,
-				8D4CBB1921C002C3009BA7C6 /* GiftVC.swift */,
+				8D4CBB1721C0001D009BA7C6 /* GiftList.storyboard */,
+				8D2922012244EF550046917F /* GiftListCell.swift */,
+				8D2922022244EF550046917F /* GiftListCell.xib */,
+				8D4CBB1921C002C3009BA7C6 /* GiftListVC.swift */,
 				8D4CBB1D21C159C5009BA7C6 /* GiftRecord.storyboard */,
 				8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */,
 				8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */,
@@ -351,7 +361,7 @@
 				8D2921F0223D0FE50046917F /* AnnivDetailModel.swift */,
 				8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */,
 				8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */,
-				8DC43FE321D9F53600B911F2 /* GiftDataModel.swift */,
+				8D2921FD2243A9760046917F /* GiftListModel.swift */,
 			);
 			name = Models;
 			path = "Memoria-iOS/Classes/Models";
@@ -362,6 +372,7 @@
 			children = (
 				8D1732572234120E005CD22C /* AnnivListPresenter.swift */,
 				8D2921EE223D0F8D0046917F /* AnnivDetailPresenter.swift */,
+				8D2921FB2243A94E0046917F /* GiftListPresenter.swift */,
 			);
 			name = Presenters;
 			path = "Memoria-iOS/Classes/Presenters";
@@ -384,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC43FD921D061C900B911F2 /* Anniv.swift */,
+				8DC43FE321D9F53600B911F2 /* Gift.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -480,12 +492,13 @@
 				8D8559FE21B8A34F0033C7AA /* UpdateEmail.storyboard in Resources */,
 				8D11B3B721940BD100C60371 /* Localizable.strings in Resources */,
 				8D8559F821B80AF00033C7AA /* UserAccount.storyboard in Resources */,
+				8D2922042244EF550046917F /* GiftListCell.xib in Resources */,
 				8DAE856121A2EC6D0049063D /* Welcome.storyboard in Resources */,
 				8D17325A22373354005CD22C /* Migration.storyboard in Resources */,
 				8DA747E921A7C26A007E7F5B /* Setting.storyboard in Resources */,
 				8D1C73C62183EE0D00DA5A14 /* AnnivList.storyboard in Resources */,
 				8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */,
-				8D4CBB1821C0001D009BA7C6 /* Gift.storyboard in Resources */,
+				8D4CBB1821C0001D009BA7C6 /* GiftList.storyboard in Resources */,
 				8D11B3C32195C5CD00C60371 /* AnnivDetail.storyboard in Resources */,
 				8DA747E621A7C1F6007E7F5B /* TabBar.storyboard in Resources */,
 				8DB8105121A915850007BBC5 /* HiddenList.storyboard in Resources */,
@@ -588,10 +601,11 @@
 				8D4CBB2321C51F7E009BA7C6 /* InspectableTextView.swift in Sources */,
 				8D11B3BC2194431100C60371 /* AnnivCell.swift in Sources */,
 				8D4CBB2121C2A73A009BA7C6 /* InspectableNavItem.swift in Sources */,
+				8D2922032244EF550046917F /* GiftListCell.swift in Sources */,
 				8D1732582234120E005CD22C /* AnnivListPresenter.swift in Sources */,
 				8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */,
 				8DB8105921AA97880007BBC5 /* InspectableSegmentedControl.swift in Sources */,
-				8DC43FE421D9F53600B911F2 /* GiftDataModel.swift in Sources */,
+				8DC43FE421D9F53600B911F2 /* Gift.swift in Sources */,
 				8D2507B621A44E860015A206 /* AccentButton.swift in Sources */,
 				8DB8105321A915B20007BBC5 /* HiddenListVC.swift in Sources */,
 				8D42F605222AC4BE00F01A77 /* AnnivUtil.swift in Sources */,
@@ -599,6 +613,7 @@
 				8DC43FDE21D3C78F00B911F2 /* GiftRecordSelectAnnivVC.swift in Sources */,
 				8D2921F52240F9B80046917F /* AnnivDetailInfoCell.swift in Sources */,
 				8DD486F421EAD68D0072983A /* Migration.swift in Sources */,
+				8D2921FC2243A94E0046917F /* GiftListPresenter.swift in Sources */,
 				8D77D18521B37BED00CF673A /* PasswordlessVC.swift in Sources */,
 				8D4CBB1C21C1511F009BA7C6 /* GiftDAO.swift in Sources */,
 				8D17325C22373382005CD22C /* MigrationVC.swift in Sources */,
@@ -615,7 +630,7 @@
 				8D00EB1521BB960C00A3A5AE /* UpdatePasswordVC.swift in Sources */,
 				8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */,
 				8DA747EB21A7C728007E7F5B /* TabBarController.swift in Sources */,
-				8D4CBB1A21C002C3009BA7C6 /* GiftVC.swift in Sources */,
+				8D4CBB1A21C002C3009BA7C6 /* GiftListVC.swift in Sources */,
 				8D2921F92241C0990046917F /* Log.swift in Sources */,
 				8D77D17921B22DC000CF673A /* SignUpVC.swift in Sources */,
 				8D0FB8542182068100BFCB79 /* ContactAccess.swift in Sources */,
@@ -623,6 +638,7 @@
 				8DB8105B21AAB1AA0007BBC5 /* DeviceLanguage.swift in Sources */,
 				8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */,
 				8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */,
+				8D2921FE2243A9760046917F /* GiftListModel.swift in Sources */,
 				8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */,
 				8DC43FDA21D061C900B911F2 /* Anniv.swift in Sources */,
 				8D1C73C32183ED6C00DA5A14 /* AnnivListVC.swift in Sources */,

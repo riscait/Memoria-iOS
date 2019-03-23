@@ -120,6 +120,7 @@
 "giftSectionFooterForBirthday" = "A gift whose person's name matches is displayed here.";
 // Gift view
 "dateTBD" = "Date TBD";
+"letsAddGift" = "Let's add an GIFT from the \"+ button\" on the upper right!";
 // Settings view
 "settings" = "Settings";
 "updateInProgress" = "Update in progress...";

@@ -1,5 +1,5 @@
 //
-//  GiftDataModel.swift
+//  Gift.swift
 //  Memoria-iOS
 //
 //  Created by 村松龍之介 on 2018/12/31.
@@ -10,7 +10,7 @@ import Foundation
 import Firebase
 
 /// ギフトデータのモデル
-struct GiftDataModel {
+struct Gift {
     let id: String
     let isReceived: Bool
     let personName: String
@@ -18,7 +18,7 @@ struct GiftDataModel {
     let date: Timestamp?
     let goods: String
     let memo: String
-    let isHidden = false
+    let isHidden: Bool
     let iconImage: Data?
     
     /// FirestoreがSwiftのカスタムオブジェクトに非対応なので辞書型に変換する必要がある
@@ -36,5 +36,21 @@ struct GiftDataModel {
         dictionary["iconImage"] = iconImage ?? NSNull()
         
         return dictionary
+    }
+}
+
+extension Gift {
+    // Firestoreのデータは辞書型なので、「Gift」に変換する
+    init?(dictionary: [String: Any]) {
+
+        id = dictionary["id"] as! String
+        isReceived = dictionary["isReceived"] as! Bool
+        personName = dictionary["personName"] as! String
+        annivName = dictionary["anniversaryName"] as! String
+        date = dictionary["date"] as? Timestamp
+        goods = dictionary["goods"] as! String
+        memo = dictionary["memo"] as! String
+        isHidden = dictionary["isHidden"] as! Bool
+        iconImage = dictionary["iconImage"] as? Data
     }
 }
