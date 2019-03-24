@@ -111,7 +111,10 @@ class AnnivEditVC: UIViewController {
                                 guard let anniversaryData = self.annivModel else { return }
                                 AnnivDAO.update(with: anniversaryData.id, field: "isHidden", content: true)
                                 // 画面を閉じる
-                                self.dismiss(animated: true, completion: nil)
+                                self.dismiss(animated: true) {
+                                    // この画面を閉じた後、すぐに詳細画面一覧画面まで一気に戻る
+                                    NotificationCenter.default.post(name: .popToAnnivListVC, object: nil)
+                                }
         })
     }
     
