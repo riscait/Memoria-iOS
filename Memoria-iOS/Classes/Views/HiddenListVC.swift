@@ -35,11 +35,11 @@ class HiddenListVC: UITableViewController {
         // anniversaryコレクションの変更を監視する
         listenerRegistration = AnnivDAO.getQuery(whereField: "isHidden", equalTo: true)?
             .addSnapshotListener { documentSnapshot, error in
-                
-                guard let documentSnapshot = documentSnapshot else {
-                    print("ドキュメント取得エラー: \(error!)")
+                if let error = error {
+                    Log.warn(error.localizedDescription)
                     return
                 }
+                guard let documentSnapshot = documentSnapshot else { return }
                 self.annivs = [[String: Any]]()
                 print("documents are \(documentSnapshot.documents)")
                 // 記念日データが入ったドキュメントの数だけ繰り返す

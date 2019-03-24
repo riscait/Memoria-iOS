@@ -74,7 +74,7 @@ class GiftDAO {
     ///   - data: 登録するデータ
     ///   - marge: 既存のドキュメントにデータを統合するか否か
     static func set(documentPath: String,
-                    data: GiftDataModel,
+                    data: Gift,
                     merge: Bool = true) {
         giftCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
                 if let error = error {

@@ -22,12 +22,12 @@ final class AnnivDetailModel: AnnivDetailModelInput {
         let filteredCollection = AnnivDAO.getQuery(whereField: "id", equalTo: anniv.id)
         // anniversaryコレクションの変更を監視するリスナー登録
         listenerRegistration = filteredCollection?.addSnapshotListener { snapshot, error in
-            guard let data = snapshot?.documents.first?.data() else {
-                print("ドキュメント取得エラー: \(error!)")
+            if let error = error {
+                Log.warn(error.localizedDescription)
                 return
             }
-            // 辞書型を構造体に変換
-            guard var anniv = Anniv(dictionary: data) else { return }
+            guard let data = snapshot?.documents.first?.data(),
+                var anniv = Anniv(dictionary: data) else { return }
             // 残日数を追加
             anniv.remainingDays = DateDifferenceCalculator.getDifference(from: anniv.date.dateValue(), isAnnualy: anniv.isAnnualy)
             var gifts: [[String: Any]] = []

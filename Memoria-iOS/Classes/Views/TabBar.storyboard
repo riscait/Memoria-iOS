@@ -22,7 +22,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Y4H-rY-N8m" kind="relationship" relationship="viewControllers" id="DAB-Hs-Gcu"/>
-                        <segue destination="GgU-Dl-L4i" kind="relationship" relationship="viewControllers" id="8Te-9D-Fck"/>
+                        <segue destination="GgU-Dl-L4i" kind="relationship" relationship="viewControllers" id="xnk-L4-WgL"/>
                         <segue destination="aPY-AD-uuN" kind="relationship" relationship="viewControllers" id="4ZG-Au-VBZ"/>
                     </connections>
                 </tabBarController>
@@ -50,10 +50,10 @@
             </objects>
             <point key="canvasLocation" x="125" y="80"/>
         </scene>
-        <!--Gift-->
+        <!--GiftList-->
         <scene sceneID="PCS-Nb-yL8">
             <objects>
-                <viewControllerPlaceholder storyboardName="Gift" id="GgU-Dl-L4i" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="GiftList" id="GgU-Dl-L4i" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Gift" image="roundStars" badgeValue="3" id="d46-8F-2ym"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JnK-zl-PYi" userLabel="First Responder" sceneMemberID="firstResponder"/>

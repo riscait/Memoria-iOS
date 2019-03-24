@@ -128,6 +128,7 @@
 "giftSectionFooterForBirthday" = "人名が一致しているギフトがここに表示されます。";
 // Gift画面
 "dateTBD" = "日付未定";
+"letsAddGift" = "右上の＋ボタンから\nギフトを追加しましょう！";
 // Settings画面
 "settings" = "設定";
 "updateInProgress" = "更新中...";
