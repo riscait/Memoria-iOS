@@ -42,10 +42,18 @@ struct AnnivUtil {
     /// - Parameter remainingDays: 次回記念日までの日数
     /// - Returns: 後何日か、もしくは何日過ぎたかを文字列で返す
     static func getRemainingDaysString(from remainingDays: Int) -> String {
-        return remainingDays >= 0
-            ? String(format: "remainingDays".localized, remainingDays.description)
-            : String(format: "elapsedDays".localized, (-remainingDays).description)
-        
+        switch remainingDays {
+        case 0: // 今日
+            return "remainingDaysToday".localized
+        case 1:  // 明日
+            return "remainingDaysTomorrow".localized
+        case -1:  // 昨日
+            return "remainingDaysYesterday".localized
+        case ...0:  // 終わった記念日
+            return String(format: "elapsedDays".localized, (-remainingDays).description)
+        default:
+            return String(format: "remainingDays".localized, remainingDays.description)
+        }
     }
     
     /// 記念日のアイコン画像を返す、ない場合はデフォルト画像を返す

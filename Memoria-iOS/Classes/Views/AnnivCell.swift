@@ -63,9 +63,6 @@ final class AnnivCell: UICollectionViewCell {
             remainingDaysLabel.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
         }
         // 記念日の残り日数文字列の設定
-        remainingDaysLabel.text = remainingDays == -1 ? "remainingDaysYesterday".localized
-            : remainingDays == 1 ? "remainingDaysTomorrow".localized
-            : remainingDays == 0 ? "remainingDaysToday".localized
-            : AnnivUtil.getRemainingDaysString(from: remainingDays)
+        remainingDaysLabel.text = AnnivUtil.getRemainingDaysString(from: remainingDays)
     }
 }
