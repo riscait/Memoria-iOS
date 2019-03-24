@@ -17,14 +17,6 @@ class GiftListCell: UITableViewCell {
     @IBOutlet private weak var giftNameLabel: UILabel!
     @IBOutlet private weak var gotOrReceivedLabel: TagLabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
     func configure(gift: Gift) {
         giftIconImage.image = #imageLiteral(resourceName: "giftBox")
         personNameLabel.text = gift.personName

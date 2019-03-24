@@ -22,10 +22,11 @@ final class AnnivListModel: AnnivListModelInput {
         let filteredCollection = AnnivDAO.getQuery(whereField: "isHidden", equalTo: false)
         // anniversaryコレクションの変更を監視するリスナー登録
         listenerRegistration = filteredCollection?.addSnapshotListener { snapshot, error in
-            guard let snapshot = snapshot else {
-                    print("ドキュメント取得エラー: \(error!)")
-                    return
+            if let error = error {
+                Log.warn(error.localizedDescription)
+                return
             }
+            guard let snapshot = snapshot else { return }
             var notFinishedAnnivs = [Anniv]()
             var finishedAnnivs = [Anniv]()
             // 記念日データが入ったドキュメントの数だけ繰り返す

@@ -22,7 +22,10 @@ final class GiftListModel: GiftListModelInput {
         let filteredCollection = GiftDAO.getQuery(whereField: "isHidden", equalTo: false)
         // giftコレクションの変更を監視するリスナー登録
         listenerRegistration = filteredCollection?.addSnapshotListener { snapshot, error in
-            if let error = error { Log.error(error.localizedDescription) }
+            if let error = error {
+                Log.warn(error.localizedDescription)
+                return
+            }
             guard let snapshot = snapshot else { return }
             
             var gifts = [Gift]()
