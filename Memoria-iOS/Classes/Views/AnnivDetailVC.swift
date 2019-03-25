@@ -30,6 +30,7 @@ final class AnnivDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = AnnivUtil.getRemainingDaysString(from: presenter.anniv.remainingDays!)
+        presenter.addObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,7 +144,10 @@ extension AnnivDetailVC: AnnivDetailPresenterOutput {
         navigationItem.title = AnnivUtil.getRemainingDaysString(from: presenter.anniv.remainingDays!)
         tableView.reloadData()
     }
-    
+    // 一つ前の画面へ戻る
+    @objc func popVC() {
+        navigationController?.popViewController(animated: true)
+    }
     func transitionToAnnivEdit(anniv: Anniv) {
         // TODO: 他Issueにて,Segueから移行する
     }
