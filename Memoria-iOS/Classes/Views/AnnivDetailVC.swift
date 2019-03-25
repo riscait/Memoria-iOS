@@ -30,9 +30,9 @@ final class AnnivDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = AnnivUtil.getRemainingDaysString(from: presenter.anniv.remainingDays!)
-        // 記念日一覧画面に戻るためのオブザーバー追加
-        NotificationCenter.default.addObserver(self, selector: #selector(popVC), name: .popToAnnivListVC, object: nil)
+        presenter.addObserver()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.addListenerAndUpdateGift()
@@ -144,25 +144,14 @@ extension AnnivDetailVC: AnnivDetailPresenterOutput {
         navigationItem.title = AnnivUtil.getRemainingDaysString(from: presenter.anniv.remainingDays!)
         tableView.reloadData()
     }
-    
+    // 一つ前の画面へ戻る
+    @objc func popVC() {
+        navigationController?.popViewController(animated: true)
+    }
     func transitionToAnnivEdit(anniv: Anniv) {
         // TODO: 他Issueにて,Segueから移行する
     }
     func transitionToGiftEdit(anniv: Anniv) {
         // TODO: 他Issueにて,Segueから移行する
-    }
-}
-
-// MARK: - Notification.Name
-extension Notification.Name {
-    // 文字列の定数化（通知側・受信側で使用）
-    static let popToAnnivListVC = Notification.Name("popToAnnivListVC")
-}
-
-// MARK: - Private Methods
-private extension AnnivDetailVC {
-    @objc private func popVC() {
-        // 記念日一覧画面へ戻る
-        navigationController?.popViewController(animated: true)
     }
 }

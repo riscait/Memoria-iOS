@@ -7,11 +7,13 @@
 //
 
 import Foundation
-
+// MARK: - Presenter Protocols
+/// Viewから指示を受けるためのデリゲート
 protocol AnnivDetailPresenterInput: AnyObject {
     var anniv: Anniv! { get }
     var gifts: [[String: Any]]? { get }
     var numberOfSections: Int { get }
+    func addObserver()
     func addListenerAndUpdateGift()
     func removeGiftListener()
     func numberOfRows(for section: Int) -> Int
@@ -20,13 +22,25 @@ protocol AnnivDetailPresenterInput: AnyObject {
     func heightForRow(at indexPath: IndexPath) -> Float
     func heightForHeader(in section: Int) -> Float?
 }
-
-protocol AnnivDetailPresenterOutput: AnyObject {
+/// Viewに指示を出すためのデリゲート
+@objc protocol AnnivDetailPresenterOutput: AnyObject {
     func update(for gifts: [[String: Any]]?)
+    @objc func popVC()
 }
 
+// MARK: - Notification.Name
+extension Notification.Name {
+    // 文字列の定数化（通知側・受信側で使用）
+    static let popToAnnivListVC = Notification.Name("popToAnnivListVC")
+}
+// MARK: - AnnivDetailPresenter Class
 /// 記念日詳細画面とモデルの仲介役
 final class AnnivDetailPresenter: AnnivDetailPresenterInput {
+    // 記念日一覧画面に戻るためのオブザーバー追加
+    func addObserver() {
+        NotificationCenter.default.addObserver(view, selector: #selector(view.popVC), name: .popToAnnivListVC, object: nil)
+    }
+    
     // MARK: - Enum
     // TableViewのセクション
     enum Section: Int {
