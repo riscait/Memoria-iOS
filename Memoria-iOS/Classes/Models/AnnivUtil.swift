@@ -8,7 +8,38 @@
 
 import UIKit
 
+// MARK: - Enum
+enum RemainingDays {
+    case today
+    case tomorrow
+    case yesterday
+    case near
+    case distant
+    case past
+    
+    init(_ remainingDays: Int) {
+        self = {
+            switch remainingDays {
+            case 0:
+                return .today
+            case 1:
+                return .tomorrow
+            case -1:
+                return .yesterday
+            case 2...30:
+                return .near
+            case ...0:
+                return .past
+            default:
+                return .distant
+            }
+        }()
+    }
+}
+// MARK: - Struct AnnivUtil
 struct AnnivUtil {
+    
+    // MARK: - Static methods
     /// 記念日か誕生日かによってタイトルが違うので、ここで判断して返す
     static func getName(from anniv: Anniv) -> String? {
         // 記念日の名称。誕生日だったら苗字と名前を繋げて表示
@@ -42,16 +73,16 @@ struct AnnivUtil {
     /// - Parameter remainingDays: 次回記念日までの日数
     /// - Returns: 後何日か、もしくは何日過ぎたかを文字列で返す
     static func getRemainingDaysString(from remainingDays: Int) -> String {
-        switch remainingDays {
-        case 0: // 今日
+        switch RemainingDays(remainingDays) {
+        case .today:
             return "remainingDaysToday".localized
-        case 1:  // 明日
+        case .tomorrow:
             return "remainingDaysTomorrow".localized
-        case -1:  // 昨日
+        case .yesterday:
             return "remainingDaysYesterday".localized
-        case ...0:  // 終わった記念日
+        case .past:
             return String(format: "elapsedDays".localized, (-remainingDays).description)
-        default:
+        case .near, .distant:
             return String(format: "remainingDays".localized, remainingDays.description)
         }
     }
