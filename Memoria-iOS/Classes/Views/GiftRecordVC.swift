@@ -9,78 +9,61 @@
 import UIKit
 import Firebase
 
-class GiftRecordVC: UIViewController {
+/// Giftを登録・編集する画面
+final class GiftRecordVC: UIViewController {
+    // MARK: - Presenter
+    private var presenter: GiftRecordPresenterInput!
+    func inject(presenter: GiftRecordPresenter) {
+        self.presenter = presenter
+    }
 
-    // MARK: - Properties
-    
+    // MARK: - IBOutlet Properties
     @IBOutlet weak var recordButton: UIBarButtonItem!
     @IBOutlet weak var gotOrReceived: InspectableSegmentedControl!
     @IBOutlet weak var memoView: InspectableTextView!
+    
+    // MARK: - Properties
     /// コンテナビューのテーブルVC
     var tableVC: GiftRecordTableVC!
-    // 編集の場合はギフト情報を受け取る
-    var selectedGiftId: String?
-    
+    // アクティブなテキストフィールド
     private var activeTextField: UITextView?
-    
 
     // MARK: - Life cycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = selectedGiftId == nil ? "recordGift".localized : "updateGift".localized
         // InspectableTextViewのデリゲートを上書きするために必要
         memoView.delegate = self
-        
+        // 子ビューを特定する
         discoverChildVC()
-        // 新規登録ではなく、ギフト更新なら登録済みデータを反映する
-        setGiftData()
+        presenter.setExistGift()
     }
     
-
     // MARK: - IBAction methods
     /// キャンセルボタンを押した時
     @IBAction func didTapCancelButton(_ sender: UIBarButtonItem) {
-        let message = selectedGiftId == nil ? "discardMessageForRecord".localized : "discardMessageForEdit".localized
-        
-        DialogBox.showDestructiveAlert(on: self, message: message, destructiveTitle: "close".localized) {
-            self.dismiss(animated: true, completion: nil)
-        }
+        dismiss(animated: true, completion: nil)
     }
     /// 登録ボタンを押した時
     @IBAction func didTapRecordButton(_ sender: UIBarButtonItem) {
-        // ギフト新規登録なら新しくIDを生成
-        let uuid = selectedGiftId ?? UUID().uuidString
-        // もらいもの？あげたもの？
-        let isReceived = gotOrReceived.selectedSegmentIndex == 0
-        // 日付未定の記念日か否か
-        let isDateTBD = tableVC.dateTBDSwitch.isOn
-        
-        // ギフトデータをセット
-        let gift = Gift(id: uuid,
-                                 isReceived: isReceived,
-                                 personName: tableVC.personNameField.text!,
-                                 annivName: tableVC.annivNameField.text!,
-                                 date: isDateTBD ? nil : tableVC.timestamp ?? Timestamp(),
-                                 goods: tableVC.goodsField.text!,
-                                 memo: memoView.text,
-                                 isHidden: false,
-                                 iconImage: nil)
-        print(gift)
-        // DBに書き込んで画面を閉じる
-        GiftDAO.set(documentPath: uuid, data: gift)
-        dismiss(animated: true, completion: nil)
+        presenter.didTapRecordButton(isReceived: gotOrReceived.selectedSegmentIndex == 0,
+                                     isDateTBD: tableVC.dateTBDSwitch.isOn,
+                                     personName: tableVC.personNameField.text!,
+                                     annivName: tableVC.annivNameField.text!,
+                                     timestamp: tableVC.timestamp,
+                                     goods: tableVC.goodsField.text!,
+                                     mwmo: memoView.text)
     }
     
     
     // MARK: - Misc methods
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         // 画面タッチでキーボードを下げる
         view.endEditing(true)
     }
-    
+}
+
+// MARK: - Private methods
+private extension GiftRecordVC {
     /// 子VCを特定する
     private func discoverChildVC() {
         // ContainerViewを特定
@@ -93,50 +76,26 @@ class GiftRecordVC: UIViewController {
             }
         }
     }
-
-    /// ギフトの編集なら、元のデータを反映させる
-    private func setGiftData() {
-        guard let selectedGiftId = selectedGiftId else { return }
-
-        GiftDAO.get(by: selectedGiftId) { (gift) in
-
-            self.gotOrReceived.selectedSegmentIndex = (gift["isReceived"] as! Bool) ? 0 : 1
-            self.tableVC.personNameField.text = gift["personName"] as? String
-            self.tableVC.annivNameField.text = gift["anniversaryName"] as? String
-            if let timestamp = (gift["date"] as? Timestamp) {
-                self.tableVC.timestamp = timestamp
-                self.tableVC.dateField.text = DateTimeFormat.getYMDString(date: timestamp.dateValue())
-            } else {
-                self.tableVC.dateTBDSwitch.isOn = true
-                self.tableVC.doDateTBD(isTBD: true)
-            }
-            self.tableVC.goodsField.text = gift["goods"] as? String
-            if let memo = gift["memo"] as? String {
-                self.memoView.text = memo
-                self.memoView.togglePlaceholder()
-            }
-        }
-    }
 }
 
+// MARK: - UITextView Delegate
 extension GiftRecordVC: UITextViewDelegate{
-    
+    /// メモを書き始めるときにキーボードと重ならないように画面を上げる
+    /// TODO: ソフトウェアキーボードを使わない入力の場合は画面だけ不自然にずれてしまう？
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        print(#function, textView)
         UIView.animate(withDuration: 0.3) {
             self.view.transform = CGAffineTransform(translationX: 0, y: -200)
         }
         return true
     }
-    
+    /// 上げていた画面を元に戻す
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        print(#function, textView)
         UIView.animate(withDuration: 0.3) {
             self.view.transform = CGAffineTransform.identity
         }
         return true
     }
-    
+    /// に書き換えられるたびにプレースホルダーの表示切替を判断する
     func textViewDidChange(_ textView: UITextView) {
         memoView.togglePlaceholder()
     }
@@ -146,7 +105,40 @@ extension GiftRecordVC: UITextViewDelegate{
 // MARK: - GiftRecordTableVC Delegate
 // 登録ボタンの有効・無効を切り替えるデリゲート
 extension GiftRecordVC: GiftRecordTableVCDelegate {
+    /// 通知を受けて完了ボタンの有効非有効を切り替える
     func recordingStandby(_ enabled: Bool) {
         recordButton.isEnabled = enabled
+    }
+}
+
+extension GiftRecordVC: GiftRecordPresenterOutput {
+    /// 自らのModal画面を閉じる
+    func dismiss(animated: Bool) {
+        dismiss(animated: animated, completion: nil)
+    }
+    /// 既存ギフトの編集なら既存のデータを画面へ反映する
+    func setupLayout(gift: Gift?) {
+        guard let gift = gift else {
+            title = "recordGift".localized
+            return
+        }
+        gotOrReceived.selectedSegmentIndex = gift.isReceived ? 0 : 1
+        tableVC.personNameField.text = gift.personName
+        tableVC.annivNameField.text = gift.annivName
+        
+        if let timestamp = gift.date {
+            tableVC.timestamp = timestamp
+            tableVC.dateField.text = DateTimeFormat.getYMDString(date: timestamp.dateValue())
+        } else {
+            tableVC.dateTBDSwitch.isOn = true
+            tableVC.doDateTBD(isTBD: true)
+        }
+        
+        tableVC.goodsField.text = gift.goods
+        if !gift.memo.isEmpty {
+            memoView.text = gift.memo
+            memoView.togglePlaceholder()
+        }
+        title = "updateGift".localized
     }
 }

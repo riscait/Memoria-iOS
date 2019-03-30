@@ -54,6 +54,7 @@
 		8D4CBB2321C51F7E009BA7C6 /* InspectableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB2221C51F7E009BA7C6 /* InspectableTextView.swift */; };
 		8D56B2A221A7DAE300B90BED /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A121A7DAE300B90BED /* SettingVC.swift */; };
 		8D56B2A421A85A7900B90BED /* OpenOtherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */; };
+		8D63BFF922492D4A00AA1B9A /* GiftRecordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */; };
 		8D77D17721B22AD400CF673A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D77D17621B22AD400CF673A /* SignUp.storyboard */; };
 		8D77D17921B22DC000CF673A /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D77D17821B22DC000CF673A /* SignUpVC.swift */; };
 		8D77D17E21B28DA400CF673A /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D77D17D21B28DA400CF673A /* SignIn.storyboard */; };
@@ -154,6 +155,7 @@
 		8D4CBB2221C51F7E009BA7C6 /* InspectableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTextView.swift; sourceTree = "<group>"; };
 		8D56B2A121A7DAE300B90BED /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOtherApp.swift; sourceTree = "<group>"; };
+		8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordPresenter.swift; sourceTree = "<group>"; };
 		8D77D17621B22AD400CF673A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		8D77D17821B22DC000CF673A /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		8D77D17D21B28DA400CF673A /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				8D1732572234120E005CD22C /* AnnivListPresenter.swift */,
 				8D2921EE223D0F8D0046917F /* AnnivDetailPresenter.swift */,
 				8D2921FB2243A94E0046917F /* GiftListPresenter.swift */,
+				8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */,
 			);
 			name = Presenters;
 			path = "Memoria-iOS/Classes/Presenters";
@@ -628,6 +631,7 @@
 				8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */,
 				8DD474B621CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift in Sources */,
 				8D00EB1521BB960C00A3A5AE /* UpdatePasswordVC.swift in Sources */,
+				8D63BFF922492D4A00AA1B9A /* GiftRecordPresenter.swift in Sources */,
 				8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */,
 				8DA747EB21A7C728007E7F5B /* TabBarController.swift in Sources */,
 				8D4CBB1A21C002C3009BA7C6 /* GiftListVC.swift in Sources */,

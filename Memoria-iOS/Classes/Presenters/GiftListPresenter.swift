@@ -23,7 +23,7 @@ protocol GiftListPresenterOutput: AnyObject {
     func update(gifts: [Gift])
     func delete(at: IndexPath)
     func toggleGuidanceView(hasGift: Bool)
-    func transitionToGiftRecord(gift: Gift)
+    func transitionToGiftRecord(gift: Gift?)
 }
 /// ギフトリスト画面とモデルの仲介役
 final class GiftListPresenter: GiftListPresenterInput {
