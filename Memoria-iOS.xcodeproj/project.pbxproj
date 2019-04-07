@@ -60,6 +60,10 @@
 		8D77D18021B2ABD100CF673A /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D77D17F21B2ABD100CF673A /* SignInVC.swift */; };
 		8D77D18321B37ADE00CF673A /* Passwordless.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D77D18221B37ADE00CF673A /* Passwordless.storyboard */; };
 		8D77D18521B37BED00CF673A /* PasswordlessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D77D18421B37BED00CF673A /* PasswordlessVC.swift */; };
+		8D84D99C22536FCC00471FDF /* Timeline.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D84D99B22536FCC00471FDF /* Timeline.storyboard */; };
+		8D84D99F225370F700471FDF /* TimelineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84D99D225370F700471FDF /* TimelineVC.swift */; };
+		8D84D9A3225371AF00471FDF /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D84D9A1225371AF00471FDF /* TimelineCell.swift */; };
+		8D84D9A4225371AF00471FDF /* TimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D84D9A2225371AF00471FDF /* TimelineCell.xib */; };
 		8D8559F821B80AF00033C7AA /* UserAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8559F721B80AF00033C7AA /* UserAccount.storyboard */; };
 		8D8559FA21B80B270033C7AA /* UserAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8559F921B80B270033C7AA /* UserAccountVC.swift */; };
 		8D8559FC21B8A3380033C7AA /* UpdateEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8559FB21B8A3380033C7AA /* UpdateEmailVC.swift */; };
@@ -160,6 +164,10 @@
 		8D77D17F21B2ABD100CF673A /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		8D77D18221B37ADE00CF673A /* Passwordless.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Passwordless.storyboard; sourceTree = "<group>"; };
 		8D77D18421B37BED00CF673A /* PasswordlessVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordlessVC.swift; sourceTree = "<group>"; };
+		8D84D99B22536FCC00471FDF /* Timeline.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Timeline.storyboard; sourceTree = "<group>"; };
+		8D84D99D225370F700471FDF /* TimelineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineVC.swift; sourceTree = "<group>"; };
+		8D84D9A1225371AF00471FDF /* TimelineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
+		8D84D9A2225371AF00471FDF /* TimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimelineCell.xib; sourceTree = "<group>"; };
 		8D8559F721B80AF00033C7AA /* UserAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserAccount.storyboard; sourceTree = "<group>"; };
 		8D8559F921B80B270033C7AA /* UserAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountVC.swift; sourceTree = "<group>"; };
 		8D8559FB21B8A3380033C7AA /* UpdateEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailVC.swift; sourceTree = "<group>"; };
@@ -325,6 +333,10 @@
 				8D00EB1421BB960C00A3A5AE /* UpdatePasswordVC.swift */,
 				8DB8105021A915850007BBC5 /* HiddenList.storyboard */,
 				8DB8105221A915B20007BBC5 /* HiddenListVC.swift */,
+				8D84D99B22536FCC00471FDF /* Timeline.storyboard */,
+				8D84D99D225370F700471FDF /* TimelineVC.swift */,
+				8D84D9A1225371AF00471FDF /* TimelineCell.swift */,
+				8D84D9A2225371AF00471FDF /* TimelineCell.xib */,
 			);
 			name = Views;
 			path = "Memoria-iOS/Classes/Views";
@@ -486,11 +498,13 @@
 				8DAE856521A2F6260049063D /* WelcomeContact.storyboard in Resources */,
 				8D77D17E21B28DA400CF673A /* SignIn.storyboard in Resources */,
 				8D0FB8492182002800BFCB79 /* LaunchScreen.storyboard in Resources */,
+				8D84D9A4225371AF00471FDF /* TimelineCell.xib in Resources */,
 				8D910B4D21E19F5C00D072EA /* AnnivEdit.storyboard in Resources */,
 				8D4CBB1E21C159C5009BA7C6 /* GiftRecord.storyboard in Resources */,
 				8D0FB8512182013E00BFCB79 /* GoogleService-Info.plist in Resources */,
 				8D8559FE21B8A34F0033C7AA /* UpdateEmail.storyboard in Resources */,
 				8D11B3B721940BD100C60371 /* Localizable.strings in Resources */,
+				8D84D99C22536FCC00471FDF /* Timeline.storyboard in Resources */,
 				8D8559F821B80AF00033C7AA /* UserAccount.storyboard in Resources */,
 				8D2922042244EF550046917F /* GiftListCell.xib in Resources */,
 				8DAE856121A2EC6D0049063D /* Welcome.storyboard in Resources */,
@@ -640,7 +654,9 @@
 				8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */,
 				8D2921FE2243A9760046917F /* GiftListModel.swift in Sources */,
 				8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */,
+				8D84D99F225370F700471FDF /* TimelineVC.swift in Sources */,
 				8DC43FDA21D061C900B911F2 /* Anniv.swift in Sources */,
+				8D84D9A3225371AF00471FDF /* TimelineCell.swift in Sources */,
 				8D1C73C32183ED6C00DA5A14 /* AnnivListVC.swift in Sources */,
 				8D910B5521E239C000D072EA /* InspectableStackView.swift in Sources */,
 				8D11B3C7219719B800C60371 /* TagLabel.swift in Sources */,
