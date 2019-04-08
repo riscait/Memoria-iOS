@@ -49,17 +49,19 @@ final class AnnivDetailVC: UIViewController {
         guard let id = segue.identifier else { return }
         
         if id == "editAnniversarySegue" {
+            // FIXME: Issue#63にてSegueを削除する
             let navC = segue.destination as! UINavigationController
             let nextVC = navC.topViewController as! AnnivEditVC
             nextVC.annivModel = presenter.anniv
         }
         
         if id == "editGiftSegue" {
-            let navC = segue.destination as! UINavigationController
-            let nextVC = navC.topViewController as! GiftRecordVC
-            let indexPath = tableView.indexPathForSelectedRow
-            nextVC.selectedGiftId = presenter.gifts?[indexPath!.row]["id"] as? String
-            print(nextVC.selectedGiftId ?? "selectedGiftId = nil")
+            // FIXME: Issue#62にてSegueを削除する
+//            let navC = segue.destination as! UINavigationController
+//            let nextVC = navC.topViewController as! GiftRecordVC
+//            guard let indexPath = tableView.indexPathForSelectedRow,
+//                let gift = presenter.gifts?[indexPath.row] else { return }
+//            nextVC.gift = Gift(dictionary: gift)
         }
     }
 }
@@ -149,9 +151,9 @@ extension AnnivDetailVC: AnnivDetailPresenterOutput {
         navigationController?.popViewController(animated: true)
     }
     func transitionToAnnivEdit(anniv: Anniv) {
-        // TODO: 他Issueにて,Segueから移行する
+        // TODO: Issue#63にて,Segueから移行する
     }
     func transitionToGiftEdit(anniv: Anniv) {
-        // TODO: 他Issueにて,Segueから移行する
+        // TODO: Issue#62にて,Segueから移行する
     }
 }

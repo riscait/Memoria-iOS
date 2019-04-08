@@ -43,6 +43,11 @@ final class GiftListVC: UIViewController {
         super.viewWillDisappear(animated)
         presenter.removeListener()
     }
+    
+    // MARK: - IBAction methods
+    @IBAction func didTapAddButton(_ sender: UIBarButtonItem) {
+        transitionToGiftRecord(gift: nil)
+    }
 }
 
 // MARK: - Table view data source
@@ -100,17 +105,16 @@ extension GiftListVC: GiftListPresenterOutput {
         guidanceView.isHidden = hasGift
     }
     /// ギフトが選択された時に、ギフト編集画面へ遷移する
-    func transitionToGiftRecord(gift: Gift) {
-        let nextVC = UIStoryboard(name: "GiftRecord", bundle: nil)
-            .instantiateInitialViewController()!
-        // TODO: GiftRecordクラスのMVP化の際に有効化する
-        // ModelとPresenterをインスタンス化
-//        let giftRecordModel = GiftRecordModel()
-        // PresenterはViewとModelの参照を持っている
-//        let presenter = GiftRecordPresenter(gift: gift, view: giftRecordVC, model: giftRecordModel)
+    func transitionToGiftRecord(gift: Gift?) {
+        let storyboard = UIStoryboard(name: "GiftRecord", bundle: nil)
+        let giftRecordVC = storyboard.instantiateViewController(withIdentifier: "GiftRecordVC") as! GiftRecordVC
+        let navC = UINavigationController(rootViewController: giftRecordVC)
+        // Presenterをインスタンス化
+        // PresenterはViewの参照を持っている
+        let presenter = GiftRecordPresenter(gift: gift, view: giftRecordVC)
         // ViewにPresenterを注入
-//        giftRecordVC.inject(presenter: presenter)
+        giftRecordVC.inject(presenter: presenter)
         // 編集画面へ遷移
-        navigationController?.present(nextVC, animated: true, completion: nil)
+        present(navC, animated: true, completion: nil)
     }
 }
