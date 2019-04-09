@@ -44,33 +44,29 @@ final class AnnivCell: UICollectionViewCell {
         switch RemainingDays(remainingDaysInt) {
         case .today:
             contentView.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0.0862745098, blue: 0.3921568627, alpha: 1)
-            setColorOfNearAnniv()
+            annivNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            annivDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             remainingDaysLabel.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             remainingDaysLabel.textColor = #colorLiteral(red: 0.8235294118, green: 0.0862745098, blue: 0.3921568627, alpha: 1)
             remainingDaysLabel.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+            
         case .tomorrow:
-            setColorOfNearAnniv()
-            setColorOfAfterTomorrow()
-        case .yesterday:
-            break
+            annivNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            annivDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            contentView.backgroundColor = #colorLiteral(red: 0.9737553, green: 0.6467057467, blue: 0, alpha: 1)
+            remainingDaysLabel.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+
         case .near:
-            setColorOfNearAnniv()
-            setColorOfAfterTomorrow()
+            annivNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            annivDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            contentView.backgroundColor = #colorLiteral(red: 0.9737553, green: 0.6467057467, blue: 0, alpha: 1)
+            remainingDaysLabel.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            
         case .past:
             contentView.alpha = 0.5
-        case .distant:
+            
+        case .yesterday, .distant:
             break
         }
-    }
-}
-
-private extension AnnivCell {
-    private func setColorOfNearAnniv() {
-        annivNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        annivDateLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-    }
-    private func setColorOfAfterTomorrow() {
-        contentView.backgroundColor = #colorLiteral(red: 0.9737553, green: 0.6467057467, blue: 0, alpha: 1)
-        remainingDaysLabel.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
     }
 }
