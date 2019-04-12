@@ -73,6 +73,8 @@ class ContactAccess {
                     }
                 }
             }
+        @unknown default:
+            Log.error("accessStatusで新しいケースが追加されています")
         }
     }
     
@@ -106,7 +108,7 @@ class ContactAccess {
         for contact in contacts {
             
             guard let date = contact.birthday?.date else {
-                print("\(contact.familyName, contact.givenName)の誕生日がnilだったため処理を終了します")
+                Log.warn("\(contact.familyName) \(contact.givenName)の誕生日がnilだったため処理を終了します")
                 return
             }
             let birthday = Anniv(id: contact.identifier,
