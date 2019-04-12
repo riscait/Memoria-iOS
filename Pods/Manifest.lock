@@ -115,11 +115,13 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.1)
+  - Repro (3.3.1)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
+  - Repro
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -142,6 +144,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - Repro
 
 SPEC CHECKSUMS:
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
@@ -163,7 +166,8 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  Repro: 0cf1cabcb405bbc9692b4c59054d9cac799a9aa8
 
-PODFILE CHECKSUM: 33ae5b25529471faac4ba54b73686d918cd3a044
+PODFILE CHECKSUM: 754d2f1814aee093c28d62a98d02a40227d8a4c4
 
 COCOAPODS: 1.5.3

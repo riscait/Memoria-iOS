@@ -44,6 +44,8 @@
 		8D2921FE2243A9760046917F /* GiftListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2921FD2243A9760046917F /* GiftListModel.swift */; };
 		8D2922032244EF550046917F /* GiftListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2922012244EF550046917F /* GiftListCell.swift */; };
 		8D2922042244EF550046917F /* GiftListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2922022244EF550046917F /* GiftListCell.xib */; };
+		8D3DA4B22260214300B59027 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DA4B12260214300B59027 /* SecretKey.swift */; };
+		8D3DA4B4226029FF00B59027 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8D3DA4B3226029FF00B59027 /* .gitignore */; };
 		8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3E561421BAAA840090E46E /* AppInfo.swift */; };
 		8D42F605222AC4BE00F01A77 /* AnnivUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */; };
 		8D4CBB1821C0001D009BA7C6 /* GiftList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1721C0001D009BA7C6 /* GiftList.storyboard */; };
@@ -150,6 +152,8 @@
 		8D2921FD2243A9760046917F /* GiftListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListModel.swift; sourceTree = "<group>"; };
 		8D2922012244EF550046917F /* GiftListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftListCell.swift; sourceTree = "<group>"; };
 		8D2922022244EF550046917F /* GiftListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftListCell.xib; sourceTree = "<group>"; };
+		8D3DA4B12260214300B59027 /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
+		8D3DA4B3226029FF00B59027 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8D3E561421BAAA840090E46E /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivUtil.swift; sourceTree = "<group>"; };
 		8D4CBB1721C0001D009BA7C6 /* GiftList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftList.storyboard; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				BC6767E9807FAE23F80305EF /* Pods */,
 				C986B6EDF1770E80DB59E4B8 /* Frameworks */,
 				8D11B3B02193B94200C60371 /* README.md */,
+				8D3DA4B3226029FF00B59027 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
@@ -271,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				8D0FB83E2182002700BFCB79 /* AppDelegate.swift */,
+				8D3DA4B12260214300B59027 /* SecretKey.swift */,
 				8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */,
 				8D3E561421BAAA840090E46E /* AppInfo.swift */,
 				8DD474B321C947CD00DD5919 /* String+.swift */,
@@ -449,6 +455,7 @@
 				8D0FB8392182002700BFCB79 /* Resources */,
 				F41BA7C9F1A854142F0651D6 /* [CP] Embed Pods Frameworks */,
 				8D88AF882259AF4E000BA720 /* ShellScript */,
+				AD4220E890D080CD2BF1388E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -508,6 +515,7 @@
 				8D0FB8492182002800BFCB79 /* LaunchScreen.storyboard in Resources */,
 				8D84D9A4225371AF00471FDF /* TimelineCell.xib in Resources */,
 				8D910B4D21E19F5C00D072EA /* AnnivEdit.storyboard in Resources */,
+				8D3DA4B4226029FF00B59027 /* .gitignore in Resources */,
 				8D4CBB1E21C159C5009BA7C6 /* GiftRecord.storyboard in Resources */,
 				8D0FB8512182013E00BFCB79 /* GoogleService-Info.plist in Resources */,
 				8D8559FE21B8A34F0033C7AA /* UpdateEmail.storyboard in Resources */,
@@ -572,6 +580,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		AD4220E890D080CD2BF1388E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Memoria-iOS/Pods-Memoria-iOS-resources.sh",
+				"${PODS_ROOT}/Repro/Repro.embeddedframework/Resources/ReproSDKResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ReproSDKResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Memoria-iOS/Pods-Memoria-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		F41BA7C9F1A854142F0651D6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -647,6 +677,7 @@
 				8DB8105921AA97880007BBC5 /* InspectableSegmentedControl.swift in Sources */,
 				8DC43FE421D9F53600B911F2 /* Gift.swift in Sources */,
 				8D2507B621A44E860015A206 /* AccentButton.swift in Sources */,
+				8D3DA4B22260214300B59027 /* SecretKey.swift in Sources */,
 				8DB8105321A915B20007BBC5 /* HiddenListVC.swift in Sources */,
 				8D42F605222AC4BE00F01A77 /* AnnivUtil.swift in Sources */,
 				8DAE856321A2F1B90049063D /* InspectableLabel.swift in Sources */,
