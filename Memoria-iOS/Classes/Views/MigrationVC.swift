@@ -8,10 +8,15 @@
 
 import UIKit
 
-class MigrationVC: UIViewController {
+class MigrationVC: UIViewController, EventTrackable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        trackScreen()
     }
     
     func startMigration() {

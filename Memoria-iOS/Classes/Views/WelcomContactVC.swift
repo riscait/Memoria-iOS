@@ -8,12 +8,13 @@
 
 import UIKit
 
-class WelcomContactVC: UIViewController {
+class WelcomContactVC: UIViewController, EventTrackable {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        trackScreen()
     }
-
+    
     @IBAction func didTapImportButton(_ sender: Any) {
         // 連絡先アクセス用のクラスをインスタンス化
         let contactAccess = ContactAccess()

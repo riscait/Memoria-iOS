@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 /// Giftを登録・編集する画面
-final class GiftRecordVC: UIViewController {
+final class GiftRecordVC: UIViewController, EventTrackable {
     // MARK: - Presenter
     private var presenter: GiftRecordPresenterInput!
     func inject(presenter: GiftRecordPresenter) {
@@ -36,6 +36,11 @@ final class GiftRecordVC: UIViewController {
         // 子ビューを特定する
         discoverChildVC()
         presenter.setExistGift()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        trackScreen()
     }
     
     // MARK: - IBAction methods

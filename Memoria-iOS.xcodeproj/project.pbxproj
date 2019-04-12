@@ -46,6 +46,7 @@
 		8D2922042244EF550046917F /* GiftListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2922022244EF550046917F /* GiftListCell.xib */; };
 		8D3DA4B22260214300B59027 /* SecretKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DA4B12260214300B59027 /* SecretKey.swift */; };
 		8D3DA4B4226029FF00B59027 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 8D3DA4B3226029FF00B59027 /* .gitignore */; };
+		8D3DA4B62260416500B59027 /* EventTrackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3DA4B52260416500B59027 /* EventTrackable.swift */; };
 		8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3E561421BAAA840090E46E /* AppInfo.swift */; };
 		8D42F605222AC4BE00F01A77 /* AnnivUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */; };
 		8D4CBB1821C0001D009BA7C6 /* GiftList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4CBB1721C0001D009BA7C6 /* GiftList.storyboard */; };
@@ -154,6 +155,7 @@
 		8D2922022244EF550046917F /* GiftListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftListCell.xib; sourceTree = "<group>"; };
 		8D3DA4B12260214300B59027 /* SecretKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKey.swift; sourceTree = "<group>"; };
 		8D3DA4B3226029FF00B59027 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8D3DA4B52260416500B59027 /* EventTrackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTrackable.swift; sourceTree = "<group>"; };
 		8D3E561421BAAA840090E46E /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		8D42F604222AC4BE00F01A77 /* AnnivUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivUtil.swift; sourceTree = "<group>"; };
 		8D4CBB1721C0001D009BA7C6 /* GiftList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftList.storyboard; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */,
 				8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */,
 				8D2921FD2243A9760046917F /* GiftListModel.swift */,
+				8D3DA4B52260416500B59027 /* EventTrackable.swift */,
 			);
 			name = Models;
 			path = "Memoria-iOS/Classes/Models";
@@ -697,6 +700,7 @@
 				8D2921ED223A96B40046917F /* AnnivListModel.swift in Sources */,
 				8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */,
 				8D1BFBB22185C6870082C766 /* DateTimeFormat.swift in Sources */,
+				8D3DA4B62260416500B59027 /* EventTrackable.swift in Sources */,
 				8DD474B621CBEB4F00DD5919 /* GiftRecordSelectPersonVC.swift in Sources */,
 				8D00EB1521BB960C00A3A5AE /* UpdatePasswordVC.swift in Sources */,
 				8D63BFF922492D4A00AA1B9A /* GiftRecordPresenter.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 import Firebase
 
-class PasswordlessVC: UIViewController {
+class PasswordlessVC: UIViewController, EventTrackable {
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var sendSignInLinkButton: UIButton!
@@ -28,6 +28,8 @@ class PasswordlessVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        trackScreen()
+        
         configureObserver()
     }
     

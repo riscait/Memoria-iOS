@@ -15,7 +15,7 @@ protocol GiftRecordSelectPersonVCDelegate: AnyObject {
 }
 
 /// gift対象者を選択するための詳細画面（テーブルセルをタップして遷移してくる）
-class GiftRecordSelectPersonVC: UIViewController {
+class GiftRecordSelectPersonVC: UIViewController, EventTrackable {
     
     // Conform to GiftRecordSelectProtocol
     var displayData = [String]()
@@ -28,6 +28,11 @@ class GiftRecordSelectPersonVC: UIViewController {
         super.viewDidLoad()
 
         searchDB()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        trackScreen()
     }
 }
 

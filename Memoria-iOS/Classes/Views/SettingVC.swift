@@ -11,7 +11,7 @@ import SafariServices
 
 import Firebase
 
-class SettingVC: UITableViewController {
+class SettingVC: UITableViewController, EventTrackable {
 
     /// TableViewのセル。rowValueはtag番号を示す
     enum SelectableCell: Int {
@@ -37,6 +37,8 @@ class SettingVC: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        trackScreen()
+        
         guard let user = Auth.auth().currentUser else { return }
         accountStateLabel.text = user.displayName  // ユーザー名を表示
     }

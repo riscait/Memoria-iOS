@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 /// Gift一覧を表示するメイン画面のクラス
-final class GiftListVC: UIViewController {
+final class GiftListVC: UIViewController, EventTrackable {
 
     // MARK: - Presenter
     private var presenter: GiftListPresenterInput!
@@ -37,6 +37,7 @@ final class GiftListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.addListenerAndUpdateGift()
+        trackScreen()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

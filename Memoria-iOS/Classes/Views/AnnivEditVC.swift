@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AnnivEditVC: UIViewController {
+class AnnivEditVC: UIViewController, EventTrackable {
 
     // MARK: - Property
     
@@ -46,6 +46,10 @@ class AnnivEditVC: UIViewController {
         configureField(with: annivModel)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        trackScreen()
+    }
     
     // MARK: - IBAction methods
     

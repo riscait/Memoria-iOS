@@ -10,7 +10,7 @@ import UIKit
 
 import Firebase
 
-class SignInVC: UIViewController {
+class SignInVC: UIViewController, EventTrackable {
     
     @IBOutlet weak var emailField: InspectableTextField!
     @IBOutlet weak var passwordField: InspectableTextField!
@@ -28,6 +28,8 @@ class SignInVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        trackScreen()
+        
         configureObserver()
     }
     

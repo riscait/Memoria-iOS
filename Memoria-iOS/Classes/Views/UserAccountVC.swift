@@ -10,7 +10,7 @@ import UIKit
 
 import Firebase
 
-class UserAccountVC: UITableViewController {
+class UserAccountVC: UITableViewController, EventTrackable {
 
     /// TableViewのセル。rowValueはtag番号を示す
     enum SelectableCell: Int {
@@ -30,6 +30,7 @@ class UserAccountVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        trackScreen()
         
         currentEmail.text = Auth.auth().currentUser?.email
     }
