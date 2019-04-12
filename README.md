@@ -3,7 +3,7 @@ Memoria-iOSは、Memoria（メモリア）プロジェクトのiOSアプリリ�
 
 # Development requirement
 ## Development environment
-1. Xcode 10.1  
+1. Xcode 10.2
 2. Swift 4.2.1
 
 ## How to start development
@@ -12,9 +12,10 @@ Memoria-iOSの開発の始め方を解説します。
 
 ## Using "Library"
 ### CocoaPodsで管理
-1.  Firebase Core
-2.  FirebaseAuth（認証機能）
-2.  Firestore（データベース機能）
+1. Firebase Core
+2. FirebaseAuth（認証機能）
+3. Firestore（データベース機能）
+4. Repro
 
 ### Carthageで管理
 1.  まだなし
@@ -24,6 +25,6 @@ MVP(Passive View)に移行中
 
 ## Using "GitHub Flow"
 1. masterブランチはいつでもデプロイ可能状態
-2. 機能追加と不具合修正はmasterブランチから生やして作って(e.g. add-brack-thema)プルリクエスト！
+2. 機能追加と不具合修正はmasterブランチから切って(e.g. add-brack-thema)プルリクエスト
 
-Copyright 2019 村松 龍之介
+Copyright 2019 村松 龍之介 (Muramatsu Ryunosuke)
