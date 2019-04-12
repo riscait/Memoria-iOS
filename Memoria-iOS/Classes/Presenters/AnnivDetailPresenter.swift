@@ -38,7 +38,7 @@ extension Notification.Name {
 final class AnnivDetailPresenter: AnnivDetailPresenterInput {
     // 記念日一覧画面に戻るためのオブザーバー追加
     func addObserver() {
-        NotificationCenter.default.addObserver(view, selector: #selector(view.popVC), name: .popToAnnivListVC, object: nil)
+        NotificationCenter.default.addObserver(view as Any, selector: #selector(view.popVC), name: .popToAnnivListVC, object: nil)
     }
     
     // MARK: - Enum

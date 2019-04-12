@@ -4,7 +4,7 @@ Memoria-iOSは、Memoria（メモリア）プロジェクトのiOSアプリリ�
 # Development requirement
 ## Development environment
 1. Xcode 10.2
-2. Swift 4.2.1
+2. Swift 5.0
 
 ## How to start development
 Memoria-iOSの開発の始め方を解説します。
