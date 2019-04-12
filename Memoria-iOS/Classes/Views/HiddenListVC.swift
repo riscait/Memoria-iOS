@@ -10,7 +10,7 @@
 import UIKit
 import Firebase
 
-class HiddenListVC: UITableViewController {
+class HiddenListVC: UITableViewController, EventTrackable {
 
     @IBOutlet var hiddenTableView: UITableView!
     
@@ -31,6 +31,7 @@ class HiddenListVC: UITableViewController {
     
     /// Viewが表示される直前に呼ばれる（タブ切り替え等も含む）
     override func viewWillAppear(_ animated: Bool) {
+        trackScreen()
         
         // anniversaryコレクションの変更を監視する
         listenerRegistration = AnnivDAO.getQuery(whereField: "isHidden", equalTo: true)?

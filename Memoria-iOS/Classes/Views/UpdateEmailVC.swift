@@ -10,7 +10,7 @@ import UIKit
 
 import Firebase
 
-class UpdateEmailVC: UIViewController {
+class UpdateEmailVC: UIViewController, EventTrackable {
     
     @IBOutlet weak var currentEmail: UILabel!
     @IBOutlet weak var newEmailField: UITextField!
@@ -29,6 +29,7 @@ class UpdateEmailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        trackScreen()
         
         configureObserver()
     }

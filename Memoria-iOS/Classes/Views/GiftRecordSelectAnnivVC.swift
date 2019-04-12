@@ -15,7 +15,7 @@ protocol GiftRecordSelectAnnivVCDelegate: AnyObject {
 }
 
 /// gift対象記念日を選択するための詳細画面（テーブルセルをタップして遷移してくる）
-class GiftRecordSelectAnnivVC: UIViewController {
+class GiftRecordSelectAnnivVC: UIViewController, EventTrackable {
 
     // Conform to GiftRecordSelectProtocol
     var displayData = [String]()
@@ -28,6 +28,11 @@ class GiftRecordSelectAnnivVC: UIViewController {
         super.viewDidLoad()
 
         searchDB()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        trackScreen()
     }
 }
 

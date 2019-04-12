@@ -8,11 +8,16 @@
 
 import UIKit
 
-final class TimelineVC: UIViewController {
+final class TimelineVC: UIViewController, EventTrackable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // TODO: 未実装画面
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        trackScreen()
     }
 }

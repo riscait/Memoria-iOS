@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 /// 選択された記念日の詳細情報を表示する画面のクラス
-final class AnnivDetailVC: UIViewController {
+final class AnnivDetailVC: UIViewController, EventTrackable {
     // MARK: - Enum
     // CollectionViewのセクション
     enum TableSection: Int {
@@ -36,6 +36,7 @@ final class AnnivDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.addListenerAndUpdateGift()
+        trackScreen()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

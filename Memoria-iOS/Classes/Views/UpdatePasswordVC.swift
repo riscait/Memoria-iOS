@@ -10,7 +10,7 @@ import UIKit
 
 import Firebase
 
-class UpdatePasswordVC: UIViewController {
+class UpdatePasswordVC: UIViewController, EventTrackable {
 
     @IBOutlet weak var currentPasswordField: UITextField!
     @IBOutlet weak var newPasswordField: UITextField!
@@ -29,6 +29,7 @@ class UpdatePasswordVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        trackScreen()
         
         configureObserver()
     }
