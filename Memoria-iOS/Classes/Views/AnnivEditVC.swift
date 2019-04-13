@@ -66,28 +66,33 @@ class AnnivEditVC: UIViewController, EventTrackable {
         // 新規登録なら新しくIDを生成
         let uuid = annivModel?.id ?? UUID().uuidString
         // 記念日のタイプはセグメントコントロールの選択から判断
-        annivType = AnnivType(rawValue: annivTypeSegment.selectedSegmentIndex)
+        guard let annivType = AnnivType(rawValue: annivTypeSegment.selectedSegmentIndex) else { return }
         // 毎年繰り返す記念日か否かはスイッチで
         let isAnnualy = tableVC.annualySwitch.isOn
         // 連絡先からインポートしたデータであるか否か。新規登録ならfalse
         let isFromContact = annivModel?.isFromContact ?? false
         
+        let date = tableVC.timestamp ?? Timestamp()
+        
         // 記念日データをセット
         let anniversary = Anniv(id: uuid,
-                                               category: annivType!,
-                                               title: annivTitleField.text,
-                                               familyName: leftNameField.text,
-                                               givenName: rightNameField.text,
-                                               date: tableVC.timestamp ?? Timestamp(),
-                                               iconImage: nil,
-                                               isHidden: false,
-                                               isAnnualy: isAnnualy,
-                                               isFromContact: isFromContact,
-                                               memo: memoView.text.trimmingCharacters(in: .whitespacesAndNewlines),
-                                               remainingDays: nil)
-        print(anniversary)
-        // DBに書き込んで画面を閉じる
+                                category: annivType,
+                                title: annivTitleField.text,
+                                familyName: leftNameField.text,
+                                givenName: rightNameField.text,
+                                date: date,
+                                iconImage: nil,
+                                isHidden: false,
+                                isAnnualy: isAnnualy,
+                                isFromContact: isFromContact,
+                                memo: memoView.text.trimmingCharacters(in: .whitespacesAndNewlines),
+                                remainingDays: nil)
+        
         AnnivDAO.set(documentPath: uuid, data: anniversary)
+        
+        trackAddAnniversary(eventName: AnnivUtil.getName(from: anniversary),
+                            annivDate: date.dateValue(),
+                            annivCategory: annivType)
         dismiss(animated: true, completion: nil)
     }
     

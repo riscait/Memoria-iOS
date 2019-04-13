@@ -40,12 +40,16 @@ enum RemainingDays {
 struct AnnivUtil {
     
     // MARK: - Static methods
-    /// 記念日か誕生日かによってタイトルが違うので、ここで判断して返す
-    static func getName(from anniv: Anniv) -> String? {
+    
+    /// 記念日の種類に応じた、記念日の名前（タイトル）を返す
+    ///
+    /// - Parameter anniv: 記念日構造体
+    /// - Returns: 記念日の名前（タイトル）文字列
+    static func getName(from anniv: Anniv) -> String {
         // 記念日の名称。誕生日だったら苗字と名前を繋げて表示
         switch anniv.category {
         case .anniv:
-            return anniv.title
+            return anniv.title ?? ""
             
         case .birthday:
             return String(format: "whoseBirthday".localized,
@@ -53,13 +57,18 @@ struct AnnivUtil {
                                       anniv.givenName ?? ""])
         }
     }
-    static func getName(from anniv: [String : Any]) -> String? {
+    
+    /// 記念日の種類に応じた、記念日の名前（タイトル）を返す
+    ///
+    /// - Parameter anniv: 記念日の辞書データ
+    /// - Returns: 記念日の名前（タイトル）文字列
+    static func getName(from anniv: [String : Any]) -> String {
         // 記念日の分類
         let category = AnnivType(category: anniv["category"] as! String)
         // 記念日の名称。誕生日だったら苗字と名前を繋げて表示
         switch category {
         case .anniv:
-            return anniv["title"] as? String
+            return anniv["title"] as! String
             
         case .birthday:
             return String(format: "whoseBirthday".localized,
