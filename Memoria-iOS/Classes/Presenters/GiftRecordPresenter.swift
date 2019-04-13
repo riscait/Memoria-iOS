@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 /// Viewから指示を受けるためのデリゲート
-protocol GiftRecordPresenterInput: AnyObject {
+protocol GiftRecordPresenterInput: AnyObject, EventTrackable {
     /// 既存のギフト情報を画面に反映させる
     func setExistGift()
     /// キャンセルボタンを押した時はダイアログを表示させる
@@ -57,17 +57,21 @@ final class GiftRecordPresenter: GiftRecordPresenterInput {
     }
     func didTapRecordButton(isReceived: Bool, isDateTBD: Bool, personName: String, annivName: String, timestamp: Timestamp?, goods: String, mwmo: String) {
         let id = gift?.id ?? UUID().uuidString
+        let date = isDateTBD ? nil : timestamp ?? Timestamp()
+        
         let newGift = Gift(id: id,
                         isReceived: isReceived,
                         personName: personName,
                         annivName: annivName,
-                        date: isDateTBD ? nil : timestamp ?? Timestamp(),
+                        date: date,
                         goods: goods,
                         memo: mwmo,
                         isHidden: false,
                         iconImage: nil)
         // DBに書き込んで画面を閉じる
         GiftDAO.set(documentPath: id, data: newGift)
+        
+        trackAddGift(annivName: annivName, isReceived: isReceived, goodsName: goods, giftDate: date?.dateValue())
         view.dismiss(animated: true)
     }
 }
