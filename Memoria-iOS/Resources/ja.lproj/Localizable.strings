@@ -27,7 +27,7 @@
 "nextMigration" = "データアップデート中です\n残り時間計算中";
 "underMigration" = "データアップデート中です\n%d / %d";
 "version" = "Version";
-"copyright" = "©︎ 2018 nerco studio";
+"copyright" = "©︎ 2018 nerco studio\n\n一部のアイコンは Icons8 のものを使用しています";
 // アカウント登録画面
 "underSignUp" = "アカウント発行中…";
 "forgotPassword" = "パワスードを忘れた場合はこちら";
