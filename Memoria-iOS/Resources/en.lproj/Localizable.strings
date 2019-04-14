@@ -27,7 +27,7 @@
 "nextMigration" = "Updating...\nCalculating remaining time";
 "underMigration" = "Updating...\n%d / %d";
 "version" = "Version";
-"copyright" = "©︎ 2018 nerco studio";
+"copyright" = "©︎ 2018 nerco studio\nSome of the icon uses the one of Icons8";
 // Sign up view
 "underSignUp" = "Sign up...";
 "forgotPassword" = "Forgot Password";

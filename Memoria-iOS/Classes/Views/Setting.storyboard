@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iu8-dF-l1E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iu8-dF-l1E">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="アカウント" id="F9s-lt-2pB">
+                            <tableViewSection id="F9s-lt-2pB">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="aLP-Dq-0ib" detailTextLabel="5K4-qO-uIV" style="IBUITableViewCellStyleValue1" id="ThX-30-yFr">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ThX-30-yFr" id="fsa-jz-XLl">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -52,10 +52,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="記念日" id="kDr-xD-gNS">
+                            <tableViewSection id="kDr-xD-gNS">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="11" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Wv7-ve-X36" style="IBUITableViewCellStyleDefault" id="sLg-Eg-B2f">
-                                        <rect key="frame" x="0.0" y="155.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="115" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sLg-Eg-B2f" id="fIq-An-vnC">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -78,7 +78,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="12" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Q3w-n0-2Fc" style="IBUITableViewCellStyleDefault" id="2I3-EN-XlK">
-                                        <rect key="frame" x="0.0" y="199.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="159" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2I3-EN-XlK" id="gVT-i9-Pau">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -98,7 +98,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="13" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="BuY-UV-IGN" style="IBUITableViewCellStyleDefault" id="2Us-wu-Hfr">
-                                        <rect key="frame" x="0.0" y="243.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="203" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Us-wu-Hfr" id="vRk-oG-46B">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -119,10 +119,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="メモリアについて" id="IXc-z4-QYq">
+                            <tableViewSection id="IXc-z4-QYq">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" tag="21" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="TKI-Jc-OFc" detailTextLabel="skq-7I-mTg" style="IBUITableViewCellStyleValue1" id="JJq-U6-bAQ">
-                                        <rect key="frame" x="0.0" y="343.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="283" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JJq-U6-bAQ" id="NIc-H0-e49">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -152,7 +152,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="22" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="lYK-jS-Jeh" detailTextLabel="vfU-kg-N3V" style="IBUITableViewCellStyleValue1" id="dZ7-ZV-Zbn">
-                                        <rect key="frame" x="0.0" y="387.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="327" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dZ7-ZV-Zbn" id="EXN-pA-ihY">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -179,7 +179,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" tag="23" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="UkZ-dD-rpU" detailTextLabel="vin-f1-hnM" style="IBUITableViewCellStyleValue1" id="i1J-UX-xa5">
-                                        <rect key="frame" x="0.0" y="431.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="371" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="i1J-UX-xa5" id="JFs-l6-StX">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
@@ -209,7 +209,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="nsk-Kd-sSS" detailTextLabel="2Hn-Mz-qmE" style="IBUITableViewCellStyleValue1" id="cgK-tl-jrM">
-                                        <rect key="frame" x="0.0" y="475.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="415" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cgK-tl-jrM" id="BrQ-hr-fWa">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -246,7 +246,7 @@
                             <outlet property="delegate" destination="GzO-PB-JUL" id="sXM-X2-t90"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="settingTabBarIcon" id="tJg-kG-CO2" customClass="InspectableTabBarItem" customModule="Memoria_iOS" customModuleProvider="target">
+                    <tabBarItem key="tabBarItem" title="" image="SettingIcon" id="tJg-kG-CO2" customClass="InspectableTabBarItem" customModule="Memoria_iOS" customModuleProvider="target">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="settings"/>
                         </userDefinedRuntimeAttributes>
@@ -284,8 +284,8 @@
             <objects>
                 <navigationController id="iu8-dF-l1E" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="LY6-2q-64Q">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LY6-2q-64Q">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -298,6 +298,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="settingTabBarIcon" width="48" height="48"/>
+        <image name="SettingIcon" width="25" height="25"/>
     </resources>
 </document>
