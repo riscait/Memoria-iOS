@@ -10,6 +10,7 @@
 		6E8CBC0D324DE6FDCA8B1E9D /* Pods_Memoria_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D879946004ED7C834459C0 /* Pods_Memoria_iOS.framework */; };
 		8D00EB1321BB945C00A3A5AE /* UpdatePassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D00EB1221BB945C00A3A5AE /* UpdatePassword.storyboard */; };
 		8D00EB1521BB960C00A3A5AE /* UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D00EB1421BB960C00A3A5AE /* UpdatePasswordVC.swift */; };
+		8D0B3A08226312E300B71A7C /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 8D0B3A07226312E300B71A7C /* Cartfile */; };
 		8D0BE32121A047CB00FE9B40 /* PositiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BE32021A047CB00FE9B40 /* PositiveButton.swift */; };
 		8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB83E2182002700BFCB79 /* AppDelegate.swift */; };
 		8D0FB8442182002700BFCB79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB8422182002700BFCB79 /* Main.storyboard */; };
@@ -72,7 +73,6 @@
 		8D8559FA21B80B270033C7AA /* UserAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8559F921B80B270033C7AA /* UserAccountVC.swift */; };
 		8D8559FC21B8A3380033C7AA /* UpdateEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8559FB21B8A3380033C7AA /* UpdateEmailVC.swift */; };
 		8D8559FE21B8A34F0033C7AA /* UpdateEmail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8559FD21B8A34F0033C7AA /* UpdateEmail.storyboard */; };
-		8D88AF872259AF48000BA720 /* NativePopup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D88AF862259AF48000BA720 /* NativePopup.framework */; };
 		8D910B4D21E19F5C00D072EA /* AnnivEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D910B4C21E19F5C00D072EA /* AnnivEdit.storyboard */; };
 		8D910B4F21E1C55500D072EA /* AnnivEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D910B4E21E1C55500D072EA /* AnnivEditVC.swift */; };
 		8D910B5321E2307400D072EA /* InspectableBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D910B5221E2307400D072EA /* InspectableBarButtonItem.swift */; };
@@ -115,6 +115,7 @@
 		76D879946004ED7C834459C0 /* Pods_Memoria_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memoria_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D00EB1221BB945C00A3A5AE /* UpdatePassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdatePassword.storyboard; sourceTree = "<group>"; };
 		8D00EB1421BB960C00A3A5AE /* UpdatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordVC.swift; sourceTree = "<group>"; };
+		8D0B3A07226312E300B71A7C /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		8D0BE32021A047CB00FE9B40 /* PositiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositiveButton.swift; sourceTree = "<group>"; };
 		8D0FB83B2182002700BFCB79 /* Memoria-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Memoria-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0FB83E2182002700BFCB79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,7 +182,6 @@
 		8D8559F921B80B270033C7AA /* UserAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountVC.swift; sourceTree = "<group>"; };
 		8D8559FB21B8A3380033C7AA /* UpdateEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailVC.swift; sourceTree = "<group>"; };
 		8D8559FD21B8A34F0033C7AA /* UpdateEmail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateEmail.storyboard; sourceTree = "<group>"; };
-		8D88AF862259AF48000BA720 /* NativePopup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NativePopup.framework; path = Carthage/Build/iOS/NativePopup.framework; sourceTree = "<group>"; };
 		8D910B4C21E19F5C00D072EA /* AnnivEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnivEdit.storyboard; sourceTree = "<group>"; };
 		8D910B4E21E1C55500D072EA /* AnnivEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivEditVC.swift; sourceTree = "<group>"; };
 		8D910B5221E2307400D072EA /* InspectableBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableBarButtonItem.swift; sourceTree = "<group>"; };
@@ -225,7 +225,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D88AF872259AF48000BA720 /* NativePopup.framework in Frameworks */,
 				6E8CBC0D324DE6FDCA8B1E9D /* Pods_Memoria_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +241,7 @@
 				C986B6EDF1770E80DB59E4B8 /* Frameworks */,
 				8D11B3B02193B94200C60371 /* README.md */,
 				8D3DA4B3226029FF00B59027 /* .gitignore */,
+				8D0B3A07226312E300B71A7C /* Cartfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -439,7 +439,6 @@
 		C986B6EDF1770E80DB59E4B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8D88AF862259AF48000BA720 /* NativePopup.framework */,
 				76D879946004ED7C834459C0 /* Pods_Memoria_iOS.framework */,
 			);
 			name = Frameworks;
@@ -509,6 +508,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0B3A08226312E300B71A7C /* Cartfile in Resources */,
 				8D77D18321B37ADE00CF673A /* Passwordless.storyboard in Resources */,
 				8D11B3B12193B94200C60371 /* README.md in Resources */,
 				8D00EB1321BB945C00A3A5AE /* UpdatePassword.storyboard in Resources */,
@@ -575,7 +575,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/NativePopup.framework",
 			);
 			outputFileListPaths = (
 			);
