@@ -23,14 +23,11 @@ class WelcomContactVC: UIViewController, EventTrackable {
             // チュートリアル終了フラグを立てる
             UserDefaults.standard.set(true, forKey: "isFinishedTutorial")
             self.dismiss(animated: true, completion: nil)
-            print("Anniversary画面へ")
         }
     }
     
-    /// Segueが実行されるときの処理
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // チュートリアル終了フラグを立てる
+    @IBAction func didTapLaterButton(_ sender: PositiveButton) {
         UserDefaults.standard.set(true, forKey: "isFinishedTutorial")
-        print("Anniversary画面へ")
+        dismiss(animated: true, completion: nil)
     }
 }
