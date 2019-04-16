@@ -25,7 +25,6 @@ enum DeviceLanguage: String {
         // "-"の左側が言語を示す
         let languagePrefix = firstLanguage.components(separatedBy: "-").first!
         // 言語を示す文字列からEnumのcaseを作り返却する
-        print("言語設定: \(DeviceLanguage.init(rawValue: String(languagePrefix))?.rawValue ?? "不明")")
         return DeviceLanguage.init(rawValue: String(languagePrefix))!
     }
     

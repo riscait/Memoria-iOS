@@ -120,7 +120,6 @@ extension AnnivListVC: AnnivListPresenterOutput {
         let model = AnnivDetailModel()
         // PresenterはViewとModelの参照を持っている
         let presenter = AnnivDetailPresenter(anniv: anniv, view: annivDetailVC, model: model)
-        print("Debug log:", "presenter", "->", presenter)
         // ViewにPresenterを注入
         annivDetailVC.inject(presenter: presenter)
         // 詳細画面へPushで遷移

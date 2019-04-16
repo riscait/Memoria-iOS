@@ -51,15 +51,9 @@ class UpdatePasswordVC: UIViewController, EventTrackable {
             let newPassword = newPasswordField.text,
             let newPasswordConfirmation = newPasswordConfirmationField.text else { return }
         
-        print("""
-            currentPassword: \(currentPassword)
-            newPassword: \(newPassword)
-            newPasswordConfirmation: \(newPasswordConfirmation)
-            """)
-        
         guard currentPassword != newPassword else {
             // 現在のパスワードと新しいパスワードが一緒なら失敗
-            print("現在のパスワードと新しいパスワードが一緒")
+            Log.info("現在のパスワードと新しいパスワードが一緒")
             DialogBox.showAlert(on: self, message: NSLocalizedString("currentAndNewPasswordAreSame", comment: ""))
             newPasswordField.text = nil
             newPasswordConfirmationField.text = nil
@@ -67,7 +61,7 @@ class UpdatePasswordVC: UIViewController, EventTrackable {
         }
         guard newPassword == newPasswordConfirmation else {
             // 新しいパスワードと確認用パスワードが違ったら失敗
-            print("確認パスワードが一致しません")
+            Log.info("確認パスワードが一致しません")
             DialogBox.showAlert(on: self, message: NSLocalizedString("mismatchPasswordConfirmation", comment: ""))
             newPasswordConfirmationField.text = nil
             return
@@ -78,7 +72,7 @@ class UpdatePasswordVC: UIViewController, EventTrackable {
         DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("reauthInProgress", comment: "")) {
             user.reauthenticateAndRetrieveData(with: credential) { (authResult, error) in
                 if let error = error {
-                    print("エラー: \(error)")
+                    Log.warn("エラー: \(error.localizedDescription)")
                     // 失敗した場合はエラーダイアログを表示して処理終了
                     DialogBox.showAlert(on: self,
                                         message: NSLocalizedString(error.localizedDescription, comment: ""))
@@ -86,19 +80,19 @@ class UpdatePasswordVC: UIViewController, EventTrackable {
                     DialogBox.dismissAlertWithIndicator(on: self, completion: nil)
                     return
                 }
-                print("再認証成功")
+                Log.info("再認証成功")
                 // パスワード変更処理
                 DialogBox.updateAlert(with: NSLocalizedString("updatePasswordInProgress", comment: ""), on: self)
                 user.updatePassword(to: newPassword) { error in
                     DialogBox.dismissAlertWithIndicator(on: self) {
                         
                         if let error = error {
-                            print("エラー: \(error)")
+                            Log.warn("エラー: \(error.localizedDescription)")
                             // エラーダイアログ表示して処理終了
                             DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
                             return
                         }
-                        print("パスワードの変更に成功")
+                        Log.info("パスワードの変更に成功")
                         DialogBox.showAlert(on: self, message: NSLocalizedString("successfullyUpdatePassword", comment: "")) {
                             self.dismiss(animated: true, completion: nil)
                         }
@@ -141,12 +135,6 @@ class UpdatePasswordVC: UIViewController, EventTrackable {
                 self.view.transform = transform
             }
         }
-        print("""
-            スクリーンの高さ: \(screenHeight) --- キーボードの高さ: \(keyboardHeight)
-            TextFieldの上辺位置: \(textFieldOrignY) --- TextFieldの高さ: \(textFieldHeight)
-            TextFieldの下辺位置: \(textFieldBottom) --- キーボードの上辺位置: \(keyboardY)
-            TextFieldとキーボードの距離: \(distance)
-            """)
     }
     
     /// キーボードが降りたら画面を戻す
@@ -164,7 +152,6 @@ class UpdatePasswordVC: UIViewController, EventTrackable {
             && newPasswordField.text?.count ?? 0 > 7
             && newPasswordConfirmationField.text?.count ?? 0 > 7
             ? true : false
-        print(#function)
     }
 }
 

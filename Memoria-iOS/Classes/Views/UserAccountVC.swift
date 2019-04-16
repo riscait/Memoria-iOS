@@ -55,9 +55,9 @@ class UserAccountVC: UITableViewController, EventTrackable {
                                             let firebaseAuth = Auth.auth()
                                             do {
                                                 try firebaseAuth.signOut()
-                                                print("Sign outに成功")
+                                                Log.info("Sign outに成功")
                                             } catch let signOutError as NSError {
-                                                print ("Error signing out: %@", signOutError)
+                                                Log.warn("Error signing out:", signOutError)
                                             }
             }
         }

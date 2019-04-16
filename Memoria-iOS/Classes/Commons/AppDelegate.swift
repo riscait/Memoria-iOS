@@ -70,17 +70,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                          "isFinishedTutorial": false])
         
         if userDefaults.integer(forKey: launchCount) == 0 {
-            print("初回起動です。")
+            Log.info("初回起動です。")
             // ユニークIDを生成して永続化
             let uuid = UUID().uuidString
             userDefaults.set(uuid, forKey: "uuid")
-            print("UUIDを生成しました: \(uuid)")
+            Log.info("UUIDを生成: \(uuid)")
             // 初回起動フラグをオフにする
             userDefaults.set(1, forKey: launchCount)
         } else {
             let n = userDefaults.integer(forKey: launchCount) + 1
             userDefaults.set(n, forKey: launchCount)
-            print("\(n)回目の起動です。\nUUID: \(userDefaults.string(forKey: "uuid")!)")
+            Log.info("\(n)回目の起動 \nUUID: \(userDefaults.string(forKey: "uuid")!)")
         }
     }
 }
