@@ -30,11 +30,11 @@ class ContactAccess {
         
         switch accessStatus {
         case .notDetermined:  // まだ許可されていないか、機能制限等により利用不可
-            print("連絡先へのアクセスは、まだ許可されていないか、機能制限等により利用不可です")
+            Log.info("連絡先へのアクセスは、まだ許可されていないか、機能制限等により利用不可です")
             // 連絡先へのアクセスを許可するかどうかのダイアログボックスを表示
             store.requestAccess(for: .contacts, completionHandler: {(granted, Error) in
                 if granted {
-                    print("連絡先へのアクセスが許可されました")
+                    Log.info("連絡先へのアクセスが許可されました")
                     DialogBox.showAlertWithIndicator(on: rootVC, message: NSLocalizedString("importingContact", comment: "")) {
                         self.importContact { count in
                             DialogBox.dismissAlertWithIndicator(on: rootVC) {
@@ -43,7 +43,7 @@ class ContactAccess {
                         }
                     }
                 } else {
-                    print("連絡先へのアクセスが拒否されました")
+                    Log.info("連絡先へのアクセスが拒否されました")
                     /// 設定アプリへの遷移を促すダイアログをポップアップ
                     DialogBox.showAlert(on: rootVC,
                                         hasCancel: true,
@@ -53,11 +53,11 @@ class ContactAccess {
                 }
             })
         case .restricted:  // 連絡先情報を使用できません
-            print("このアプリケーションは 連絡先情報を使用できません")
+            Log.info("このアプリケーションは 連絡先情報を使用できません")
             // TODO: 連絡先を取得できない旨を表示する
             
         case .denied:  // 連絡先へのアクセスが拒否されている
-            print("連絡先へのアクセスが拒否されている")
+            Log.info("連絡先へのアクセスが拒否されている")
             DialogBox.showAlert(on: rootVC,
                                 hasCancel: true,
                                 title: NSLocalizedString("pleasePermitToContactTitle", comment: ""),
@@ -65,7 +65,7 @@ class ContactAccess {
                                 defaultAction: OpenOtherApp().openSettingsApp)
             
         case .authorized:  // 連絡先へのアクセス可能
-            print("連絡先へのアクセス可能")
+            Log.info("連絡先へのアクセス可能")
             DialogBox.showAlertWithIndicator(on: rootVC, message: NSLocalizedString("importingContact", comment: "")) {
                 self.importContact { count in
                     DialogBox.dismissAlertWithIndicator(on: rootVC) {
@@ -99,11 +99,11 @@ class ContactAccess {
                                 }
             }
         } catch {
-            print("連絡先データの取得に失敗！")
+            Log.warn("連絡先データの取得に失敗！")
             // TODO: なんらかのエラーアラートを出す
         }
         
-        print("\(contacts.count)件の連絡先情報を見つけました！")
+        Log.info("\(contacts.count)件の連絡先情報を確認")
         
         for contact in contacts {
             
@@ -136,7 +136,6 @@ class ContactAccess {
     // MARK: - Private method
     private func importedBirthday(rootVC: UIViewController, count: Int, compltion: (() -> Void)?) {
         feedbackGenerator?.prepare()
-        print("連絡先アクセスのコールバック開始")
         DialogBox.showAlert(on: rootVC,
                             hasCancel: false,
                             title: String(format: NSLocalizedString("importedBirthdayTitle", comment: ""), count.description),

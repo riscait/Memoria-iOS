@@ -33,9 +33,7 @@ class AnnivDAO {
     static func getAll(callback: @escaping ([Anniv]) -> Void) {
         annivCollection.getDocuments { (querySnapshot, error) in
             if let error = error {
-                print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功")
+                Log.warn(error.localizedDescription)
             }
 
             var anniversarysArray = [[String: Any]]()
@@ -66,9 +64,7 @@ class AnnivDAO {
     static func get(by id: String, callback: @escaping ([String: Any]) -> Void) {
         annivCollection.document(id).getDocument { (document, error) in
             if let error = error {
-                print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功:", id)
+                Log.warn(error.localizedDescription)
             }
             // ドキュメントのアンラップと存在チェック
             if let document = document, document.exists {
@@ -98,9 +94,7 @@ class AnnivDAO {
                              callback: @escaping ([QueryDocumentSnapshot]) -> Void) {
         getQuery(whereField: whereField, equalTo: equalTo)?.getDocuments { (querySnapshot, error) in
             if let error = error {
-                print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功")
+                Log.warn(error.localizedDescription)
             }
             // ドキュメントのアンラップと存在チェック
             if let documents = querySnapshot?.documents {
@@ -114,9 +108,7 @@ class AnnivDAO {
                              callback: @escaping ([QueryDocumentSnapshot]) -> Void) {
         getQuery(whereField: whereField, equalTo: equalTo)?.whereField(secondWhereField, isEqualTo: secondEqualTo).getDocuments { (querySnapshot, error) in
             if let error = error {
-                print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功")
+                Log.warn(error.localizedDescription)
             }
             // ドキュメントのアンラップと存在チェック
             if let documents = querySnapshot?.documents {
@@ -134,15 +126,13 @@ class AnnivDAO {
     ///   - data: 登録するデータ
     ///   - marge: 既存のドキュメントにデータを統合するか否か
     static func set(documentPath: String,
-                 data: Anniv,
-                 merge: Bool = true) {
-            annivCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
-                    if let error = error {
-                        print("エラー発生: \(error)")
-                    } else {
-                        print("\(#function)の実行:", documentPath)
-                    }
+                    data: Anniv,
+                    merge: Bool = true) {
+        annivCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
+            if let error = error {
+                Log.warn(error.localizedDescription)
             }
+        }
     }
     
     /// Firestoreへのデータ登録・更新
@@ -156,9 +146,7 @@ class AnnivDAO {
                     merge: Bool = true) {
         annivCollection.document(documentPath).setData(data, merge: merge) { error in
             if let error = error {
-                print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功:", documentPath)
+                Log.warn(error.localizedDescription)
             }
         }
     }
@@ -175,9 +163,7 @@ class AnnivDAO {
     static func update(with id: String, field: String, content: Any) {
         annivCollection.document(id).updateData([field: content]) { error in
             if let error = error {
-                print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功:", id)
+                Log.warn(error.localizedDescription)
             }
         }
     }
@@ -196,9 +182,7 @@ class AnnivDAO {
                        callback: (() -> Void)?) {
         annivCollection.whereField(searchField, isEqualTo: true).getDocuments { (query, error) in
             if let error = error {
-                print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功:")
+                Log.warn(error.localizedDescription)
             }
             query?.documents.forEach { $0.reference.updateData([updateField : content]) }
             if let callback = callback {
@@ -224,10 +208,8 @@ class AnnivDAO {
         annivCollection.whereField(searchField, isEqualTo: true)
             .whereField(secondSearchField, isEqualTo: secondIsEqualTo).getDocuments { (query, error) in
             if let error = error {
-                print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功:")
-            }
+                Log.warn(error.localizedDescription)
+                }
             query?.documents.forEach { $0.reference.updateData([updateField : content]) }
             if let callback = callback {
                 callback()
@@ -246,9 +228,7 @@ class AnnivDAO {
     static func delete(with id: String) {
         annivCollection.document(id).delete() { error in
             if let error = error {
-                print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功:", id)
+                Log.warn(error.localizedDescription)
             }
         }
     }
@@ -266,19 +246,18 @@ class AnnivDAO {
             feedbackGenerator.prepare()
             
             if let error = error {
-                print("エラー発生: \(error)")
+                Log.warn(error.localizedDescription)
                 DialogBox.showAlert(on: roorVC, message: NSLocalizedString("deleteAnniversaryFilure", comment: ""))
                 feedbackGenerator.notificationOccurred(.error)
                 
             } else if let documents = querySnapshot?.documents,
                 !documents.isEmpty {
-                print("\(#function)の実行に成功:", documents.description)
                 documents.forEach { $0.reference.delete() }
                 DialogBox.showAlert(on: roorVC, message: NSLocalizedString("deleteAnniversarySuccess", comment: ""))
                 feedbackGenerator.notificationOccurred(.success)
                 
             } else {
-                print("documentsが空")
+                Log.info("documentsが空")
                 DialogBox.showAlert(on: roorVC, message: NSLocalizedString("deleteAnniversaryEmpty", comment: ""))
                 feedbackGenerator.notificationOccurred(.warning)
             }

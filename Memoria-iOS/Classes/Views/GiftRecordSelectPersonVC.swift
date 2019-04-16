@@ -81,7 +81,6 @@ extension GiftRecordSelectPersonVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let text = tableView.cellForRow(at: indexPath)?.textLabel?.text
-        print(#function, text ?? "nil")
         delegate?.updatePersonName(with: text)
         
         popVC()

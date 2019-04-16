@@ -54,7 +54,7 @@ class UpdateEmailVC: UIViewController, EventTrackable {
             DialogBox.dismissAlertWithIndicator(on: self, completion: nil)
             guard let error = error else {
                 // メールアドレス変更に成功、処理終了
-                print("メールアドレスの変更に成功")
+                Log.info("メールアドレスの変更に成功")
                 DialogBox.showAlert(on: self,
                                     title: NSLocalizedString("successfullyChangedEmailTitle", comment: ""),
                                     message: NSLocalizedString("successfullyChangedEmailMessage", comment: "")) {
@@ -62,7 +62,7 @@ class UpdateEmailVC: UIViewController, EventTrackable {
                 }
                 return
             }
-            print("エラー: \(error)")
+            Log.warn("エラー: \(error.localizedDescription)")
             // エラー原因が「再ログインが必要」以外の場合
             if error.localizedDescription != "This operation is sensitive and requires recent authentication. Log in again before retrying this request." {
                 // エラーダイアログ表示して処理終了
@@ -74,7 +74,6 @@ class UpdateEmailVC: UIViewController, EventTrackable {
                                              title: NSLocalizedString("reAuthRequired", comment: ""),
                                              message: NSLocalizedString("pleaseEnterPassword", comment: ""),
                                              placeholder: NSLocalizedString("placeholderPassword", comment: "")) { password in
-                                                print("入力されたパスワード:\(password)")
                                                 // 再認証に使うため、Email&パスワードログインの認証情報を取得
                                                 let credential = EmailAuthProvider.credential(withEmail: email, password: password)
                                                 // 取得した認証情報で再認証
@@ -82,25 +81,25 @@ class UpdateEmailVC: UIViewController, EventTrackable {
                                                 user.reauthenticateAndRetrieveData(with: credential) { (authResult, error) in
                                                     DialogBox.dismissAlertWithIndicator(on: self) {
                                                         if let error = error {
-                                                            print("再認証でエラー: \(error)")
+                                                            Log.warn("再認証エラー: \(error.localizedDescription)")
                                                             // 失敗した場合はエラーダイアログを表示して処理終了
                                                             DialogBox.showAlert(on: self,
                                                                                 message: NSLocalizedString(error.localizedDescription, comment: ""))
                                                             return
                                                         }
-                                                        print("再認証成功, 再度メールアドレス変更を試みる")
+                                                        Log.info("再認証成功, 再度メールアドレス変更を試みる")
                                                         // もう一度メールアドレス変更を試みる
                                                         DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("updateEmailInProgress", comment: ""), completion: nil)
                                                         user.updateEmail(to: newEmail) { (error) in
                                                             // エラー発生したらダイアログ表示して処理終了
                                                             DialogBox.dismissAlertWithIndicator(on: self, completion: nil)
                                                             if let error = error {
-                                                                print("2度目でエラー: \(error)")
+                                                                Log.warn("2度目でエラー: \(error.localizedDescription)")
                                                                 DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
                                                                 return
                                                             }
                                                             // メールアドレス変更に成功、処理終了
-                                                            print("メールアドレスの変更に成功")
+                                                            Log.info("メールアドレスの変更に成功")
                                                             DialogBox.showAlert(on: self,
                                                                                 title: NSLocalizedString("successfullyChangedEmailTitle", comment: ""),
                                                                                 message: NSLocalizedString("successfullyChangedEmailMessage", comment: "")) {
@@ -146,12 +145,6 @@ class UpdateEmailVC: UIViewController, EventTrackable {
                 self.view.transform = transform
             }
         }
-        print("""
-            スクリーンの高さ: \(screenHeight) --- キーボードの高さ: \(keyboardHeight)
-            TextFieldの上辺位置: \(textFieldOrignY) --- TextFieldの高さ: \(textFieldHeight)
-            TextFieldの下辺位置: \(textFieldBottom) --- キーボードの上辺位置: \(keyboardY)
-            TextFieldとキーボードの距離: \(distance)
-            """)
     }
     
     /// キーボードが降りたら画面を戻す
@@ -167,7 +160,6 @@ class UpdateEmailVC: UIViewController, EventTrackable {
         // メールアドレスが8文字以上入力されているか
         changeButton.isEnabled = activeTextField?.text?.count ?? 0 > 7
             ? true : false
-        print(#function)
     }
 }
 

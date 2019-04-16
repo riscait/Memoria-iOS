@@ -47,22 +47,19 @@ class SignUpVC: UIViewController, EventTrackable {
                 
                 // 入力がないFieldに警告する
                 if emailField.text?.isEmpty ?? false {
-                    print("emailが空です")
                     emailField.attributedPlaceholder = setPlaceholder(localizedStringKey: "pleaseEnterEmail", color: warningColor)
                 }
                 if passwordField.text?.isEmpty ?? false {
-                    print("passwordFieldが空です")
                     passwordField.attributedPlaceholder = setPlaceholder(localizedStringKey: "pleaseEnterPassword", color: warningColor)
                 }
                 if passwordConfirmationField.text?.isEmpty ?? false {
-                    print("passwordConfirmationFieldが空です")
                     passwordConfirmationField.attributedPlaceholder = setPlaceholder(localizedStringKey: "pleaseEnterPasswordConfirmation", color: warningColor)
                 }
                 return
         }
         // パスワードの入力が確認入力と同一ではない
         if password != passwordConfirmation {
-            print("パスワードが確認と不一致")
+            Log.info("パスワードが確認と不一致")
             passwordField.text = nil
             passwordField.attributedPlaceholder = setPlaceholder(localizedStringKey: "mismatchPasswordConfirmation", color: warningColor)
             signUpButton.isEnabled = false
@@ -74,11 +71,11 @@ class SignUpVC: UIViewController, EventTrackable {
                 DialogBox.dismissAlertWithIndicator(on: self) {
                     // 除外条件の検証
                     if let error = error {
-                        print(error)
+                        Log.warn(error.localizedDescription)
                         DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
                         return
                     }
-                    print("Sign up成功: \(authResult?.user.email ?? "nil")")
+                    Log.info("Sign up成功: \(authResult?.user.email ?? "nil")")
                     // SignUp, SignInの2つの画面を一気に消す
                     self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
                 } // END: 除外条件の検証

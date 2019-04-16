@@ -111,7 +111,6 @@ class AnnivEditVC: UIViewController, EventTrackable {
     
     /// 非表示にするボタンを押された時
     @IBAction func didTapHideButton(_ sender: UIButton) {
-        print("非表示にします")
         DialogBox.showAlert(on: self,
                             hasCancel: true,
                             title: "hideThisAnniversaryTitle".localized,
@@ -251,7 +250,6 @@ extension AnnivEditVC: UITextFieldDelegate {
 extension AnnivEditVC: UITextViewDelegate{
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        print(#function, textView)
         UIView.animate(withDuration: 0.3) {
             self.view.transform = CGAffineTransform(translationX: 0, y: -200)
         }
@@ -259,7 +257,6 @@ extension AnnivEditVC: UITextViewDelegate{
     }
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        print(#function, textView)
         UIView.animate(withDuration: 0.3) {
             self.view.transform = CGAffineTransform.identity
         }

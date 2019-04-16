@@ -31,7 +31,7 @@ class TabBarController: UITabBarController {
         // START: Firebase認証リスナー
         handle = Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
-                print("""
+                Log.info("""
                     Firebase認証リスナー登録
                     ユーザーID: \(user.uid)
                     メールアドレス: \(user.email ?? "nil")
@@ -41,13 +41,13 @@ class TabBarController: UITabBarController {
                 userDefaults.register(defaults: [Key.isFinishedMigration210.rawValue : false])
                 // 初回起動判定
                 if !userDefaults.bool(forKey: "isFinishedTutorial") {
-                    print("初回起動です!")
+                    Log.info("初回起動を確認")
                     // welcome画面へ遷移
                     let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
                     let nextView = storyboard.instantiateInitialViewController()
                     self.present(nextView!, animated: true, completion: nil)
                 } else if !(userDefaults.bool(forKey: Key.isFinishedMigration210.rawValue)) {
-                    print("マイグレーションが必要")
+                    Log.info("マイグレーションが必要")
                     let storyboard = UIStoryboard(name: "Migration", bundle: nil)
                     let MigrationVC = storyboard.instantiateInitialViewController() as! MigrationVC
                     self.present(MigrationVC, animated: true) {

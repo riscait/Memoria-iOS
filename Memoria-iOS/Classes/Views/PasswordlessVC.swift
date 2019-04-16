@@ -60,7 +60,7 @@ class PasswordlessVC: UIViewController, EventTrackable {
         Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: actionCodeSettings) { (error) in
             DialogBox.dismissAlertWithIndicator(on: self, completion: {
                 if let error = error {
-                    print(error.localizedDescription)
+                    Log.warn(error.localizedDescription)
                     DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
                     return
                 }
@@ -83,7 +83,6 @@ class PasswordlessVC: UIViewController, EventTrackable {
         notification.addObserver(self, selector: #selector(keyboardWillHide(_:)),
                                  name: UIResponder.keyboardWillHideNotification, object: nil)
         notification.addObserver(self, selector: #selector(textFieldEditingChanged(_:)), name: UITextField.textDidChangeNotification, object: nil)
-        print("Notificationを発行")
     }
     
     /// キーボードが表示時に画面をずらす。
@@ -103,7 +102,6 @@ class PasswordlessVC: UIViewController, EventTrackable {
                 self.view.transform = transform
             }
         }
-        print("keyboardWillShowを実行")
     }
     
     /// キーボードが降りたら画面を戻す
@@ -112,7 +110,6 @@ class PasswordlessVC: UIViewController, EventTrackable {
         UIView.animate(withDuration: duration) {
             self.view.transform = CGAffineTransform.identity
         }
-        print("keyboardWillHideを実行")
     }
     
     /// TextFieldが編集された時に呼び出される
@@ -123,7 +120,6 @@ class PasswordlessVC: UIViewController, EventTrackable {
         } else {
             sendSignInLinkButton.isEnabled = false
         }
-        print("textFieldEditingChangedを実行")
     }
 }
 

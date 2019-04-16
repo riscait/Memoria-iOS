@@ -34,9 +34,7 @@ class GiftDAO {
     static func get(by id: String, callback: @escaping ([String: Any]) -> Void) {
         giftCollection.document(id).getDocument { (document, error) in
             if let error = error {
-                print("エラー発生: \(error)")
-            } else {
-                print("\(#function)の実行に成功しました！")
+                Log.warn(error.localizedDescription)
             }
             // ドキュメントのアンラップと存在チェック
             if let document = document, document.exists {
@@ -78,9 +76,7 @@ class GiftDAO {
                     merge: Bool = true) {
         giftCollection.document(documentPath).setData(data.toDictionary, merge: merge) { error in
                 if let error = error {
-                    print("エラー発生: \(error)")
-                } else {
-                    print("\(#function)の実行に成功しました！")
+                    Log.warn(error.localizedDescription)
                 }
         }
     }
@@ -98,9 +94,7 @@ class GiftDAO {
         giftCollection.document(documentPath)
             .updateData([field: content]) { error in
                 if let error = error {
-                    print("エラー発生: \(error)")
-                } else {
-                    print("\(#function)の実行に成功しました！")
+                    Log.warn(error.localizedDescription)
                 }
         }
     }
@@ -116,9 +110,7 @@ class GiftDAO {
         giftCollection.document(documentPath)
             .delete() { error in
                 if let error = error {
-                    print("エラー発生: \(error)")
-                } else {
-                    print("\(#function)の実行に成功しました！")
+                    Log.warn(error.localizedDescription)
                 }
         }
     }
@@ -131,10 +123,9 @@ class GiftDAO {
     static func queryAndDelete(whereField: String, equalTo: Any) {
         giftCollection.whereField(whereField, isEqualTo: equalTo).getDocuments { (querySnapshot, error) in
             if let error = error {
-                print("エラー発生: \(error)")
+                Log.warn(error.localizedDescription)
             } else if let documents = querySnapshot?.documents {
                 documents.forEach { $0.reference.delete() }
-                print("\(#function)の実行に成功しました！")
             }
         }
     }
@@ -142,10 +133,9 @@ class GiftDAO {
     static func delete(at index: Int) {
         giftCollection.whereField("isHidden", isEqualTo: false).getDocuments { (querySnapshot, error) in
             if let error = error {
-                print("エラー発生: \(error)")
+                Log.warn(error.localizedDescription)
             } else if let documents = querySnapshot?.documents {
                 documents[index].reference.delete()
-                print("\(#function)の実行に成功しました！")
             }
         }
     }

@@ -92,7 +92,6 @@ class GiftRecordTableVC: UITableViewController {
     }
     
     @IBAction private func toggleDateTBD(_ sender: UISwitch) {
-        print(#function)
         doDateTBD(isTBD: sender.isOn)
         validate()
     }
@@ -114,11 +113,9 @@ class GiftRecordTableVC: UITableViewController {
         if !(personNameField.text?.isEmpty ?? true),
             !(annivNameField.text?.isEmpty ?? true),
             !(goodsField.text?.isEmpty ?? true) {
-            print("ready!")
             // デリゲートメソッドを実行する
             giftRecordTableVCDelegate?.recordingStandby(true)
         } else {
-            print("not ready!")
             // デリゲートメソッドを実行する
             giftRecordTableVCDelegate?.recordingStandby(false)
         }

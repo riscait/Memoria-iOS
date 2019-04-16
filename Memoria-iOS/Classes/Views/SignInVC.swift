@@ -58,9 +58,9 @@ class SignInVC: UIViewController, EventTrackable {
             // START: メールアドレスログイン処理
             Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
                 DialogBox.dismissAlertWithIndicator(on: self) {
-                    print("ログイン結果: \(String(describing: authResult))")
+                    Log.info("ログイン結果: \(String(describing: authResult))")
                     if let error = error {
-                        print(error)
+                        Log.warn(error.localizedDescription)
                         DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
                     } else {
                         self.dismiss(animated: true, completion: nil)
@@ -81,7 +81,7 @@ class SignInVC: UIViewController, EventTrackable {
             Auth.auth().sendPasswordReset(withEmail: email) { (error) in
                 DialogBox.dismissAlertWithIndicator(on: self) {
                     if let error = error {
-                        print(error)
+                        Log.warn(error.localizedDescription)
                         DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
                         return
                     }
@@ -125,12 +125,6 @@ class SignInVC: UIViewController, EventTrackable {
                 self.view.transform = transform
             }
         }
-        print("""
-            スクリーンの高さ: \(screenHeight) --- キーボードの高さ: \(keyboardHeight)
-            TextFieldの上辺位置: \(textFieldOrignY) --- TextFieldの高さ: \(textFieldHeight)
-            TextFieldの下辺位置: \(textFieldBottom) --- キーボードの上辺位置: \(keyboardY)
-            TextFieldとキーボードの距離: \(distance)
-            """)
     }
 
     /// キーボードが降りたら画面を戻す

@@ -42,19 +42,13 @@ class HiddenListVC: UITableViewController, EventTrackable {
                 }
                 guard let documentSnapshot = documentSnapshot else { return }
                 self.annivs = [[String: Any]]()
-                print("documents are \(documentSnapshot.documents)")
                 // 記念日データが入ったドキュメントの数だけ繰り返す
                 for doc in documentSnapshot.documents {
                     // ドキュメントから記念日データを取り出す
-                    var data = doc.data()
-                    print("data is... ", data)
+                    let data = doc.data()
                     // 記念日データをローカル配列に記憶
                     self.annivs?.append(data)
-                    print("非表示の記念日: \(data["familyName"] ?? "") \(data["givenName"] ?? "")\(data["title"] ?? "")")
                 }
-                // 並び替えて返却する
-                //            self.annivs.sort(by: {($0["remainingDays"] as! Int) < ($1["remainingDays"] as! Int)})
-                
                 self.tableView.reloadData()
         }
         super.viewWillAppear(animated)
@@ -73,7 +67,6 @@ class HiddenListVC: UITableViewController, EventTrackable {
     /// セルの編集ボタンが押された
     @IBAction func didTapEditButton(_ sender: InspectableButton) {
         guard let indexPath = hiddenTableView.indexPath(for: sender.superview!.superview as! UITableViewCell) else { return }
-        print("\(indexPath)の編集ボタンが押されました")
         
         let defaultActionSet = ["redisplay".localized: redisplayThisAnniv]
         let destructiveActionSet = ["delete".localized: deleteThisAnniv]

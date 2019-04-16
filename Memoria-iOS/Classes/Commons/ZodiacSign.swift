@@ -89,7 +89,6 @@ struct ZodiacSign {
             let headChar = self.rawValue.prefix(1).uppercased()
             let others = self.rawValue.suffix(self.rawValue.count - 1)
             let signString = "chineseZodiacSign\(headChar)\(others)"
-            print(signString)
             return signString.localized
         }
         

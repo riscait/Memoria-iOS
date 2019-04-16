@@ -24,7 +24,7 @@ enum AnnivType: Int, CustomStringConvertible {
              self = .birthday
             
         default:
-            print("既定値以外の記念日タイプ:", category)
+            Log.warn("既定値以外の記念日タイプ:", category)
             self = .birthday
         }
     }

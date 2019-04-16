@@ -67,7 +67,7 @@ private extension AnnivDetailModel {
         let query = GiftDAO.getQuery(whereField: whereField, equalTo: searchKey)
         query?.getDocuments { (querySnapshot, error) in
             if let error = error {
-                print(error)
+                Log.warn(error.localizedDescription)
                 return
             }
             guard let documents = querySnapshot?.documents else { return }
