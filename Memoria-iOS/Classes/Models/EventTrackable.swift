@@ -81,11 +81,15 @@ extension EventTrackable {
     /// - Parameters:
     ///   - eventName: カスタムイベント名
     ///   - properties: 任意のプロパティ
-    func trackEvent(eventName: String, properties: [String: Any])  {
+    func trackEvent(eventName: String, properties: [String: Any]? = nil)  {
         
         Repro.track(eventName, properties: properties)
         
-        Log.info("Tracked \(eventName) with \(properties)")
+        if let properties = properties {
+            Log.info("Tracked \(eventName) with Properties: \(properties)")
+            return
+        }
+        Log.info("Tracked \(eventName)")
     }
 }
 
