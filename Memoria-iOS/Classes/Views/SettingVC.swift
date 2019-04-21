@@ -47,13 +47,14 @@ class SettingVC: UITableViewController, EventTrackable {
     // MARK: - Private method
     
     /// Delete imported birthday
-    private func deleteContactBirthday() {
+    private func removeContactBirthday() {
         DialogBox.showDestructiveAlert(on: self,
                                        title: "deleteContactBirthdayTitle".localized,
                                        message: "deleteContactBirthdayMessage".localized,
                                        destructiveTitle: "delete".localized,
                                        destructiveAction: {
                                         AnnivDAO.deleteByQuery(with: "isFromContact", isEqualTo: true, on: self)
+                                        self.trackEvent(eventName: "Removed the imported birthday from Contact")
         })
     }
     
@@ -63,7 +64,8 @@ class SettingVC: UITableViewController, EventTrackable {
                             hasCancel: true,
                             title: "importBirthdayTitle".localized,
                             message: "importBirthdayMessage".localized) {
-            ContactAccess().checkStatusAndImport(rootVC: self)
+                                ContactAccess().checkStatusAndImport(rootVC: self)
+                                self.trackEvent(eventName: "Imported birthdays from Contact")
         }
     }
     
@@ -81,7 +83,7 @@ class SettingVC: UITableViewController, EventTrackable {
         // セルによって処理を振り分け
         switch selectedCell {
         case .importBirthday: importBirthday()
-        case .deleteBirthday: deleteContactBirthday()
+        case .deleteBirthday: removeContactBirthday()
         case .reviewThisApp:
             if let url = URL(string: "https://itunes.apple.com/app/id1444443848?action=write-review") {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)

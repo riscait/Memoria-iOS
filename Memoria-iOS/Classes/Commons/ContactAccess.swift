@@ -10,7 +10,7 @@ import UIKit
 import Contacts
 import Firebase
 
-class ContactAccess {
+final class ContactAccess: EventTrackable {
     
     /// Taptic Engine
     var feedbackGenerator: UINotificationFeedbackGenerator?
@@ -34,6 +34,7 @@ class ContactAccess {
             // 連絡先へのアクセスを許可するかどうかのダイアログボックスを表示
             store.requestAccess(for: .contacts, completionHandler: {(granted, Error) in
                 if granted {
+                    self.trackEvent(eventName: "Granted access to Contact")
                     Log.info("連絡先へのアクセスが許可されました")
                     DialogBox.showAlertWithIndicator(on: rootVC, message: NSLocalizedString("importingContact", comment: "")) {
                         self.importContact { count in
@@ -43,6 +44,7 @@ class ContactAccess {
                         }
                     }
                 } else {
+                    self.trackEvent(eventName: "Denied access to Contact")
                     Log.info("連絡先へのアクセスが拒否されました")
                     /// 設定アプリへの遷移を促すダイアログをポップアップ
                     DialogBox.showAlert(on: rootVC,
@@ -112,17 +114,17 @@ class ContactAccess {
                 return
             }
             let birthday = Anniv(id: contact.identifier,
-                                                category: .birthday,
-                                                title: nil,
-                                                familyName: contact.familyName,
-                                                givenName: contact.givenName,
-                                                date: Timestamp(date: date),
-                                                iconImage: contact.thumbnailImageData,
-                                                isHidden: false,
-                                                isAnnualy: true,
-                                                isFromContact: true,
-                                                memo: "",
-                                                remainingDays: nil)
+                                 category: .birthday,
+                                 title: nil,
+                                 familyName: contact.familyName,
+                                 givenName: contact.givenName,
+                                 date: Timestamp(date: date),
+                                 iconImage: contact.thumbnailImageData,
+                                 isHidden: false,
+                                 isAnnualy: true,
+                                 isFromContact: true,
+                                 memo: "",
+                                 remainingDays: nil)
             
             // データベースに連絡先の誕生日情報を保存する
             AnnivDAO.set(documentPath: contact.identifier, data: birthday.toDictionary)
