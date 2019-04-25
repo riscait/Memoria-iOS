@@ -16,6 +16,8 @@
 		8D0E4A88226CC78A0064B411 /* WalkthroughVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E4A87226CC78A0064B411 /* WalkthroughVC.swift */; };
 		8D0E4A8A226CC8090064B411 /* AboutThisApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0E4A89226CC8090064B411 /* AboutThisApp.storyboard */; };
 		8D0E4A8C226CD3790064B411 /* AnnivIntroduction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0E4A8B226CD3790064B411 /* AnnivIntroduction.storyboard */; };
+		8D0E4A80226BFAC30064B411 /* GitHubIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E4A7F226BFAC30064B411 /* GitHubIssue.swift */; };
+		8D0E4A82226BFFE50064B411 /* GitHubAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E4A81226BFFE50064B411 /* GitHubAPIClient.swift */; };
 		8D0FB83F2182002700BFCB79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0FB83E2182002700BFCB79 /* AppDelegate.swift */; };
 		8D0FB8462182002800BFCB79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB8452182002800BFCB79 /* Assets.xcassets */; };
 		8D0FB8492182002800BFCB79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */; };
@@ -125,6 +127,8 @@
 		8D0E4A87226CC78A0064B411 /* WalkthroughVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughVC.swift; sourceTree = "<group>"; };
 		8D0E4A89226CC8090064B411 /* AboutThisApp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutThisApp.storyboard; sourceTree = "<group>"; };
 		8D0E4A8B226CD3790064B411 /* AnnivIntroduction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnivIntroduction.storyboard; sourceTree = "<group>"; };
+		8D0E4A7F226BFAC30064B411 /* GitHubIssue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubIssue.swift; sourceTree = "<group>"; };
+		8D0E4A81226BFFE50064B411 /* GitHubAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIClient.swift; sourceTree = "<group>"; };
 		8D0FB83B2182002700BFCB79 /* Memoria-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Memoria-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0FB83E2182002700BFCB79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D0FB8452182002800BFCB79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Resources/Assets.xcassets; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 				8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */,
 				8D2921FD2243A9760046917F /* GiftListModel.swift */,
 				8D3DA4B52260416500B59027 /* EventTrackable.swift */,
+				8D0E4A81226BFFE50064B411 /* GitHubAPIClient.swift */,
 			);
 			name = Models;
 			path = "Memoria-iOS/Classes/Models";
@@ -395,6 +400,7 @@
 			children = (
 				8DC43FD921D061C900B911F2 /* Anniv.swift */,
 				8DC43FE321D9F53600B911F2 /* Gift.swift */,
+				8D0E4A7F226BFAC30064B411 /* GitHubIssue.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -741,11 +747,13 @@
 				8D2921F52240F9B80046917F /* AnnivDetailInfoCell.swift in Sources */,
 				8DD486F421EAD68D0072983A /* Migration.swift in Sources */,
 				8D8B2A85226E035B00E27FD6 /* AboutThisAppVC.swift in Sources */,
+				8D0E4A80226BFAC30064B411 /* GitHubIssue.swift in Sources */,
 				8D2921FC2243A94E0046917F /* GiftListPresenter.swift in Sources */,
 				8D77D18521B37BED00CF673A /* PasswordlessVC.swift in Sources */,
 				8D4CBB1C21C1511F009BA7C6 /* GiftDAO.swift in Sources */,
 				8D17325C22373382005CD22C /* MigrationVC.swift in Sources */,
 				8D910B5321E2307400D072EA /* InspectableBarButtonItem.swift in Sources */,
+				8D0E4A82226BFFE50064B411 /* GitHubAPIClient.swift in Sources */,
 				8DC43FE021D3CC2900B911F2 /* GiftRecordSelectProtocol.swift in Sources */,
 				8D8559FC21B8A3380033C7AA /* UpdateEmailVC.swift in Sources */,
 				8D8559FA21B80B270033C7AA /* UserAccountVC.swift in Sources */,
