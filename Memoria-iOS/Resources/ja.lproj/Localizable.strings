@@ -37,7 +37,7 @@
 "placeholderEmail" = "メールアドレス";
 "placeholderPassword" = "パスワード";
 "placeholderPasswordConfirmation" = "パスワード（確認）";
-"mismatchPasswordConfirmation" = "新しいパスワードと新しいパスワード（確認）が一致していません";
+"mismatchPasswordConfirmation" = "パスワード（確認）が一致していません";
 "signUpButton" = "アカウント発行";
 "signInButton" = "ログイン";
 "passwordConditions" = "8文字以上の英数字を入力してください";
@@ -104,12 +104,14 @@
 "placeholderDate" = "%@";
 "placeholderGoods" = "ギフトを入力してください";
 // Welcome画面
-"welcomeTitle" = "もう記念日は忘れません";
-"welcomeDetail" = "「メモリア」で友人や家族の誕生日、結婚記念日やサラダ記念日など様々な記念日をまとめて管理しましょう！";
-"welcomeContactTitle" = "誕生日を追加しましょう";
-"welcomeContactDetail" = "端末の「連絡先」に登録してある誕生日を取り込むことができます。";
-"welcomeContactImport" = "誕生日を読み込む";
-"startWithoutImport" = "あとで";
+"welcomeTitle" = "メモリアのインストール\nありがとうございます♪";
+"welcomeDetail" = "「メモリア」で友人や家族の誕生日\n\n結婚記念日や卒業式など\n\nさまざまな記念日をまとめましょう！";
+"AnnivIntroductionTitle" = "誕生日を一括追加しませんか？";
+"AnnivIntroductionDetail" = "端末の「連絡先」に登録してある誕生日を取り込むことができます。\n\n※ボタンを押した後、連絡先へのアクセスを許可してください◎";
+"addBirthday" = "誕生日を追加";
+"GiftIntroductionTitle" = "「もらった」「あげた」\nギフトを記録";
+"GiftIntroductionDetail" = "やりとりしたギフトを「相手」「記念日」で記録できるから、後から見返しやすい♪\n\n次のプレゼント選びにも使えます 🎁";
+"start" = "はじめる";
 // Anniversary画面
 "letsAddAnniversary" = "右上の＋ボタンから\n記念日を追加しましょう！\n\nまたは「設定」タブから連絡先の誕生日を取り込みましょう！";
 "fullName" = "%@ %@";
@@ -176,6 +178,7 @@
 // メモリアについて
 "aboutMemoria" = "メモリアについて";
 "reviewThisApp" = "メモリアを評価する";
+"reWalkthrough" = "ウォークスルーをもう一度見る";
 "appStore" = "App Store";
 "developerTwitter" = "開発者のTwitter";
 "sendRequest" = "お問い合わせ";

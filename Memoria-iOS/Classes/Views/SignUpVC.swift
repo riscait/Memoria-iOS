@@ -36,7 +36,7 @@ class SignUpVC: UIViewController, EventTrackable {
     
     @IBAction func didTapCloseButton(_ sender: UIButton) { dismiss(animated: true, completion: nil) }
     
-    @IBAction func didTapSignUpButton(_ sender: PositiveButton) {
+    @IBAction func didTapSignUpButton(_ sender: RoundedButton) {
         // 各Fieldがきちんと入力されているかチェック
         guard let email = emailField.text,
             !email.isEmpty,

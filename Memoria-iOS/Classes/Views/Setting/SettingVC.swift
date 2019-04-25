@@ -20,6 +20,7 @@ class SettingVC: UITableViewController, EventTrackable {
         case reviewThisApp = 21
         case developer
         case supoort
+        case reWalkthrough
     }
     
     @IBOutlet weak var accountStateLabel: UILabel!
@@ -98,6 +99,11 @@ class SettingVC: UITableViewController, EventTrackable {
             // SFSafariViewControllerでURLを開く
             let webView = SFSafariViewController(url: URL(string: "https://goo.gl/forms/gs08T184CC3TT5lz1")!)
             self.present(webView, animated: true, completion: nil)
+        case .reWalkthrough:
+            // ウォークスルーを表示する
+            let walkthroughVC = UIStoryboard(name: "Walkthrough", bundle: nil)
+                .instantiateInitialViewController()!
+            present(walkthroughVC, animated: true, completion: nil)
         }
     }
     

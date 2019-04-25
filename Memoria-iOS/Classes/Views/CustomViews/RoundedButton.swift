@@ -9,7 +9,7 @@
 import UIKit
 
 // 進むや登録などポジティブなボタン
-@IBDesignable final class PositiveButton: UIButton {
+@IBDesignable final class RoundedButton: UIButton {
     
     @IBInspectable var localizedStringKey: String = "" {
         didSet {
@@ -19,19 +19,18 @@ import UIKit
     }
     
     override func draw(_ rect: CGRect) {
-        // 背景色
-        if state == .disabled {
-            layer.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1).cgColor
-        } else if state == .normal {
-            layer.backgroundColor = #colorLiteral(red: 1, green: 0.6762310863, blue: 0, alpha: 1).cgColor
+        // 状態変化
+        switch state {
+        case .disabled:
+            layer.opacity = 0.5
+        default:
+            layer.opacity = 1
         }
         // 角丸
         layer.cornerRadius = frame.height / 2
         clipsToBounds = true
-        // 文字色
-        setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
         // 太字にする
-        titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
         
         super.draw(rect)
     }
