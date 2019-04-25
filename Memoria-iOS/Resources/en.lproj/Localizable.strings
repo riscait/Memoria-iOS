@@ -99,10 +99,12 @@
 // Welcome view
 "welcomeTitle" = "I will not forget the anniversary anymore";
 "welcomeDetail" = "Let's manage various memorial days collectively, such as friends and family's birthday, wedding anniversary and salad anniversary in \"Memoria\"!";
-"welcomeContactTitle" = "Let's add a birthday";
-"welcomeContactDetail" = "You can capture the birth date registered in \"Contact\" of the terminal.";
-"welcomeContactImport" = "Import birthday";
-"startWithoutImport" = "Start without import";
+"AnnivIntroductionTitle" = "Let's add a birthday";
+"AnnivIntroductionDetail" = "You can capture the birth date registered in \"Contact\" of the terminal.";
+"addBirthday" = "Add birthdays";
+"GiftIntroductionTitle" = "Record the gift you got and gave";
+"GiftIntroductionDetail" = "Because you can record the exchanged gift in \"party\" and \"anniversary\", it is easy to look back later!\n\nCan also be used to select the next present";
+"start" = "Start";
 // Anniversary view
 "letsAddAnniversary" = "Let's add an ANNIVERSARY from the \"+ button\" on the upper right!\n\nOr let's capture the contact 's birthday from the' Settings' tab!";
 "fullName" = "%2$@ %1$@"; // given name + family name
@@ -168,6 +170,7 @@
 // About Memoria
 "aboutMemoria" = "Memoria";
 "reviewThisApp" = "Review this App";
+"reWalkthrough" = "View a walk-through again";
 "appStore" = "App Store";
 "developerTwitter" = "Developer Twitter";
 "sendRequest" = "Send reports";

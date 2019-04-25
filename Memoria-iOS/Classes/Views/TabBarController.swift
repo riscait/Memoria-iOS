@@ -42,10 +42,11 @@ class TabBarController: UITabBarController {
                 // 初回起動判定
                 if !userDefaults.bool(forKey: "isFinishedTutorial") {
                     Log.info("初回起動を確認")
-                    // welcome画面へ遷移
-                    let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
+                    // Walkthrough画面へ遷移
+                    let storyboard = UIStoryboard(name: "Walkthrough", bundle: nil)
                     let nextView = storyboard.instantiateInitialViewController()
                     self.present(nextView!, animated: true, completion: nil)
+                    
                 } else if !(userDefaults.bool(forKey: Key.isFinishedMigration210.rawValue)) {
                     Log.info("マイグレーションが必要")
                     let storyboard = UIStoryboard(name: "Migration", bundle: nil)

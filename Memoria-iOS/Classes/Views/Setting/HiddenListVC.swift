@@ -108,28 +108,18 @@ class HiddenListVC: UITableViewController, EventTrackable {
         let titleLabel = cell.viewWithTag(2) as! UILabel
 
         guard let anniversary = annivs?[indexPath.row],
-            let category = anniversary["category"] as? String else { return cell }
+            let anniv = Anniv(dictionary: anniversary) else { return cell }
         
-        let type = AnnivType(category: category)
-        
-        switch type {
+        switch anniv.category {
         case .anniv:
-            titleLabel.text = anniversary["title"] as? String
+            titleLabel.text = anniv.title
 
         case .birthday:
             titleLabel.text = String(format: "whoseBirthday".localized,
-                                     arguments: [anniversary["familyName"] as! String, anniversary["givenName"] as! String])
+                                     arguments: [anniv.familyName ?? "",
+                                                 anniv.givenName ?? ""])
         }
-
-        if let iconImage = anniversary["iconImage"] as? Data {
-            iconImageView.image = UIImage(data: iconImage)
-            
-        } else {
-            // デフォルトアイコン
-            iconImageView.image = type == .birthday
-                ? #imageLiteral(resourceName: "Ribbon") // 誕生日
-                : #imageLiteral(resourceName: "giftBox") // それ以外
-        }
+        iconImageView.image = AnnivUtil.getIconImage(from: anniv)
 
         return cell
     }

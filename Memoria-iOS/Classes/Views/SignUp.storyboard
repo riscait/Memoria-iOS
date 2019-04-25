@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FYk-3o-5bE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FYk-3o-5bE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uuc-nA-EOS">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="532"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="528"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Memoria" translatesAutoresizingMaskIntoConstraints="NO" id="f44-T0-MWo">
                                                 <rect key="frame" x="137.5" y="40" width="100" height="100"/>
@@ -74,13 +76,17 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="passwordConditions"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrK-IS-ius" customClass="PositiveButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="404" width="343" height="54"/>
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrK-IS-ius" customClass="RoundedButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="67.5" y="404" width="240" height="50"/>
+                                                <color key="backgroundColor" name="mainColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="DmO-7Z-S4g"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="6mX-yV-b4Q"/>
+                                                    <constraint firstAttribute="height" constant="50" id="DmO-7Z-S4g"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="signUpButton"/>
+                                                <state key="normal" title="signUpButton">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="signUpButton"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -92,7 +98,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ra-r9-Gav" customClass="NegativeButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="168" y="478" width="39" height="54"/>
+                                                <rect key="frame" x="168" y="474" width="39" height="54"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="OqZ-0X-4Eb"/>
                                                 </constraints>
@@ -128,7 +134,6 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="UEU-oy-6l8" firstAttribute="leading" secondItem="ws6-7M-Avm" secondAttribute="leading" id="0Ju-BG-SoK"/>
-                                            <constraint firstItem="xrK-IS-ius" firstAttribute="leading" secondItem="ws6-7M-Avm" secondAttribute="leading" id="69J-8W-e93"/>
                                             <constraint firstItem="hC6-zM-8dm" firstAttribute="top" secondItem="REU-nj-yVU" secondAttribute="bottom" constant="8" id="9JY-JG-CsP"/>
                                             <constraint firstItem="1Ra-r9-Gav" firstAttribute="centerX" secondItem="uuc-nA-EOS" secondAttribute="centerX" id="Cvq-v5-Cw9"/>
                                             <constraint firstItem="xrK-IS-ius" firstAttribute="centerX" secondItem="uuc-nA-EOS" secondAttribute="centerX" id="Iox-5R-Wh4"/>
@@ -138,7 +143,6 @@
                                             <constraint firstItem="ws6-7M-Avm" firstAttribute="top" secondItem="f44-T0-MWo" secondAttribute="bottom" constant="20" id="RYK-vd-qs4"/>
                                             <constraint firstItem="f44-T0-MWo" firstAttribute="centerX" secondItem="uuc-nA-EOS" secondAttribute="centerX" id="V8g-rk-6EI"/>
                                             <constraint firstItem="UEU-oy-6l8" firstAttribute="trailing" secondItem="ws6-7M-Avm" secondAttribute="trailing" id="WQ7-An-nhg"/>
-                                            <constraint firstItem="xrK-IS-ius" firstAttribute="trailing" secondItem="ws6-7M-Avm" secondAttribute="trailing" id="bMp-24-VRz"/>
                                             <constraint firstItem="REU-nj-yVU" firstAttribute="trailing" secondItem="UEU-oy-6l8" secondAttribute="trailing" id="cfM-75-IDx"/>
                                             <constraint firstItem="f44-T0-MWo" firstAttribute="top" secondItem="uuc-nA-EOS" secondAttribute="top" constant="40" id="eQa-Bz-1Qg"/>
                                             <constraint firstItem="ws6-7M-Avm" firstAttribute="leading" secondItem="uuc-nA-EOS" secondAttribute="leading" constant="16" id="fJU-na-TbU"/>
@@ -182,8 +186,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Memoria" width="1024" height="1024"/>
-        <image name="emailOutlineIcon" width="72" height="72"/>
-        <image name="keyIcon" width="72" height="72"/>
+        <image name="Memoria" width="512" height="512"/>
+        <image name="emailOutlineIcon" width="36" height="36"/>
+        <image name="keyIcon" width="36" height="36"/>
+        <namedColor name="mainColor">
+            <color red="1" green="0.66299998760223389" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
