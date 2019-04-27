@@ -27,12 +27,12 @@ protocol GiftRecordPresenterInput: AnyObject, EventTrackable {
 /// Viewに指示を出すためのデリゲート
 protocol GiftRecordPresenterOutput: AnyObject {
     /// 使命を終えた自らを閉じる
-    func dismiss(animated: Bool)
+    func dismiss(animated: Bool, completion: (() -> Void)?)
     /// 新規登録か編集かをギフトの有無で判断し、画面レイアウトの設定を行う。
     func setupLayout(gift: Gift?)
 }
 /// ギフトリスト画面とモデルの仲介役
-final class GiftRecordPresenter: GiftRecordPresenterInput {
+final class GiftRecordPresenter: GiftRecordPresenterInput, StoreReviewRequestable {
     // View & Model
     private weak var view: GiftRecordPresenterOutput!
     /// ギフト（編集の場合は、選択したギフト情報が入る）
@@ -52,7 +52,7 @@ final class GiftRecordPresenter: GiftRecordPresenterInput {
             ? "discardMessageForRecord".localized
             : "discardMessageForEdit".localized
         DialogBox.showDestructiveAlert(on: view as! UIViewController, message: message, destructiveTitle: "close".localized) {
-            self.view.dismiss(animated: true)
+            self.view.dismiss(animated: true, completion: nil)
         }
     }
     func didTapRecordButton(isReceived: Bool, isDateTBD: Bool, personName: String, annivName: String, timestamp: Timestamp?, goods: String, mwmo: String) {
@@ -71,7 +71,22 @@ final class GiftRecordPresenter: GiftRecordPresenterInput {
         // DBに書き込んで画面を閉じる
         GiftDAO.set(documentPath: id, data: newGift)
         
-        trackAddGift(annivName: annivName, isReceived: isReceived, goodsName: goods, giftDate: date?.dateValue())
-        view.dismiss(animated: true)
+        let userDefaults = UserDefaults.standard
+        
+        let numberOfAddedGiftKey = "numberOfAddedGift"
+        userDefaults.register(defaults: [numberOfAddedGiftKey: 0])
+        
+        let newNumberOfAddedGift = userDefaults.integer(forKey: numberOfAddedGiftKey) + 1
+        userDefaults.set(newNumberOfAddedGift, forKey: numberOfAddedGiftKey)
+
+        trackAddGift(annivName: annivName,
+                     isReceived: isReceived,
+                     goodsName: goods,
+                     giftDate: date?.dateValue(),
+                     numberOfAddedGift: newNumberOfAddedGift)
+        
+        view.dismiss(animated: true) { [weak self] in
+            self?.requestStoreReview(numberOfTimes: newNumberOfAddedGift, threshold: 3)
+        }
     }
 }
