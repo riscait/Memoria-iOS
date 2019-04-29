@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YBd-vu-ctw">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,34 +15,31 @@
             <objects>
                 <viewController id="YBd-vu-ctw" customClass="AnnivIntroductionVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PCv-78-fqa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLL-NK-D33">
-                                <rect key="frame" x="0.0" y="20" width="320" height="301.5"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="403.66666666666669"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Walkthrough02" translatesAutoresizingMaskIntoConstraints="NO" id="oge-Oz-NSa">
-                                        <rect key="frame" x="20" y="21.5" width="280" height="280"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="oge-Oz-NSa" secondAttribute="height" id="bOo-Rm-zmV"/>
-                                        </constraints>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Walkthrough02" translatesAutoresizingMaskIntoConstraints="NO" id="oge-Oz-NSa">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="403.66666666666669"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="oge-Oz-NSa" secondAttribute="bottom" id="4LK-FS-SUo"/>
-                                    <constraint firstItem="oge-Oz-NSa" firstAttribute="leading" secondItem="bLL-NK-D33" secondAttribute="leading" constant="20" id="NJ7-5e-GTv"/>
-                                    <constraint firstAttribute="trailing" secondItem="oge-Oz-NSa" secondAttribute="trailing" constant="20" id="Sa6-Ga-ld4"/>
-                                    <constraint firstItem="oge-Oz-NSa" firstAttribute="centerX" secondItem="bLL-NK-D33" secondAttribute="centerX" id="xm5-cd-Sg5"/>
+                                    <constraint firstItem="oge-Oz-NSa" firstAttribute="leading" secondItem="bLL-NK-D33" secondAttribute="leading" id="NJ7-5e-GTv"/>
+                                    <constraint firstAttribute="trailing" secondItem="oge-Oz-NSa" secondAttribute="trailing" id="Sa6-Ga-ld4"/>
+                                    <constraint firstItem="oge-Oz-NSa" firstAttribute="top" secondItem="bLL-NK-D33" secondAttribute="top" id="uyb-Dk-Q4L"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcP-AV-Meu">
-                                <rect key="frame" x="0.0" y="321.5" width="320" height="246.5"/>
+                                <rect key="frame" x="0.0" y="447.66666666666674" width="375" height="364.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="C5b-yg-1EG">
-                                        <rect key="frame" x="16" y="16" width="288" height="132.5"/>
+                                        <rect key="frame" x="16" y="16.000000000000014" width="343" height="250.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="AnnivIntroductionTitle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="3hk-Zh-AT2" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="288" height="57.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="108.33333333333333"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -51,7 +48,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AnnivIntroductionDetail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="EmG-sX-dyd" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="73.5" width="288" height="59"/>
+                                                <rect key="frame" x="0.0" y="124.33333333333331" width="343" height="126"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -62,7 +59,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yW5-0G-d3H" customClass="RoundedButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="164.5" width="240" height="50"/>
+                                        <rect key="frame" x="67.666666666666686" y="282.33333333333331" width="240" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="UUe-VO-sEw"/>
@@ -111,6 +108,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Walkthrough02" width="1000" height="1000"/>
+        <image name="Walkthrough02" width="1363" height="1057"/>
     </resources>
 </document>
