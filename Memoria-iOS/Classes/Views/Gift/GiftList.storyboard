@@ -45,36 +45,11 @@
                                     <outlet property="delegate" destination="O61-RN-50B" id="OfD-wx-4WW"/>
                                 </connections>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cku-P0-O1L">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="letsAddGift" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ou6-cn-we4" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="262.5" width="343" height="29"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="letsAddGift"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="mainColor"/>
-                                <constraints>
-                                    <constraint firstItem="ou6-cn-we4" firstAttribute="leading" secondItem="Cku-P0-O1L" secondAttribute="leading" constant="16" id="8ut-tI-t6j"/>
-                                    <constraint firstItem="ou6-cn-we4" firstAttribute="centerX" secondItem="Cku-P0-O1L" secondAttribute="centerX" id="Pq3-bx-MY6"/>
-                                    <constraint firstItem="ou6-cn-we4" firstAttribute="centerY" secondItem="Cku-P0-O1L" secondAttribute="centerY" id="iE6-yu-W8H"/>
-                                    <constraint firstAttribute="trailing" secondItem="ou6-cn-we4" secondAttribute="trailing" constant="16" id="ptt-E8-CHu"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Cku-P0-O1L" firstAttribute="leading" secondItem="te8-K1-74H" secondAttribute="leading" id="0xR-Tq-3Sr"/>
                             <constraint firstItem="qNu-im-RUH" firstAttribute="top" secondItem="te8-K1-74H" secondAttribute="top" id="S3W-yi-DDm"/>
                             <constraint firstItem="qNu-im-RUH" firstAttribute="trailing" secondItem="te8-K1-74H" secondAttribute="trailing" id="SdO-i1-Uc6"/>
-                            <constraint firstItem="te8-K1-74H" firstAttribute="bottom" secondItem="Cku-P0-O1L" secondAttribute="bottom" id="Z4M-UD-yQD"/>
-                            <constraint firstItem="Cku-P0-O1L" firstAttribute="top" secondItem="te8-K1-74H" secondAttribute="top" id="bB9-KI-MGU"/>
-                            <constraint firstItem="Cku-P0-O1L" firstAttribute="trailing" secondItem="te8-K1-74H" secondAttribute="trailing" id="erL-Jb-ud9"/>
                             <constraint firstItem="qNu-im-RUH" firstAttribute="bottom" secondItem="te8-K1-74H" secondAttribute="bottom" id="rxi-8N-EMm"/>
                             <constraint firstItem="qNu-im-RUH" firstAttribute="leading" secondItem="te8-K1-74H" secondAttribute="leading" id="xDZ-La-Z2g"/>
                         </constraints>
@@ -96,7 +71,6 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="guidanceView" destination="Cku-P0-O1L" id="MIg-LQ-MQw"/>
                         <outlet property="tableView" destination="qNu-im-RUH" id="hzT-bm-G1z"/>
                     </connections>
                 </viewController>

@@ -120,6 +120,7 @@
 "remainingDaysToday" = "Today!";
 "remainingDaysTomorrow" = "Tomorrow!";
 "remainingDaysYesterday" = "Yesterday";
+"importBirthdayButton" = "Import Birthday";
 // Anniversary Detail view
 "giftHistory" = "Gift history";
 "hideThisAnniversaryTitle" = "Hide this anniversary";

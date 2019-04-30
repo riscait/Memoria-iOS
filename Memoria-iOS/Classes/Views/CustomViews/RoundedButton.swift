@@ -11,13 +11,26 @@ import UIKit
 // 進むや登録などポジティブなボタン
 @IBDesignable final class RoundedButton: UIButton {
     
+    /// 多言語化のための文字列キー
     @IBInspectable var localizedStringKey: String = "" {
         didSet {
             guard !localizedStringKey.isEmpty else { return }
             setTitle(NSLocalizedString(localizedStringKey, comment: ""), for: .normal)
         }
     }
-    
+    /// ボタンの枠線太さ
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+    /// 枠線の色
+    @IBInspectable var borderColor: UIColor = .gray {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
+    }
+
     override func draw(_ rect: CGRect) {
         // 状態変化
         switch state {
