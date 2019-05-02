@@ -62,22 +62,6 @@ final class AnnivListVC: UIViewController, EventTrackable {
     // MARK: - IBAction methods
     /// FIXME: 他の画面からこの画面へ戻ってくるのに使っている？
     @IBAction func returnToAnnivVC(segue: UIStoryboardSegue) {}
-    
-    // MARK: - Private methods
-    /// コレクションビューのレイアウト設定
-    private func setup(withMargin margin: CGFloat) {
-        let margin2x = margin * 2
-        title = "anniversary".localized
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: view.frame.width / 2 - margin * 3, height: 90.0)
-        // 列間の余白
-        flowLayout.minimumInteritemSpacing = margin2x
-        // 行間の余白
-        flowLayout.minimumLineSpacing = margin2x
-        // セクションの外側の余白
-        flowLayout.sectionInset = UIEdgeInsets(top: margin2x, left: margin2x, bottom: margin2x, right: margin2x)
-        collectionView.collectionViewLayout = flowLayout
-    }
 }
 
 // MARK: - UICollectionView DataSource
@@ -133,6 +117,7 @@ extension AnnivListVC: AnnivListPresenterOutput {
     }
 }
 
+// MARK: - DZNEmptyDataSetSource
 /// データが空の状態のViewを設定するライブラリを使用
 extension AnnivListVC: DZNEmptyDataSetSource {
     /// データが空の時はカスタムビューを表示する
@@ -142,7 +127,22 @@ extension AnnivListVC: DZNEmptyDataSetSource {
     }
 }
 
+// MARK: - Private methods
 private extension AnnivListVC {
+    /// コレクションビューのレイアウト設定
+    private func setup(withMargin margin: CGFloat) {
+        let margin2x = margin * 2
+        title = "anniversary".localized
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: view.frame.width / 2 - margin * 3, height: 90.0)
+        // 列間の余白
+        flowLayout.minimumInteritemSpacing = margin2x
+        // 行間の余白
+        flowLayout.minimumLineSpacing = margin2x
+        // セクションの外側の余白
+        flowLayout.sectionInset = UIEdgeInsets(top: margin2x, left: margin2x, bottom: margin2x, right: margin2x)
+        collectionView.collectionViewLayout = flowLayout
+    }
     /// 記念日登録画面へ遷移する
     @objc private func presentAnnivEditVC() {
         let nextVC = UIStoryboard(name: "AnnivEdit", bundle: nil)
