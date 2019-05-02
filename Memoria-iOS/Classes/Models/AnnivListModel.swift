@@ -34,7 +34,7 @@ final class AnnivListModel: AnnivListModelInput {
                 // ドキュメントから記念日データを取り出すし、独自データモデル化
                 guard var anniv = Anniv(dictionary: doc.data()) else { return }
                 // 日付から次の記念日までの残日数を計算
-                let remainingDays = DateDifferenceCalculator.getDifference(from: anniv.date.dateValue(), isAnnualy: anniv.isAnnualy)
+                let remainingDays = AnnivUtil.getRemainingDays(until: anniv.date.dateValue(), isAnnualy: anniv.isAnnualy)
                 // 記念日データに残日数を追加
                 anniv.remainingDays = remainingDays
                 // 残日数も含めた記念日データをローカル配列に記憶

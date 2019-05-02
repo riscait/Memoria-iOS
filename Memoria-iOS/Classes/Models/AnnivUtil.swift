@@ -77,6 +77,43 @@ struct AnnivUtil {
         }
     }
 
+    /// 次回記念日までの日数を数値で返却する
+    ///
+    /// - Parameters:
+    ///   - fromDate: 記念日の日付
+    ///   - isAnnualy: 繰り返す記念日か否か
+    /// - Returns: 次の記念日までの日数
+    static func getRemainingDays(until annivDate: Date,
+                              isAnnualy: Bool) -> Int {
+        let calendar = Calendar.current
+        // 時間情報をリセットした「今日」の日付情報
+        let today = calendar.startOfDay(for: Date())
+        // 日付の「月」と「日」を取得
+        let monthAndDayDateComponents = calendar.dateComponents([.month, .day], from: annivDate)
+        // 繰り返す記念日か否かは問わず、今日や昨日などにぴったり一致するか調べる
+        if calendar.isDateInToday(annivDate) { return 0 }
+        if calendar.isDateInTomorrow(annivDate) { return 1 }
+        if calendar.isDateInYesterday(annivDate) { return -1 }
+        // 比較するために時間情報は0:00でリセットする
+        let fromDate = calendar.startOfDay(for: annivDate)
+        // 毎年繰り返す記念日
+        if isAnnualy {
+            // 繰り返す記念日であれば年情報は無関係なので、月と日が一致するか調べる
+            let isSameMonth = calendar.component(.month, from: fromDate) == calendar.component(.month, from: today)
+            let isSameDay = calendar.component(.day, from: fromDate) == calendar.component(.day, from: today)
+            
+            if isSameMonth, isSameDay {
+                return 0
+            }
+            // ここで次回の記念日年月日を調べるが、当日の場合はら来年の日付になってしまうので、上行であらかじめ当日は別途調べておく必要があった
+            let nextDay = calendar.nextDate(after: today, matching: monthAndDayDateComponents, matchingPolicy: .nextTime)!
+            // 次回記念日と本日を比較して、次回記念日までの日数を計算
+            return calendar.dateComponents([.day], from: today, to: nextDay).day!
+        }
+        // 繰り返さない一度きりの記念日の場合は、素直に日数の差分を計算するだけでOK
+        return calendar.dateComponents([.day], from: today, to: fromDate).day!
+    }
+
     /// 次の記念日までの日数を文字列で取得する
     ///
     /// - Parameter remainingDays: 次回記念日までの日数

@@ -116,7 +116,6 @@
 		8DE450432277CC85004D8F03 /* AnnivEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE450422277CC85004D8F03 /* AnnivEmptyView.swift */; };
 		8DE4504522786888004D8F03 /* GiftEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE4504422786888004D8F03 /* GiftEmptyView.xib */; };
 		8DE45047227868AA004D8F03 /* GiftEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE45046227868AA004D8F03 /* GiftEmptyView.swift */; };
-		8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */; };
 		8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */; };
 		8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */; };
 /* End PBXBuildFile section */
@@ -236,7 +235,6 @@
 		8DE450422277CC85004D8F03 /* AnnivEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivEmptyView.swift; sourceTree = "<group>"; };
 		8DE4504422786888004D8F03 /* GiftEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftEmptyView.xib; sourceTree = "<group>"; };
 		8DE45046227868AA004D8F03 /* GiftEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftEmptyView.swift; sourceTree = "<group>"; };
-		8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDifferenceCalculator.swift; sourceTree = "<group>"; };
 		8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTabBarItem.swift; sourceTree = "<group>"; };
 		8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeButton.swift; sourceTree = "<group>"; };
 		CB9FB5A45A0F138434E9F5F0 /* Pods-Memoria-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memoria-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memoria-iOS/Pods-Memoria-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -371,7 +369,6 @@
 				8D0FB85521821B3B00BFCB79 /* AnnivDAO.swift */,
 				8D2921EC223A96B40046917F /* AnnivListModel.swift */,
 				8D2921F0223D0FE50046917F /* AnnivDetailModel.swift */,
-				8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */,
 				8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */,
 				8D2921FD2243A9760046917F /* GiftListModel.swift */,
 				8D3DA4B52260416500B59027 /* EventTrackable.swift */,
@@ -797,7 +794,6 @@
 				8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */,
 				8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */,
 				8D2921FE2243A9760046917F /* GiftListModel.swift in Sources */,
-				8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */,
 				8D84D99F225370F700471FDF /* TimelineVC.swift in Sources */,
 				8DC43FDA21D061C900B911F2 /* Anniv.swift in Sources */,
 				8D84D9A3225371AF00471FDF /* TimelineCell.swift in Sources */,
