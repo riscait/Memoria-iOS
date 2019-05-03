@@ -12,11 +12,6 @@ import Firebase
 
 class TabBarController: UITabBarController {
     
-    enum Key: String {
-        case isFinishedTutorial
-        case isFinishedMigration210
-    }
-
     var handle: AuthStateDidChangeListenerHandle?
 
     override func viewDidLoad() {
@@ -37,17 +32,15 @@ class TabBarController: UITabBarController {
                     メールアドレス: \(user.email ?? "nil")
                     画像URL: \(String(describing: user.photoURL))
                     """)
-                // UserDefaultsのデフォルト登録
-                userDefaults.register(defaults: [Key.isFinishedMigration210.rawValue : false])
                 // 初回起動判定
-                if !userDefaults.bool(forKey: "isFinishedTutorial") {
+                if !userDefaults.bool(forKey: UserDefaultsKey.isFinishedTutorial.rawValue) {
                     Log.info("初回起動を確認")
                     // Walkthrough画面へ遷移
                     let storyboard = UIStoryboard(name: "Walkthrough", bundle: nil)
                     let nextView = storyboard.instantiateInitialViewController()
                     self.present(nextView!, animated: true, completion: nil)
                     
-                } else if !(userDefaults.bool(forKey: Key.isFinishedMigration210.rawValue)) {
+                } else if !(userDefaults.bool(forKey: UserDefaultsKey.isFinishedMigration210.rawValue)) {
                     Log.info("マイグレーションが必要")
                     let storyboard = UIStoryboard(name: "Migration", bundle: nil)
                     let MigrationVC = storyboard.instantiateInitialViewController() as! MigrationVC

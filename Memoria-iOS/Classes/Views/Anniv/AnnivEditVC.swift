@@ -92,10 +92,8 @@ class AnnivEditVC: UIViewController, StoreReviewRequestable, EventTrackable {
         
         let userDefaults = UserDefaults.standard
         
-        let numberOfAddedAnnivKey = "numberOfAddedAnniv"
-        
-        let newNumberOfAddedAnniv = userDefaults.integer(forKey: numberOfAddedAnnivKey).incremented
-        userDefaults.set(newNumberOfAddedAnniv, forKey: numberOfAddedAnnivKey)
+        let newNumberOfAddedAnniv = userDefaults.integer(forKey: UserDefaultsKey.numberOfAddedAnnivs.rawValue).incremented
+        userDefaults.set(newNumberOfAddedAnniv, forKey: UserDefaultsKey.numberOfAddedAnnivs.rawValue)
         
         trackAddAnniversary(eventName: AnnivUtil.getName(from: anniversary),
                             annivDate: date.dateValue(),
@@ -103,7 +101,7 @@ class AnnivEditVC: UIViewController, StoreReviewRequestable, EventTrackable {
                             numberOfAddedAnniv: newNumberOfAddedAnniv)
         
         dismiss(animated: true) { [weak self] in
-            self?.requestStoreReviewWhenAddedAnniv()
+            self?.requestStoreReview(by: .addedAnniv)
         }
     }
     

@@ -50,7 +50,6 @@ class PasswordlessVC: UIViewController, EventTrackable {
         
         guard let email = emailField.text else { return }
         
-//        DialogBox.showAlertWithIndicator(on: self, message: NSLocalizedString("underSend", comment: ""))
         let actionCodeSettings = ActionCodeSettings()
         actionCodeSettings.url = URL(string: "")
         // ログイン操作は常にアプリで完了している必要があります
@@ -67,7 +66,6 @@ class PasswordlessVC: UIViewController, EventTrackable {
                 // リンクは正常に送信されました。ユーザーに通知します
                 // 電子メールをローカルに保存して、ユーザに再度質問する必要はありません
                 // それらが同じデバイス上のリンクを開く場合。
-                UserDefaults.standard.set(email, forKey: "email")
             DialogBox.showAlert(on: self, message: NSLocalizedString("Check your email for link", comment: ""))
             })
         }
