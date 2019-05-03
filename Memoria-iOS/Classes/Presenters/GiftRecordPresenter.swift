@@ -74,9 +74,8 @@ final class GiftRecordPresenter: GiftRecordPresenterInput, StoreReviewRequestabl
         let userDefaults = UserDefaults.standard
         
         let numberOfAddedGiftKey = "numberOfAddedGift"
-        userDefaults.register(defaults: [numberOfAddedGiftKey: 0])
         
-        let newNumberOfAddedGift = userDefaults.integer(forKey: numberOfAddedGiftKey) + 1
+        let newNumberOfAddedGift = userDefaults.integer(forKey: numberOfAddedGiftKey).incremented
         userDefaults.set(newNumberOfAddedGift, forKey: numberOfAddedGiftKey)
 
         trackAddGift(annivName: annivName,
@@ -86,7 +85,7 @@ final class GiftRecordPresenter: GiftRecordPresenterInput, StoreReviewRequestabl
                      numberOfAddedGift: newNumberOfAddedGift)
         
         view.dismiss(animated: true) { [weak self] in
-            self?.requestStoreReview(numberOfTimes: newNumberOfAddedGift, threshold: 3)
+            self?.requestStoreReviewWhenAddedGift()
         }
     }
 }

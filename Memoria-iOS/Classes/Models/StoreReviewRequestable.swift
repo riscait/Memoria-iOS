@@ -13,16 +13,30 @@ protocol StoreReviewRequestable: AnyObject {}
 
 extension StoreReviewRequestable {
     
-    /// ５回以上起動しており、閾値を超えていればレビュー依頼をする
-    ///
-    /// - Parameters:
-    ///   - numberOfTimes: 判定に使う回数
-    ///   - threshold: 閾値
-    func requestStoreReview(numberOfTimes: Int, threshold: Int) {
+    var thresholdOfAppLaunchCount: Int { return 5 }
+    
+    /// 記念日を追加した回数と起動回数の条件を満たしていれば、AppStoreでのレビュー依頼を試みる
+    func requestStoreReviewWhenAddedAnniv() {
+        
+        let thresholdOfAddedAnnivCount = 3
+        
         let userDefaults = UserDefaults.standard
         
-        if userDefaults.integer(forKey: "launchCount") > 5,
-            numberOfTimes >= threshold {
+        if userDefaults.integer(forKey: "numberOfAddedAnniv") > thresholdOfAddedAnnivCount,
+            userDefaults.integer(forKey: "launchCount") > thresholdOfAppLaunchCount {
+            SKStoreReviewController.requestReview()
+        }
+    }
+    
+    /// ギフトを追加した回数と起動回数の条件を満たしていれば、AppStoreでのレビュー依頼を試みる
+    func requestStoreReviewWhenAddedGift() {
+        
+        let thresholdOfAddedGiftCount = 3
+        
+        let userDefaults = UserDefaults.standard
+        
+        if userDefaults.integer(forKey: "numberOfAddedGift") > thresholdOfAddedGiftCount,
+            userDefaults.integer(forKey: "launchCount") > thresholdOfAppLaunchCount {
             SKStoreReviewController.requestReview()
         }
     }
