@@ -56,10 +56,9 @@ class TabBarController: UITabBarController {
                     }
                 }
             } else {
-                // 未ログイン状態なら、ログイン画面へ遷移
-                let storyboard = UIStoryboard(name: "SignIn", bundle: nil)
-                let viewController = storyboard.instantiateInitialViewController()
-                self.present(viewController!, animated: true, completion: nil)
+                // 未ログイン状態なら、サインアップ画面へ遷移
+                let vc = UIStoryboard(name: "SignUp", bundle: nil).instantiateInitialViewController()
+                self.present(vc!, animated: true, completion: nil)
             }
         }
     }

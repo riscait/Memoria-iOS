@@ -34,8 +34,6 @@ class SignUpVC: UIViewController, EventTrackable {
         configureObserver()
     }
     
-    @IBAction func didTapCloseButton(_ sender: UIButton) { dismiss(animated: true, completion: nil) }
-    
     @IBAction func didTapSignUpButton(_ sender: RoundedButton) {
         // 各Fieldがきちんと入力されているかチェック
         guard let email = emailField.text,
@@ -76,8 +74,7 @@ class SignUpVC: UIViewController, EventTrackable {
                         return
                     }
                     Log.info("Sign up成功: \(authResult?.user.email ?? "nil")")
-                    // SignUp, SignInの2つの画面を一気に消す
-                    self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 } // END: 除外条件の検証
             } // END: アカウント登録
         }

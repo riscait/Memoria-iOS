@@ -41,8 +41,8 @@
 "signUpButton" = "アカウント発行";
 "signInButton" = "ログイン";
 "passwordConditions" = "8文字以上の英数字を入力してください";
-"urgeSignUpLabel" = "アカウントを持っていませんか？";
-"urgeSignUpButton" = "アカウントを登録する";
+"urgeSignInLabel" = "アカウントをお持ちですか？";
+"urgeSignInButton" = "ログインはこちら";
 "underSignIn" = "ログイン中";
 "underSendEmail" = "メールアドレス検証中";
 "sendSignInLinkAfterMessage" = "メール文中のリンクを確認してください";

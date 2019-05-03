@@ -97,22 +97,28 @@
                                                     <action selector="didTapSignUpButton:" destination="FYk-3o-5bE" eventType="touchUpInside" id="KMv-cJ-eI3"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ra-r9-Gav" customClass="NegativeButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="168" y="474" width="39" height="54"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="OqZ-0X-4Eb"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <state key="normal" title="close"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="urgeSignInLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUB-4f-hUn" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="138.5" y="474" width="98" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="close"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="20"/>
-                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="urgeSignInLabel"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EA7-vJ-jDJ" customClass="InspectableButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                                <rect key="frame" x="88.5" y="498" width="198" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="BCh-oN-lF2"/>
+                                                </constraints>
+                                                <state key="normal" title="urgeSignUpButton">
+                                                    <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="urgeSignInButton"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="didTapCloseButton:" destination="FYk-3o-5bE" eventType="touchUpInside" id="0rf-Ay-yPp"/>
-                                                    <action selector="didTapSignUpButton:" destination="FYk-3o-5bE" eventType="touchUpInside" id="a6A-zB-1fy"/>
+                                                    <segue destination="xem-4T-zjY" kind="presentation" id="d9F-nl-oW2"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="placeholderPassword" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UEU-oy-6l8" customClass="InspectableTextField" customModule="Memoria_iOS" customModuleProvider="target">
@@ -134,12 +140,14 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="UEU-oy-6l8" firstAttribute="leading" secondItem="ws6-7M-Avm" secondAttribute="leading" id="0Ju-BG-SoK"/>
+                                            <constraint firstItem="bUB-4f-hUn" firstAttribute="centerX" secondItem="uuc-nA-EOS" secondAttribute="centerX" id="2gE-sH-9rW"/>
                                             <constraint firstItem="hC6-zM-8dm" firstAttribute="top" secondItem="REU-nj-yVU" secondAttribute="bottom" constant="8" id="9JY-JG-CsP"/>
-                                            <constraint firstItem="1Ra-r9-Gav" firstAttribute="centerX" secondItem="uuc-nA-EOS" secondAttribute="centerX" id="Cvq-v5-Cw9"/>
+                                            <constraint firstAttribute="bottom" secondItem="EA7-vJ-jDJ" secondAttribute="bottom" id="FIR-mL-jm3"/>
                                             <constraint firstItem="xrK-IS-ius" firstAttribute="centerX" secondItem="uuc-nA-EOS" secondAttribute="centerX" id="Iox-5R-Wh4"/>
                                             <constraint firstItem="xrK-IS-ius" firstAttribute="top" secondItem="hC6-zM-8dm" secondAttribute="bottom" constant="30" id="KRb-Wj-1VR"/>
+                                            <constraint firstItem="EA7-vJ-jDJ" firstAttribute="top" secondItem="bUB-4f-hUn" secondAttribute="bottom" constant="8" id="Kvn-vy-fzd"/>
+                                            <constraint firstItem="bUB-4f-hUn" firstAttribute="top" secondItem="xrK-IS-ius" secondAttribute="bottom" constant="20" id="LMb-ej-aRJ"/>
                                             <constraint firstItem="hC6-zM-8dm" firstAttribute="trailing" secondItem="ws6-7M-Avm" secondAttribute="trailing" id="MJb-1c-dwx"/>
-                                            <constraint firstAttribute="bottom" secondItem="1Ra-r9-Gav" secondAttribute="bottom" id="QQ6-3T-HfZ"/>
                                             <constraint firstItem="ws6-7M-Avm" firstAttribute="top" secondItem="f44-T0-MWo" secondAttribute="bottom" constant="20" id="RYK-vd-qs4"/>
                                             <constraint firstItem="f44-T0-MWo" firstAttribute="centerX" secondItem="uuc-nA-EOS" secondAttribute="centerX" id="V8g-rk-6EI"/>
                                             <constraint firstItem="UEU-oy-6l8" firstAttribute="trailing" secondItem="ws6-7M-Avm" secondAttribute="trailing" id="WQ7-An-nhg"/>
@@ -148,7 +156,7 @@
                                             <constraint firstItem="ws6-7M-Avm" firstAttribute="leading" secondItem="uuc-nA-EOS" secondAttribute="leading" constant="16" id="fJU-na-TbU"/>
                                             <constraint firstItem="REU-nj-yVU" firstAttribute="leading" secondItem="UEU-oy-6l8" secondAttribute="leading" id="gRE-rX-1mR"/>
                                             <constraint firstItem="UEU-oy-6l8" firstAttribute="top" secondItem="ws6-7M-Avm" secondAttribute="bottom" constant="20" id="jFH-bx-wYH"/>
-                                            <constraint firstItem="1Ra-r9-Gav" firstAttribute="top" secondItem="xrK-IS-ius" secondAttribute="bottom" constant="20" id="pfy-sD-Aun"/>
+                                            <constraint firstItem="EA7-vJ-jDJ" firstAttribute="centerX" secondItem="uuc-nA-EOS" secondAttribute="centerX" id="vzO-kQ-xEL"/>
                                             <constraint firstItem="REU-nj-yVU" firstAttribute="top" secondItem="UEU-oy-6l8" secondAttribute="bottom" constant="20" id="xbQ-FN-zSx"/>
                                             <constraint firstAttribute="trailing" secondItem="ws6-7M-Avm" secondAttribute="trailing" constant="16" id="ywi-AS-o1O"/>
                                         </constraints>
@@ -183,6 +191,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVU-AG-FmB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="128.80000000000001" y="142.57871064467767"/>
+        </scene>
+        <!--SignIn-->
+        <scene sceneID="s88-kc-kNE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SignIn" id="xem-4T-zjY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="46g-ll-SHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="622" y="177"/>
         </scene>
     </scenes>
     <resources>

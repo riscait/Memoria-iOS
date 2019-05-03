@@ -63,6 +63,7 @@
 		8D4CBB2321C51F7E009BA7C6 /* InspectableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB2221C51F7E009BA7C6 /* InspectableTextView.swift */; };
 		8D56B2A221A7DAE300B90BED /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A121A7DAE300B90BED /* SettingVC.swift */; };
 		8D56B2A421A85A7900B90BED /* OpenOtherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */; };
+		8D5CD820227C446A00DD3DBA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */; };
 		8D63BFF922492D4A00AA1B9A /* GiftRecordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */; };
 		8D77D17721B22AD400CF673A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D77D17621B22AD400CF673A /* SignUp.storyboard */; };
 		8D77D17921B22DC000CF673A /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D77D17821B22DC000CF673A /* SignUpVC.swift */; };
@@ -182,6 +183,7 @@
 		8D4CBB2221C51F7E009BA7C6 /* InspectableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTextView.swift; sourceTree = "<group>"; };
 		8D56B2A121A7DAE300B90BED /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOtherApp.swift; sourceTree = "<group>"; };
+		8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordPresenter.swift; sourceTree = "<group>"; };
 		8D77D17621B22AD400CF673A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		8D77D17821B22DC000CF673A /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */,
 				8DD486F321EAD68D0072983A /* Migration.swift */,
 				8D2921F82241C0990046917F /* Log.swift */,
+				8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */,
 			);
 			name = Commons;
 			path = "Memoria-iOS/Classes/Commons";
@@ -767,6 +770,7 @@
 				8D0E4A80226BFAC30064B411 /* GitHubIssue.swift in Sources */,
 				8D2921FC2243A94E0046917F /* GiftListPresenter.swift in Sources */,
 				8D77D18521B37BED00CF673A /* PasswordlessVC.swift in Sources */,
+				8D5CD820227C446A00DD3DBA /* UIScrollView+.swift in Sources */,
 				8D4CBB1C21C1511F009BA7C6 /* GiftDAO.swift in Sources */,
 				8D17325C22373382005CD22C /* MigrationVC.swift in Sources */,
 				8D910B5321E2307400D072EA /* InspectableBarButtonItem.swift in Sources */,

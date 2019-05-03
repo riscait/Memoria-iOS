@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GtG-Dz-PMF">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="478"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="446"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Memoria" translatesAutoresizingMaskIntoConstraints="NO" id="HO8-Lj-9Ta">
                                                 <rect key="frame" x="137.5" y="40" width="100" height="100"/>
@@ -65,7 +65,7 @@
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vVl-pw-NIw" customClass="NegativeButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="300" width="343" height="30"/>
+                                                <rect key="frame" x="133.5" y="300" width="108" height="30"/>
                                                 <state key="normal" title="forgotPassword"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="forgotPassword"/>
@@ -95,27 +95,19 @@
                                                     <action selector="didTapSignIn:" destination="uJF-Bi-VSJ" eventType="touchUpInside" id="ddJ-YG-h5c"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="urgeSignUpLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myf-gh-6yL" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="135.5" y="424" width="104.5" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="urgeSignUpLabel"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wa1-G0-pR1" customClass="InspectableButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="88.5" y="448" width="198" height="30"/>
+                                                <rect key="frame" x="88.5" y="416" width="198" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="198" id="NY0-jY-Iyq"/>
                                                 </constraints>
-                                                <state key="normal" title="urgeSignUpButton">
+                                                <state key="normal" title="close">
                                                     <color key="titleColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="urgeSignUpButton"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="close"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="didTapCloseButton:" destination="uJF-Bi-VSJ" eventType="touchUpInside" id="9HO-OC-FXF"/>
                                                     <segue destination="krQ-Yt-GtI" kind="presentation" id="9mY-5J-8vp"/>
                                                 </connections>
                                             </button>
@@ -130,15 +122,12 @@
                                             <constraint firstAttribute="trailing" secondItem="0ap-K2-kvy" secondAttribute="trailing" constant="16" id="U8P-kb-I35"/>
                                             <constraint firstItem="0ap-K2-kvy" firstAttribute="leading" secondItem="GtG-Dz-PMF" secondAttribute="leading" constant="16" id="UJ6-GH-8ak"/>
                                             <constraint firstItem="afA-5t-T6t" firstAttribute="centerX" secondItem="GtG-Dz-PMF" secondAttribute="centerX" id="Vai-oB-45W"/>
-                                            <constraint firstItem="myf-gh-6yL" firstAttribute="top" secondItem="afA-5t-T6t" secondAttribute="bottom" constant="24" id="bTp-6e-ZsY"/>
                                             <constraint firstItem="HO8-Lj-9Ta" firstAttribute="top" secondItem="GtG-Dz-PMF" secondAttribute="top" constant="40" id="bbb-f4-Y76"/>
-                                            <constraint firstItem="vVl-pw-NIw" firstAttribute="trailing" secondItem="0ap-K2-kvy" secondAttribute="trailing" id="cII-0H-lc5"/>
                                             <constraint firstItem="0ap-K2-kvy" firstAttribute="top" secondItem="HO8-Lj-9Ta" secondAttribute="bottom" constant="20" id="cYD-Pi-X1K"/>
                                             <constraint firstItem="vSI-Sc-CaT" firstAttribute="trailing" secondItem="0ap-K2-kvy" secondAttribute="trailing" id="gLR-Xt-aCM"/>
-                                            <constraint firstItem="vVl-pw-NIw" firstAttribute="leading" secondItem="0ap-K2-kvy" secondAttribute="leading" id="lHp-fz-eeb"/>
                                             <constraint firstItem="vVl-pw-NIw" firstAttribute="top" secondItem="vSI-Sc-CaT" secondAttribute="bottom" constant="20" id="lXg-ia-eqO"/>
-                                            <constraint firstItem="myf-gh-6yL" firstAttribute="centerX" secondItem="GtG-Dz-PMF" secondAttribute="centerX" id="qmu-0s-sAM"/>
-                                            <constraint firstItem="wa1-G0-pR1" firstAttribute="top" secondItem="myf-gh-6yL" secondAttribute="bottom" constant="8" id="zH7-TI-iOO"/>
+                                            <constraint firstItem="vVl-pw-NIw" firstAttribute="centerX" secondItem="GtG-Dz-PMF" secondAttribute="centerX" id="o0g-Wj-0fM"/>
+                                            <constraint firstItem="wa1-G0-pR1" firstAttribute="top" secondItem="afA-5t-T6t" secondAttribute="bottom" constant="16" id="zUD-EV-zCM"/>
                                         </constraints>
                                     </view>
                                 </subviews>

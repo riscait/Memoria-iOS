@@ -41,8 +41,8 @@
 "signUpButton" = "Sign up";
 "signInButton" = "Sing in";
 "passwordConditions" = "Please enter at least 8 alphanumeric characters";
-"urgeSignUpLabel" = "Don't have an account?";
-"urgeSignUpButton" = "Sign up!";
+"urgeSignInLabel" = "Do you have an account?";
+"urgeSignInButton" = "Sign In!";
 "underSignIn" = "Sign in...";
 "underSendEmail" = "Verifying email address";
 "sendSignInLinkAfterMessage" = "Check your email for link.";
