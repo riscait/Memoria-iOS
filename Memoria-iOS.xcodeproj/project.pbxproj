@@ -63,6 +63,8 @@
 		8D4CBB2321C51F7E009BA7C6 /* InspectableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CBB2221C51F7E009BA7C6 /* InspectableTextView.swift */; };
 		8D56B2A221A7DAE300B90BED /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A121A7DAE300B90BED /* SettingVC.swift */; };
 		8D56B2A421A85A7900B90BED /* OpenOtherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */; };
+		8D5924EF2273484000E8C8F3 /* StoreReviewRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5924EE2273484000E8C8F3 /* StoreReviewRequestable.swift */; };
+		8D5CD822227C6CC800DD3DBA /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */; };
 		8D5CD820227C446A00DD3DBA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */; };
 		8D63BFF922492D4A00AA1B9A /* GiftRecordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */; };
 		8D77D17721B22AD400CF673A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D77D17621B22AD400CF673A /* SignUp.storyboard */; };
@@ -83,6 +85,7 @@
 		8D8B2A85226E035B00E27FD6 /* AboutThisAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B2A84226E035B00E27FD6 /* AboutThisAppVC.swift */; };
 		8D8B2A87226E03CE00E27FD6 /* AnnivIntroductionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B2A86226E03CE00E27FD6 /* AnnivIntroductionVC.swift */; };
 		8D8B2A89226E044100E27FD6 /* GiftIntroductionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B2A88226E044100E27FD6 /* GiftIntroductionVC.swift */; };
+		8D8E284E227AEC8100299B5B /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8E284D227AEC8100299B5B /* Int+.swift */; };
 		8D910B4D21E19F5C00D072EA /* AnnivEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D910B4C21E19F5C00D072EA /* AnnivEdit.storyboard */; };
 		8D910B4F21E1C55500D072EA /* AnnivEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D910B4E21E1C55500D072EA /* AnnivEditVC.swift */; };
 		8D910B5321E2307400D072EA /* InspectableBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D910B5221E2307400D072EA /* InspectableBarButtonItem.swift */; };
@@ -183,6 +186,8 @@
 		8D4CBB2221C51F7E009BA7C6 /* InspectableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTextView.swift; sourceTree = "<group>"; };
 		8D56B2A121A7DAE300B90BED /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOtherApp.swift; sourceTree = "<group>"; };
+		8D5924EE2273484000E8C8F3 /* StoreReviewRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewRequestable.swift; sourceTree = "<group>"; };
+		8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordPresenter.swift; sourceTree = "<group>"; };
 		8D77D17621B22AD400CF673A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -203,6 +208,7 @@
 		8D8B2A84226E035B00E27FD6 /* AboutThisAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutThisAppVC.swift; sourceTree = "<group>"; };
 		8D8B2A86226E03CE00E27FD6 /* AnnivIntroductionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivIntroductionVC.swift; sourceTree = "<group>"; };
 		8D8B2A88226E044100E27FD6 /* GiftIntroductionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftIntroductionVC.swift; sourceTree = "<group>"; };
+		8D8E284D227AEC8100299B5B /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		8D910B4C21E19F5C00D072EA /* AnnivEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnivEdit.storyboard; sourceTree = "<group>"; };
 		8D910B4E21E1C55500D072EA /* AnnivEditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivEditVC.swift; sourceTree = "<group>"; };
 		8D910B5221E2307400D072EA /* InspectableBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableBarButtonItem.swift; sourceTree = "<group>"; };
@@ -300,11 +306,11 @@
 		8D17325122334C12005CD22C /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				8D8E284C227AEB7000299B5B /* Extensions */,
 				8D0FB83E2182002700BFCB79 /* AppDelegate.swift */,
 				8D3DA4B12260214300B59027 /* SecretKey.swift */,
 				8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */,
 				8D3E561421BAAA840090E46E /* AppInfo.swift */,
-				8DD474B321C947CD00DD5919 /* String+.swift */,
 				8D0FB8532182068100BFCB79 /* ContactAccess.swift */,
 				8DA7BF4C2184D747004DF508 /* DialogBox.swift */,
 				8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */,
@@ -313,6 +319,7 @@
 				8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */,
 				8DD486F321EAD68D0072983A /* Migration.swift */,
 				8D2921F82241C0990046917F /* Log.swift */,
+				8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */,
 				8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */,
 			);
 			name = Commons;
@@ -376,6 +383,7 @@
 				8D2921FD2243A9760046917F /* GiftListModel.swift */,
 				8D3DA4B52260416500B59027 /* EventTrackable.swift */,
 				8D0E4A81226BFFE50064B411 /* GitHubAPIClient.swift */,
+				8D5924EE2273484000E8C8F3 /* StoreReviewRequestable.swift */,
 			);
 			name = Models;
 			path = "Memoria-iOS/Classes/Models";
@@ -498,6 +506,15 @@
 				8D8B2A88226E044100E27FD6 /* GiftIntroductionVC.swift */,
 			);
 			path = Walkthrough;
+			sourceTree = "<group>";
+		};
+		8D8E284C227AEB7000299B5B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8DD474B321C947CD00DD5919 /* String+.swift */,
+				8D8E284D227AEC8100299B5B /* Int+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BC6767E9807FAE23F80305EF /* Pods */ = {
@@ -743,6 +760,7 @@
 				8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */,
 				8D2921F3223DEB790046917F /* AnnivDetailTopCell.swift in Sources */,
 				8D11B3C52195CBF300C60371 /* AnnivDetailVC.swift in Sources */,
+				8D5CD822227C6CC800DD3DBA /* UserDefaultsKey.swift in Sources */,
 				8DD486F221E254E70072983A /* AnnivEditTableVC.swift in Sources */,
 				8DBB365721C5CF67008282D0 /* GiftRecordVC.swift in Sources */,
 				8D77D18021B2ABD100CF673A /* SignInVC.swift in Sources */,
@@ -787,6 +805,7 @@
 				8D00EB1521BB960C00A3A5AE /* UpdatePasswordVC.swift in Sources */,
 				8D63BFF922492D4A00AA1B9A /* GiftRecordPresenter.swift in Sources */,
 				8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */,
+				8D5924EF2273484000E8C8F3 /* StoreReviewRequestable.swift in Sources */,
 				8DA747EB21A7C728007E7F5B /* TabBarController.swift in Sources */,
 				8D4CBB1A21C002C3009BA7C6 /* GiftListVC.swift in Sources */,
 				8D2921F92241C0990046917F /* Log.swift in Sources */,
@@ -800,6 +819,7 @@
 				8D2921FE2243A9760046917F /* GiftListModel.swift in Sources */,
 				8D84D99F225370F700471FDF /* TimelineVC.swift in Sources */,
 				8DC43FDA21D061C900B911F2 /* Anniv.swift in Sources */,
+				8D8E284E227AEC8100299B5B /* Int+.swift in Sources */,
 				8D84D9A3225371AF00471FDF /* TimelineCell.swift in Sources */,
 				8D1C73C32183ED6C00DA5A14 /* AnnivListVC.swift in Sources */,
 				8DE450432277CC85004D8F03 /* AnnivEmptyView.swift in Sources */,
