@@ -65,6 +65,7 @@
 		8D56B2A421A85A7900B90BED /* OpenOtherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */; };
 		8D5924EF2273484000E8C8F3 /* StoreReviewRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5924EE2273484000E8C8F3 /* StoreReviewRequestable.swift */; };
 		8D5CD822227C6CC800DD3DBA /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */; };
+		8D5CD820227C446A00DD3DBA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */; };
 		8D63BFF922492D4A00AA1B9A /* GiftRecordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */; };
 		8D77D17721B22AD400CF673A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D77D17621B22AD400CF673A /* SignUp.storyboard */; };
 		8D77D17921B22DC000CF673A /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D77D17821B22DC000CF673A /* SignUpVC.swift */; };
@@ -114,7 +115,11 @@
 		8DD474B821CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */; };
 		8DD486F221E254E70072983A /* AnnivEditTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD486F121E254E70072983A /* AnnivEditTableVC.swift */; };
 		8DD486F421EAD68D0072983A /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD486F321EAD68D0072983A /* Migration.swift */; };
-		8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */; };
+		8DE4503F22772B97004D8F03 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE4503E22772B97004D8F03 /* DZNEmptyDataSet.framework */; };
+		8DE450412277C99F004D8F03 /* AnnivEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE450402277C99F004D8F03 /* AnnivEmptyView.xib */; };
+		8DE450432277CC85004D8F03 /* AnnivEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE450422277CC85004D8F03 /* AnnivEmptyView.swift */; };
+		8DE4504522786888004D8F03 /* GiftEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DE4504422786888004D8F03 /* GiftEmptyView.xib */; };
+		8DE45047227868AA004D8F03 /* GiftEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE45046227868AA004D8F03 /* GiftEmptyView.swift */; };
 		8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */; };
 		8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */; };
 /* End PBXBuildFile section */
@@ -183,6 +188,7 @@
 		8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOtherApp.swift; sourceTree = "<group>"; };
 		8D5924EE2273484000E8C8F3 /* StoreReviewRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewRequestable.swift; sourceTree = "<group>"; };
 		8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordPresenter.swift; sourceTree = "<group>"; };
 		8D77D17621B22AD400CF673A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		8D77D17821B22DC000CF673A /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -232,7 +238,11 @@
 		8DD474B721CBEB6D00DD5919 /* GiftRecordSelectPerson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftRecordSelectPerson.storyboard; sourceTree = "<group>"; };
 		8DD486F121E254E70072983A /* AnnivEditTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivEditTableVC.swift; sourceTree = "<group>"; };
 		8DD486F321EAD68D0072983A /* Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migration.swift; sourceTree = "<group>"; };
-		8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDifferenceCalculator.swift; sourceTree = "<group>"; };
+		8DE4503E22772B97004D8F03 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DZNEmptyDataSet.framework; path = Carthage/Build/iOS/DZNEmptyDataSet.framework; sourceTree = "<group>"; };
+		8DE450402277C99F004D8F03 /* AnnivEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnivEmptyView.xib; sourceTree = "<group>"; };
+		8DE450422277CC85004D8F03 /* AnnivEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnivEmptyView.swift; sourceTree = "<group>"; };
+		8DE4504422786888004D8F03 /* GiftEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiftEmptyView.xib; sourceTree = "<group>"; };
+		8DE45046227868AA004D8F03 /* GiftEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftEmptyView.swift; sourceTree = "<group>"; };
 		8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTabBarItem.swift; sourceTree = "<group>"; };
 		8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NegativeButton.swift; sourceTree = "<group>"; };
 		CB9FB5A45A0F138434E9F5F0 /* Pods-Memoria-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memoria-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memoria-iOS/Pods-Memoria-iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DE4503F22772B97004D8F03 /* DZNEmptyDataSet.framework in Frameworks */,
 				6E8CBC0D324DE6FDCA8B1E9D /* Pods_Memoria_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +320,7 @@
 				8DD486F321EAD68D0072983A /* Migration.swift */,
 				8D2921F82241C0990046917F /* Log.swift */,
 				8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */,
+				8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */,
 			);
 			name = Commons;
 			path = "Memoria-iOS/Classes/Commons";
@@ -367,7 +379,6 @@
 				8D0FB85521821B3B00BFCB79 /* AnnivDAO.swift */,
 				8D2921EC223A96B40046917F /* AnnivListModel.swift */,
 				8D2921F0223D0FE50046917F /* AnnivDetailModel.swift */,
-				8DE5A1F221F7552F0019201B /* DateDifferenceCalculator.swift */,
 				8D4CBB1B21C1511F009BA7C6 /* GiftDAO.swift */,
 				8D2921FD2243A9760046917F /* GiftListModel.swift */,
 				8D3DA4B52260416500B59027 /* EventTrackable.swift */,
@@ -435,6 +446,8 @@
 			children = (
 				8D1C73C52183EE0D00DA5A14 /* AnnivList.storyboard */,
 				8D1C73C22183ED6C00DA5A14 /* AnnivListVC.swift */,
+				8DE450402277C99F004D8F03 /* AnnivEmptyView.xib */,
+				8DE450422277CC85004D8F03 /* AnnivEmptyView.swift */,
 				8D11B3BB2194431100C60371 /* AnnivCell.swift */,
 				8D11B3C22195C5CC00C60371 /* AnnivDetail.storyboard */,
 				8D11B3C42195CBF300C60371 /* AnnivDetailVC.swift */,
@@ -455,6 +468,8 @@
 				8D2922012244EF550046917F /* GiftListCell.swift */,
 				8D2922022244EF550046917F /* GiftListCell.xib */,
 				8D4CBB1921C002C3009BA7C6 /* GiftListVC.swift */,
+				8DE4504422786888004D8F03 /* GiftEmptyView.xib */,
+				8DE45046227868AA004D8F03 /* GiftEmptyView.swift */,
 				8D4CBB1D21C159C5009BA7C6 /* GiftRecord.storyboard */,
 				8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */,
 				8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */,
@@ -514,6 +529,7 @@
 		C986B6EDF1770E80DB59E4B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DE4503E22772B97004D8F03 /* DZNEmptyDataSet.framework */,
 				76D879946004ED7C834459C0 /* Pods_Memoria_iOS.framework */,
 			);
 			name = Frameworks;
@@ -605,6 +621,7 @@
 				8D2922042244EF550046917F /* GiftListCell.xib in Resources */,
 				8D17325A22373354005CD22C /* Migration.storyboard in Resources */,
 				8DA747E921A7C26A007E7F5B /* Setting.storyboard in Resources */,
+				8DE4504522786888004D8F03 /* GiftEmptyView.xib in Resources */,
 				8D1C73C62183EE0D00DA5A14 /* AnnivList.storyboard in Resources */,
 				8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */,
 				8D4CBB1821C0001D009BA7C6 /* GiftList.storyboard in Resources */,
@@ -613,6 +630,7 @@
 				8DB8105121A915850007BBC5 /* HiddenList.storyboard in Resources */,
 				8DC43FDC21D3C6FF00B911F2 /* GiftRecordSelectAnniv.storyboard in Resources */,
 				8D8B2A82226DEF5800E27FD6 /* GiftIntroduction.storyboard in Resources */,
+				8DE450412277C99F004D8F03 /* AnnivEmptyView.xib in Resources */,
 				8D0E4A86226CC6260064B411 /* Walkthrough.storyboard in Resources */,
 				8D0FB8462182002800BFCB79 /* Assets.xcassets in Resources */,
 			);
@@ -651,6 +669,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/DZNEmptyDataSet.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -754,6 +773,7 @@
 				8D2922032244EF550046917F /* GiftListCell.swift in Sources */,
 				8D1732582234120E005CD22C /* AnnivListPresenter.swift in Sources */,
 				8D3E561521BAAA840090E46E /* AppInfo.swift in Sources */,
+				8DE45047227868AA004D8F03 /* GiftEmptyView.swift in Sources */,
 				8DB8105921AA97880007BBC5 /* InspectableSegmentedControl.swift in Sources */,
 				8DC43FE421D9F53600B911F2 /* Gift.swift in Sources */,
 				8D2507B621A44E860015A206 /* AccentButton.swift in Sources */,
@@ -768,6 +788,7 @@
 				8D0E4A80226BFAC30064B411 /* GitHubIssue.swift in Sources */,
 				8D2921FC2243A94E0046917F /* GiftListPresenter.swift in Sources */,
 				8D77D18521B37BED00CF673A /* PasswordlessVC.swift in Sources */,
+				8D5CD820227C446A00DD3DBA /* UIScrollView+.swift in Sources */,
 				8D4CBB1C21C1511F009BA7C6 /* GiftDAO.swift in Sources */,
 				8D17325C22373382005CD22C /* MigrationVC.swift in Sources */,
 				8D910B5321E2307400D072EA /* InspectableBarButtonItem.swift in Sources */,
@@ -796,12 +817,12 @@
 				8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */,
 				8DA7BF4D2184D747004DF508 /* DialogBox.swift in Sources */,
 				8D2921FE2243A9760046917F /* GiftListModel.swift in Sources */,
-				8DE5A1F321F7552F0019201B /* DateDifferenceCalculator.swift in Sources */,
 				8D84D99F225370F700471FDF /* TimelineVC.swift in Sources */,
 				8DC43FDA21D061C900B911F2 /* Anniv.swift in Sources */,
 				8D8E284E227AEC8100299B5B /* Int+.swift in Sources */,
 				8D84D9A3225371AF00471FDF /* TimelineCell.swift in Sources */,
 				8D1C73C32183ED6C00DA5A14 /* AnnivListVC.swift in Sources */,
+				8DE450432277CC85004D8F03 /* AnnivEmptyView.swift in Sources */,
 				8D910B5521E239C000D072EA /* InspectableStackView.swift in Sources */,
 				8D8B2A87226E03CE00E27FD6 /* AnnivIntroductionVC.swift in Sources */,
 				8D11B3C7219719B800C60371 /* TagLabel.swift in Sources */,

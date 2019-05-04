@@ -22,7 +22,6 @@ protocol GiftListPresenterInput: AnyObject {
 protocol GiftListPresenterOutput: AnyObject {
     func update(gifts: [Gift])
     func delete(at: IndexPath)
-    func toggleGuidanceView(hasGift: Bool)
     func transitionToGiftRecord(gift: Gift?)
 }
 /// ギフトリスト画面とモデルの仲介役
@@ -56,9 +55,6 @@ final class GiftListPresenter: GiftListPresenterInput {
     }
     // ギフトの数を返す
     func numberOfGifts(forSection section: Int) -> Int {
-        // ギフトが一つもないときはガイド用Viewを表示
-        let hasGift = !gifts.isEmpty
-        view.toggleGuidanceView(hasGift: hasGift)
         // 現在は一つのセクションしかない
         return gifts.count
     }

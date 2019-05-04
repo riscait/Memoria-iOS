@@ -29,7 +29,7 @@ final class AnnivDetailModel: AnnivDetailModelInput {
             guard let data = snapshot?.documents.first?.data(),
                 var anniv = Anniv(dictionary: data) else { return }
             // 残日数を追加
-            anniv.remainingDays = DateDifferenceCalculator.getDifference(from: anniv.date.dateValue(), isAnnualy: anniv.isAnnualy)
+            anniv.remainingDays = AnnivUtil.getRemainingDays(until: anniv.date.dateValue(), isAnnualy: anniv.isAnnualy)
             var gifts: [[String: Any]] = []
             let searchKey: String
             

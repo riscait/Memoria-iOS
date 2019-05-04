@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import DZNEmptyDataSet
 
 /// Gift一覧を表示するメイン画面のクラス
 final class GiftListVC: UIViewController, EventTrackable {
@@ -17,7 +18,6 @@ final class GiftListVC: UIViewController, EventTrackable {
     
     // MARK: - IBOutlet properties
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var guidanceView: UIView!
     
     // MARK: - Properties
     // TODO: 不要かも？
@@ -32,6 +32,14 @@ final class GiftListVC: UIViewController, EventTrackable {
         presenter = GiftListPresenter(view: self, model: GiftListModel())
         // Xibファイルを登録する
         tableView.register(UINib(nibName: "GiftListCell", bundle: nil), forCellReuseIdentifier: "giftListCell")
+        
+        // DZNEmptyDataSet
+        tableView.emptyDataSetSource = self
+        // セルの仕切り線を消すためのマジック
+        tableView.tableFooterView = UIView()
+        /// NotificationCenterを登録
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(presentGiftRecordVC), name: .presentGiftRecordVC, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -101,10 +109,6 @@ extension GiftListVC: GiftListPresenterOutput {
         // Table view cellを削除
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
-    /// ギフトがない時はガイド用のViewを表示するためのり切り替えメソッド
-    func toggleGuidanceView(hasGift: Bool) {
-        guidanceView.isHidden = hasGift
-    }
     /// ギフトが選択された時に、ギフト編集画面へ遷移する
     func transitionToGiftRecord(gift: Gift?) {
         let storyboard = UIStoryboard(name: "GiftRecord", bundle: nil)
@@ -117,5 +121,20 @@ extension GiftListVC: GiftListPresenterOutput {
         giftRecordVC.inject(presenter: presenter)
         // 編集画面へ遷移
         present(navC, animated: true, completion: nil)
+    }
+}
+
+
+/// データが空の状態のViewを設定するライブラリを使用
+extension GiftListVC: DZNEmptyDataSetSource {
+    /// データが空の時はカスタムビューを表示する
+    func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {
+        
+        return GiftEmptyView(frame: view.frame)
+    }
+}
+private extension GiftListVC {
+    @objc private func presentGiftRecordVC() {
+        transitionToGiftRecord(gift: nil)
     }
 }

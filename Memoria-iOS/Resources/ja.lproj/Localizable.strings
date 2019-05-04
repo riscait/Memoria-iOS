@@ -41,8 +41,8 @@
 "signUpButton" = "アカウント発行";
 "signInButton" = "ログイン";
 "passwordConditions" = "8文字以上の英数字を入力してください";
-"urgeSignUpLabel" = "アカウントを持っていませんか？";
-"urgeSignUpButton" = "アカウントを登録する";
+"urgeSignInLabel" = "アカウントをお持ちですか？";
+"urgeSignInButton" = "ログインはこちら";
 "underSignIn" = "ログイン中";
 "underSendEmail" = "メールアドレス検証中";
 "sendSignInLinkAfterMessage" = "メール文中のリンクを確認してください";
@@ -113,7 +113,7 @@
 "GiftIntroductionDetail" = "やりとりしたギフトを「相手」「記念日」で記録できるから、後から見返しやすい♪\n\n次のプレゼント選びにも使えます 🎁";
 "start" = "はじめる";
 // Anniversary画面
-"letsAddAnniversary" = "右上の＋ボタンから\n記念日を追加しましょう！\n\nまたは「設定」タブから連絡先の誕生日を取り込みましょう！";
+"letsAddAnniversary" = "まだ記念日が一つも登録されていません\n\nさっそく記念日を登録するか、\n\n連絡先の誕生日を取り込みましょう！";
 "fullName" = "%@ %@";
 "whoseBirthday" = "%@ %@さん\nの誕生日";  // 姓 + 名さん
 "remainingDays" = "あと%@日";
@@ -121,6 +121,7 @@
 "remainingDaysToday" = "Today!";
 "remainingDaysTomorrow" = "明日";
 "remainingDaysYesterday" = "昨日";
+"importBirthdayButton" = "誕生日を取り込む";
 // Anniversary詳細画面
 "giftHistory" = "ギフト履歴";
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
@@ -130,7 +131,7 @@
 "giftSectionFooterForBirthday" = "人名が一致しているギフトがここに表示されます。";
 // Gift画面
 "dateTBD" = "日付未定";
-"letsAddGift" = "右上の＋ボタンから\nギフトを追加しましょう！";
+"letsAddGift" = "まだギフトが一つも登録されていません\n\nさっそくギフトを登録しましょう！";
 // Settings画面
 "settings" = "設定";
 "updateInProgress" = "更新中...";

@@ -41,8 +41,8 @@
 "signUpButton" = "Sign up";
 "signInButton" = "Sing in";
 "passwordConditions" = "Please enter at least 8 alphanumeric characters";
-"urgeSignUpLabel" = "Don't have an account?";
-"urgeSignUpButton" = "Sign up!";
+"urgeSignInLabel" = "Do you have an account?";
+"urgeSignInButton" = "Sign In!";
 "underSignIn" = "Sign in...";
 "underSendEmail" = "Verifying email address";
 "sendSignInLinkAfterMessage" = "Check your email for link.";
@@ -58,12 +58,18 @@
 "The user's credential is no longer valid. The user must sign in again." = ""; */
 // Record anniversary view
 "anniversary" = "Anniversary";
+"birthday" = "Birthday";
+"anniversaryTitleLabel" = "Anniversary Title";
+"birthdayNameLabel" = "Birthday name";
 "anniversaryRecord" = "Record Anniversary";
 "askForNameInput" = "Enter the name in the case of birthday";
+"leftNamePlaceholder" = "John";
+"rightNamePlaceholder" = "Smith";
 "givenName" = "Given name";
 "familyName" = "Family name";
 "givenNamePlaceholder" = "Given name";
 "familyNamePlaceholder" = "Family name";
+"repeatableTitle" = "Repeat every year";
 "———————  or  ———————" = "———————  OR  ———————";
 "askForAnniversaryNameInput" = "Enter the name of the anniversary in the case of anniversary";
 "anniversaryPlaceholder" = "Anniversary name";
@@ -114,6 +120,7 @@
 "remainingDaysToday" = "Today!";
 "remainingDaysTomorrow" = "Tomorrow!";
 "remainingDaysYesterday" = "Yesterday";
+"importBirthdayButton" = "Import Birthday";
 // Anniversary Detail view
 "giftHistory" = "Gift history";
 "hideThisAnniversaryTitle" = "Hide this anniversary";

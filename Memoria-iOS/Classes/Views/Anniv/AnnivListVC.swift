@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import DZNEmptyDataSet
 
 /// 記念日一覧を表示するメイン画面のクラス
 final class AnnivListVC: UIViewController, EventTrackable {
@@ -22,7 +23,6 @@ final class AnnivListVC: UIViewController, EventTrackable {
     private var presenter: AnnivListPresenterInput!
     
     // MARK: - IBOutlet properties
-    @IBOutlet private weak var emptySetView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Life cycle methods
@@ -33,6 +33,17 @@ final class AnnivListVC: UIViewController, EventTrackable {
         presenter = AnnivListPresenter(view: self, model: AnnivListModel())
         // CollectionViewのレイアウト設定
         setup(withMargin: 6.0)
+
+        // DZNEmptyDataSet
+        collectionView.emptyDataSetSource = self
+        
+        /// NotificationCenterを登録
+        let notificationCenter = NotificationCenter.default
+        // 記念日登録画面へ遷移するため
+        notificationCenter.addObserver(self, selector: #selector(presentAnnivEditVC), name: .presentAnnivEditVC, object: nil)
+        // 誕生日を取り込むためダイアログをポップアップ
+        notificationCenter.addObserver(self, selector: #selector(importBirthday), name: .importBirthday, object: nil)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,22 +62,6 @@ final class AnnivListVC: UIViewController, EventTrackable {
     // MARK: - IBAction methods
     /// FIXME: 他の画面からこの画面へ戻ってくるのに使っている？
     @IBAction func returnToAnnivVC(segue: UIStoryboardSegue) {}
-    
-    // MARK: - Private methods
-    /// コレクションビューのレイアウト設定
-    private func setup(withMargin margin: CGFloat) {
-        let margin2x = margin * 2
-        title = "anniversary".localized
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: view.frame.width / 2 - margin * 3, height: 90.0)
-        // 列間の余白
-        flowLayout.minimumInteritemSpacing = margin2x
-        // 行間の余白
-        flowLayout.minimumLineSpacing = margin2x
-        // セクションの外側の余白
-        flowLayout.sectionInset = UIEdgeInsets(top: margin2x, left: margin2x, bottom: margin2x, right: margin2x)
-        collectionView.collectionViewLayout = flowLayout
-    }
 }
 
 // MARK: - UICollectionView DataSource
@@ -101,11 +96,6 @@ extension AnnivListVC: UICollectionViewDelegate {
 
 // MARK: - AnnivListPresenterOutput
 extension AnnivListVC: AnnivListPresenterOutput {
-    /// 記念日が一つもない場合は、記念日の追加を促すViewを表示する
-    func toggleEmptySetView(hasAnniv: Bool) {
-        emptySetView.isHidden = hasAnniv
-    }
-    
     /// 記念日リストを更新する
     func updateAnnivs(forNotFinished notFinishedAnnivs: [Anniv], forFinished finishedAnnivs: [Anniv]) {
         DispatchQueue.main.async {
@@ -124,5 +114,49 @@ extension AnnivListVC: AnnivListPresenterOutput {
         annivDetailVC.inject(presenter: presenter)
         // 詳細画面へPushで遷移
         navigationController?.pushViewController(annivDetailVC, animated: true)
+    }
+}
+
+// MARK: - DZNEmptyDataSetSource
+/// データが空の状態のViewを設定するライブラリを使用
+extension AnnivListVC: DZNEmptyDataSetSource {
+    /// データが空の時はカスタムビューを表示する
+    func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {
+        
+        return AnnivEmptyView(frame: view.frame)
+    }
+}
+
+// MARK: - Private methods
+private extension AnnivListVC {
+    /// コレクションビューのレイアウト設定
+    private func setup(withMargin margin: CGFloat) {
+        let margin2x = margin * 2
+        title = "anniversary".localized
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: view.frame.width / 2 - margin * 3, height: 90.0)
+        // 列間の余白
+        flowLayout.minimumInteritemSpacing = margin2x
+        // 行間の余白
+        flowLayout.minimumLineSpacing = margin2x
+        // セクションの外側の余白
+        flowLayout.sectionInset = UIEdgeInsets(top: margin2x, left: margin2x, bottom: margin2x, right: margin2x)
+        collectionView.collectionViewLayout = flowLayout
+    }
+    /// 記念日登録画面へ遷移する
+    @objc private func presentAnnivEditVC() {
+        let nextVC = UIStoryboard(name: "AnnivEdit", bundle: nil)
+            .instantiateInitialViewController()!
+        present(nextVC, animated: true)
+    }
+    /// 誕生日を取り込むためのダイアログをポップアップする
+    @objc private func importBirthday() {
+        DialogBox.showAlert(on: self,
+                            hasCancel: true,
+                            title: "importBirthdayTitle".localized,
+                            message: "importBirthdayMessage".localized) {
+                                ContactAccess().checkStatusAndImport(rootVC: self)
+                                self.trackEvent(eventName: "Imported birthdays from Contact")
+        }
     }
 }

@@ -20,7 +20,6 @@ protocol AnnivListPresenterInput: AnyObject {
 /// Viewに指示を出すためのデリゲート
 protocol AnnivListPresenterOutput: AnyObject {
     func updateAnnivs(forNotFinished notFinishedAnnivs: [Anniv], forFinished finishedAnnivs: [Anniv])
-    func toggleEmptySetView(hasAnniv: Bool)
     func transitionToAnnivDetail(anniv: Anniv)
 }
 
@@ -61,10 +60,6 @@ final class AnnivListPresenter: AnnivListPresenterInput {
     }
     /// 記念日の数を返す
     func numberOfAnnivs(forSection section: Int) -> Int {
-        // 記念日が一つもないときはガイド用Viewを表示
-        let hasAnniv = !(notFinishedAnnivs.isEmpty && finishedAnnivs.isEmpty)
-        view.toggleEmptySetView(hasAnniv: hasAnniv)
-        
         switch section {
         case AnnivListSection.notFinishedAnniv.rawValue:
             return notFinishedAnnivs.count

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bQh-ZE-PGn">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,30 +15,28 @@
             <objects>
                 <viewController storyboardIdentifier="HowToImportBirthday" id="bQh-ZE-PGn" customClass="AboutThisAppVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mcx-4t-Pws">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Cy-px-gMR">
-                                <rect key="frame" x="0.0" y="20" width="320" height="301.5"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="403.66666666666669"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Walkthrough01" translatesAutoresizingMaskIntoConstraints="NO" id="kCB-Md-5Hw">
-                                        <rect key="frame" x="20" y="21.5" width="280" height="280"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="kCB-Md-5Hw" secondAttribute="height" id="uUN-Nc-WQW"/>
-                                        </constraints>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Walkthrough01" translatesAutoresizingMaskIntoConstraints="NO" id="kCB-Md-5Hw">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="403.66666666666669"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="kCB-Md-5Hw" firstAttribute="leading" secondItem="0Cy-px-gMR" secondAttribute="leading" constant="20" id="8RY-GW-Axm"/>
-                                    <constraint firstAttribute="trailing" secondItem="kCB-Md-5Hw" secondAttribute="trailing" constant="20" id="Hw1-wL-r6W"/>
+                                    <constraint firstItem="kCB-Md-5Hw" firstAttribute="leading" secondItem="0Cy-px-gMR" secondAttribute="leading" id="Jqd-uJ-dci"/>
+                                    <constraint firstItem="kCB-Md-5Hw" firstAttribute="top" secondItem="0Cy-px-gMR" secondAttribute="top" id="Xzx-lF-vH6"/>
                                     <constraint firstAttribute="bottom" secondItem="kCB-Md-5Hw" secondAttribute="bottom" id="kj3-MB-ysE"/>
+                                    <constraint firstAttribute="trailing" secondItem="kCB-Md-5Hw" secondAttribute="trailing" id="t7F-Gp-57r"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jkr-W7-ElZ">
-                                <rect key="frame" x="0.0" y="321.5" width="320" height="246.5"/>
+                                <rect key="frame" x="0.0" y="447.66666666666674" width="375" height="364.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HxV-46-5ZG" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="16" width="288" height="29"/>
+                                        <rect key="frame" x="16" y="16" width="343" height="28.666666666666671"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -47,7 +45,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="welcomeDetail" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T1-9T-biv" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="77" width="288" height="21.5"/>
+                                        <rect key="frame" x="16" y="76.666666666666686" width="343" height="21.666666666666671"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -87,6 +85,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Walkthrough01" width="1000" height="1000"/>
+        <image name="Walkthrough01" width="1363" height="1057"/>
     </resources>
 </document>

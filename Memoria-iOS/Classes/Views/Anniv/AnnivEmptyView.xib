@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AnnivEmptyView" customModule="Memoria_iOS" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="a7h-hl-M2Y">
+                    <rect key="frame" x="0.0" y="40" width="320" height="508"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🥂" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sa-Lx-xe1">
+                            <rect key="frame" x="106" y="0.0" width="108" height="119.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8s2-nl-7yp" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
+                            <rect key="frame" x="86" y="209" width="148" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="letsAddAnniversary"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MKD-Di-npV" customClass="RoundedButton" customModule="Memoria_iOS" customModuleProvider="target">
+                            <rect key="frame" x="40" y="318.5" width="240" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Key-OK-vjE"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="QJi-na-tn9"/>
+                            </constraints>
+                            <state key="normal" title="記念日を追加する">
+                                <color key="titleColor" name="mainColor"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" name="mainColor"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="recordAnniversary"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="didTapAddAnnivButton:" destination="-1" eventType="touchUpInside" id="B3X-bX-PEf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3WB-zi-99Y" customClass="RoundedButton" customModule="Memoria_iOS" customModuleProvider="target">
+                            <rect key="frame" x="40" y="458" width="240" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="TcC-YP-FPp"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="z9A-qt-99p"/>
+                            </constraints>
+                            <state key="normal" title="誕生日を取り込む">
+                                <color key="titleColor" red="0.40000000000000002" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.40000000000000002" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="importBirthdayButton"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="didTapImportBirthdayButton:" destination="-1" eventType="touchUpInside" id="nSO-BL-AEo"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="a7h-hl-M2Y" secondAttribute="bottom" constant="20" id="S1e-gJ-Gfc"/>
+                <constraint firstAttribute="trailing" secondItem="a7h-hl-M2Y" secondAttribute="trailing" id="W1z-Dc-08l"/>
+                <constraint firstItem="a7h-hl-M2Y" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="cNj-sa-KHS"/>
+                <constraint firstItem="a7h-hl-M2Y" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="p78-gc-bcG"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="mainColor">
+            <color red="1" green="0.66299998760223389" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -51,35 +51,13 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b3M-if-9sV">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <color key="backgroundColor" name="underColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Rx-Ic-0PW">
                                     <size key="itemSize" width="161" height="90"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <view key="backgroundView" hidden="YES" contentMode="scaleToFill" id="boi-uN-sgY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="letsAddAnniversary" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cYy-VG-eCP" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                            <rect key="frame" x="36" y="293" width="319" height="81"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <nil key="highlightedColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="letsAddAnniversary"/>
-                                            </userDefinedRuntimeAttributes>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="1" green="0.75845048429999995" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    <constraints>
-                                        <constraint firstItem="cYy-VG-eCP" firstAttribute="centerY" secondItem="boi-uN-sgY" secondAttribute="centerY" id="RrM-2O-AKQ"/>
-                                        <constraint firstAttribute="trailing" secondItem="cYy-VG-eCP" secondAttribute="trailing" constant="20" id="Xgd-cQ-y3z"/>
-                                        <constraint firstItem="cYy-VG-eCP" firstAttribute="leading" secondItem="boi-uN-sgY" secondAttribute="leading" constant="20" id="fs2-mg-y3b"/>
-                                        <constraint firstItem="cYy-VG-eCP" firstAttribute="centerX" secondItem="boi-uN-sgY" secondAttribute="centerX" id="y80-qs-Ojo"/>
-                                    </constraints>
-                                </view>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="anniversaryCell" id="3yV-fA-Kjo" customClass="AnnivCell" customModule="Memoria_iOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="161" height="90"/>
@@ -198,7 +176,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="b3M-if-9sV" id="mWy-Nt-GZD"/>
-                        <outlet property="emptySetView" destination="boi-uN-sgY" id="IHZ-F6-LIC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0q2-5F-RBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -211,9 +188,6 @@
         <image name="addCircle" width="25" height="25"/>
         <namedColor name="mainColor">
             <color red="1" green="0.66299998760223389" blue="0.078000001609325409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="underColor">
-            <color red="0.91764705882352937" green="0.92156862745098034" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

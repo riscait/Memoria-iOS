@@ -58,12 +58,14 @@ class SignInVC: UIViewController, EventTrackable {
             // START: メールアドレスログイン処理
             Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
                 DialogBox.dismissAlertWithIndicator(on: self) {
-                    Log.info("ログイン結果: \(String(describing: authResult))")
+                    Log.info("サインイン結果: \(String(describing: authResult))")
                     if let error = error {
                         Log.warn(error.localizedDescription)
                         DialogBox.showAlert(on: self, message: NSLocalizedString(error.localizedDescription, comment: ""))
                     } else {
-                        self.dismiss(animated: true, completion: nil)
+                        Log.info("サインイン成功")
+                        // SignUp, SignInの2つの画面を一気に消す
+                        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
                     }
                 }
             }
@@ -90,6 +92,10 @@ class SignInVC: UIViewController, EventTrackable {
                 }
             }
         }
+    }
+    
+    @IBAction func didTapCloseButton(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Notification
