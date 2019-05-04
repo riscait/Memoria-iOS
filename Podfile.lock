@@ -109,6 +109,7 @@ PODS:
     - gRPC-RxLibrary (= 1.14.0)
   - GTMSessionFetcher/Core (1.2.1)
   - leveldb-library (1.20)
+  - LicensePlist (2.5.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -121,6 +122,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
+  - LicensePlist
   - Repro
 
 SPEC REPOS:
@@ -142,6 +144,7 @@ SPEC REPOS:
     - gRPC-RxLibrary
     - GTMSessionFetcher
     - leveldb-library
+    - LicensePlist
     - nanopb
     - Protobuf
     - Repro
@@ -164,10 +167,11 @@ SPEC CHECKSUMS:
   gRPC-RxLibrary: 3c305f32155024b116b780f389323c73a28197e6
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  LicensePlist: e5f8f2e3465620e53ec4c669955a5a7d0692b9cb
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   Repro: 8d58ff6da924c007c906815b6fbbe705d8fd1951
 
-PODFILE CHECKSUM: 754d2f1814aee093c28d62a98d02a40227d8a4c4
+PODFILE CHECKSUM: 00ca12d26085a197eaae880b55448e08f0aa88c8
 
 COCOAPODS: 1.5.3

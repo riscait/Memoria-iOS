@@ -102,6 +102,7 @@
 		8DB8105921AA97880007BBC5 /* InspectableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8105821AA97880007BBC5 /* InspectableSegmentedControl.swift */; };
 		8DB8105B21AAB1AA0007BBC5 /* DeviceLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8105A21AAB1AA0007BBC5 /* DeviceLanguage.swift */; };
 		8DB8105D21AC243B0007BBC5 /* ZodiacSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */; };
+		8DB90980227D28EF00B45789 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8DB9097F227D28EF00B45789 /* Settings.bundle */; };
 		8DBB365721C5CF67008282D0 /* GiftRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */; };
 		8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */; };
 		8DC43FD821CFE39A00B911F2 /* InspectableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */; };
@@ -225,6 +226,7 @@
 		8DB8105821AA97880007BBC5 /* InspectableSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableSegmentedControl.swift; sourceTree = "<group>"; };
 		8DB8105A21AAB1AA0007BBC5 /* DeviceLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceLanguage.swift; sourceTree = "<group>"; };
 		8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacSign.swift; sourceTree = "<group>"; };
+		8DB9097F227D28EF00B45789 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordVC.swift; sourceTree = "<group>"; };
 		8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordTableVC.swift; sourceTree = "<group>"; };
 		8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTableViewCell.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				8D11B3B921940BD100C60371 /* Localizable.strings */,
 				8D0FB8502182013E00BFCB79 /* GoogleService-Info.plist */,
 				8D2921FA224300410046917F /* Debug.xcconfig */,
+				8DB9097F227D28EF00B45789 /* Settings.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				F41BA7C9F1A854142F0651D6 /* [CP] Embed Pods Frameworks */,
 				8D88AF882259AF4E000BA720 /* ShellScript */,
 				AD4220E890D080CD2BF1388E /* [CP] Copy Pods Resources */,
+				8DE066F4227D1EB300AE377E /* LicensePlist */,
 			);
 			buildRules = (
 			);
@@ -626,6 +630,7 @@
 				8D11B3BF21947EAF00C60371 /* InfoPlist.strings in Resources */,
 				8D4CBB1821C0001D009BA7C6 /* GiftList.storyboard in Resources */,
 				8D11B3C32195C5CD00C60371 /* AnnivDetail.storyboard in Resources */,
+				8DB90980227D28EF00B45789 /* Settings.bundle in Resources */,
 				8DA747E621A7C1F6007E7F5B /* TabBar.storyboard in Resources */,
 				8DB8105121A915850007BBC5 /* HiddenList.storyboard in Resources */,
 				8DC43FDC21D3C6FF00B911F2 /* GiftRecordSelectAnniv.storyboard in Resources */,
@@ -678,6 +683,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		8DE066F4227D1EB300AE377E /* LicensePlist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = LicensePlist;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Resources/Settings.bundle --github-token 1d54bda2cb38b3811b6b489995a934d27918d4d3\nfi\n";
 		};
 		AD4220E890D080CD2BF1388E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
