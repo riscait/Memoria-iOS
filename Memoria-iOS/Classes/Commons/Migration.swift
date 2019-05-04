@@ -11,11 +11,6 @@ import Firebase
 
 struct Migration {
     
-    enum Key: String {
-        case isFinishedTutorial
-        case isFinishedMigration210
-    }
-    
     static let userDefaults = UserDefaults.standard
     
     static func start(on rootVC: UIViewController, completion: @escaping () -> Void) {
@@ -48,7 +43,7 @@ struct Migration {
                             Log.info("Ver.2.1.0 の誕生日タイプマイグレーションを開始")
                             guard query.count > 0 else {
                                 Log.info("Ver.2.1.0 の誕生日タイプマイグレーションを終了")
-                                userDefaults.set(true, forKey: Key.isFinishedMigration210.rawValue)
+                                userDefaults.set(true, forKey: UserDefaultsKey.isFinishedMigration210.rawValue)
                                 DialogBox.dismissAlertWithIndicator(on: rootVC, completion: nil)
                                 completion()
                                 return
@@ -99,7 +94,7 @@ struct Migration {
                                         if count == max {
                                             DialogBox.dismissAlertWithIndicator(on: rootVC, completion: nil)
                                             Log.info("Ver.2.1.0 の誕生日タイプマイグレーションを終了")
-                                            userDefaults.set(true, forKey: Key.isFinishedMigration210.rawValue)
+                                            userDefaults.set(true, forKey: UserDefaultsKey.isFinishedMigration210.rawValue)
                                             completion()
                                         }
                                 }

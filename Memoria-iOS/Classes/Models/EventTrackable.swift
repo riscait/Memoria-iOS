@@ -45,11 +45,15 @@ extension EventTrackable {
     /// - Parameters:
     ///   - eventName: カスタムイベント名
     ///   - properties: 任意のプロパティ
-    func trackAddAnniversary(eventName: String, annivDate: Date, annivCategory: AnnivType)  {
+    func trackAddAnniversary(eventName: String,
+                             annivDate: Date,
+                             annivCategory: AnnivType,
+                             numberOfAddedAnniv: Int)  {
         
         let properties: [String : Any] =  [
             "Anniversary date": annivDate,
-            "Anniversary category": annivCategory.description
+            "Anniversary category": annivCategory.description,
+            "Number of added Anniversarys": numberOfAddedAnniv
         ]
         
         Repro.track("Add Anniversary", properties: properties)
@@ -62,13 +66,18 @@ extension EventTrackable {
     /// - Parameters:
     ///   - eventName: カスタムイベント名
     ///   - properties: 任意のプロパティ
-    func trackAddGift(annivName: String, isReceived: Bool, goodsName: String, giftDate: Date?)  {
+    func trackAddGift(annivName: String,
+                      isReceived: Bool,
+                      goodsName: String,
+                      giftDate: Date?,
+                      numberOfAddedGift: Int)  {
         
         let properties: [String : Any] =  [
             "Anniversary name": annivName,
             "Gift is received?": isReceived,
             "Goods name": goodsName,
             "Gift date": giftDate as Any,
+            "Number of added Gifts": numberOfAddedGift
         ]
         
         Repro.track("Add Gift", properties: properties)

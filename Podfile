@@ -11,5 +11,5 @@ target 'Memoria-iOS' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Repro'
-
+  pod 'LicensePlist'
 end

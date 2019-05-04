@@ -1,0 +1,102 @@
+name: BoringSSL, nameSpecified: 
+body: BoringSSL is a fork …
+version: 10.0.6
+
+name: Firebase, nameSpecified: 
+body: Copyright 2018 Googl…
+version: 5.10.0
+
+name: FirebaseAnalytics, nameSpecified: 
+body: Copyright 2018 Googl…
+version: 5.2.0
+
+name: FirebaseAuth, nameSpecified: 
+body: 
+                   …
+version: 5.0.4
+
+name: FirebaseAuthInterop, nameSpecified: 
+body: 
+                   …
+version: 1.0.0
+
+name: FirebaseCore, nameSpecified: 
+body: 
+                   …
+version: 5.1.5
+
+name: FirebaseFirestore, nameSpecified: 
+body: 
+                   …
+version: 0.13.5
+
+name: FirebaseInstanceID, nameSpecified: 
+body: Copyright 2018 Googl…
+version: 3.2.2
+
+name: GoogleAppMeasurement, nameSpecified: 
+body: Copyright 2018 Googl…
+version: 5.2.0
+
+name: GoogleUtilities, nameSpecified: 
+body: 
+                   …
+version: 5.3.4
+
+name: gRPC, nameSpecified: 
+body: 
+                   …
+version: 1.14.0
+
+name: gRPC-C++, nameSpecified: 
+body: 
+                   …
+version: 
+
+name: gRPC-Core, nameSpecified: 
+body: 
+                   …
+version: 1.14.0
+
+name: gRPC-ProtoRPC, nameSpecified: 
+body: 
+                   …
+version: 1.14.0
+
+name: gRPC-RxLibrary, nameSpecified: 
+body: 
+                   …
+version: 1.14.0
+
+name: GTMSessionFetcher, nameSpecified: 
+body: 
+                   …
+version: 1.2.1
+
+name: leveldb-library, nameSpecified: 
+body: Copyright (c) 2011 T…
+version: 1.20
+
+name: LicensePlist, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 2.5.0
+
+name: nanopb, nameSpecified: 
+body: Copyright (c) 2011 P…
+version: 0.3.8
+
+name: Protobuf, nameSpecified: 
+body: Copyright 2008 Googl…
+version: 3.6.1
+
+name: Repro, nameSpecified: 
+body: (c) 2015 Repro Inc.…
+version: 3.3.2
+
+name: DZNEmptyDataSet, nameSpecified: , owner: dzenbot, version: v1.8.1
+
+add-version-numbers: false
+
+LicensePlist Version: 1.8.3

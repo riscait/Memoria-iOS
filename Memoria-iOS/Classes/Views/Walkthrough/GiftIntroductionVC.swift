@@ -17,7 +17,7 @@ final class GiftIntroductionVC: UIViewController, EventTrackable {
 
     @IBAction private func didTapStartButton(_ sender: UIButton) {
         // チュートリアル終了フラグを立てる
-        UserDefaults.standard.set(true, forKey: "isFinishedTutorial")
+        UserDefaults.standard.set(true, forKey: UserDefaultsKey.isFinishedTutorial.rawValue)
         dismiss(animated: true, completion: nil)
     }
 }

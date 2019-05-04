@@ -62,25 +62,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /// 初回起動時のみに実行される関数
     private func createUUIDandLaunchCount() {
+        let firstLaunch = 0
         
-        let launchCount = "launchCount"
-        
-        // デフォルト値を設定
-        userDefaults.register(defaults: [launchCount: 0,
-                                         "isFinishedTutorial": false])
-        
-        if userDefaults.integer(forKey: launchCount) == 0 {
+        if userDefaults.integer(forKey: UserDefaultsKey.launchCount.rawValue) == firstLaunch {
             Log.info("初回起動です。")
             // ユニークIDを生成して永続化
             let uuid = UUID().uuidString
-            userDefaults.set(uuid, forKey: "uuid")
+            userDefaults.set(uuid, forKey: UserDefaultsKey.uuid.rawValue)
             Log.info("UUIDを生成: \(uuid)")
             // 初回起動フラグをオフにする
-            userDefaults.set(1, forKey: launchCount)
+            userDefaults.set(firstLaunch.incremented, forKey: UserDefaultsKey.launchCount.rawValue)
+            
         } else {
-            let n = userDefaults.integer(forKey: launchCount) + 1
-            userDefaults.set(n, forKey: launchCount)
-            Log.info("\(n)回目の起動 \nUUID: \(userDefaults.string(forKey: "uuid")!)")
+            let newLaunchCount = userDefaults.integer(forKey: UserDefaultsKey.launchCount.rawValue).incremented
+            userDefaults.set(newLaunchCount, forKey: UserDefaultsKey.launchCount.rawValue)
+            Log.info("\(newLaunchCount)回目の起動 \nUUID: \(userDefaults.string(forKey: UserDefaultsKey.uuid.rawValue)!)")
         }
     }
 }

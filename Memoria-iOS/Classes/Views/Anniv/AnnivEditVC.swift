@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AnnivEditVC: UIViewController, EventTrackable {
+class AnnivEditVC: UIViewController, StoreReviewRequestable, EventTrackable {
 
     // MARK: - Property
     
@@ -91,10 +91,19 @@ class AnnivEditVC: UIViewController, EventTrackable {
         
         AnnivDAO.set(documentPath: uuid, data: anniversary)
         
+        let userDefaults = UserDefaults.standard
+        
+        let newNumberOfAddedAnniv = userDefaults.integer(forKey: UserDefaultsKey.numberOfAddedAnnivs.rawValue).incremented
+        userDefaults.set(newNumberOfAddedAnniv, forKey: UserDefaultsKey.numberOfAddedAnnivs.rawValue)
+        
         trackAddAnniversary(eventName: AnnivUtil.getName(from: anniversary),
                             annivDate: annivDate,
-                            annivCategory: annivType)
-        dismiss(animated: true, completion: nil)
+                            annivCategory: annivType,
+                            numberOfAddedAnniv: newNumberOfAddedAnniv)
+        
+        dismiss(animated: true) { [weak self] in
+            self?.requestStoreReview(by: .addedAnniv)
+        }
     }
     
     /// 記念日の種類を切り替えるボタンが押された時

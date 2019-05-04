@@ -117,10 +117,6 @@ extension GiftRecordVC: GiftRecordTableVCDelegate {
 }
 
 extension GiftRecordVC: GiftRecordPresenterOutput {
-    /// 自らのModal画面を閉じる
-    func dismiss(animated: Bool) {
-        dismiss(animated: animated, completion: nil)
-    }
     /// 既存ギフトの編集なら既存のデータを画面へ反映する
     func setupLayout(gift: Gift?) {
         guard let gift = gift else {
