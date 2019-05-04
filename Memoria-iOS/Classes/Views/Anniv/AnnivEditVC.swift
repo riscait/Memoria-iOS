@@ -71,16 +71,17 @@ class AnnivEditVC: UIViewController, EventTrackable {
         let isAnnualy = tableVC.annualySwitch.isOn
         // 連絡先からインポートしたデータであるか否か。新規登録ならfalse
         let isFromContact = annivModel?.isFromContact ?? false
-        
-        let date = tableVC.timestamp ?? Timestamp()
-        
+        // 時間情報を一律で1日の始まりの時間にする
+        let annivDate = Calendar.current.startOfDay(for: (tableVC.forRegistrationDate ?? Date()))
+        // Firebaseで使うためにTimestampに変換する
+        let annivTimestamp = Timestamp(date: annivDate)
         // 記念日データをセット
         let anniversary = Anniv(id: uuid,
                                 category: annivType,
                                 title: annivTitleField.text,
                                 familyName: leftNameField.text,
                                 givenName: rightNameField.text,
-                                date: date,
+                                date: annivTimestamp,
                                 iconImage: nil,
                                 isHidden: false,
                                 isAnnualy: isAnnualy,
@@ -91,7 +92,7 @@ class AnnivEditVC: UIViewController, EventTrackable {
         AnnivDAO.set(documentPath: uuid, data: anniversary)
         
         trackAddAnniversary(eventName: AnnivUtil.getName(from: anniversary),
-                            annivDate: date.dateValue(),
+                            annivDate: annivDate,
                             annivCategory: annivType)
         dismiss(animated: true, completion: nil)
     }
@@ -194,7 +195,7 @@ class AnnivEditVC: UIViewController, EventTrackable {
                 leftNameField.text = anniversary.familyName
                 rightNameField.text = anniversary.givenName
             }
-            tableVC.timestamp = anniversary.date
+            tableVC.forRegistrationDate = anniversary.date.dateValue()
             tableVC.dateField.text = DateTimeFormat.getYMDString(date: anniversary.date.dateValue())
             tableVC.annualySwitch.isOn = anniversary.isAnnualy
             memoView.text = anniversary.memo

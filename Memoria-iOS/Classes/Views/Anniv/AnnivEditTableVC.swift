@@ -24,7 +24,7 @@ class AnnivEditTableVC: UITableViewController {
     
     var datePicker: UIDatePicker!
 
-    var timestamp: Timestamp?
+    var forRegistrationDate: Date?
     
     // 登録ボタンを押せることを知らせるプロトコルのデリゲートを宣言
     weak var annivEditTableVCDelegate: AnnivEditTableVCDelegate?
@@ -65,7 +65,7 @@ class AnnivEditTableVC: UITableViewController {
         // 日付ラベルにピッカーの日付を反映する
         dateField.text = DateTimeFormat.getYMDString(date: datePicker.date)
         // 登録時の日付参照用変数に日付情報を代入
-        timestamp = Timestamp(date: datePicker.date)
+        forRegistrationDate = datePicker.date
         annivEditTableVCDelegate?.needValidation(with: true)
     }
     
@@ -118,7 +118,7 @@ extension AnnivEditTableVC: UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         let today = Date()
         datePicker.date = today
-        timestamp = Timestamp(date: today)
+        forRegistrationDate = today
         annivEditTableVCDelegate?.needValidation(with: true)
         return true
     }
