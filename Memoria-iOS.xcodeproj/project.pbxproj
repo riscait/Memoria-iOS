@@ -700,7 +700,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Resources/Settings.bundle --github-token d323ad0c5a865594f54bf2944f704fc0618feaee\nfi\n";
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Resources/Settings.bundle\nfi\n";
 		};
 		AD4220E890D080CD2BF1388E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
