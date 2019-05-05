@@ -64,8 +64,8 @@
 		8D56B2A221A7DAE300B90BED /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A121A7DAE300B90BED /* SettingVC.swift */; };
 		8D56B2A421A85A7900B90BED /* OpenOtherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */; };
 		8D5924EF2273484000E8C8F3 /* StoreReviewRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5924EE2273484000E8C8F3 /* StoreReviewRequestable.swift */; };
-		8D5CD822227C6CC800DD3DBA /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */; };
 		8D5CD820227C446A00DD3DBA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */; };
+		8D5CD822227C6CC800DD3DBA /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */; };
 		8D63BFF922492D4A00AA1B9A /* GiftRecordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */; };
 		8D77D17721B22AD400CF673A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D77D17621B22AD400CF673A /* SignUp.storyboard */; };
 		8D77D17921B22DC000CF673A /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D77D17821B22DC000CF673A /* SignUpVC.swift */; };
@@ -188,8 +188,8 @@
 		8D56B2A121A7DAE300B90BED /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		8D56B2A321A85A7900B90BED /* OpenOtherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenOtherApp.swift; sourceTree = "<group>"; };
 		8D5924EE2273484000E8C8F3 /* StoreReviewRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewRequestable.swift; sourceTree = "<group>"; };
-		8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
+		8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		8D63BFF822492D4A00AA1B9A /* GiftRecordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordPresenter.swift; sourceTree = "<group>"; };
 		8D77D17621B22AD400CF673A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		8D77D17821B22DC000CF673A /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -310,9 +310,9 @@
 			children = (
 				8D8E284C227AEB7000299B5B /* Extensions */,
 				8D0FB83E2182002700BFCB79 /* AppDelegate.swift */,
-				8D3DA4B12260214300B59027 /* SecretKey.swift */,
-				8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */,
 				8D3E561421BAAA840090E46E /* AppInfo.swift */,
+				8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */,
+				8D3DA4B12260214300B59027 /* SecretKey.swift */,
 				8D0FB8532182068100BFCB79 /* ContactAccess.swift */,
 				8DA7BF4C2184D747004DF508 /* DialogBox.swift */,
 				8D1BFBB12185C6870082C766 /* DateTimeFormat.swift */,
@@ -321,8 +321,6 @@
 				8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */,
 				8DD486F321EAD68D0072983A /* Migration.swift */,
 				8D2921F82241C0990046917F /* Log.swift */,
-				8D5CD821227C6CC800DD3DBA /* UserDefaultsKey.swift */,
-				8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */,
 			);
 			name = Commons;
 			path = "Memoria-iOS/Classes/Commons";
@@ -337,6 +335,7 @@
 				8D5924EC2271FD8400E8C8F3 /* Gift */,
 				8D5924EA2271FBEC00E8C8F3 /* Setting */,
 				8D5924ED2271FDCD00E8C8F3 /* Timeline */,
+				8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */,
 				8D17325922373354005CD22C /* Migration.storyboard */,
 				8D17325B22373382005CD22C /* MigrationVC.swift */,
 				8D77D17D21B28DA400CF673A /* SignIn.storyboard */,
@@ -516,6 +515,7 @@
 			children = (
 				8DD474B321C947CD00DD5919 /* String+.swift */,
 				8D8E284D227AEC8100299B5B /* Int+.swift */,
+				8D5CD81F227C446A00DD3DBA /* UIScrollView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -700,7 +700,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Resources/Settings.bundle --github-token 1d54bda2cb38b3811b6b489995a934d27918d4d3\nfi\n";
+			shellScript = "if [ $CONFIGURATION = \"Debug\" ]; then\n${PODS_ROOT}/LicensePlist/license-plist --output-path $PRODUCT_NAME/Resources/Settings.bundle --github-token d323ad0c5a865594f54bf2944f704fc0618feaee\nfi\n";
 		};
 		AD4220E890D080CD2BF1388E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

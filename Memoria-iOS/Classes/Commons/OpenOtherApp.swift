@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OpenOtherApp {
+final class OpenOtherApp {
     /// 設定アプリのプライバシーを開く
     func openSettingsApp() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
