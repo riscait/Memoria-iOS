@@ -21,6 +21,7 @@ class AnnivEditVC: UIViewController, StoreReviewRequestable, EventTrackable {
     @IBOutlet weak var rightNameField: InspectableTextField!
     @IBOutlet weak var memoView: InspectableTextView!
     @IBOutlet weak var annivHideButton: UIButton!
+    @IBOutlet weak var annivDeleteButton: NegativeButton!
     
     var annivType: AnnivType?
     
@@ -28,22 +29,24 @@ class AnnivEditVC: UIViewController, StoreReviewRequestable, EventTrackable {
     var tableVC: AnnivEditTableVC!
 
     // 編集の場合は記念日情報を前の画面から受け取る
-    var annivModel: Anniv?
+    var anniv: Anniv?
     
     
     // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Title of this screen
-        title = "anniversaryRecord".localized
+        // 新規登録か編集かで画面タイトルを変える
+        title = anniv == nil
+            ? "anniversaryRecord".localized
+            : "anniversaryEdit".localized
         // InspectableTextViewのデリゲートを上書きするために必要
         memoView.delegate = self
         
         discoverChildVC()
-        configureUI(with: annivModel?.category ?? .anniv)
+        configureUI(with: anniv?.category ?? .anniv)
         // 新規登録ではなく、編集なら登録済みデータを反映する
-        configureField(with: annivModel)
+        configureField(with: anniv)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +58,9 @@ class AnnivEditVC: UIViewController, StoreReviewRequestable, EventTrackable {
     
     /// 閉じるボタンが押された時
     @IBAction func didTapDismissButton(_ sender: UIBarButtonItem) {
-        let message = annivModel == nil ? "discardMessageForRecord".localized : "discardMessageForEdit".localized
+        let message = anniv == nil
+            ? "discardMessageForRecord".localized
+            : "discardMessageForEdit".localized
         
         DialogBox.showDestructiveAlert(on: self, message: message, destructiveTitle: "close".localized) {
             self.dismiss(animated: true, completion: nil)
@@ -64,13 +69,13 @@ class AnnivEditVC: UIViewController, StoreReviewRequestable, EventTrackable {
     /// 記念日登録ボタンが押された時
     @IBAction func didTapRecordlButton(_ sender: UIBarButtonItem) {
         // 新規登録なら新しくIDを生成
-        let uuid = annivModel?.id ?? UUID().uuidString
+        let uuid = anniv?.id ?? UUID().uuidString
         // 記念日のタイプはセグメントコントロールの選択から判断
         guard let annivType = AnnivType(rawValue: annivTypeSegment.selectedSegmentIndex) else { return }
         // 毎年繰り返す記念日か否かはスイッチで
         let isAnnualy = tableVC.annualySwitch.isOn
         // 連絡先からインポートしたデータであるか否か。新規登録ならfalse
-        let isFromContact = annivModel?.isFromContact ?? false
+        let isFromContact = anniv?.isFromContact ?? false
         // 時間情報を一律で1日の始まりの時間にする
         let annivDate = Calendar.current.startOfDay(for: (tableVC.forRegistrationDate ?? Date()))
         // Firebaseで使うためにTimestampに変換する
@@ -126,8 +131,24 @@ class AnnivEditVC: UIViewController, StoreReviewRequestable, EventTrackable {
                             title: "hideThisAnniversaryTitle".localized,
                             message: "hideThisAnniversaryMessage".localized,
                             defaultAction: {
-                                guard let anniversaryData = self.annivModel else { return }
-                                AnnivDAO.update(with: anniversaryData.id, field: "isHidden", content: true)
+                                guard let anniv = self.anniv else { return }
+                                AnnivDAO.update(with: anniv.id, field: "isHidden", content: true)
+                                // 画面を閉じる
+                                self.dismiss(animated: true) {
+                                    // この画面を閉じた後、すぐに詳細画面一覧画面まで一気に戻る
+                                    NotificationCenter.default.post(name: .popToAnnivListVC, object: nil)
+                                }
+        })
+    }
+    
+    @IBAction func didTapDeleteButton(_ sender: UIButton) {
+        DialogBox.showAlert(on: self,
+                            hasCancel: true,
+                            title: "deleteThisAnniversaryTitle".localized,
+                            message: "deleteThisAnniversaryMessage".localized,
+                            defaultAction: {
+                                guard let anniv = self.anniv else { return }
+                                AnnivDAO.delete(with: anniv.id)
                                 // 画面を閉じる
                                 self.dismiss(animated: true) {
                                     // この画面を閉じた後、すぐに詳細画面一覧画面まで一気に戻る
@@ -159,7 +180,7 @@ class AnnivEditVC: UIViewController, StoreReviewRequestable, EventTrackable {
                 tableVC = child
                 // GiftRecordTableVCのデリゲートをこのクラスに移譲する
                 tableVC.annivEditTableVCDelegate = self
-                if let date = annivModel?.date.dateValue() {
+                if let date = anniv?.date.dateValue() {
                     tableVC.datePicker.setDate(date, animated: true)
                 }
                 break
@@ -213,8 +234,9 @@ class AnnivEditVC: UIViewController, StoreReviewRequestable, EventTrackable {
             }
         } else {
             // 新規登録時の処理
-            // 非表示ボタンを表示しない
+            // 非表示ボタンと削除ボタンを表示しない
             annivHideButton.isHidden = true
+            annivDeleteButton.isHidden = true
         }
     }
     

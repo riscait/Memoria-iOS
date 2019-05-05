@@ -29,7 +29,7 @@
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SpR-bI-R5I" customClass="InspectableSegmentedControl" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="132" y="106" width="150" height="29"/>
+                                <rect key="frame" x="122.5" y="106" width="169" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="jeo-Ix-jwd"/>
                                 </constraints>
@@ -47,7 +47,7 @@
                                 </connections>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="NIa-Cw-DWR" customClass="InspectableTextView" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="12" y="353" width="386" height="356"/>
+                                <rect key="frame" x="12" y="353" width="386" height="336"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -115,40 +115,59 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1y-eR-Vh1" customClass="NegativeButton" customModule="Memoria_iOS" customModuleProvider="target">
-                                <rect key="frame" x="117" y="743" width="180" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="Ipu-Vh-vUp"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="n74-cV-HXK"/>
-                                </constraints>
-                                <state key="normal" title="hideAnniversary">
-                                    <color key="titleColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="hideAnniversary"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="didTapHideButton:" destination="CDS-0C-eHY" eventType="touchUpInside" id="sLw-G1-90p"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jz1-vK-JW4">
+                                <rect key="frame" x="145" y="697" width="124" height="108"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1y-eR-Vh1" customClass="NegativeButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="124" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="n74-cV-HXK"/>
+                                        </constraints>
+                                        <state key="normal" title="hideAnniversary">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="hideAnniversary"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapHideButton:" destination="CDS-0C-eHY" eventType="touchUpInside" id="sLw-G1-90p"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3h-3O-2BE" customClass="NegativeButton" customModule="Memoria_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="54" width="124" height="54"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="SbW-qj-W5W"/>
+                                        </constraints>
+                                        <state key="normal" title="deleteAnniversary">
+                                            <color key="titleColor" red="0.85696703770000004" green="0.2247210962" blue="0.4104027193" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedStringKey" value="deleteAnniversary"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didTapDeleteButton:" destination="CDS-0C-eHY" eventType="touchUpInside" id="kq4-XW-rhi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Xn4-1s-ZnT" firstAttribute="leading" secondItem="a7J-U0-g3D" secondAttribute="leading" id="2Av-o2-bwl"/>
                             <constraint firstItem="1kt-Gh-au1" firstAttribute="top" secondItem="OyB-St-2Xs" secondAttribute="bottom" constant="8" id="6rf-KK-9Cc"/>
+                            <constraint firstItem="jz1-vK-JW4" firstAttribute="top" secondItem="NIa-Cw-DWR" secondAttribute="bottom" constant="8" id="77i-Js-Xcg"/>
                             <constraint firstItem="OyB-St-2Xs" firstAttribute="leading" secondItem="a7J-U0-g3D" secondAttribute="leading" constant="16" id="7Cd-5h-9NH"/>
                             <constraint firstItem="1kt-Gh-au1" firstAttribute="leading" secondItem="a7J-U0-g3D" secondAttribute="leading" constant="16" id="8IK-dp-ezm"/>
                             <constraint firstItem="a7J-U0-g3D" firstAttribute="trailing" secondItem="NIa-Cw-DWR" secondAttribute="trailing" constant="16" id="9t1-U8-Y9g"/>
-                            <constraint firstItem="L1y-eR-Vh1" firstAttribute="top" secondItem="NIa-Cw-DWR" secondAttribute="bottom" constant="34" id="Df1-ft-eUF"/>
+                            <constraint firstItem="a7J-U0-g3D" firstAttribute="bottom" secondItem="jz1-vK-JW4" secondAttribute="bottom" constant="8" id="FFM-h0-qSc"/>
                             <constraint firstItem="a7J-U0-g3D" firstAttribute="trailing" secondItem="1kt-Gh-au1" secondAttribute="trailing" constant="16" id="Hbs-3Y-9wS"/>
                             <constraint firstItem="NIa-Cw-DWR" firstAttribute="top" secondItem="Xn4-1s-ZnT" secondAttribute="bottom" constant="16" id="JXT-Cb-ZU3"/>
-                            <constraint firstItem="a7J-U0-g3D" firstAttribute="bottom" secondItem="L1y-eR-Vh1" secondAttribute="bottom" constant="16" id="Rdi-Hv-Mj5"/>
                             <constraint firstItem="NIa-Cw-DWR" firstAttribute="leading" secondItem="a7J-U0-g3D" secondAttribute="leading" constant="12" id="ScY-qg-uph"/>
-                            <constraint firstItem="L1y-eR-Vh1" firstAttribute="centerX" secondItem="CPF-JW-H7q" secondAttribute="centerX" id="b9J-gr-uTR"/>
                             <constraint firstItem="SpR-bI-R5I" firstAttribute="centerX" secondItem="CPF-JW-H7q" secondAttribute="centerX" id="cVN-Fb-mo4"/>
                             <constraint firstItem="Xn4-1s-ZnT" firstAttribute="top" secondItem="1kt-Gh-au1" secondAttribute="bottom" constant="20" id="eLM-pz-gyt"/>
                             <constraint firstItem="OyB-St-2Xs" firstAttribute="top" secondItem="SpR-bI-R5I" secondAttribute="bottom" constant="20" id="hCW-Kf-EWB"/>
                             <constraint firstItem="Xn4-1s-ZnT" firstAttribute="trailing" secondItem="a7J-U0-g3D" secondAttribute="trailing" id="htB-zZ-n1v"/>
+                            <constraint firstItem="jz1-vK-JW4" firstAttribute="centerX" secondItem="CPF-JW-H7q" secondAttribute="centerX" id="jEP-Ql-CjJ"/>
                             <constraint firstItem="SpR-bI-R5I" firstAttribute="top" secondItem="a7J-U0-g3D" secondAttribute="top" constant="18" id="rbP-Ot-0el"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a7J-U0-g3D"/>
@@ -173,6 +192,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="annivDeleteButton" destination="G3h-3O-2BE" id="UCQ-mV-HwV"/>
                         <outlet property="annivHideButton" destination="L1y-eR-Vh1" id="BJl-OH-VTZ"/>
                         <outlet property="annivTitleField" destination="Y6a-G3-5nv" id="KP1-cL-fqF"/>
                         <outlet property="annivTypeLabel" destination="OyB-St-2Xs" id="Y8x-nl-lZy"/>
@@ -185,24 +205,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oei-sH-aGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1080.8" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1079.7101449275362" y="132.58928571428572"/>
         </scene>
         <!--Anniv Edit TableVC-->
         <scene sceneID="CjQ-mL-H9U">
             <objects>
                 <tableViewController id="TZb-Mu-70l" customClass="AnnivEditTableVC" customModule="Memoria_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="45" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LPf-tu-HfX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
                             <tableViewSection id="asd-sX-GiK">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateCell" id="270-Y5-8Ag">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="270-Y5-8Ag" id="W8u-AJ-AtA">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dateTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csH-3L-7cj" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
@@ -215,7 +235,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="DqN-3B-BeO">
-                                                    <rect key="frame" x="93.5" y="0.0" width="490.5" height="44.5"/>
+                                                    <rect key="frame" x="93.5" y="0.0" width="304.5" height="44.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -236,14 +256,14 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dateTBDCell" id="bCK-cC-nir">
-                                        <rect key="frame" x="0.0" y="45" width="600" height="45"/>
+                                        <rect key="frame" x="0.0" y="45" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bCK-cC-nir" id="9CM-Jl-J0Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lid-Gg-VKW" customClass="InspectableLabel" customModule="Memoria_iOS" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="22.5" width="503" height="0.0"/>
+                                                    <rect key="frame" x="16" y="12" width="317" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -252,7 +272,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZJN-8M-OiU">
-                                                    <rect key="frame" x="535" y="7" width="51" height="31"/>
+                                                    <rect key="frame" x="349" y="7" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="toggleAnnualy:" destination="TZb-Mu-70l" eventType="valueChanged" id="RMl-uK-K0o"/>
                                                     </connections>

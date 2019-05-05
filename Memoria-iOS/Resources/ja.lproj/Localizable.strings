@@ -66,6 +66,7 @@
 "rightNamePlaceholder" = "名";
 "repeatableTitle" = "毎年繰り返す";
 "anniversaryRecord" = "記念日の登録";
+"anniversaryEdit" = "記念日の編集";
 "askForNameInput" = "誕生日の場合は名前を入力";
 "givenName" = "名";
 "familyName" = "姓";
@@ -82,6 +83,7 @@
 "japaneseOnlyDay" = "日";
 "confirmAndRecord" = "登録する";
 "hideAnniversary" = "この記念日を非表示にする";
+"deleteAnniversary" = "この記念日を削除する";
 "deleteContactBirthdayTitle" = "誕生日の消去";
 "deleteContactBirthdayMessage" = "連絡先から取り込んだ誕生日を消去します";
 "anniversaryNameLabel" = "記念日の名前";
@@ -125,8 +127,10 @@
 // Anniversary詳細画面
 "giftHistory" = "ギフト履歴";
 "hideThisAnniversaryTitle" = "この記念日を非表示にします";
-"memo:" = "メモ\n";
 "hideThisAnniversaryMessage" = "非表示にした記念日は「設定タブ」にて再表示することができます";
+"deleteThisAnniversaryTitle" = "本当に削除しますか？";
+"deleteThisAnniversaryMessage" = "記念日は完全に削除され、取り消すことはできません";
+"memo:" = "メモ\n";
 "giftSectionFooterForAnniversary" = "記念日の名前が一致しているギフトが表示されます。";
 "giftSectionFooterForBirthday" = "人名が一致しているギフトがここに表示されます。";
 // Gift画面
