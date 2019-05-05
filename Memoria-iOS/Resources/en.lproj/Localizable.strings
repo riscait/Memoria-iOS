@@ -62,6 +62,7 @@
 "anniversaryTitleLabel" = "Anniversary Title";
 "birthdayNameLabel" = "Birthday name";
 "anniversaryRecord" = "Record Anniversary";
+"anniversaryEdit" = "Edit Anniversary";
 "askForNameInput" = "Enter the name in the case of birthday";
 "leftNamePlaceholder" = "John";
 "rightNamePlaceholder" = "Smith";
@@ -80,7 +81,8 @@
 "japaneseOnlyYear" = "";  // Japanese only
 "japaneseOnlyDay" = "";  // Japanese only
 "confirmAndRecord" = "Record";
-"hideAnniversary" = "Hide";
+"hideAnniversary" = "Hide this Anniversary";
+"deleteAnniversary" = "Delete this Anniversary";
 "deleteContactBirthdayTitle" = "Delete Birthday";
 "deleteContactBirthdayMessage" = "Delete birthdays captured from contacts";
 "anniversaryNameLabel" = "Anniversary name";
@@ -125,6 +127,8 @@
 "giftHistory" = "Gift history";
 "hideThisAnniversaryTitle" = "Hide this anniversary";
 "hideThisAnniversaryMessage" = "You can redisplay anniversaries that were hidden in the \"Settings tab\"";
+"deleteThisAnniversaryTitle" = "Delete this anniversary";
+"deleteThisAnniversaryMessage" = "Anniversary is completely deleted and can not be canceled";
 "giftSectionFooterForAnniversary" = "Gifts matching anniversary names will be displayed.";
 "giftSectionFooterForBirthday" = "A gift whose person's name matches is displayed here.";
 // Gift view

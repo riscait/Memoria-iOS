@@ -53,7 +53,7 @@ final class AnnivDetailVC: UIViewController, EventTrackable {
             // FIXME: Issue#63にてSegueを削除する
             let navC = segue.destination as! UINavigationController
             let nextVC = navC.topViewController as! AnnivEditVC
-            nextVC.annivModel = presenter.anniv
+            nextVC.anniv = presenter.anniv
         }
         
         if id == "editGiftSegue" {
