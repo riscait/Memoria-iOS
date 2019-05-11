@@ -8,35 +8,46 @@
 
 import UserNotifications
 
-class NotificationService: UNNotificationServiceExtension {
+final class NotificationService: UNNotificationServiceExtension {
+
+    struct URLAttachment {
+        let fileURL: URL
+        let type: String
+        
+        init?(_ object: [String: String]) {
+            guard let urlString = object["url"],
+                let fileURL = URL(string: urlString),
+                let type = object["type"] else { return nil }
+            self.fileURL = fileURL
+            self.type = type
+        }
+    }
 
     var contentHandler: ((UNNotificationContent) -> Void)?
     var bestAttemptContent: UNMutableNotificationContent?
 
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
         self.contentHandler = contentHandler
-        bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
+        bestAttemptContent = request.content.mutableCopy() as? UNMutableNotificationContent
         
-        if let attachment = request.content.userInfo["rpr_attachment"] as? [String: String] {
-            if let urlString = attachment["url"], let fileURL = URL(string: urlString), let type = attachment["type"] {
-                
-                URLSession.shared.downloadTask(with: fileURL) { (location, response, error) in
-                    if let location = location {
-                        let fileName = UUID().uuidString + "." + type
-                        let tmpFile = "file://".appending(NSTemporaryDirectory()).appending(fileName)
-                        let tmpUrl = URL(string: tmpFile)!
-                        try? FileManager.default.moveItem(at: location, to: tmpUrl)
-                        
-                        if let attachment = try? UNNotificationAttachment(identifier: "IDENTIFIER", url: tmpUrl, options: nil) {
-                            self.bestAttemptContent?.attachments = [attachment]
-                        }
-                    }
-                    contentHandler(self.bestAttemptContent!)
-                    }.resume()
-            }
-        } else {
-            contentHandler(self.bestAttemptContent!)
+        guard let object = request.content.userInfo["rpr_attachment"] as? [String: String],
+            let urlAttachment = URLAttachment(object) else {
+                contentHandler(self.bestAttemptContent!)
+                return
         }
+        URLSession.shared.downloadTask(with: urlAttachment.fileURL) { (location, response, error) in
+            if let location = location {
+                let fileName = UUID().uuidString + "." + urlAttachment.type
+                let tmpFile = "file://".appending(NSTemporaryDirectory()).appending(fileName)
+                let tmpUrl = URL(string: tmpFile)!
+                try? FileManager.default.moveItem(at: location, to: tmpUrl)
+                
+                if let attachment = try? UNNotificationAttachment(identifier: "IDENTIFIER", url: tmpUrl, options: nil) {
+                    self.bestAttemptContent?.attachments = [attachment]
+                }
+            }
+            contentHandler(self.bestAttemptContent!)
+            }.resume()
     }
     
     override func serviceExtensionTimeWillExpire() {
