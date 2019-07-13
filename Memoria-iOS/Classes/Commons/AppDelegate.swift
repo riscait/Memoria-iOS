@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 import Firebase
 import Repro
 
@@ -35,6 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Repro.setup(SecretKeys.reproSDK)
         
+        registerUserNotification(application)
+        // プッシュ通知で付いたバッジを無条件で外すため
+        // FIXME: 今後、他の用途でバッジを使うときにはこちらは削除する
+        application.applicationIconBadgeNumber = 0
+        
         return true
     }
 
@@ -59,7 +65,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    // 通知の許可を得た場合に実行
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        // デバイストークンの取得に成功した場合にReproにデバイストークンを渡す
+        Repro.setPushDeviceToken(deviceToken)
+    }
 
+    // 通知の許可を得ることに失敗したとき
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        Log.warn("Remote Notification Error: \(error)")
+    }
     /// 初回起動時のみに実行される関数
     private func createUUIDandLaunchCount() {
         let firstLaunch = 0
@@ -79,5 +95,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Log.info("\(newLaunchCount)回目の起動 \nUUID: \(userDefaults.string(forKey: UserDefaultsKey.uuid.rawValue)!)")
         }
     }
+    
 }
 
+// MARK: - UNUserNotificationCenter Delegate
+extension AppDelegate: UNUserNotificationCenterDelegate, EventTrackable {
+    /// ユーザー通知の許可を求める
+    private func registerUserNotification(_ app: UIApplication) {
+        let center = UNUserNotificationCenter.current()
+        UNUserNotificationCenter.current().delegate = self
+        center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
+            if let error = error {
+                Log.warn(error.localizedDescription)
+                return
+            }
+            if granted {
+                Log.info("ユーザー通知が許可されました")
+                self.trackEvent(eventName: "Granted UserNotification")
+                
+            } else {
+                Log.info("ユーザー通知が拒否されました")
+                self.trackEvent(eventName: "Denied UserNotification")
+            }
+        }
+        app.registerForRemoteNotifications()
+    }
+}

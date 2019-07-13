@@ -104,6 +104,8 @@
 		8DB8105D21AC243B0007BBC5 /* ZodiacSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */; };
 		8DB90980227D28EF00B45789 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8DB9097F227D28EF00B45789 /* Settings.bundle */; };
 		8DBB365721C5CF67008282D0 /* GiftRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */; };
+		8DBB70DB227FFB6500B0E937 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBB70DA227FFB6500B0E937 /* NotificationService.swift */; };
+		8DBB70DF227FFB6500B0E937 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8DBB70D8227FFB6500B0E937 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8DC1977621C66A25006B7802 /* GiftRecordTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */; };
 		8DC43FD821CFE39A00B911F2 /* InspectableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */; };
 		8DC43FDA21D061C900B911F2 /* Anniv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC43FD921D061C900B911F2 /* Anniv.swift */; };
@@ -124,6 +126,30 @@
 		8DEB3D7221DE42FF000AA2BC /* InspectableTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEB3D7121DE42FF000AA2BC /* InspectableTabBarItem.swift */; };
 		8DF28E7F21A113EF00B62EBA /* NegativeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF28E7E21A113EF00B62EBA /* NegativeButton.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8DBB70DD227FFB6500B0E937 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D0FB8332182002700BFCB79 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DBB70D7227FFB6500B0E937;
+			remoteInfo = NotificationService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DBB70E3227FFB6500B0E937 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8DBB70DF227FFB6500B0E937 /* NotificationService.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		72D548FBFFB5AAD46BCC4078 /* Pods-Memoria-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memoria-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Memoria-iOS/Pods-Memoria-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +254,10 @@
 		8DB8105C21AC243B0007BBC5 /* ZodiacSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacSign.swift; sourceTree = "<group>"; };
 		8DB9097F227D28EF00B45789 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8DBB365621C5CF67008282D0 /* GiftRecordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordVC.swift; sourceTree = "<group>"; };
+		8DBB70D3227FE5EE00B0E937 /* Memoria-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Memoria-iOS.entitlements"; sourceTree = "<group>"; };
+		8DBB70D8227FFB6500B0E937 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DBB70DA227FFB6500B0E937 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		8DBB70DC227FFB6500B0E937 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC1977521C66A25006B7802 /* GiftRecordTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftRecordTableVC.swift; sourceTree = "<group>"; };
 		8DC43FD721CFE39A00B911F2 /* InspectableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectableTableViewCell.swift; sourceTree = "<group>"; };
 		8DC43FD921D061C900B911F2 /* Anniv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anniv.swift; sourceTree = "<group>"; };
@@ -260,6 +290,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8DBB70D5227FFB6500B0E937 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -267,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				8D0FB83D2182002700BFCB79 /* Memoria-iOS */,
+				8DBB70D9227FFB6500B0E937 /* NotificationService */,
 				8D0FB83C2182002700BFCB79 /* Products */,
 				BC6767E9807FAE23F80305EF /* Pods */,
 				C986B6EDF1770E80DB59E4B8 /* Frameworks */,
@@ -280,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				8D0FB83B2182002700BFCB79 /* Memoria-iOS.app */,
+				8DBB70D8227FFB6500B0E937 /* NotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -287,6 +326,7 @@
 		8D0FB83D2182002700BFCB79 /* Memoria-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				8DBB70D3227FE5EE00B0E937 /* Memoria-iOS.entitlements */,
 				8D17324022334B8C005CD22C /* Classes */,
 				8D17325622334C5E005CD22C /* Resources */,
 			);
@@ -520,6 +560,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		8DBB70D9227FFB6500B0E937 /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				8DBB70DA227FFB6500B0E937 /* NotificationService.swift */,
+				8DBB70DC227FFB6500B0E937 /* Info.plist */,
+			);
+			path = NotificationService;
+			sourceTree = "<group>";
+		};
 		BC6767E9807FAE23F80305EF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -553,15 +602,34 @@
 				8D88AF882259AF4E000BA720 /* ShellScript */,
 				AD4220E890D080CD2BF1388E /* [CP] Copy Pods Resources */,
 				8DE066F4227D1EB300AE377E /* LicensePlist */,
+				8DBB70E3227FFB6500B0E937 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8DBB70DE227FFB6500B0E937 /* PBXTargetDependency */,
 			);
 			name = "Memoria-iOS";
 			productName = "Memoria-iOS";
 			productReference = 8D0FB83B2182002700BFCB79 /* Memoria-iOS.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8DBB70D7227FFB6500B0E937 /* NotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DBB70E0227FFB6500B0E937 /* Build configuration list for PBXNativeTarget "NotificationService" */;
+			buildPhases = (
+				8DBB70D4227FFB6500B0E937 /* Sources */,
+				8DBB70D5227FFB6500B0E937 /* Frameworks */,
+				8DBB70D6227FFB6500B0E937 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationService;
+			productName = NotificationService;
+			productReference = 8DBB70D8227FFB6500B0E937 /* NotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -569,13 +637,21 @@
 		8D0FB8332182002700BFCB79 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "nerco studio";
 				TargetAttributes = {
 					8D0FB83A2182002700BFCB79 = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					8DBB70D7227FFB6500B0E937 = {
+						CreatedOnToolsVersion = 10.2.1;
 					};
 				};
 			};
@@ -594,6 +670,7 @@
 			projectRoot = "";
 			targets = (
 				8D0FB83A2182002700BFCB79 /* Memoria-iOS */,
+				8DBB70D7227FFB6500B0E937 /* NotificationService */,
 			);
 		};
 /* End PBXProject section */
@@ -638,6 +715,13 @@
 				8DE450412277C99F004D8F03 /* AnnivEmptyView.xib in Resources */,
 				8D0E4A86226CC6260064B411 /* Walkthrough.storyboard in Resources */,
 				8D0FB8462182002800BFCB79 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DBB70D6227FFB6500B0E937 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -855,7 +939,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8DBB70D4227FFB6500B0E937 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DBB70DB227FFB6500B0E937 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8DBB70DE227FFB6500B0E937 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DBB70D7227FFB6500B0E937 /* NotificationService */;
+			targetProxy = 8DBB70DD227FFB6500B0E937 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8D0FB8472182002800BFCB79 /* LaunchScreen.storyboard */ = {
@@ -1010,30 +1110,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D2921FA224300410046917F /* Debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3537BAHE48;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = "$(SRCROOT)/Memoria-iOS/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = jp.nerco.Memoria.dev;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		8D0FB84F2182002800BFCB79 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CB9FB5A45A0F138434E9F5F0 /* Pods-Memoria-iOS.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Memoria-iOS/Memoria-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3537BAHE48;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1049,6 +1128,71 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8D0FB84F2182002800BFCB79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB9FB5A45A0F138434E9F5F0 /* Pods-Memoria-iOS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Memoria-iOS/Memoria-iOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3537BAHE48;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Memoria-iOS/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.nerco.Memoria;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8DBB70E1227FFB6500B0E937 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3537BAHE48;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.nerco.Memoria.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8DBB70E2227FFB6500B0E937 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3537BAHE48;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.nerco.Memoria.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1069,6 +1213,15 @@
 			buildConfigurations = (
 				8D0FB84E2182002800BFCB79 /* Debug */,
 				8D0FB84F2182002800BFCB79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DBB70E0227FFB6500B0E937 /* Build configuration list for PBXNativeTarget "NotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DBB70E1227FFB6500B0E937 /* Debug */,
+				8DBB70E2227FFB6500B0E937 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
